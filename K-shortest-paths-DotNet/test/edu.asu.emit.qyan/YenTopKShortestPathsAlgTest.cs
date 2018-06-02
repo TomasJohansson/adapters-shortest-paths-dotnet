@@ -29,17 +29,14 @@
  *
  */
 
-package edu.asu.emit.qyan.test;
+namespace edu.asu.emit.qyan.test
+{
+using java.util;
+//import org.testng.annotations.Test;
 
-import java.util.List;
-
-import org.testng.annotations.Test;
-
-import edu.asu.emit.algorithm.graph.Graph;
-import edu.asu.emit.algorithm.graph.Path;
-import edu.asu.emit.algorithm.graph.VariableGraph;
-import edu.asu.emit.algorithm.graph.shortestpaths.DijkstraShortestPathAlg;
-import edu.asu.emit.algorithm.graph.shortestpaths.YenTopKShortestPathsAlg;
+using edu.asu.emit.algorithm.graph;
+using edu.asu.emit.algorithm.graph.shortestpaths;
+using java.lang;
 
 /**
  * TODO Need to redo!
@@ -55,62 +52,64 @@ public class YenTopKShortestPathsAlgTest {
 //	@Test
 	public void testDijkstraShortestPathAlg()
 	{
-		System.out.println("Testing Dijkstra Shortest Path Algorithm!");
+		SystemOut.println("Testing Dijkstra Shortest Path Algorithm!");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		System.out.println(alg.getShortestPath(graph.getVertex(4), graph.getVertex(5)));
+		SystemOut.println(alg.getShortestPath(graph.getVertex(4), graph.getVertex(5)));
 	}
 	
 //	@Test
 	public void testYenShortestPathsAlg()
 	{		
-		System.out.println("Testing batch processing of top-k shortest paths!");
+		SystemOut.println("Testing batch processing of top-k shortest paths!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph);
 		List<Path> shortest_paths_list = yenAlg.getShortestPaths(
                 graph.getVertex(4), graph.getVertex(5), 100);
-		System.out.println(":"+shortest_paths_list);
-		System.out.println(yenAlg.getResultList().size());
+		SystemOut.println(":"+shortest_paths_list);
+		SystemOut.println(yenAlg.getResultList().size());
 	}
 	
 //	@Test
 	public void testYenShortestPathsAlg2()
 	{
-		System.out.println("Obtain all paths in increasing order! - updated!");
+		SystemOut.println("Obtain all paths in increasing order! - updated!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
 				graph, graph.getVertex(4), graph.getVertex(5));
 		int i=0;
 		while(yenAlg.hasNext())
 		{
-			System.out.println("Path "+i+++" : "+yenAlg.next());
+			SystemOut.println("Path "+i+++" : "+yenAlg.next());
 		}
 		
-		System.out.println("Result # :"+i);
-		System.out.println("Candidate # :"+yenAlg.getCadidateSize());
-		System.out.println("All generated : "+yenAlg.getGeneratedPathSize());
+		SystemOut.println("Result # :"+i);
+		SystemOut.println("Candidate # :"+yenAlg.getCadidateSize());
+		SystemOut.println("All generated : "+yenAlg.getGeneratedPathSize());
 	}
 	
-	@Test
+	//@Test
 	public void testYenShortestPathsAlg4MultipleGraphs()
 	{
-		System.out.println("Graph 1 - ");
+		SystemOut.println("Graph 1 - ");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
 				graph, graph.getVertex(4), graph.getVertex(5));
 		int i=0;
 		while(yenAlg.hasNext())
 		{
-			System.out.println("Path "+i+++" : "+yenAlg.next());
+			SystemOut.println("Path "+i+++" : "+yenAlg.next());
 		}
 		
-		System.out.println("Result # :"+i);
-		System.out.println("Candidate # :"+yenAlg.getCadidateSize());
-		System.out.println("All generated : "+yenAlg.getGeneratedPathSize());
+		SystemOut.println("Result # :"+i);
+		SystemOut.println("Candidate # :"+yenAlg.getCadidateSize());
+		SystemOut.println("All generated : "+yenAlg.getGeneratedPathSize());
 		
 		///
-		System.out.println("Graph 2 - ");
+		SystemOut.println("Graph 2 - ");
 		graph = new VariableGraph("data/test_6_1");
 		YenTopKShortestPathsAlg yenAlg1 = new YenTopKShortestPathsAlg(graph);
 		List<Path> shortest_paths_list = yenAlg1.getShortestPaths(
                 graph.getVertex(4), graph.getVertex(5), 100);
-		System.out.println(":"+shortest_paths_list);
-		System.out.println(yenAlg1.getResultList().size());
+		SystemOut.println(":"+shortest_paths_list);
+		SystemOut.println(yenAlg1.getResultList().size());
 	}
+}
+
 }

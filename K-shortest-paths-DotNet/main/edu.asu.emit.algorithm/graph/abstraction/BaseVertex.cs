@@ -29,8 +29,8 @@
  *
  */
 
-package edu.asu.emit.algorithm.graph.abstraction;
-
+namespace edu.asu.emit.algorithm.graph.abstraction
+{
 /**
  * The interface defines a vertex in graph
  * 
@@ -42,4 +42,5 @@ public interface BaseVertex {
 	double getWeight();
 	void setWeight(double weight);
 	
+}
 }

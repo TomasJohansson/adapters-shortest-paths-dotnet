@@ -29,20 +29,13 @@
  *
  */
 
-package edu.asu.emit.algorithm.graph.shortestpaths;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-
-import edu.asu.emit.algorithm.graph.Graph;
-import edu.asu.emit.algorithm.graph.Path;
-import edu.asu.emit.algorithm.graph.VariableGraph;
-import edu.asu.emit.algorithm.graph.abstraction.BaseGraph;
-import edu.asu.emit.algorithm.graph.abstraction.BaseVertex;
-import edu.asu.emit.algorithm.utils.Pair;
-import edu.asu.emit.algorithm.utils.QYPriorityQueue;
+namespace edu.asu.emit.algorithm.graph.shortestpaths
+{
+using java.lang;
+using java.util;
+using edu.asu.emit.algorithm.graph;
+using edu.asu.emit.algorithm.graph.abstraction;
+using edu.asu.emit.algorithm.utils;
 
 /**
  * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
@@ -71,8 +64,7 @@ public class YenTopKShortestPathsAlg
 	 * @param graph
 	 * @param k
 	 */
-	public YenTopKShortestPathsAlg(BaseGraph graph)	{
-        this(graph, null, null);
+	public YenTopKShortestPathsAlg(BaseGraph graph): this(graph, null, null)	{
 	}
 	
 	/**
@@ -136,7 +128,7 @@ public class YenTopKShortestPathsAlg
 	 * 
 	 * @return
 	 */
-	public boolean hasNext() {
+	public bool hasNext() {
         return !pathCandidates.isEmpty();
 	}
 	
@@ -152,7 +144,7 @@ public class YenTopKShortestPathsAlg
 
 		BaseVertex curDerivation = pathDerivationVertexIndex.get(curPath);
 		int curPathHash =
-			curPath.getVertexList().subList(0, curPath.getVertexList().indexOf(curDerivation)).hashCode();
+			curPath.getVertexList().subList(0, curPath.getVertexList().indexOf(curDerivation)).GetHashCode();
 		
 		int count = resultList.size();
 		
@@ -169,7 +161,7 @@ public class YenTopKShortestPathsAlg
 
 			// Note that the following condition makes sure all candidates should be considered. 
 			/// The algorithm in the paper is not correct for removing some candidates by mistake. 
-			int pathHash = curResultPath.getVertexList().subList(0, curDevVertexId).hashCode();
+			int pathHash = curResultPath.getVertexList().subList(0, curDevVertexId).GetHashCode();
 			if (pathHash != curPathHash) {
                 continue;
             }
@@ -177,7 +169,7 @@ public class YenTopKShortestPathsAlg
 			BaseVertex curSuccVertex =
 				curResultPath.getVertexList().get(curDevVertexId + 1);
 			
-			graph.deleteEdge(new Pair<Integer, Integer>(
+			graph.deleteEdge(new Pair<int, int>(
                     curDerivation.getId(), curSuccVertex.getId()));
 		}
 		
@@ -185,7 +177,7 @@ public class YenTopKShortestPathsAlg
 		List<BaseVertex> curPathVertexList = curPath.getVertexList();
 		for (int i = 0; i < pathLength-1; ++i) {
 			graph.deleteVertex(curPathVertexList.get(i).getId());
-			graph.deleteEdge(new Pair<Integer, Integer>(
+			graph.deleteEdge(new Pair<int, int>(
                     curPathVertexList.get(i).getId(),
                     curPathVertexList.get(i + 1).getId()));
 		}
@@ -195,7 +187,7 @@ public class YenTopKShortestPathsAlg
 		reverseTree.getShortestPathFlower(targetVertex);
 		
 		//3.4 recover the deleted vertices and update the cost and identify the new candidate results
-		boolean isDone = false;
+		bool isDone = false;
 		for (int i=pathLength-2; i>=0 && !isDone; --i)	{
 			//3.4.1 get the vertex to be recovered
 			BaseVertex curRecoverVertex = curPathVertexList.get(i);
@@ -244,7 +236,7 @@ public class YenTopKShortestPathsAlg
 			
 			//3.4.5 restore the edge
 			BaseVertex succVertex = curPathVertexList.get(i + 1);
-			graph.recoverDeletedEdge(new Pair<Integer, Integer>(
+			graph.recoverDeletedEdge(new Pair<int, int>(
                     curRecoverVertex.getId(), succVertex.getId()));
 			
 			//3.4.6 update cost if necessary
@@ -309,4 +301,5 @@ public class YenTopKShortestPathsAlg
 	public int getGeneratedPathSize() {
 		return generatedPathNum;
 	}
+}
 }

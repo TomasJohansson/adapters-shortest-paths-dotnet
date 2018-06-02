@@ -28,8 +28,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package edu.asu.emit.algorithm.graph.abstraction;
-
+namespace edu.asu.emit.algorithm.graph.abstraction
+{
 /**
  * The interface defines a weighted element in graph. It could be for
  * a vertex or an edge. 
@@ -38,6 +38,7 @@ package edu.asu.emit.algorithm.graph.abstraction;
  */
 public interface BaseElementWithWeight {
 	
-	public double getWeight();
+	double getWeight();
 	
+}
 }

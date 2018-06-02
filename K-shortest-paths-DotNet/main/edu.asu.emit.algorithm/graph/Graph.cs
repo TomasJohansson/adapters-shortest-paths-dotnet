@@ -29,52 +29,40 @@
  *
  */
 
-package edu.asu.emit.algorithm.graph;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Vector;
-
-import edu.asu.emit.algorithm.graph.abstraction.BaseGraph;
-import edu.asu.emit.algorithm.graph.abstraction.BaseVertex;
-import edu.asu.emit.algorithm.utils.Pair;
-
+namespace edu.asu.emit.algorithm.graph
+{
+using java.io;
+using java.lang;
+using java.util;
+using System;
+using edu.asu.emit.algorithm.graph.abstraction;
+using edu.asu.emit.algorithm.utils;
+using extensionClassesForJavaTypes;
 
 /**
  * The class defines a directed graph.
  * 
  * @author yqi
  */
-public class Graph implements BaseGraph {
+public class Graph : BaseGraph {
 	
-	public static final double DISCONNECTED = Double.MAX_VALUE;
+	public static readonly double DISCONNECTED = double.MaxValue;
 	
 	// index of fan-outs of one vertex
-	protected Map<Integer, Set<BaseVertex>> fanoutVerticesIndex =
-		new HashMap<Integer, Set<BaseVertex>>();
+	protected Map<int, Set<BaseVertex>> fanoutVerticesIndex =
+		new HashMap<int, Set<BaseVertex>>();
 	
 	// index for fan-ins of one vertex
-	protected Map<Integer, Set<BaseVertex>> faninVerticesIndex =
-		new HashMap<Integer, Set<BaseVertex>>();
+	protected Map<int, Set<BaseVertex>> faninVerticesIndex =
+		new HashMap<int, Set<BaseVertex>>();
 	
 	// index for edge weights in the graph
-	protected Map<Pair<Integer, Integer>, Double> vertexPairWeightIndex = 
-		new HashMap<Pair<Integer, Integer>, Double>();
+	protected Map<Pair<int, int>, Double> vertexPairWeightIndex = 
+		new HashMap<Pair<int, int>, Double>();
 	
 	// index for vertices in the graph
-	protected Map<Integer, BaseVertex> idVertexIndex = 
-		new HashMap<Integer, BaseVertex>();
+	protected Map<int, BaseVertex> idVertexIndex = 
+		new HashMap<int, BaseVertex>();
 	
 	// list of vertices in the graph 
 	protected List<BaseVertex> vertexList = new Vector<BaseVertex>();
@@ -89,7 +77,7 @@ public class Graph implements BaseGraph {
 	 * Constructor 1 
 	 * @param dataFileName
 	 */
-	public Graph(final String dataFileName) {
+	public Graph(String dataFileName) {
 		importFromFile(dataFileName);
 	}
 	
@@ -98,7 +86,7 @@ public class Graph implements BaseGraph {
 	 * 
 	 * @param graph
 	 */
-	public Graph(final Graph graph) {
+	public Graph(Graph graph) {
 		vertexNum = graph.vertexNum;
 		edgeNum = graph.edgeNum;
 		vertexList.addAll(graph.vertexList);
@@ -133,7 +121,7 @@ public class Graph implements BaseGraph {
 	 *  
 	 * @param dataFileName
 	 */
-	public void importFromFile(final String dataFileName) {
+	public void importFromFile(String dataFileName) {
 		
 		// 0. Clear the variables 
 		clear();
@@ -143,14 +131,14 @@ public class Graph implements BaseGraph {
 			FileReader input = new FileReader(dataFileName);
 			BufferedReader bufRead = new BufferedReader(input);
 
-			boolean isFirstLine = true;
+			bool isFirstLine = true;
 			String line; 	// String that holds current file line
-			
+			String ss = "";
 			// 2. Read first line
 			line = bufRead.readLine();
 			while (line != null) {
 				// 2.1 skip the empty line
-				if (line.trim().equals("")) {
+				if (line.trim().Equals("")) {
 					line = bufRead.readLine();
 					continue;
 				}
@@ -171,7 +159,7 @@ public class Graph implements BaseGraph {
 					
 					int startVertexId = Integer.parseInt(strList[0]);
 					int endVertexId = Integer.parseInt(strList[1]);
-					double weight = Double.parseDouble(strList[2]);
+					double weight = DoubleJ.parseDouble(strList[2]);
 					addEdge(startVertexId, endVertexId, weight);
 				}
 				//
@@ -218,7 +206,7 @@ public class Graph implements BaseGraph {
 		faninVerticesIndex.put(endVertexId, faninVertexSet);
 		// store the new edge 
 		vertexPairWeightIndex.put(
-				new Pair<Integer, Integer>(startVertexId, endVertexId), 
+				new Pair<int, int>(startVertexId, endVertexId), 
 				weight);
 		++edgeNum;
 	}
@@ -228,11 +216,11 @@ public class Graph implements BaseGraph {
 	 * 
 	 * @param fileName
 	 */
-	public void exportToFile(final String fileName) {
+	public void exportToFile(String fileName) {
 		//1. prepare the text to export
 		StringBuffer sb = new StringBuffer();
 		sb.append(vertexNum + "\n\n");
-		for (Pair<Integer, Integer> curEdgePair : vertexPairWeightIndex.keySet()) {
+		foreach (Pair<int, int> curEdgePair in vertexPairWeightIndex.keySet()) {
 			int startingPtId = curEdgePair.first();
 			int endingPtId = curEdgePair.second();
 			double weight = vertexPairWeightIndex.get(curEdgePair);
@@ -243,7 +231,7 @@ public class Graph implements BaseGraph {
 		try {
 			// FileWriter always assumes default encoding is OK!
 			output = new BufferedWriter(new FileWriter(new File(fileName)));
-			output.write(sb.toString());
+			output.write(sb.ToString());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -260,23 +248,23 @@ public class Graph implements BaseGraph {
 		}
 	}
 	
-	public Set<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
+	public virtual Set<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
 		return fanoutVerticesIndex.containsKey(vertex.getId()) 
 				? fanoutVerticesIndex.get(vertex.getId()) 
 				: new HashSet<BaseVertex>();
 	}
 
-	public Set<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
+	public virtual Set<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
 		return faninVerticesIndex.containsKey(vertex.getId()) 
 				? faninVerticesIndex.get(vertex.getId()) 
 				: new HashSet<BaseVertex>();
 	}
 	
-	public double getEdgeWeight(BaseVertex source, BaseVertex sink)	{
+	public virtual double getEdgeWeight(BaseVertex source, BaseVertex sink)	{
 		return vertexPairWeightIndex.containsKey(
-					new Pair<Integer, Integer>(source.getId(), sink.getId()))? 
+					new Pair<int, int>(source.getId(), sink.getId()))? 
 							vertexPairWeightIndex.get(
-									new Pair<Integer, Integer>(source.getId(), sink.getId())) 
+									new Pair<int, int>(source.getId(), sink.getId())) 
 						  : DISCONNECTED;
 	}
 
@@ -291,7 +279,7 @@ public class Graph implements BaseGraph {
 	/**
 	 * Return the vertex list in the graph.
 	 */
-	public List<BaseVertex> getVertexList() {
+	public virtual List<BaseVertex> getVertexList() {
 		return vertexList;
 	}
 	
@@ -301,7 +289,8 @@ public class Graph implements BaseGraph {
 	 * @param id
 	 * @return
 	 */
-	public BaseVertex getVertex(int id) {
+	public virtual BaseVertex getVertex(int id) {
 		return idVertexIndex.get(id);
 	}
+}
 }

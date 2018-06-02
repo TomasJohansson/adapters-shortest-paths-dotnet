@@ -29,9 +29,9 @@
  *
  */
 
-package edu.asu.emit.algorithm.utils;
-
-
+namespace edu.asu.emit.algorithm.utils
+{
+using System;
 /**
  * Note this class borrows idea from the code in 
  * 	http://www.superliminal.com/sources/Pair.java.html.
@@ -40,9 +40,9 @@ package edu.asu.emit.algorithm.utils;
  * @param <TYPE2>
  */
 public class Pair<TYPE1, TYPE2> {
-    private final TYPE1 o1;
-    private final TYPE2 o2;
-    
+    private readonly TYPE1 o1;
+    private readonly TYPE2 o2;
+
     public Pair(TYPE1 o1, TYPE2 o2) { 
     	this.o1 = o1; this.o2 = o2; 
     }
@@ -55,29 +55,29 @@ public class Pair<TYPE1, TYPE2> {
     	return o2;
     }
         
-    public int hashCode() {
+    public override int GetHashCode() {
         int code = 0;
         if (o1 != null)
-            code = o1.hashCode();
+            code = o1.GetHashCode();
         if (o2 != null)
-            code = code/2 + o2.hashCode()/2;
+            code = code/2 + o2.GetHashCode()/2;
         return code;
     }
 
-    public static boolean same(Object o1, Object o2) {
-        return o1 == null ? o2 == null : o1.equals(o2);
+    public static bool same(Object o1, Object o2) {
+        return o1 == null ? o2 == null : o1.Equals(o2);
     }
 
-    @SuppressWarnings("unchecked")
-	public boolean equals(Object obj) {
-        if (!(obj instanceof Pair)) {
+	public override bool Equals(Object obj) {
+        if (!(obj is Pair<TYPE1, TYPE2>)) {
         	return false;
         }
         Pair<TYPE1, TYPE2> p = (Pair<TYPE1, TYPE2>) obj;
         return same(p.o1, this.o1) && same(p.o2, this.o2);
     }
 
-    public String toString() {
+    public override String ToString() {
         return "Pair{" + o1 + ", " + o2 + "}";
     }
+}
 }

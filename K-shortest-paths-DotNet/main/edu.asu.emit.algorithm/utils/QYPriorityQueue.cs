@@ -28,23 +28,22 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package edu.asu.emit.algorithm.utils;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import edu.asu.emit.algorithm.graph.abstraction.BaseElementWithWeight;
-
+namespace edu.asu.emit.algorithm.utils
+{
+using java.lang;
+using java.util;
+using System;
+using edu.asu.emit.algorithm.graph.abstraction;
 /**
  * The class defines a priority queue. 
  * @author yqi
  * @date Mar 16, 2015
  * @param <E> the type of the element in the queue
  */
-public class QYPriorityQueue<E extends BaseElementWithWeight> {
+public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	private List<E> elementWeightPairList = new LinkedList<E>();
 	private int limitSize = -1;
-	private boolean isIncremental = false; 
+	private bool isIncremental = false; 
 	
 	/**
 	 * Default constructor. 
@@ -55,14 +54,14 @@ public class QYPriorityQueue<E extends BaseElementWithWeight> {
 	 * Constructor. 
 	 * @param pLimitSize
 	 */
-	public QYPriorityQueue(int pLimitSize, boolean pIsIncremental) {
+	public QYPriorityQueue(int pLimitSize, bool pIsIncremental) {
 		limitSize = pLimitSize;
 		isIncremental = pIsIncremental;
 	}
 		
-	@Override
-	public String toString() {
-		return elementWeightPairList.toString();
+	
+	public override String ToString() {
+		return elementWeightPairList.ToString();
 	}
 	
 	/**
@@ -71,7 +70,7 @@ public class QYPriorityQueue<E extends BaseElementWithWeight> {
 	 * @param weight
 	 * @return the position of the new element
 	 */
-	private int binLocatePos(double weight, boolean isIncremental)	{
+	private int binLocatePos(double weight, bool isIncremental)	{
 		int mid = 0;
 		int low = 0;
 		int high = elementWeightPairList.size() - 1;
@@ -127,7 +126,7 @@ public class QYPriorityQueue<E extends BaseElementWithWeight> {
 	 */
 	public E get(int i) {
 		if (i >= elementWeightPairList.size()) {
-			System.err.println("The result :" + i + " doesn't exist!!!");
+			SystemErr.println("The result :" + i + " doesn't exist!!!");
 		}
 		return elementWeightPairList.get(i);
 	}
@@ -146,8 +145,9 @@ public class QYPriorityQueue<E extends BaseElementWithWeight> {
 	 * Check if it's empty.
 	 * @return
 	 */
-	public boolean isEmpty() {
+	public bool isEmpty() {
 		return elementWeightPairList.isEmpty();
 	}
 	
+}
 }

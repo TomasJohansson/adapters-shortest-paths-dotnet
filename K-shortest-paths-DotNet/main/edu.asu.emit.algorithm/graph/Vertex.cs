@@ -28,16 +28,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package edu.asu.emit.algorithm.graph;
-
-import edu.asu.emit.algorithm.graph.abstraction.BaseVertex;
-
+namespace edu.asu.emit.algorithm.graph
+{
+using java.lang;
+using edu.asu.emit.algorithm.graph.abstraction;
+using System;
 /**
  * The class defines a vertex in the graph
  * 
  * @author yqi
  */
-public class Vertex implements BaseVertex, Comparable<Vertex> {
+public class Vertex : BaseVertex, Comparable<Vertex> {
 	
 	private static int currentVertexNum = 0; // Uniquely identify each vertex
 	private int id = currentVertexNum++;
@@ -47,7 +48,7 @@ public class Vertex implements BaseVertex, Comparable<Vertex> {
 		return id;
 	}
 
-	public String toString() {
+	public override String ToString() {
 		return "" + id;
 	}
 
@@ -73,4 +74,5 @@ public class Vertex implements BaseVertex, Comparable<Vertex> {
 	public static void reset() {
 		currentVertexNum = 0;
 	}
+}
 }

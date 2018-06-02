@@ -29,13 +29,9 @@
  *
  */
 
-package edu.asu.emit.algorithm.graph.abstraction;
-
-import java.util.List;
-import java.util.Set;
-
-
-
+namespace edu.asu.emit.algorithm.graph.abstraction
+{
+using java.util;
 /**
  * The interface defines a graph.
  * 
@@ -49,4 +45,5 @@ public interface BaseGraph {
 	Set<BaseVertex> getAdjacentVertices(BaseVertex vertex);
 	Set<BaseVertex> getPrecedentVertices(BaseVertex vertex);
 	
+}
 }

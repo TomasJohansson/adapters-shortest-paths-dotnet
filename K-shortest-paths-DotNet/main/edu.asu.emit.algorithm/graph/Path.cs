@@ -28,20 +28,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package edu.asu.emit.algorithm.graph;
+namespace edu.asu.emit.algorithm.graph
+{
+using java.util;
 
-import java.util.List;
-import java.util.Vector;
-
-import edu.asu.emit.algorithm.graph.abstraction.BaseElementWithWeight;
-import edu.asu.emit.algorithm.graph.abstraction.BaseVertex;
+using edu.asu.emit.algorithm.graph.abstraction;
+using System;
 
 /**
  * The class defines a path in graph.
  * 
  * @author yqi
  */
-public class Path implements BaseElementWithWeight {
+public class Path : BaseElementWithWeight {
 	
 	private List<BaseVertex> vertexList = new Vector<BaseVertex>();
 	private double weight = -1;
@@ -65,22 +64,21 @@ public class Path implements BaseElementWithWeight {
 		return vertexList;
 	}
 	
-	@Override
-	public boolean equals(Object right) {
+	public override bool Equals(object right) {
 		
-		if (right instanceof Path) {
+		if (right is Path) {
 			Path rPath = (Path) right;
-			return vertexList.equals(rPath.vertexList);
+			return vertexList.Equals(rPath.vertexList);
 		}
 		return false;
 	}
 
-	@Override
-	public int hashCode() {
-		return vertexList.hashCode();
+	public override int GetHashCode() {
+		return vertexList.GetHashCode();
 	}
 	
-	public String toString() {
-		return vertexList.toString() + ":" + weight;
+	public override String ToString() {
+		return vertexList.ToString() + ":" + weight;
 	}
+}
 }

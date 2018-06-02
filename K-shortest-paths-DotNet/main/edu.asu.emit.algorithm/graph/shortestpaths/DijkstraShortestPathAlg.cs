@@ -28,24 +28,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-
-package edu.asu.emit.algorithm.graph.shortestpaths;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Set;
-import java.util.Vector;
-
-import edu.asu.emit.algorithm.graph.Graph;
-import edu.asu.emit.algorithm.graph.Path;
-import edu.asu.emit.algorithm.graph.abstraction.BaseGraph;
-import edu.asu.emit.algorithm.graph.abstraction.BaseVertex;
-
+namespace edu.asu.emit.algorithm.graph.shortestpaths
+{
+using System;
+using java.util;
+using edu.asu.emit.algorithm.graph;
+using edu.asu.emit.algorithm.graph.abstraction;
 
 /**
  * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
@@ -55,7 +43,7 @@ import edu.asu.emit.algorithm.graph.abstraction.BaseVertex;
 public class DijkstraShortestPathAlg
 {
 	// Input
-	private final BaseGraph graph;
+	private readonly BaseGraph graph;
 
 	// Intermediate variables
 	private Set<BaseVertex> determinedVertexSet = new HashSet<BaseVertex>();
@@ -67,7 +55,7 @@ public class DijkstraShortestPathAlg
 	 * Default constructor.
 	 * @param graph
 	 */
-	public DijkstraShortestPathAlg(final BaseGraph graph) {
+	public DijkstraShortestPathAlg(BaseGraph graph) {
         this.graph = graph;
 	}
 
@@ -122,7 +110,7 @@ public class DijkstraShortestPathAlg
 	 * Do the work
 	 */
 	protected void determineShortestPaths(BaseVertex sourceVertex,
-                                          BaseVertex sinkVertex, boolean isSource2sink)	{
+                                          BaseVertex sinkVertex, bool isSource2sink)	{
 		// 0. clean up variables
 		clear();
 		
@@ -137,7 +125,7 @@ public class DijkstraShortestPathAlg
 		while (!vertexCandidateQueue.isEmpty()) {
 			BaseVertex curCandidate = vertexCandidateQueue.poll();
 
-			if (curCandidate.equals(endVertex)) {
+			if (curCandidate.Equals(endVertex)) {
                 break;
             }
 
@@ -151,13 +139,13 @@ public class DijkstraShortestPathAlg
 	 * Update the distance from the source to the concerned vertex.
 	 * @param vertex
 	 */
-	private void updateVertex(BaseVertex vertex, boolean isSource2sink)	{
+	private void updateVertex(BaseVertex vertex, bool isSource2sink)	{
 		// 1. get the neighboring vertices 
 		Set<BaseVertex> neighborVertexList = isSource2sink ?
 			graph.getAdjacentVertices(vertex) : graph.getPrecedentVertices(vertex);
 			
 		// 2. update the distance passing on current vertex
-		for (BaseVertex curAdjacentVertex : neighborVertexList) {
+		foreach (BaseVertex curAdjacentVertex in neighborVertexList) {
 			// 2.1 skip if visited before
 			if (determinedVertexSet.contains(curAdjacentVertex)) {
                 continue;
@@ -228,7 +216,7 @@ public class DijkstraShortestPathAlg
 		}
 		
 		// 3. update the distance from the root to the input vertex if necessary
-		for (BaseVertex curVertex : adjVertexSet) {
+		foreach (BaseVertex curVertex in adjVertexSet) {
 			// 3.1 get the distance from the root to one successor of the input vertex
 			double distance = startVertexDistanceIndex.containsKey(curVertex)?
 					startVertexDistanceIndex.get(curVertex) : Graph.DISCONNECTED;
@@ -281,7 +269,7 @@ public class DijkstraShortestPathAlg
 			double costOfCurVertex = startVertexDistanceIndex.get(curVertex);
 			
 			Set<BaseVertex> preVertexSet = graph.getPrecedentVertices(curVertex);
-			for (BaseVertex preVertex : preVertexSet) {
+			foreach (BaseVertex preVertex in preVertexSet) {
 				double costOfPreVertex = startVertexDistanceIndex.containsKey(preVertex) ?
 						startVertexDistanceIndex.get(preVertex) : Graph.DISCONNECTED;
 						
@@ -295,4 +283,5 @@ public class DijkstraShortestPathAlg
 		}
 	}
 	
+}
 }

@@ -29,26 +29,23 @@
  *
  */
 
-package edu.asu.emit.algorithm.graph;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
-
-import edu.asu.emit.algorithm.graph.abstraction.BaseVertex;
-import edu.asu.emit.algorithm.graph.shortestpaths.DijkstraShortestPathAlg;
-import edu.asu.emit.algorithm.utils.Pair;
+namespace edu.asu.emit.algorithm.graph
+{
+using java.util;
+using System;
+using edu.asu.emit.algorithm.graph.abstraction;
+using edu.asu.emit.algorithm.graph.shortestpaths;
+using edu.asu.emit.algorithm.utils;
+using java.lang;
 
 /**
  * The class defines a graph which can be changed constantly.
  *  
  * @author yqi
  */
-public class VariableGraph extends Graph {
-	private Set<Integer> remVertexIdSet = new HashSet<Integer>();
-	private Set<Pair<Integer, Integer>> remEdgeSet = new HashSet<Pair<Integer, Integer>>();
+public class VariableGraph : Graph {
+	private Set<int> remVertexIdSet = new HashSet<int>();
+	private Set<Pair<int, int>> remEdgeSet = new HashSet<Pair<int, int>>();
 
 	/**
 	 * Default constructor
@@ -60,8 +57,7 @@ public class VariableGraph extends Graph {
 	 * 
 	 * @param dataFileName
 	 */
-	public VariableGraph(String dataFileName)	{
-		super(dataFileName);
+	public VariableGraph(String dataFileName): base(dataFileName)	{
 	}
 	
 	/**
@@ -69,8 +65,7 @@ public class VariableGraph extends Graph {
 	 * 
 	 * @param graph
 	 */
-	public VariableGraph(Graph graph) {
-		super(graph);
+	public VariableGraph(Graph graph): base(graph) {
 	}
 
 	/**
@@ -78,7 +73,7 @@ public class VariableGraph extends Graph {
 	 * 
 	 * @param remVertexList
 	 */
-	public void setDelVertexIdList(Collection<Integer> remVertexList) {
+	public void setDelVertexIdList(Collection<int> remVertexList) {
 		this.remVertexIdSet.addAll(remVertexList);
 	}
 
@@ -87,7 +82,7 @@ public class VariableGraph extends Graph {
 	 * 
 	 * @param _rem_edge_hashcode_set
 	 */
-	public void setDelEdgeHashcodeSet(Collection<Pair<Integer, Integer>> remEdgeCollection) {
+	public void setDelEdgeHashcodeSet(Collection<Pair<int, int>> remEdgeCollection) {
 		remEdgeSet.addAll(remEdgeCollection);
 	}
 	
@@ -96,7 +91,7 @@ public class VariableGraph extends Graph {
 	 * 
 	 * @param edge
 	 */
-	public void deleteEdge(Pair<Integer, Integer> edge) {
+	public void deleteEdge(Pair<int, int> edge) {
 		remEdgeSet.add(edge);
 	}
 	
@@ -105,7 +100,7 @@ public class VariableGraph extends Graph {
 	 * 
 	 * @param vertexId
 	 */
-	public void deleteVertex(Integer vertexId) {
+	public void deleteVertex(int vertexId) {
 		remVertexIdSet.add(vertexId);
 	}
 	
@@ -113,7 +108,7 @@ public class VariableGraph extends Graph {
 		remEdgeSet.clear();
 	}
 
-	public void recoverDeletedEdge(Pair<Integer, Integer> edge)	{
+	public void recoverDeletedEdge(Pair<int, int> edge)	{
 		remEdgeSet.remove(edge);
 	}
 	
@@ -121,7 +116,7 @@ public class VariableGraph extends Graph {
 		remVertexIdSet.clear();
 	}
 	
-	public void recoverDeletedVertex(Integer vertexId) {
+	public void recoverDeletedVertex(int vertexId) {
 		remVertexIdSet.remove(vertexId);
 	}
 	
@@ -132,15 +127,15 @@ public class VariableGraph extends Graph {
 	 * @param sink
 	 * @return
 	 */
-	public double getEdgeWeight(BaseVertex source, BaseVertex sink)	{
+	public override double getEdgeWeight(BaseVertex source, BaseVertex sink)	{
 		int sourceId = source.getId();
 		int sinkId = sink.getId();
 		
 		if (remVertexIdSet.contains(sourceId) || remVertexIdSet.contains(sinkId) ||
-		   remEdgeSet.contains(new Pair<Integer, Integer>(sourceId, sinkId))) {
+		   remEdgeSet.contains(new Pair<int, int>(sourceId, sinkId))) {
 			return Graph.DISCONNECTED;
 		}
-		return super.getEdgeWeight(source, sink);
+		return base.getEdgeWeight(source, sink);
 	}
 
 	/**
@@ -151,7 +146,7 @@ public class VariableGraph extends Graph {
 	 * @return
 	 */
 	public double getEdgeWeightOfGraph(BaseVertex source, BaseVertex sink) {
-		return super.getEdgeWeight(source, sink);
+		return base.getEdgeWeight(source, sink);
 	}
 	
 	/**
@@ -160,15 +155,15 @@ public class VariableGraph extends Graph {
 	 * @param vertex
 	 * @return
 	 */
-	public Set<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
+	public override Set<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
 		Set<BaseVertex> retSet = new HashSet<BaseVertex>();
 		int startingVertexId = vertex.getId();
 		if (!remVertexIdSet.contains(startingVertexId))	{
-			Set<BaseVertex> adjVertexSet = super.getAdjacentVertices(vertex);
-			for (BaseVertex curVertex : adjVertexSet) {
+			Set<BaseVertex> adjVertexSet = base.getAdjacentVertices(vertex);
+			foreach (BaseVertex curVertex in adjVertexSet) {
 				int endingVertexId = curVertex.getId();
 				if (remVertexIdSet.contains(endingVertexId) ||
-					remEdgeSet.contains(new Pair<Integer,Integer>(startingVertexId, endingVertexId))) {
+					remEdgeSet.contains(new Pair<int, int>(startingVertexId, endingVertexId))) {
 					continue;
 				}
 				// 
@@ -184,15 +179,15 @@ public class VariableGraph extends Graph {
 	 * @param vertex
 	 * @return
 	 */
-	public Set<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
+	public override Set<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
 		Set<BaseVertex> retSet = new HashSet<BaseVertex>();
 		if (!remVertexIdSet.contains(vertex.getId())) {
 			int endingVertexId = vertex.getId();
-			Set<BaseVertex> preVertexSet = super.getPrecedentVertices(vertex);
-			for (BaseVertex curVertex : preVertexSet) {
+			Set<BaseVertex> preVertexSet = base.getPrecedentVertices(vertex);
+			foreach (BaseVertex curVertex in preVertexSet) {
 				int startingVertexId = curVertex.getId();
 				if (remVertexIdSet.contains(startingVertexId) ||
-					remEdgeSet.contains(new Pair<Integer, Integer>(startingVertexId, endingVertexId))) {
+					remEdgeSet.contains(new Pair<int, int>(startingVertexId, endingVertexId))) {
 					continue;
 				}
 				//
@@ -206,9 +201,9 @@ public class VariableGraph extends Graph {
 	 * Get the list of vertices in the graph, except those removed.
 	 * @return
 	 */
-	public List<BaseVertex> getVertexList() {
+	public override List<BaseVertex> getVertexList() {
 		List<BaseVertex> retList = new Vector<BaseVertex>();
-		for (BaseVertex curVertex : super.getVertexList()) {
+		foreach (BaseVertex curVertex in base.getVertexList()) {
 			if (remVertexIdSet.contains(curVertex.getId())) {
 				continue;
 			}
@@ -223,11 +218,11 @@ public class VariableGraph extends Graph {
 	 * @param id
 	 * @return
 	 */
-	public BaseVertex getVertex(int id)	{
+	public override BaseVertex getVertex(int id)	{
 		if (remVertexIdSet.contains(id)) {
 			return null;
 		} else {
-			return super.getVertex(id);
+			return base.getVertex(id);
 		}
 	}
 
@@ -235,7 +230,7 @@ public class VariableGraph extends Graph {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Welcome to the class VariableGraph!");
+		SystemOut.println("Welcome to the class VariableGraph!");
 		
 		VariableGraph graph = new VariableGraph("data/test_50");
 		graph.deleteVertex(13);
@@ -245,8 +240,9 @@ public class VariableGraph extends Graph {
 		graph.deleteVertex(47);
 		graph.deleteVertex(49);
 		graph.deleteVertex(3);
-		graph.deleteEdge(new Pair<Integer, Integer>(26, 41));
+		graph.deleteEdge(new Pair<int, int>(26, 41));
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		System.out.println(alg.getShortestPath(graph.getVertex(0), graph.getVertex(20)));
+		SystemOut.println(alg.getShortestPath(graph.getVertex(0), graph.getVertex(20)));
 	}
+}
 }

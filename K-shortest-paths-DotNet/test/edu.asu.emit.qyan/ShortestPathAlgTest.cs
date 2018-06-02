@@ -28,14 +28,14 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package edu.asu.emit.qyan.test;
+namespace edu.asu.emit.qyan.test
+{
+//import org.testng.annotations.BeforeTest;
+//import org.testng.annotations.Test;
 
-
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
-import edu.asu.emit.algorithm.graph.Graph;
-import edu.asu.emit.algorithm.graph.shortestpaths.DijkstraShortestPathAlg;
+using edu.asu.emit.algorithm.graph;
+using edu.asu.emit.algorithm.graph.shortestpaths;
+    using java.lang;
 
 /**
  * TODO Need to redo!
@@ -49,16 +49,17 @@ public class ShortestPathAlgTest {
 	/**
 	 * @throws java.lang.Exception
 	 */
-	@BeforeTest
-	public void setUp() throws Exception {
+	//@BeforeTest
+	public void setUp() {
 		// Import the graph from a file
 		graph = new Graph("data/test_50");
 	}
 
-	@Test
+	//@Test
 	public void testShorstPathAlg()	{
-		System.out.println("Testing Dijkstra Algorithm.");
+		SystemOut.println("Testing Dijkstra Algorithm.");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		System.out.println(alg.getShortestPath(graph.getVertex(0), graph.getVertex(38)));
+		SystemOut.println(alg.getShortestPath(graph.getVertex(0), graph.getVertex(38)));
 	}
+}
 }
