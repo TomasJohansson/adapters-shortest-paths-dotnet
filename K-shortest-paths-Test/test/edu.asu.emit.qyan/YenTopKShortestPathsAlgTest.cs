@@ -31,25 +31,24 @@
 
 namespace edu.asu.emit.qyan.test
 {
+using NUnit.Framework;
 using java.util;
-//import org.testng.annotations.Test;
-
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using java.lang;
-
 /**
  * TODO Need to redo!
  * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
  * @version $Revision: 784 $
  * @latest $Id: YenTopKShortestPathsAlgTest.java 46 2010-06-05 07:54:27Z yan.qi.asu $
  */
-public class YenTopKShortestPathsAlgTest {
+ [TestFixture]
+ public class YenTopKShortestPathsAlgTest {
 	// The graph should be initiated only once to guarantee the correspondence 
 	// between vertex id and node id in input text file. 
 	private static Graph graph = new VariableGraph("data/test_6_2");
 	
-//	@Test
+    [Test]
 	public void testDijkstraShortestPathAlg()
 	{
 		SystemOut.println("Testing Dijkstra Shortest Path Algorithm!");
@@ -57,7 +56,7 @@ public class YenTopKShortestPathsAlgTest {
 		SystemOut.println(alg.getShortestPath(graph.getVertex(4), graph.getVertex(5)));
 	}
 	
-//	@Test
+    [Test]
 	public void testYenShortestPathsAlg()
 	{		
 		SystemOut.println("Testing batch processing of top-k shortest paths!");
@@ -68,7 +67,7 @@ public class YenTopKShortestPathsAlgTest {
 		SystemOut.println(yenAlg.getResultList().size());
 	}
 	
-//	@Test
+    [Test]
 	public void testYenShortestPathsAlg2()
 	{
 		SystemOut.println("Obtain all paths in increasing order! - updated!");
@@ -85,7 +84,7 @@ public class YenTopKShortestPathsAlgTest {
 		SystemOut.println("All generated : "+yenAlg.getGeneratedPathSize());
 	}
 	
-	//@Test
+	[Test]
 	public void testYenShortestPathsAlg4MultipleGraphs()
 	{
 		SystemOut.println("Graph 1 - ");

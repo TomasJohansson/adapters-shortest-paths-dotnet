@@ -30,32 +30,30 @@
  */
 namespace edu.asu.emit.qyan.test
 {
-//import org.testng.annotations.BeforeTest;
-//import org.testng.annotations.Test;
-
+using NUnit.Framework;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
-    using java.lang;
-
+using java.lang;
 /**
  * TODO Need to redo!
  * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
  * @version $Revision: 784 $
  * @latest $Id: ShortestPathAlgTest.java 784 2009-06-19 20:08:40Z qyan $
  */
+[TestFixture]
 public class ShortestPathAlgTest {
 	private Graph graph = null;
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
-	//@BeforeTest
+	[SetUp]
 	public void setUp() {
 		// Import the graph from a file
 		graph = new Graph("data/test_50");
 	}
 
-	//@Test
+	[Test]
 	public void testShorstPathAlg()	{
 		SystemOut.println("Testing Dijkstra Algorithm.");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
