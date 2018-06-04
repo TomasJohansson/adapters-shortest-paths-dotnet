@@ -152,7 +152,7 @@ public class DijkstraShortestPathAlg
 			
 			// 2.2 calculate the new distance
 			double distance = startVertexDistanceIndex.containsKey(vertex)?
-					startVertexDistanceIndex.get(vertex).Value : Graph.DISCONNECTED;
+					startVertexDistanceIndex.get(vertex) : Graph.DISCONNECTED;
 					
 			distance += isSource2sink ? graph.getEdgeWeight(vertex, curAdjacentVertex)
 					: graph.getEdgeWeight(curAdjacentVertex, vertex);
@@ -183,7 +183,7 @@ public class DijkstraShortestPathAlg
 		//
 		List<BaseVertex> vertexList = new Vector<BaseVertex>();
 		double weight = startVertexDistanceIndex.containsKey(sinkVertex) ?
-			startVertexDistanceIndex.get(sinkVertex).Value : Graph.DISCONNECTED;
+			startVertexDistanceIndex.get(sinkVertex) : Graph.DISCONNECTED;
 		if (weight != Graph.DISCONNECTED) {
 			BaseVertex curVertex = sinkVertex;
 			do {
@@ -218,14 +218,14 @@ public class DijkstraShortestPathAlg
 		foreach (BaseVertex curVertex in adjVertexSet) {
 			// 3.1 get the distance from the root to one successor of the input vertex
 			double distance = startVertexDistanceIndex.containsKey(curVertex)?
-					startVertexDistanceIndex.get(curVertex).Value : Graph.DISCONNECTED;
+					startVertexDistanceIndex.get(curVertex) : Graph.DISCONNECTED;
 					
 			// 3.2 calculate the distance from the root to the input vertex
 			distance += graph.getEdgeWeight(vertex, curVertex);
 			//distance += ((VariableGraph)graph).get_edge_weight_of_graph(vertex, curVertex);
 			
 			// 3.3 update the distance if necessary 
-			double costOfVertex = startVertexDistanceIndex.get(vertex).Value;
+			double costOfVertex = startVertexDistanceIndex.get(vertex);
 			if(costOfVertex > distance)	{
 				startVertexDistanceIndex.put(vertex, distance);
 				predecessorIndex.put(vertex, curVertex);
@@ -265,12 +265,12 @@ public class DijkstraShortestPathAlg
 		// 2. update the cost of relevant precedents of the input vertex
 		while (!vertexList.isEmpty()) {
 			BaseVertex curVertex = vertexList.remove(0);
-			double costOfCurVertex = startVertexDistanceIndex.get(curVertex).Value;
+			double costOfCurVertex = startVertexDistanceIndex.get(curVertex);
 			
 			Set<BaseVertex> preVertexSet = graph.getPrecedentVertices(curVertex);
 			foreach (BaseVertex preVertex in preVertexSet) {
 				double costOfPreVertex = startVertexDistanceIndex.containsKey(preVertex) ?
-						startVertexDistanceIndex.get(preVertex).Value : Graph.DISCONNECTED;
+						startVertexDistanceIndex.get(preVertex) : Graph.DISCONNECTED;
 						
 				double freshCost = costOfCurVertex + graph.getEdgeWeight(preVertex, curVertex);
 				if (costOfPreVertex > freshCost) {

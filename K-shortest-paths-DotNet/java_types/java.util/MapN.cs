@@ -17,13 +17,6 @@ using System.Collections.Generic;
 // and of course it would be desirable to 
 // eliminate or reduce the duplication ...
 
-// TODO: See if null is actually needed in such contexts
-// where Double is used as the value of the Map...
-// If not then keep the "where U : struct"
-// but change "public U? get(T t)" to "public U get(T t)"
-// and the benifit would be to avoid the usages of ".Value"
-// after having used the "get" method.
-
 namespace java.util
 {
     // TODO: make this Map into an interface like in Java
@@ -64,7 +57,7 @@ namespace java.util
 
         // https://docs.oracle.com/javase/7/docs/api/java/util/Map.html#get(java.lang.Object)
         // Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key. 
-        public U? get(T t)
+        public U get(T t)
         {
             if(!containsKey(t))
             {

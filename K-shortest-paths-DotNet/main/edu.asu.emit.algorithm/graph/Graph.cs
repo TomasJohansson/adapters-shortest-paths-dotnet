@@ -222,7 +222,7 @@ public class Graph : BaseGraph {
 		foreach (Pair<int, int> curEdgePair in vertexPairWeightIndex.keySet()) {
 			int startingPtId = curEdgePair.first();
 			int endingPtId = curEdgePair.second();
-			double weight = vertexPairWeightIndex.get(curEdgePair).Value;
+			double weight = vertexPairWeightIndex.get(curEdgePair);
 			sb.append(startingPtId + "	" + endingPtId + "	" + weight + "\n");
 		}
 		//2. open the file and put the data into the file. 
@@ -263,7 +263,7 @@ public class Graph : BaseGraph {
 		return vertexPairWeightIndex.containsKey(
 					new Pair<int, int>(source.getId(), sink.getId()))? 
 							vertexPairWeightIndex.get(
-									new Pair<int, int>(source.getId(), sink.getId())).Value 
+									new Pair<int, int>(source.getId(), sink.getId()))
 						  : DISCONNECTED;
 	}
 
