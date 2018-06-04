@@ -52,6 +52,7 @@
     <Compile Include="test\edu.asu.emit.qyan\ShortestPathAlgTest.cs" />
     <Compile Include="test\edu.asu.emit.qyan\YenTopKShortestPathsAlgTest.cs" />
     <Compile Include="test\programmerare\GraphFactoryTest.cs" />
+    <Compile Include="test\programmerare\YenTopKShortestPathsAlgTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\network">
@@ -88,6 +89,14 @@
       <Project>{098f4b0e-6bbb-4b3b-bced-e54ed66e13a3}</Project>
       <Name>K-shortest-paths-DotNet</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data_programmerare\graph_very_small.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data_programmerare\graph_small.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
