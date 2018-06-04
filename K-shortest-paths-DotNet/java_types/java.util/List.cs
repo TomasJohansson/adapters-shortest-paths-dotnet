@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using edu.asu.emit.algorithm.graph.abstraction;
 
 namespace java.util
 {
@@ -11,91 +10,144 @@ namespace java.util
     {
         // IEnumerator/IEnumerable are needed to support "foreach" iteration
 
-        public T Current => throw new NotImplementedException();
+        private System.Collections.Generic.List<T> _list = new System.Collections.Generic.List<T>();
 
-        object IEnumerator.Current => throw new NotImplementedException();
-
-        public void addAll(List<T> list)
+        object IEnumerator.Current
         {
-            throw new NotImplementedException();
+            get
+            {
+                return Current;
+            }
+        }
+
+        private int position = -1;
+
+        public T Current
+        {
+            get
+            {
+                try
+                {
+                    return _list[position];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+        }
+
+        public void addAll(java.util.List<T> list)
+        {
+            _list.AddRange(list._list);
         }
 
         public void clear()
         {
-            throw new NotImplementedException();
+            _list.Clear();
         }
 
         public void add(T t)
         {
-            throw new NotImplementedException();
+            _list.Add(t);
         }
 
         public bool isEmpty()
         {
-            throw new NotImplementedException();
+            return size() == 0;
         }
 
         public int size()
         {
-            throw new NotImplementedException();
+            return _list.Count;
         }
 
-        public List<T> subList(int v, int p)
+        // https://docs.oracle.com/javase/7/docs/api/java/util/List.html#subList(int,%20int)
+        public List<T> subList(int fromIndex, int toIndex)
         {
-            throw new NotImplementedException();
+            var newList = new List<T>();
+            for (int i = fromIndex; i < toIndex; i++)
+            {
+                newList.add(this.get(i));
+            }
+            return newList;
         }
 
         public int indexOf(T t)
         {
-            throw new NotImplementedException();
+            return _list.IndexOf(t);
         }
 
         public override int GetHashCode()
         {
-            // TODO maybe need to implement this ?
-            // used like this:
-            // int curPathHash = curPath.getVertexList().subList(0, curPath.getVertexList().indexOf(curDerivation)).GetHashCode();
-            return base.GetHashCode();
+            // return base.GetHashCode();
+            // IMPORTANT: The above standard hashcode 
+            // will NOT work! Tests will fail !
+
+            // The below implementation are copied from here:
+            // https://docs.oracle.com/javase/7/docs/api/java/util/List.html#hashCode()
+            int hashCode = 1;
+            foreach (T e in this._list)
+            {
+                hashCode = 31*hashCode + (e==null ? 0 : e.GetHashCode());
+            }
+            return hashCode;
         }
 
         public T get(int i)
         {
-            throw new NotImplementedException();
+            return _list[i];
         }
 
-        internal BaseVertex remove(int v)
+        internal T remove(int i)
         {
-            throw new NotImplementedException();
+            var element = get(i);
+            _list.RemoveAt(i);
+            return element;
         }
 
-        public void add<E>(int v, E element) where E : BaseElementWithWeight
+        // https://docs.oracle.com/javase/7/docs/api/java/util/List.html#add(int,%20E)
+        // Inserts the specified element at the specified position in this list.
+        // Shifts the element currently at that position (if any) and any subsequent 
+        // elements to the right (adds one to their indices).
+        public void add(int index, T element)
         {
-            throw new NotImplementedException();
+            _list.Insert(index, element);
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _list.GetEnumerator();
         }
 
         public bool MoveNext()
         {
-            throw new NotImplementedException();
+            // https://msdn.microsoft.com/en-us/library/system.collections.ienumerator.current(v=vs.110).aspx
+            position++;
+            return (position < _list.Count);
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            position = -1;
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _list.GetEnumerator();
         }
+
+        internal void __Reverse()
+        {
+            _list.Reverse();
+        }
+
+	    public override String ToString() {
+		    return _list.ToString();
+	    }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace extensionClassesForJavaTypes
 {
@@ -11,8 +12,10 @@ namespace extensionClassesForJavaTypes
 
         public static String[] split(this String s, string regularExpression)
         {
-            throw new NotImplementedException();
+            return Regex.Split(s, regularExpression);
         }
+
+
 
     }
 }

@@ -57,8 +57,8 @@ public class Graph : BaseGraph {
 		new HashMap<int, Set<BaseVertex>>();
 	
 	// index for edge weights in the graph
-	protected Map<Pair<int, int>, Double> vertexPairWeightIndex = 
-		new HashMap<Pair<int, int>, Double>();
+	protected MapN<Pair<int, int>, Double> vertexPairWeightIndex = 
+		new HashMapN<Pair<int, int>, Double>();
 	
 	// index for vertices in the graph
 	protected Map<int, BaseVertex> idVertexIndex = 
@@ -122,7 +122,6 @@ public class Graph : BaseGraph {
 	 * @param dataFileName
 	 */
 	public void importFromFile(String dataFileName) {
-		
 		// 0. Clear the variables 
 		clear();
 		
@@ -223,7 +222,7 @@ public class Graph : BaseGraph {
 		foreach (Pair<int, int> curEdgePair in vertexPairWeightIndex.keySet()) {
 			int startingPtId = curEdgePair.first();
 			int endingPtId = curEdgePair.second();
-			double weight = vertexPairWeightIndex.get(curEdgePair);
+			double weight = vertexPairWeightIndex.get(curEdgePair).Value;
 			sb.append(startingPtId + "	" + endingPtId + "	" + weight + "\n");
 		}
 		//2. open the file and put the data into the file. 
@@ -264,7 +263,7 @@ public class Graph : BaseGraph {
 		return vertexPairWeightIndex.containsKey(
 					new Pair<int, int>(source.getId(), sink.getId()))? 
 							vertexPairWeightIndex.get(
-									new Pair<int, int>(source.getId(), sink.getId())) 
+									new Pair<int, int>(source.getId(), sink.getId())).Value 
 						  : DISCONNECTED;
 	}
 

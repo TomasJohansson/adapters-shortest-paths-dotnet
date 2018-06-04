@@ -36,7 +36,6 @@ using java.util;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.utils;
-
 /**
  * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
  * @version $Revision: 783 $
@@ -241,7 +240,7 @@ public class YenTopKShortestPathsAlg
 			
 			//3.4.6 update cost if necessary
 			double cost1 = graph.getEdgeWeight(curRecoverVertex, succVertex)
-				+ reverseTree.getStartVertexDistanceIndex().get(succVertex);
+				+ reverseTree.getStartVertexDistanceIndex().get(succVertex).Value;
 			
 			if (reverseTree.getStartVertexDistanceIndex().get(curRecoverVertex) >  cost1) {
 				reverseTree.getStartVertexDistanceIndex().put(curRecoverVertex, cost1);

@@ -1,18 +1,21 @@
 ﻿using System;
+using System.Text;
 
 namespace java.lang
 {
     // https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuffer.html
     public class StringBuffer
     {
+        private StringBuilder sb = new StringBuilder();
+
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return sb.ToString();
         }
 
-        public void append(string v)
+        public void append(string s)
         {
-            throw new NotImplementedException();
+            sb.Append(s);
         }
     }
 }

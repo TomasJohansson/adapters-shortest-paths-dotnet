@@ -14,12 +14,12 @@ namespace java.io
 
         public string readLine()
         {
-            throw new NotImplementedException();
+            return fileReader.__readLine();
         }
 
         public void close()
         {
-            throw new NotImplementedException();
+            fileReader.__close();
         }
     }
 }

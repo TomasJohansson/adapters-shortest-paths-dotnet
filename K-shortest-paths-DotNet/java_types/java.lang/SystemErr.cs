@@ -10,7 +10,7 @@ namespace java.lang
     {
         public static void println(object o)
         {
-            throw new NotImplementedException();
+            Console.Error.WriteLine(o);
         }
     }
 }

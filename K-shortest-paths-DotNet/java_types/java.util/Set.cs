@@ -9,59 +9,76 @@ namespace java.util
     public class Set<T> : IEnumerator<T> , IEnumerable<T>
     {
         // IEnumerator/IEnumerable are needed to support "foreach" iteration
+        
+        System.Collections.Generic.HashSet<T> _set = new System.Collections.Generic.HashSet<T>();            
 
-        public T Current => throw new NotImplementedException();
+        private IEnumerator<T> _enumerator;
 
-        object IEnumerator.Current => throw new NotImplementedException();
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+
+        public T Current
+        {
+            get
+            {
+                return _enumerator.Current;
+            }
+        }
 
         public void add(T t)
         {
-            throw new NotImplementedException();
+            _set.Add(t);
         }
 
         public void addAll(Collection<T> remVertexList)
         {
-            throw new NotImplementedException();
+            // TODO: find the methods invoking this method 
+            // and see if they are ever used ...???
+            throw new Exception("Not implemented because it did not seem to be used");
         }
 
         public void clear()
         {
-            throw new NotImplementedException();
+            _set.Clear();
         }
 
         public void remove(T t)
         {
-            throw new NotImplementedException();
+            _set.Remove(t);
         }
 
         public bool contains(T t)
         {
-            throw new NotImplementedException();
+            return _set.Contains(t);
         }
 
         public bool MoveNext()
         {
-            throw new NotImplementedException();
+            return _enumerator.MoveNext();
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            _enumerator = GetEnumerator();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _set.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _set.GetEnumerator();
         }
     }
 }

@@ -34,6 +34,7 @@ using NUnit.Framework;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using java.lang;
+using programmerare; // GraphFactory
 /**
  * TODO Need to redo!
  * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
@@ -50,7 +51,7 @@ public class ShortestPathAlgTest {
 	[SetUp]
 	public void setUp() {
 		// Import the graph from a file
-		graph = new Graph("data/test_50");
+		graph = GraphFactory.createGraph("data/test_50");
 	}
 
 	[Test]

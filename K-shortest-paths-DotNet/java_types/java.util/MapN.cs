@@ -1,18 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// see comment in type "MapN" regarding the "N" suffix
+// Java Double is a class and can be used in the 
+// same generics types, but in .NET the Double 
+// is a struct, which is the reason for creating separate 
+// types here in the port, with "N" as suffix 
+// for the struct based generics which use 
+// a nullable "U?" as return type for one method.
+// "Map<T, U>"  ---> ... where U : class
+// "MapN<T, U>" ---> ... where U : struct
+
+// Currently most of the two above two types "Map" and "MapN"
+// contain lots of duplication. In fact everything is duplicated 
+// except "where U : class" vs "where U : struct"
+// and "public U get(T t)" vs "public U? get(T t)"
+// and of course it would be desirable to 
+// eliminate or reduce the duplication ...
+
+// TODO: See if null is actually needed in such contexts
+// where Double is used as the value of the Map...
+// If not then keep the "where U : struct"
+// but change "public U? get(T t)" to "public U get(T t)"
+// and the benifit would be to avoid the usages of ".Value"
+// after having used the "get" method.
+
 namespace java.util
 {
     // TODO: make this Map into an interface like in Java
     // https://docs.oracle.com/javase/7/docs/api/java/util/Map.html
-    public class Map<T, U> where U : class // nullable 
+    public class MapN<T, U> where U : struct // nullable 
     {
         private Dictionary<T, U> map = new Dictionary<T, U>();
 
-        public void putAll(Map<T, U> idVertexIndex)
+        public void putAll(MapN<T, U> idVertexIndex)
         {
-            foreach(KeyValuePair<T, U> kv in idVertexIndex.map)
+            foreach (KeyValuePair<T, U> kv in idVertexIndex.map)
             {
                 this.put(kv.Key, kv.Value);
             }
@@ -42,7 +64,7 @@ namespace java.util
 
         // https://docs.oracle.com/javase/7/docs/api/java/util/Map.html#get(java.lang.Object)
         // Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key. 
-        public U get(T t)
+        public U? get(T t)
         {
             if(!containsKey(t))
             {

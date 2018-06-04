@@ -36,17 +36,18 @@ using java.util;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using java.lang;
+using programmerare; // GraphFactory
 /**
  * TODO Need to redo!
  * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
  * @version $Revision: 784 $
  * @latest $Id: YenTopKShortestPathsAlgTest.java 46 2010-06-05 07:54:27Z yan.qi.asu $
  */
- [TestFixture]
- public class YenTopKShortestPathsAlgTest {
+[TestFixture]
+public class YenTopKShortestPathsAlgTest {
 	// The graph should be initiated only once to guarantee the correspondence 
 	// between vertex id and node id in input text file. 
-	private static Graph graph = new VariableGraph("data/test_6_2");
+	private static Graph graph = GraphFactory.createVariableGraph("data/test_6_2");
 	
     [Test]
 	public void testDijkstraShortestPathAlg()
@@ -102,7 +103,7 @@ using java.lang;
 		
 		///
 		SystemOut.println("Graph 2 - ");
-		graph = new VariableGraph("data/test_6_1");
+		graph = GraphFactory.createVariableGraph("data/test_6_1");
 		YenTopKShortestPathsAlg yenAlg1 = new YenTopKShortestPathsAlg(graph);
 		List<Path> shortest_paths_list = yenAlg1.getShortestPaths(
                 graph.getVertex(4), graph.getVertex(5), 100);
@@ -110,5 +111,4 @@ using java.lang;
 		SystemOut.println(yenAlg1.getResultList().size());
 	}
 }
-
 }
