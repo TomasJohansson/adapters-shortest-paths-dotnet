@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-Test", "K-
 		{098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3} = {098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-adapters-shortest-paths-core", "dotnet-adapters-shortest-paths-core\dotnet-adapters-shortest-paths-core.csproj", "{45DE26BC-016F-445C-B625-9D7F04EA3353}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{992E5467-337A-47BF-BDB4-1E3BF77E79C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{992E5467-337A-47BF-BDB4-1E3BF77E79C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{992E5467-337A-47BF-BDB4-1E3BF77E79C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45DE26BC-016F-445C-B625-9D7F04EA3353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45DE26BC-016F-445C-B625-9D7F04EA3353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45DE26BC-016F-445C-B625-9D7F04EA3353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45DE26BC-016F-445C-B625-9D7F04EA3353}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
