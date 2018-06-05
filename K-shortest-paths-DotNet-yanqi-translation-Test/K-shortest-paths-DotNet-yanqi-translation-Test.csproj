@@ -85,18 +85,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\K-shortest-paths-DotNet\K-shortest-paths-DotNet.csproj">
-      <Project>{098f4b0e-6bbb-4b3b-bced-e54ed66e13a3}</Project>
-      <Name>K-shortest-paths-DotNet</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="data_programmerare\graph_very_small.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="data_programmerare\graph_small.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\K-shortest-paths-DotNet-yanqi-translation\K-shortest-paths-DotNet-yanqi-translation.csproj">
+      <Project>{b3a75f90-e892-48af-ad32-563514c9d72a}</Project>
+      <Name>K-shortest-paths-DotNet-yanqi-translation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
