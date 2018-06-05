@@ -129,7 +129,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    return (W)weightProtoypeFactory.create(totalWeight);
 	    }
 	
-	    protected P createPath(W totalWeight, List<E> edges) {
+	    protected P createPath(W totalWeight, IList<E> edges) {
 		    return pathFactory.createPath(totalWeight, edges);
 	    }
     }

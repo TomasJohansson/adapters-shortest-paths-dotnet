@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.yanqi\PathFinderYanQiTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeGenericsImplTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeMapperTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\GraphGenericsImplTest.cs" />
@@ -71,6 +72,10 @@
     <ProjectReference Include="..\dotnet-adapters-shortest-paths-core\dotnet-adapters-shortest-paths-core.csproj">
       <Project>{45de26bc-016f-445c-b625-9d7f04ea3353}</Project>
       <Name>dotnet-adapters-shortest-paths-core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-yanqi\dotnet-adapters-shortest-paths-impl-yanqi.csproj">
+      <Project>{e5f801d6-0430-4e40-8deb-94ef6def2f8c}</Project>
+      <Name>dotnet-adapters-shortest-paths-impl-yanqi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

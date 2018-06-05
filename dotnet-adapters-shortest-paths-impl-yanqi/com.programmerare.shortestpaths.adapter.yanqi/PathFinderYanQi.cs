@@ -1,26 +1,23 @@
-package com.programmerare.shortestpaths.adapter.yanqi;
+using com.programmerare.shortestpaths.adapter.yanqi.generics;
+using com.programmerare.shortestpaths.core.api;
+using com.programmerare.shortestpaths.core.api.generics;
+using com.programmerare.shortestpaths.core.pathfactories;
 
-import com.programmerare.shortestpaths.adapter.yanqi.generics.PathFinderYanQiGenerics;
-import com.programmerare.shortestpaths.core.api.Edge;
-import com.programmerare.shortestpaths.core.api.Path;
-import com.programmerare.shortestpaths.core.api.PathFinder;
-import com.programmerare.shortestpaths.core.api.Vertex;
-import com.programmerare.shortestpaths.core.api.Weight;
-import com.programmerare.shortestpaths.core.api.generics.GraphGenerics;
-import com.programmerare.shortestpaths.core.pathfactories.PathFactoryDefault;
-
-public class PathFinderYanQi 
-	extends PathFinderYanQiGenerics<
-		Path,
-		Edge, // Edge<Vertex, Weight> 
-		Vertex , 
-		Weight
-	>
-	implements PathFinder
+namespace com.programmerare.shortestpaths.adapter.yanqi
 {
-	protected PathFinderYanQi(
-		final GraphGenerics<Edge, Vertex, Weight> graph
-	) {
-		super(graph, new PathFactoryDefault());
-	}
+    public class PathFinderYanQi 
+	    : PathFinderYanQiGenerics<
+		    Path,
+		    Edge, // Edge<Vertex, Weight> 
+		    Vertex , 
+		    Weight
+	    >
+	    , PathFinder
+    {
+	    public PathFinderYanQi(
+		    GraphGenerics<Edge, Vertex, Weight> graph
+	    ): base(graph, new PathFactoryDefault()) {
+		    
+	    }
+    }
 }
