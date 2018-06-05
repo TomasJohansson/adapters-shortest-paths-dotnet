@@ -46,7 +46,7 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 		    // "Adaptee" https://en.wikipedia.org/wiki/Adapter_pattern		
 		    this.graphAdaptee = new GraphPossibleToCreateProgrammatically(
 			    idMapper.getNumberOfVertices(),
-			    vertices.GetAsJavaList()
+			    vertices
 		    );
 		    this.idMapper = idMapper;
 	    }
@@ -104,20 +104,5 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 		    string endVertexId = idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(endVertexForEdge.getId());		
 		    return base.getOriginalEdgeInstance(startVertexId, endVertexId);
 	    }
-    }
-
-    public static class MyExtension
-    {
-        public static java.util.List<EdgeYanQi> GetAsJavaList<EdgeYanQi>(this IList<EdgeYanQi> list)
-        {
-            // TODO: modify GraphPossibleToCreateProgrammatically 
-            // to let it receice .NET IList instead 
-            var javaList =  new java.util.Vector<EdgeYanQi>();
-            foreach(EdgeYanQi item in list)
-            {
-                javaList.add(item);
-            }
-            return javaList;
-        }
     }
 }
