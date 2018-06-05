@@ -48,9 +48,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeGenericsImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeMapperTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\GraphGenericsImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathFinderBaseTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathFinderFactoryGenericsBaseTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathGenericsImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\GraphImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\VertexImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\WeightImplTes.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\parsers\EdgeParserTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\parsers\PathParserTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\validation\GraphEdgesValidatorTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\utils\EdgeUtilityTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\utils\MapperForIntegerIdsAndGeneralStringIdsTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\utils\StringUtilityTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dotnet-adapters-shortest-paths-core\dotnet-adapters-shortest-paths-core.csproj">
+      <Project>{45de26bc-016f-445c-b625-9d7f04ea3353}</Project>
+      <Name>dotnet-adapters-shortest-paths-core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
