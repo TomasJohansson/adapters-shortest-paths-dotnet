@@ -120,7 +120,7 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * 		Example:  "13 A B D"
 	     * @return
 	     */
-	    internal P fromStringToPath(string pathString) {
+	    public P fromStringToPath(string pathString) {
 		    string[] array = Regex.Split(pathString, "\\s+");
 
 		    // TODO check "array.length" and throw exception ...

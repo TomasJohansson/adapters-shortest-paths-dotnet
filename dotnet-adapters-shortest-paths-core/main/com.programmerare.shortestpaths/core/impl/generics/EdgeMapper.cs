@@ -36,7 +36,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	     * @param edges a list of edges to be used for constructing a graph. Note that they are assumed to be validated as a precondition.
 	     * @return
 	     */
-	    internal static EdgeMapper<E, V, W> createEdgeMapper<E, V, W>(IList<E> edges)
+	    public static EdgeMapper<E, V, W> createEdgeMapper<E, V, W>(IList<E> edges)
             where E : EdgeGenerics<V, W>
             where V : Vertex
             where W : Weight

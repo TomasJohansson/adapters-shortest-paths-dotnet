@@ -53,7 +53,7 @@ namespace com.programmerare.shortestpaths.core.validation
 		    }		
 	    }
 
-	    internal void validateNonNullObjects(E edge) {
+	    public void validateNonNullObjects(E edge) {
 		    throwExceptionIfConditionTrue(edge == null, "edge == null", edge);
 		    throwExceptionIfConditionTrue(edge.getStartVertex() == null, "start vertex is null for edge", edge);
 		    throwExceptionIfConditionTrue(edge.getEndVertex() == null, "end vertex is null for edge", edge);
@@ -64,7 +64,7 @@ namespace com.programmerare.shortestpaths.core.validation
 	     * Precondition: the "outer" objects (e.g. "edge" and "edge.getStartVertex()" should already have been checked for not being null 
 	     * @param edge
 	     */
-	    internal void validateNonBlankIds(E edge) {
+	    public void validateNonBlankIds(E edge) {
 		    validateNonBlankId(edge.getEdgeId(), edge);
 		    validateNonBlankId(edge.getStartVertex().getVertexId(), edge.getStartVertex());
 		    validateNonBlankId(edge.getEndVertex().getVertexId(), edge.getEndVertex());
