@@ -2,7 +2,6 @@
 using com.programmerare.shortestpaths.adapter.yanqi;
 using static NUnit.Framework.Assert;
 using com.programmerare.shortestpaths.core.validation;
-using System;
 using System.Collections.Generic;
 using com.programmerare.shortestpaths.core.api;
 using static com.programmerare.shortestpaths.core.impl.GraphImpl;
@@ -43,41 +42,27 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
         {
             IList<Path> shortestPaths = pathFinder.findShortestPaths(a, d, 10);
             AreEqual(3, shortestPaths.Count);
-            var path1 = shortestPaths[0];
-            var path2 = shortestPaths[1];
-            var path3 = shortestPaths[2];
 
-            AreEqual(13, path1.getTotalWeightForPath().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
-            AreEqual(15, path2.getTotalWeightForPath().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
-            AreEqual(21, path3.getTotalWeightForPath().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            // path1 : A -> B -> D (with total weight 13)
+            assertPath(shortestPaths[0], 13, "A", "B", "D");
 
-            AreEqual(2, path1.getEdgesForPath().Count);
-            AreEqual(2, path2.getEdgesForPath().Count);
-            AreEqual(3, path3.getEdgesForPath().Count);
+            // path2 : A -> C -> D (with total weight 15)
+            assertPath(shortestPaths[1], 15, "A", "C", "D");
 
-            // all starts att A and ends at D
+            // path3 : A -> B -> C -> D (with total weight 21)
+            assertPath(shortestPaths[2], 21, "A", "B", "C", "D");
+        }
 
-            // path1 : A -> B -> D
-            AreEqual("A", path1.getEdgesForPath()[0].getStartVertex().getVertexId());
-            AreEqual("B", path1.getEdgesForPath()[0].getEndVertex().getVertexId());
-            AreEqual("D", path1.getEdgesForPath()[1].getEndVertex().getVertexId());
-
-            // path2 : A -> C -> D
-            AreEqual("A", path2.getEdgesForPath()[0].getStartVertex().getVertexId());
-            AreEqual("C", path2.getEdgesForPath()[0].getEndVertex().getVertexId());
-            AreEqual("D", path2.getEdgesForPath()[1].getEndVertex().getVertexId());
-
-            // path3 : A -> B -> C -> D
-            AreEqual("A", path3.getEdgesForPath()[0].getStartVertex().getVertexId());
-            AreEqual("B", path3.getEdgesForPath()[0].getEndVertex().getVertexId());
-            AreEqual("C", path3.getEdgesForPath()[1].getEndVertex().getVertexId());
-            AreEqual("D", path3.getEdgesForPath()[2].getEndVertex().getVertexId());
-
-          //  foreach (Path path in shortestPaths) {
-		        //Weight totalWeightForPath = path.getTotalWeightForPath();
-		        //Console.WriteLine(totalWeightForPath);
-		        //IList<Edge> pathEdges = path.getEdgesForPath();
-          //  }
+        private void assertPath(Path path, double expectedTotalWeight, params string[] expectedVertices)
+        {
+            AreEqual(expectedTotalWeight, path.getTotalWeightForPath().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            var edges = path.getEdgesForPath();
+            AreEqual(expectedVertices[0], edges[0].getStartVertex().getVertexId());
+            AreEqual(expectedVertices.Length, edges.Count + 1); // one more since each edge contain two nodes
+            for(int i=0; i<edges.Count; i++)
+            {
+                AreEqual(expectedVertices[i+1], edges[i].getEndVertex().getVertexId());
+            }
         }
     }
 }
