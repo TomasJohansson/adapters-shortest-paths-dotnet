@@ -3,12 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet", "K-shortest-paths-DotNet\K-shortest-paths-DotNet.csproj", "{098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet-yanqi-translation", "K-shortest-paths-DotNet-yanqi-translation\K-shortest-paths-DotNet-yanqi-translation.csproj", "{8A6F9F05-5302-44F4-A0D0-6F0DA2A43244}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-Test", "K-shortest-paths-Test\K-shortest-paths-Test.csproj", "{992E5467-337A-47BF-BDB4-1E3BF77E79C2}"
-	ProjectSection(ProjectDependencies) = postProject
-		{098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3} = {098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-yanqi-translation-Test", "K-shortest-paths-DotNet-yanqi-translation-Test\K-shortest-paths-DotNet-yanqi-translation-Test.csproj", "{992E5467-337A-47BF-BDB4-1E3BF77E79C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{098F4B0E-6BBB-4B3B-BCED-E54ED66E13A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6F9F05-5302-44F4-A0D0-6F0DA2A43244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6F9F05-5302-44F4-A0D0-6F0DA2A43244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6F9F05-5302-44F4-A0D0-6F0DA2A43244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6F9F05-5302-44F4-A0D0-6F0DA2A43244}.Release|Any CPU.Build.0 = Release|Any CPU
 		{992E5467-337A-47BF-BDB4-1E3BF77E79C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{992E5467-337A-47BF-BDB4-1E3BF77E79C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{992E5467-337A-47BF-BDB4-1E3BF77E79C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
