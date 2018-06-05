@@ -1,5 +1,5 @@
 using edu.asu.emit.algorithm.graph; // Graph
-using java.util;
+using System.Collections.Generic;
 
 namespace com.programmerare.edu.asu.emit.algorithm.graph
 {
@@ -35,7 +35,7 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 	     * @param linesWithEdgeNamesAndWeight a list of strings, and each such string must have three parts separated with a space, 
 	     * 		the id for the start and end vertex for the edge, and the weight for the edge 
 	     */
-	    public GraphPossibleToCreateProgrammatically(int numberOfVertices, List<EdgeYanQi> edges) {
+	    public GraphPossibleToCreateProgrammatically(int numberOfVertices, IList<EdgeYanQi> edges) {
 		    clear();
 		    setNumberOfVertices(numberOfVertices);
 		    foreach (EdgeYanQi edge in edges) {

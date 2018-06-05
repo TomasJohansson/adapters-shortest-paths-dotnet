@@ -1,10 +1,9 @@
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
 using edu.asu.emit.algorithm.graph;
-using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
-using java.util;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace com.programmerare.edu.asu.emit.algorithm.graph
 {
@@ -25,7 +24,7 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 		
 		    // Each edge in the strings below are specified with three parts separated by a space as below:
 		    // "startVertexId endVertexId weight"		
-		    List<string> edgeData = Arrays.asList(
+		    IList<string> edgeData = new List<string>{
 			    "0 1 1",
 			    "1 3 1",
 			    "1 2 1",
@@ -35,8 +34,8 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 			    "1 5 0.2",
 			    "3 5 0.1",
 			    "2 5 0"
-		    );
-		    List<EdgeYanQi> edges = getEdges(edgeData);		
+            };
+		    var edges = getEdges(edgeData);
 		
 		    GraphPossibleToCreateProgrammatically graph = new GraphPossibleToCreateProgrammatically(
 			    6, // the number of vertices
@@ -68,7 +67,7 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 
 	    private void assertExpectedPath(Path path, double expectedTotalCost, params int[] nodenames) {
 		    AreEqual(path.getWeight(), expectedTotalCost, SMALL_DELTA_VALUE_FOR_DOUBLE_CMOPARISONS);
-		    List<BaseVertex> vertices = path.getVertexList();
+		    var vertices = path.getVertexList();
 		    for (int i = 0; i < nodenames.Length; i++) {
 			    AreEqual(vertices.get(i).getId(), nodenames[i]);
 		    }
@@ -82,14 +81,14 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 	     * that makes it deviate more from the original. Therefore the line splitting is duplicated here.     
 	     * @see Graph#addEdgeFromStringWithEdgeNamesAndWeight(String)
 	     */
-	    private List<EdgeYanQi> getEdges(List<string> lines) {
-		    List<EdgeYanQi> edges = new Vector<EdgeYanQi>(); 
+	    private IList<EdgeYanQi> getEdges(IList<string> lines) {
+		    IList<EdgeYanQi> edges = new List<EdgeYanQi>(); 
 		    foreach (string line in lines) {
 			    string[] strList = Regex.Split(line.Trim(), "\\s");
 			    int startVertexId = int.Parse(strList[0]);
 			    int endVertexId = int.Parse(strList[1]);
 			    double weight = double.Parse(strList[2]);
-			    edges.add(new EdgeYanQi(startVertexId, endVertexId, weight));
+			    edges.Add(new EdgeYanQi(startVertexId, endVertexId, weight));
 		    }
 		    return edges;
 	    }	
