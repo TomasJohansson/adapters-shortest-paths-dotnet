@@ -25,7 +25,7 @@ namespace com.programmerare.shortestpaths.core.impl
 	     * @return an instance implementing the Graph interface
 	     */	
 	    public static Graph createGraph(
-		    List<Edge> edges
+		    IList<Edge> edges
 	    ) {
 		    return createGraph(edges, GraphEdgesValidationDesired.YES);
 	    }
@@ -36,7 +36,7 @@ namespace com.programmerare.shortestpaths.core.impl
 	     * @return an instance implementing the Graph interface
 	     */
 	    public static Graph createGraph(
-		    List<Edge> edges,
+		    IList<Edge> edges,
 		    GraphEdgesValidationDesired graphEdgesValidationDesired
 	    ) {
 		    return new GraphImpl(edges, graphEdgesValidationDesired);

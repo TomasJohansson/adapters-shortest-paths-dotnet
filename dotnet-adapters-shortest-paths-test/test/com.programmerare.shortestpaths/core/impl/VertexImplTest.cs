@@ -3,16 +3,10 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
-//import static com.programmerare.shortestpaths.core.impl.VertexImpl.createVertex;
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertTrue;
-//import org.junit.Before;
-//import org.junit.Test;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
 using com.programmerare.shortestpaths.core.api;
 using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // createWeight
 
 namespace com.programmerare.shortestpaths.core.impl
 {
@@ -33,8 +27,6 @@ namespace com.programmerare.shortestpaths.core.impl
 	
 	    [Test]
 	    public void testGetVertexId() {
-		    Vertex vertexA = createVertex(357);
-		    Vertex vertexB = createVertex("357");
 		
 		    AreEqual(vertexA.getVertexId(), vertexB.getVertexId());
 		

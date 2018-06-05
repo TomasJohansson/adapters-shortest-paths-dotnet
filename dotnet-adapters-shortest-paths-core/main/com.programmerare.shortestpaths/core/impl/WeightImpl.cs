@@ -3,6 +3,7 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
+
 using com.programmerare.shortestpaths.core.api;
 using System;
 
@@ -36,7 +37,7 @@ namespace com.programmerare.shortestpaths.core.impl
 	    }
 
 	    public override int GetHashCode() {
-		    int prime = 31;
+		    // int prime = 31;
 		    int result = 1;
 		    long temp;
 		    temp = BitConverter.DoubleToInt64Bits(value);

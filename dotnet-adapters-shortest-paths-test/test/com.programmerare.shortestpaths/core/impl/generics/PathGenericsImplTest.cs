@@ -23,6 +23,7 @@ using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVert
 //import org.junit.Test;
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.api.generics;
+using System;
 
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
@@ -74,35 +75,37 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 
 	    [Test]//@Test(expected = RuntimeException.class) 
 	    public void testExceptionIsThrownIfVerticesIsNotMatching() { 
-            Fail("TODO fix this method");
-		    //createPathGenerics(
-		    //	createWeight(15d),  
-		    //	Arrays.asList(
-		    //		createEdge(createVertex("A"), createVertex("B"), createWeight(3d)),
-		    //		createEdge(createVertex("B"), createVertex("C"), createWeight(5d)),
-		    //		 // Note that "X" should be "C" below, which is the reason for expected exceotion
-		    //		createEdge(createVertex("X"), createVertex("D"), createWeight(7d))
-		    //	),
-		    //	false,
-		    //	true // tell creation method to throw exception if not all vertices are matching 				
-		    //);
-	    }
-	
+            var exceptionThrown = Assert.Throws<Exception>(() => {
+                PathGenericsImpl<Edge, Vertex, Weight>.createPathGenerics<Edge, Vertex, Weight>(
+                    createWeight(15d),
+                    new List<Edge>{
+                        createEdge(createVertex("A"), createVertex("B"), createWeight(3d)),
+                        createEdge(createVertex("B"), createVertex("C"), createWeight(5d)),
+                        // Note that "X" should be "C" below, which is the reason for expected exceotion
+                        createEdge(createVertex("X"), createVertex("D"), createWeight(7d))
+                    },
+                    false,
+                    true // tell creation method to throw exception if not all vertices are matching
+                );
+            });
+            IsNotNull(exceptionThrown);
+        }
     
-	    //@Test(expected = RuntimeException.class) 
         [Test]
 	    public void testExceptionIsTotalWeightIsNotMatching() {
-            Fail("fix this method");
-		    //createPathGenerics(
-		    //	createWeight(16), // SHOULD be 15 ( 3 + 5 + 7 ) and therefore an exception should be thrown 
-		    //	Arrays.asList(
-		    //		createEdge(createVertex("A"), createVertex("B"), createWeight(3d)),
-		    //		createEdge(createVertex("B"), createVertex("C"), createWeight(5d)),
-		    //		createEdge(createVertex("C"), createVertex("D"), createWeight(7d))
-		    //	),
-		    //	true,  // tell creation method to throw exception if sum is not matching
-		    //	false 				
-		    //);
-	    }	
+            var exceptionThrown = Assert.Throws<Exception>(() => {
+                PathGenericsImpl<Edge, Vertex, Weight>.createPathGenerics<Edge, Vertex, Weight>(
+                    createWeight(16), // SHOULD be 15 ( 3 + 5 + 7 ) and therefore an exception should be thrown 
+                    new List<Edge>{
+                        createEdge(createVertex("A"), createVertex("B"), createWeight(3d)),
+                        createEdge(createVertex("B"), createVertex("C"), createWeight(5d)),
+                        createEdge(createVertex("C"), createVertex("D"), createWeight(7d))
+                    },
+                    true,  // tell creation method to throw exception if sum is not matching
+                    false
+                );
+            });
+            IsNotNull(exceptionThrown);
+        }	
     }
 }

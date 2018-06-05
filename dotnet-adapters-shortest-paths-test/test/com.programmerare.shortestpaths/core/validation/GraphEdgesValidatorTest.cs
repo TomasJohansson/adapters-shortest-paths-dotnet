@@ -89,30 +89,31 @@ namespace com.programmerare.shortestpaths.core.validation
 	    }
 
         [Test]	
-	    //@Test(expected = GraphValidationException.class)
 	    public void testValidateNonNullObjects_whenEdgeIsNull() {
-            Fail("fix this");
-		    //graphEdgesValidator.validateNonNullObjects(null);
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonNullObjects(null);    
+            });
 	    }
 	
-	    [Test]	//@Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateNonNullObjects_whenStartVertexIsNull() {
-            Fail("fix");
-		    //graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, null, vertexA, weight6));
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, null, vertexA, weight6));    
+            });
 	    }
 	
         [Test]
-	    //@Test(expected = GraphValidationException.class)
 	    public void testValidateNonNullObjects_whenEndVertexIsNull() {
-		    //graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, vertexA, null, weight6));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, vertexA, null, weight6));    
+            });
 	    }
 	
         [Test]
-	    //@Test(expected = GraphValidationException.class)
 	    public void testValidateNonNullObjects_whenWeightIsNull() {
-		    //graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, vertexA, vertexB, null));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, vertexA, vertexB, null));    
+            });
 	    }	
 
 	    // tests for validateNonNullObjects above
@@ -120,70 +121,78 @@ namespace com.programmerare.shortestpaths.core.validation
 	    // tests for validateNonBlankIds below
 	    [Test]
 	    public void testValidateNonBlankIds_whenAllEdgePartsAreValid() {
-		    //graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdX, vertexA, vertexB, weight5));
-            Fail("fix");
+            graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdX, vertexA, vertexB, weight5));    
 	    }
 	
 	    // - - - - - -
 	    // Three tests for edge id:
 	    
-        [Test] // @Test(expected = GraphValidationException.class)
+        [Test]
 	    public void testValidateNonBlankIds_whenEdgeIdIsNull() {
-		    //graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexB, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexB, weight5));    
+            });
 	    }	
 
         [Test]	
-	    //@Test(expected = GraphValidationException.class)
 	    public void testValidateNonBlankIds_whenEdgeIdIsEmptyString() {
-		    //graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexB, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexB, weight5));    
+            });
 	    }
 	
         [Test]	
-	    //@Test(expected = GraphValidationException.class)
 	    public void testValidateNonBlankIds_whenEdgeIdIsSomeSpaces() {
-		    graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexB, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexB, weight5));
+            });
+            IsNotNull(exceptionThrown);
 	    }	
 	
 	    // - - - - - -
 	    // Three tests for start vertex id:
-	    [Test]	 // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateNonBlankIds_whenStartVertexIdIsNull() {
-		    //graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexWithNullAsId, vertexB, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexWithNullAsId, vertexB, weight5));    
+            });
 	    }	
 	
-	    [Test]	 // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateNonBlankIds_whenStartVertexIdIsEmptyString() {
-		    graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexWithEmptyStringAsId, vertexB, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexWithEmptyStringAsId, vertexB, weight5));    
+            });
 	    }
 	
-	    [Test]	 // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateNonBlankIds_whenStartVertexIdIsSomeSpaces() {
-		    //graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexWithSomeSpacesAsId, vertexB, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexWithSomeSpacesAsId, vertexB, weight5));    
+            });
 	    }
 	
 	    // - - - - - -
 	    // Three tests for end vertex id:
-	    [Test]	 // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateNonBlankIds_whenEndVertexIdIsNull() {
-		    //graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexWithNullAsId, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexWithNullAsId, weight5));    
+            });
 	    }	
 	
-	    [Test]	 // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateNonBlankIds_whenEndVertexIdIsEmptyString() {
-		    //graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexWithEmptyStringAsId, weight5));
-            Fail("fix");
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexWithEmptyStringAsId, weight5));    
+            });
 	    }
 	
-	    [Test]	 // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateNonBlankIds_whenEndVertexIdIsSomeSpaces() {
-		    graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexWithSomeSpacesAsId, weight5));
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexWithSomeSpacesAsId, weight5));    
+            });
 	    }
 	    // tests for validateNonBlankIds above
 	    // ----------------------------------------------------------------------------------------------
@@ -191,29 +200,28 @@ namespace com.programmerare.shortestpaths.core.validation
 	    // tests for validateUniqueEdgeId below	
 	    [Test]
 	    public void testValidateUniqueEdgeId_whenAlllAreUnique() {
-		    //List<Edge> edges = new List<Edge> {
-			   // createTestEdge(stringIdX, vertexA, vertexB, weight5),
-			   // createTestEdge(stringIdY, vertexB, vertexC, weight6),
-			   // createTestEdge(stringIdZ, vertexC, vertexD, weight7)
-      //      };
-		    //graphEdgesValidator.validateUniqueEdgeId(edges.get(0), mapForValidatingUniqueEdgeId);
-		    //graphEdgesValidator.validateUniqueEdgeId(edges.get(1), mapForValidatingUniqueEdgeId);
-		    //graphEdgesValidator.validateUniqueEdgeId(edges.get(2), mapForValidatingUniqueEdgeId);
-            Fail("fix");
-	    }
+            List<Edge> edges = new List<Edge> {
+                createTestEdge(stringIdX, vertexA, vertexB, weight5),
+                createTestEdge(stringIdY, vertexB, vertexC, weight6),
+                createTestEdge(stringIdZ, vertexC, vertexD, weight7)
+            };
+            graphEdgesValidator.validateUniqueEdgeId(edges[0], mapForValidatingUniqueEdgeId);
+            graphEdgesValidator.validateUniqueEdgeId(edges[1], mapForValidatingUniqueEdgeId);
+            graphEdgesValidator.validateUniqueEdgeId(edges[2], mapForValidatingUniqueEdgeId);
+        }
 
-	    //@Test(expected = GraphValidationException.class)
         [Test]
 	    public void testValidateUniqueEdgeId_whenAlllAreNotUnique() {
-            Fail("fix this");
-		    //List<Edge> edges = new List{
-			   // createTestEdge(stringIdX, vertexA, vertexB, weight5),
-			   // createTestEdge(stringIdY, vertexB, vertexC, weight6),
-			   // createTestEdge(stringIdX, vertexC, vertexD, weight7) // Note X again, i.e. x NOT unique, should cause Exception 
-      //      };
-		    //graphEdgesValidator.validateUniqueEdgeId(edges.get(0), mapForValidatingUniqueEdgeId);
-		    //graphEdgesValidator.validateUniqueEdgeId(edges.get(1), mapForValidatingUniqueEdgeId);
-		    //graphEdgesValidator.validateUniqueEdgeId(edges.get(2), mapForValidatingUniqueEdgeId);
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+                    List<Edge> edges = new List<Edge>{
+                        createTestEdge(stringIdX, vertexA, vertexB, weight5),
+                        createTestEdge(stringIdY, vertexB, vertexC, weight6),
+                        createTestEdge(stringIdX, vertexC, vertexD, weight7) // Note X again, i.e. x NOT unique, should cause Exception 
+                    };
+                    graphEdgesValidator.validateUniqueEdgeId(edges[0], mapForValidatingUniqueEdgeId);
+                    graphEdgesValidator.validateUniqueEdgeId(edges[1], mapForValidatingUniqueEdgeId);
+                    graphEdgesValidator.validateUniqueEdgeId(edges[2], mapForValidatingUniqueEdgeId);
+            });
 	    }
 	
 	    // tests for validateUniqueEdgeId above
@@ -221,29 +229,29 @@ namespace com.programmerare.shortestpaths.core.validation
 	
 	    [Test]
 	    public void testValidateUniqueVerticesIds_whenAlllAreUnique() {
-            Fail("todo fix");
-		 //   List<Edge> edges = new List{
-			//	createTestEdge(stringIdX, vertexA, vertexB, weight5),
-			//	createTestEdge(stringIdY, vertexB, vertexC, weight6),
-			//	createTestEdge(stringIdZ, vertexC, vertexD, weight7)
-   //         };
-			//graphEdgesValidator.validateUniqueVerticesIds(edges.get(0), mapForValidatingUniqueVerticesIds);
-			//graphEdgesValidator.validateUniqueVerticesIds(edges.get(1), mapForValidatingUniqueVerticesIds);
-			//graphEdgesValidator.validateUniqueVerticesIds(edges.get(2), mapForValidatingUniqueVerticesIds);		
-	    }	
+            List<Edge> edges = new List<Edge>{
+                createTestEdge(stringIdX, vertexA, vertexB, weight5),
+                createTestEdge(stringIdY, vertexB, vertexC, weight6),
+                createTestEdge(stringIdZ, vertexC, vertexD, weight7)
+            };
+            graphEdgesValidator.validateUniqueVerticesIds(edges[0], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.validateUniqueVerticesIds(edges[1], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.validateUniqueVerticesIds(edges[2], mapForValidatingUniqueVerticesIds);
+        }	
 	
-	    [Test] // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateUniqueVerticesIds_whenAlllAreNotUnique() {
-            Fail("todo fix");
-		    //List<Edge> edges = new List{
-			   // createTestEdge(stringIdX, vertexA, vertexB, weight5),
-			   // createTestEdge(stringIdY, vertexB, vertexC, weight6),
-			   // createTestEdge(stringIdZ, vertexB, vertexC, weight7) //  // Note "B to C" again, i.e. x NOT unique, should cause Exception
-      //      };
-		    //graphEdgesValidator.validateUniqueVerticesIds(edges.get(0), mapForValidatingUniqueVerticesIds);
-		    //graphEdgesValidator.validateUniqueVerticesIds(edges.get(1), mapForValidatingUniqueVerticesIds);
-		    //graphEdgesValidator.validateUniqueVerticesIds(edges.get(2), mapForValidatingUniqueVerticesIds);
-	    }
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+            List<Edge> edges = new List<Edge>{
+                createTestEdge(stringIdX, vertexA, vertexB, weight5),
+                createTestEdge(stringIdY, vertexB, vertexC, weight6),
+                createTestEdge(stringIdZ, vertexB, vertexC, weight7) //  // Note "B to C" again, i.e. x NOT unique, should cause Exception
+            };
+            graphEdgesValidator.validateUniqueVerticesIds(edges[0], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.validateUniqueVerticesIds(edges[1], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.validateUniqueVerticesIds(edges[2], mapForValidatingUniqueVerticesIds);
+            });
+        }
 
 	    private Vertex createTestVertex(string id) {
 		    return new VertexTestImpl(id);
@@ -335,21 +343,23 @@ namespace com.programmerare.shortestpaths.core.validation
 	    }
 
 	    // ----------------------------------------------------------------------------------------------
-	    [Test] // @Test(expected = GraphValidationException.class)
+	    [Test]
 	    public void testValidateAllPathsOnlyContainEdgesDefinedInGraph() {
-		    IList<Edge> allEdgesForGraph = new List<Edge>();
-		    allEdgesForGraph.Add(createTestEdge("11", createTestVertex("a"), createTestVertex("b"), createTestWeight(1)));
+            var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
+		        IList<Edge> allEdgesForGraph = new List<Edge>();
+		        allEdgesForGraph.Add(createTestEdge("11", createTestVertex("a"), createTestVertex("b"), createTestWeight(1)));
 
-		    IList<Edge> edgesForPath = new List<Edge>();
-		    edgesForPath.Add(createTestEdge("11", createTestVertex("a"), createTestVertex("c"), createTestWeight(1)));
-		    Path path = createPath(createTestWeight(1), edgesForPath);
-		    List<Path> paths = new List<Path>{ path };
+		        IList<Edge> edgesForPath = new List<Edge>();
+		        edgesForPath.Add(createTestEdge("11", createTestVertex("a"), createTestVertex("c"), createTestWeight(1)));
+		        Path path = createPath(createTestWeight(1), edgesForPath);
+		        List<Path> paths = new List<Path>{ path };
 
-		    graphEdgesValidator.validateAllPathsOnlyContainEdgesDefinedInGraph(paths, allEdgesForGraph);
+		        graphEdgesValidator.validateAllPathsOnlyContainEdgesDefinedInGraph(paths, allEdgesForGraph);
 
-		    // TODO maybe: introduce a new base class for GraphJgrapht and for the other implementations of Graph, 
-		    // and put the validation there, to ensure a reasonable output paths by using the above validation method, 
-		    // but then maybe such an validation also should be optional 
+		        // TODO maybe: introduce a new base class for GraphJgrapht and for the other implementations of Graph, 
+		        // and put the validation there, to ensure a reasonable output paths by using the above validation method, 
+		        // but then maybe such an validation also should be optional                 
+            });
 	    }
 	    // ----------------------------------------------------------------------------------------------
     }

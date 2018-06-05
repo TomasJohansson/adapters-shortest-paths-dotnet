@@ -1,16 +1,12 @@
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
-using System.Collections.Generic;
-
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
+using com.programmerare.shortestpaths.core.api;
+using com.programmerare.shortestpaths.core.api.generics;
+using System.Collections.Generic;
+
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
     /**
@@ -51,7 +47,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    }
 	    }
 
-	    public IList<E> getOriginalObjectInstancesOfTheEdges(List<E> edges) {
+	    public IList<E> getOriginalObjectInstancesOfTheEdges(IList<E> edges) {
 		    IList<E> originalObjectInstancesOfTheEdges = new List<E>();
 		    foreach (E edge in edges) {
 			    originalObjectInstancesOfTheEdges.Add(edgeMapWithVertexIdsAsKey[getIdForMapping(edge)]);

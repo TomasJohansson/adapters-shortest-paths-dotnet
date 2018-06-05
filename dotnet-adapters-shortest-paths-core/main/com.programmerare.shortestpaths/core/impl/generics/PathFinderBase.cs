@@ -1,13 +1,15 @@
-using System.Collections.Generic;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.pathfactories;
-using com.programmerare.shortestpaths.core.validation;
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
+
+using System.Collections.Generic;
+using com.programmerare.shortestpaths.core.api;
+using com.programmerare.shortestpaths.core.api.generics;
+using com.programmerare.shortestpaths.core.pathfactories;
+using com.programmerare.shortestpaths.core.validation;
+
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
     public abstract class PathFinderBase<P, E, V, W> 
@@ -17,7 +19,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
         where V : Vertex
         where W : Weight
     {
-	    private PathFactory<P, E, V, W> pathFactory; // new PathFactoryGenerics<P, E, V, W> or new PathFactoryDefault()
+	    private readonly PathFactory<P, E, V, W> pathFactory; // new PathFactoryGenerics<P, E, V, W> or new PathFactoryDefault()
 	
 	    private readonly GraphGenerics<E, V, W> graph;
 	    private readonly EdgeMapper<E, V, W> edgeMapper;
@@ -44,7 +46,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    ) {
 		    this.graph = graph;		
 		    this.pathFactory = pathFactory != null ? pathFactory : createStandardInstanceOfPathFactory();
-		    // Prevondition to method below is that validation is performed i.e. 
+		    // Precondition to method below is that validation is performed i.e. 
 		    // the method below will NOT try to validate,
 		    edgeMapper = EdgeMapper<E, V, W>.createEdgeMapper<E, V, W>(graph.getEdges());
 	    }
@@ -105,7 +107,6 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    throw new GraphValidationException(startOrEndmessagePrefix + " vertex is not part of the graph: " + vertex);
 	    }
 
-
 	    protected E getOriginalEdgeInstance(string startVertexId, string endVertexId) {
 		    return edgeMapper.getOriginalEdgeInstance(startVertexId, endVertexId);
 	    }
@@ -115,7 +116,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    }
 
 	    // "Hook" : see the Template Method Design Pattern
-	    protected abstract List<P> findShortestPathHook(V startVertex, V endVertex, int maxNumberOfPaths);
+	    protected abstract IList<P> findShortestPathHook(V startVertex, V endVertex, int maxNumberOfPaths);
 	
 	    protected W createInstanceWithTotalWeight(double totalWeight, IList<E> edgesUsedForDeterminingWeightClass) {
 		    if(weightProtoypeFactory == null) {

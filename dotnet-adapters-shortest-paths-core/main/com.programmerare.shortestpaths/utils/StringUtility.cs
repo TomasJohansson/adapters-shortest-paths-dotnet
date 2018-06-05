@@ -28,7 +28,7 @@ namespace com.programmerare.shortestpaths.utils
 	     * @param s
 	     * @return
 	     */
-	    static string getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(string s) {
+	    public static string getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(string s) {
             s = Regex.Replace(s, "\\.0+$", "");
 		    s = Regex.Replace(s, "^([0-9]*\\.[0-9]*)(0+)$", "$1");
 		    // TODO overkill to implement with regexp as above. instead use some formatter https://stackoverflow.com/questions/703396/how-to-nicely-format-floating-numbers-to-string-without-unnecessary-decimal-0

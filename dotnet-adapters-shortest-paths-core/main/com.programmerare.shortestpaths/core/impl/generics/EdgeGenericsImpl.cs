@@ -1,10 +1,12 @@
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
+
+using com.programmerare.shortestpaths.core.api;
+using com.programmerare.shortestpaths.core.api.generics;
+
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
     /**
@@ -13,15 +15,12 @@ namespace com.programmerare.shortestpaths.core.impl.generics
     public class EdgeGenericsImpl<V, W> : EdgeGenerics<V , W> 
         where V : Vertex
         where W : Weight
-        //V extends Vertex
-        // W extends Weight> implements EdgeGenerics<V , W> {
     {
 	    private readonly string id;
 	    private readonly V startVertex;
 	    private readonly V endVertex;
 	    private readonly W weight;
 
-	    //public static <E extends Edge<V,W> , V extends Vertex , W extends Weight> E createEdge(
 	    public static EdgeGenerics<V, W> createEdgeGenerics<V, W>(
 		    string edgeId,
 		    V startVertex, 
@@ -30,7 +29,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    ) 
             where V : Vertex
             where W : Weight
-            {
+        {
 		    EdgeGenerics<V, W> e = new EdgeGenericsImpl<V, W>(
 			    edgeId,
 			    startVertex, 
@@ -39,9 +38,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    );
 		    return e;
 	    }
-
 	
-	    //public static <T extends Edge<V,W> , V extends Vertex , W extends Weight> T createEdge(
 	    public static EdgeGenerics<V, W> createEdgeGenerics<V, W>(
 		    V startVertex, 
 		    V endVertex, 
@@ -49,7 +46,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    ) 
             where V : Vertex
             where W : Weight
-            {
+        {
 		    return createEdgeGenerics(
 			    createEdgeIdValue(startVertex.getVertexId(), endVertex.getVertexId()),
 			    startVertex, 

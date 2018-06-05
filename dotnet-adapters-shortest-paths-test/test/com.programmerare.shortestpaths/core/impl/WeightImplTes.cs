@@ -5,13 +5,8 @@
 */
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-//import static com.programmerare.shortestpaths.core.impl.WeightImpl.createWeight;
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertTrue;
-//import org.junit.Before;
-//import org.junit.Test;
 using com.programmerare.shortestpaths.core.api;
+using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 
 namespace com.programmerare.shortestpaths.core.impl
 {
@@ -25,7 +20,6 @@ namespace com.programmerare.shortestpaths.core.impl
 	    private Weight weightB;
 	    private double weightValueA;
 	    private double weightValueB;
-	
 	
 	    [SetUp]
 	    public void setUp()  {
@@ -56,6 +50,5 @@ namespace com.programmerare.shortestpaths.core.impl
 	    public void testHashCode() {
 		    AreEqual(weightA.GetHashCode(), weightB.GetHashCode());
 	    }	
-
     }
 }

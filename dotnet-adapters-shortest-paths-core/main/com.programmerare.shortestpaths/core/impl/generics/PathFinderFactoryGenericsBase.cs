@@ -1,15 +1,14 @@
-//using static com.programmerare.shortestpaths.core.impl.generics.GraphGenericsImpl; // createGraphGenerics
-//import java.util.List;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.validation;
-using System.Collections.Generic;
-
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
+
+using com.programmerare.shortestpaths.core.api;
+using com.programmerare.shortestpaths.core.api.generics;
+using com.programmerare.shortestpaths.core.validation;
+using System.Collections.Generic;
+
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
 public abstract class PathFinderFactoryGenericsBase<F, P, E, V, W> 

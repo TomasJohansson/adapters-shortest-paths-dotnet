@@ -68,10 +68,9 @@ namespace com.programmerare.shortestpaths.utils
 		    assertStringResult("13.0010", "13.001");
 	    }
 	    private void assertStringResult(string doubleAsString, string expected) {
-		    //string s = StringUtility.getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(doubleAsString);
-		    //AreEqual(expected, s);		
-            Fail("TODO compare the above with the java version");
-	    }
+            string s = StringUtility.getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(doubleAsString);
+            AreEqual(expected, s);
+        }
 	    private void assertDoubleResult(double d, string expected) {
 		    string s = StringUtility.getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(d);
 		    AreEqual(expected, s);

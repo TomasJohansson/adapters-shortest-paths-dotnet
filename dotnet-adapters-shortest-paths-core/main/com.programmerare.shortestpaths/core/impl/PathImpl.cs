@@ -9,10 +9,10 @@ using System.Collections.Generic;
 
 namespace com.programmerare.shortestpaths.core.impl
 {
-    public class PathImpl : PathGenericsImpl<Edge, Vertex, Weight> , Path 
+    public sealed class PathImpl : PathGenericsImpl<Edge, Vertex, Weight> , Path 
     {
 
-	    protected PathImpl(Weight totalWeight, IList<Edge> edges): base(totalWeight, edges) {
+	    private PathImpl(Weight totalWeight, IList<Edge> edges): base(totalWeight, edges) {
 		
 	    }
 

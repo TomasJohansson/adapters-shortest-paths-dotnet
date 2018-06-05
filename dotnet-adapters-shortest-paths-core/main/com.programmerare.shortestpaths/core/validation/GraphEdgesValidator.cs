@@ -81,7 +81,7 @@ namespace com.programmerare.shortestpaths.core.validation
 		    throwExceptionIfConditionTrue(id == null || id.Trim().Equals(""), "id value must not be empty", edgeOrVertex);
 	    }
 	
-	    void validateUniqueEdgeId(E edge, IDictionary<string, bool> mapForValidatingUniqueEdgeId) {
+	    public void validateUniqueEdgeId(E edge, IDictionary<string, bool> mapForValidatingUniqueEdgeId) {
 		    throwExceptionIfConditionTrue(mapForValidatingUniqueEdgeId.ContainsKey(edge.getEdgeId()), "Edge id must be unique wich it was not. To remove duplicated edges, you can use a method in the class " + nameOfClassForRemovingDuplicateEdges, edge);
 		    mapForValidatingUniqueEdgeId.Add(edge.getEdgeId(), true);
 	    }
@@ -92,7 +92,7 @@ namespace com.programmerare.shortestpaths.core.validation
 	     * @param edge
 	     * @param mapForValidatingUniqueVerticesIds
 	     */
-	    void validateUniqueVerticesIds(E edge, IDictionary<string, bool> mapForValidatingUniqueVerticesIds) {
+	    public void validateUniqueVerticesIds(E edge, IDictionary<string, bool> mapForValidatingUniqueVerticesIds) {
 		    string concatenationOdVerticesIds = edge.getStartVertex().getVertexId() + "_" + edge.getEndVertex().getVertexId();
 		    throwExceptionIfConditionTrue(mapForValidatingUniqueVerticesIds.ContainsKey(concatenationOdVerticesIds), "edge id must be unique wich it was not " + concatenationOdVerticesIds, edge);
 		    mapForValidatingUniqueVerticesIds.Add(concatenationOdVerticesIds, true);		

@@ -1,14 +1,15 @@
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* The code is made available under the terms of the MIT License.
+* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+*/
+
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.api.generics;
 using com.programmerare.shortestpaths.core.validation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-/*
-* Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
-*/
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
     public class GraphGenericsImpl<E, V, W> : GraphGenerics<E, V, W> 
@@ -35,7 +36,6 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 			    GraphEdgesValidator<PathGenerics<E,V,W>, E, V, W>.validateEdgesForGraphCreation<PathGenerics<E,V,W>, E, V, W>(this.edges);
 		    }		
 	    }
-
 	
 	    /**
 	     * Creates a graph instance, but will validate the edges and throw an exception if validation fails.
@@ -64,7 +64,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
             where V : Vertex
             where W : Weight
         {
-		    GraphGenericsImpl<E, V, W> g = new GraphGenericsImpl<E, V, W>(
+		    var g = new GraphGenericsImpl<E, V, W>(
 			    edges,
 			    graphEdgesValidationDesired
 		    );
@@ -98,7 +98,6 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    }
 		    return vertices;
 	    }
-
 	
 	    public bool containsVertex(V vertex) {
 		    getVertices(); // triggers the lazy loading if needed, TODO refactor instead of using a getter for this purpose

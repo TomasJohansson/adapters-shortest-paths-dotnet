@@ -1,4 +1,8 @@
-using com.programmerare.shortestpaths.core.api;
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* The code is made available under the terms of the MIT License.
+* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+*/
 
 namespace com.programmerare.shortestpaths.core.api.generics
 {
@@ -12,8 +16,6 @@ namespace com.programmerare.shortestpaths.core.api.generics
         where V : Vertex
         where W : Weight
     { 
-            // V extends Vertex
-            // W extends Weight
 
 	    /**
 	     * @return an id which must be unique within a Graph, i.e. a Graph should not have more than one Edge with the same id. 

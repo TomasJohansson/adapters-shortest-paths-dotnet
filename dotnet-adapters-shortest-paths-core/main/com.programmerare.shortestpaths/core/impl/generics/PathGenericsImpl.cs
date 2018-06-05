@@ -1,3 +1,9 @@
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* The code is made available under the terms of the MIT License.
+* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+*/
+
 using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.api.generics;
@@ -5,11 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-/*
-* Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
-*/
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
     /**
@@ -57,6 +58,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
         {
 		    if(shouldThrowExceptionIfTotalWeightIsMismatching) {
 			    if(isTotalWeightNotCorrect<E, V, W>(edges, totalWeight)) {
+                    // TODO: choose a better exception to throw
 				    throw new Exception("Incorrect weight " + totalWeight + " not mathcing the sum of the edges " + edges);
 			    }			
 		    }
@@ -151,7 +153,5 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 			    return false;
 		    return true;
 	    }
-	
     }
-
 }

@@ -5,7 +5,6 @@
 */
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.impl.generics;
-using com.programmerare.shortestpaths.core.impl;
 
 namespace com.programmerare.shortestpaths.core.impl
 {
@@ -14,13 +13,12 @@ namespace com.programmerare.shortestpaths.core.impl
      */
     public sealed class EdgeImpl : EdgeGenericsImpl<Vertex, Weight> , Edge {
 
-	    protected EdgeImpl(
+	    private EdgeImpl(
 		    string edgeId, 
 		    Vertex startVertex, 
 		    Vertex endVertex, 
 		    Weight weight
 	    ) : base(edgeId, startVertex, endVertex, weight) {
-		
 	    }
 
 	    public static Edge createEdge(
