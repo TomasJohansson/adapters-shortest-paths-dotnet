@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using static NUnit.Framework.Assert;
 
 namespace programmerare
 {

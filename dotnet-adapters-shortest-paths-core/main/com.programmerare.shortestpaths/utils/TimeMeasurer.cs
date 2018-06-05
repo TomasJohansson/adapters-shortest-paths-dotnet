@@ -3,23 +3,22 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
-package com.programmerare.shortestpaths.utils;
+namespace com.programmerare.shortestpaths.utils
+{
+    public sealed class TimeMeasurer {
 
-import java.util.Date;
-
-public final class TimeMeasurer {
-
-	public static TimeMeasurer start() {
-		return new TimeMeasurer();
-	}
+	    public static TimeMeasurer start() {
+		    return new TimeMeasurer();
+	    }
 	
-	private final long startTime;
+	    private readonly long startTime;
 	
-	private TimeMeasurer() {
-		this.startTime = (new Date()).getTime();
-	}
+	    private TimeMeasurer() {
+		    this.startTime = 0;// TODO(new Date()).getTime();
+	    }
 	
-	public long getSeconds() {
-		return ((new Date()).getTime()-startTime) / 1000;
-	}
+	    public long getSeconds() {
+		    return 0;// TODO((new Date()).getTime()-startTime) / 1000;
+	    }
+    }
 }

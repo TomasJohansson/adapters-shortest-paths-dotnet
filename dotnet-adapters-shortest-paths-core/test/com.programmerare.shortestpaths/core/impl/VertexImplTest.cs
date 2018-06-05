@@ -3,53 +3,57 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
-package com.programmerare.shortestpaths.core.impl;
+//import static com.programmerare.shortestpaths.core.impl.VertexImpl.createVertex;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertTrue;
+//import org.junit.Before;
+//import org.junit.Test;
+using NUnit.Framework;
+using static NUnit.Framework.Assert;
+using com.programmerare.shortestpaths.core.api;
+using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using static com.programmerare.shortestpaths.core.impl.WeightImpl; // createWeight
 
-import static com.programmerare.shortestpaths.core.impl.VertexImpl.createVertex;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+namespace com.programmerare.shortestpaths.core.impl
+{
+    /**
+     * @author Tomas Johansson
+     */
+    [TestFixture]
+    public class VertexImplTest {
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.programmerare.shortestpaths.core.api.Vertex;
-
-/**
- * @author Tomas Johansson
- */
-public class VertexImplTest {
-
-	private Vertex vertexA;
-	private Vertex vertexB;
+	    private Vertex vertexA;
+	    private Vertex vertexB;
 	
-	@Before
-	public void setUp() throws Exception {
-		vertexA = createVertex(357);
-		vertexB = createVertex("357");		
-	}
+	    [SetUp]
+	    public void setUp() {
+		    vertexA = createVertex(357);
+		    vertexB = createVertex("357");		
+	    }
 	
-	@Test
-	public void testGetVertexId() {
-		Vertex vertexA = createVertex(357);
-		Vertex vertexB = createVertex("357");
+	    [Test]
+	    public void testGetVertexId() {
+		    Vertex vertexA = createVertex(357);
+		    Vertex vertexB = createVertex("357");
 		
-		assertEquals(vertexA.getVertexId(), vertexB.getVertexId());
+		    AreEqual(vertexA.getVertexId(), vertexB.getVertexId());
 		
-		assertEquals(vertexA, vertexB);
-		assertEquals(vertexA.hashCode(), vertexB.hashCode());
-	}
+		    AreEqual(vertexA, vertexB);
+		    AreEqual(vertexA.GetHashCode(), vertexB.GetHashCode());
+	    }
 	
-	@Test
-	public void testEquals() {
-		assertEquals(vertexA, vertexB);
+	    [Test]
+	    public void testEquals() {
+		    AreEqual(vertexA, vertexB);
 
-		assertTrue(vertexA.equals(vertexB));
-		assertTrue(vertexB.equals(vertexA));
-	}
+		    IsTrue(vertexA.Equals(vertexB));
+		    IsTrue(vertexB.Equals(vertexA));
+	    }
 	
-	@Test
-	public void testHashCode() {
-		assertEquals(vertexA.hashCode(), vertexB.hashCode());
-	}	
+	    [Test]
+	    public void testHashCode() {
+		    AreEqual(vertexA.GetHashCode(), vertexB.GetHashCode());
+	    }	
 
+    }
 }

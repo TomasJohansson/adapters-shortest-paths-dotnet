@@ -3,8 +3,8 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
-package com.programmerare.shortestpaths.core.impl.generics;
-
+namespace com.programmerare.shortestpaths.core.impl.generics
+{
 /**
  * Testing general behaviour independent of implementation.
  * Of course, since the base class is abstract, some kind of subclass need to be instantiated.
@@ -66,4 +66,5 @@ public class PathFinderFactoryGenericsBaseTest {
 ////			);
 ////		}
 //	}	
+}
 }

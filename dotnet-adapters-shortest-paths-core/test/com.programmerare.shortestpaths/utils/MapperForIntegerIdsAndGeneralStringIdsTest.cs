@@ -3,19 +3,28 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
-package com.programmerare.shortestpaths.utils;
+//import static org.junit.Assert.*;
+//import org.junit.After;
+//import org.junit.AfterClass;
+//import org.junit.Before;
+//import org.junit.BeforeClass;
+//import org.junit.Test;
+using com.programmerare.shortestpaths.core.api;
+using NUnit.Framework;
+using static NUnit.Framework.Assert;
+using static com.programmerare.shortestpaths.core.impl.GraphImplTest; // createEdgeGenerics
+using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
+using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using System.Collections.Generic;
+using com.programmerare.shortestpaths.core.api.generics;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+namespace com.programmerare.shortestpaths.utils
+{
 /**
  * @author Tomas Johansson
  */
+[TestFixture]
 public class MapperForIntegerIdsAndGeneralStringIdsTest {
 
 //	@Before
@@ -24,37 +33,37 @@ public class MapperForIntegerIdsAndGeneralStringIdsTest {
 
 	// TODO: improve the testing below. Each method is currently doing too much.
 
-	@Test
+	[Test]
 	public void testStartIndexZero() {
 		MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.createIdMapper(0);
-		assertEquals(0, idMapper.createOrRetrieveIntegerId("A"));
-		assertEquals(1, idMapper.createOrRetrieveIntegerId("B"));
-		assertEquals(0, idMapper.createOrRetrieveIntegerId("A"));
-		assertEquals(2, idMapper.createOrRetrieveIntegerId("C"));
-		assertEquals(0, idMapper.createOrRetrieveIntegerId("A"));
-		assertEquals(3, idMapper.createOrRetrieveIntegerId("D"));
+		AreEqual(0, idMapper.createOrRetrieveIntegerId("A"));
+		AreEqual(1, idMapper.createOrRetrieveIntegerId("B"));
+		AreEqual(0, idMapper.createOrRetrieveIntegerId("A"));
+		AreEqual(2, idMapper.createOrRetrieveIntegerId("C"));
+		AreEqual(0, idMapper.createOrRetrieveIntegerId("A"));
+		AreEqual(3, idMapper.createOrRetrieveIntegerId("D"));
 
-		assertEquals(4, idMapper.getNumberOfVertices());
+		AreEqual(4, idMapper.getNumberOfVertices());
 		
-		assertEquals("A", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(0));
-		assertEquals("B", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(1));
-		assertEquals("C", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(2));
-		assertEquals("D", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(3));
+		AreEqual("A", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(0));
+		AreEqual("B", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(1));
+		AreEqual("C", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(2));
+		AreEqual("D", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(3));
 	}
 	
-	@Test
+	[Test]
 	public void testStartIndexOne() {
 		MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.createIdMapper(1);
-		assertEquals(1, idMapper.createOrRetrieveIntegerId("ABC"));
-		assertEquals(2, idMapper.createOrRetrieveIntegerId("DEF"));
-		assertEquals(3, idMapper.createOrRetrieveIntegerId("GHI"));
-		assertEquals(2, idMapper.createOrRetrieveIntegerId("DEF"));
+		AreEqual(1, idMapper.createOrRetrieveIntegerId("ABC"));
+		AreEqual(2, idMapper.createOrRetrieveIntegerId("DEF"));
+		AreEqual(3, idMapper.createOrRetrieveIntegerId("GHI"));
+		AreEqual(2, idMapper.createOrRetrieveIntegerId("DEF"));
 		
-		assertEquals(3, idMapper.getNumberOfVertices());
+		AreEqual(3, idMapper.getNumberOfVertices());
 		
-		assertEquals("ABC", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(1));
-		assertEquals("DEF", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(2));
-		assertEquals("GHI", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(3));
+		AreEqual("ABC", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(1));
+		AreEqual("DEF", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(2));
+		AreEqual("GHI", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(3));
 	}	
 	
 //	@Test
@@ -71,4 +80,5 @@ public class MapperForIntegerIdsAndGeneralStringIdsTest {
 //	public void testGetBackThePreviouslyStoredGeneralStringIdForInteger() {
 //		fail("Not yet implemented");
 //	}
+}
 }

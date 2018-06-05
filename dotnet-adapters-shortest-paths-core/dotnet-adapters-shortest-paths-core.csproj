@@ -5,4 +5,33 @@
     <RootNamespace>dotnet_adapters_shortest_paths_core</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="test\**" />
+    <EmbeddedResource Remove="test\**" />
+    <None Remove="test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeGenericsImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeMapperTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\GraphGenericsImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathFinderBaseTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathFinderFactoryGenericsBaseTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathGenericsImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\GraphImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\VertexImplTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\impl\WeightImplTes.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\parsers\EdgeParserTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\parsers\PathParserTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\core\validation\GraphEdgesValidatorTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\utils\EdgeUtilityTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\utils\MapperForIntegerIdsAndGeneralStringIdsTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths\utils\StringUtilityTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+  </ItemGroup>
+
 </Project>

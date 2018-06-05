@@ -3,24 +3,22 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
-package com.programmerare.shortestpaths.core.impl;
+using com.programmerare.shortestpaths.core.api;
+using com.programmerare.shortestpaths.core.impl.generics;
+using System.Collections.Generic;
 
-import java.util.List;
+namespace com.programmerare.shortestpaths.core.impl
+{
+    public class PathImpl : PathGenericsImpl<Edge, Vertex, Weight> , Path 
+    {
 
-import com.programmerare.shortestpaths.core.api.Edge;
-import com.programmerare.shortestpaths.core.api.Path;
-import com.programmerare.shortestpaths.core.api.Vertex;
-import com.programmerare.shortestpaths.core.api.Weight;
-import com.programmerare.shortestpaths.core.impl.generics.PathGenericsImpl;
+	    protected PathImpl(Weight totalWeight, IList<Edge> edges): base(totalWeight, edges) {
+		
+	    }
 
-public class PathImpl extends PathGenericsImpl<Edge , Vertex , Weight> implements Path {
+	    public static Path createPath(Weight totalWeight, IList<Edge> edges) {
+		    return new PathImpl(totalWeight, edges);
+	    }
 
-	protected PathImpl(final Weight totalWeight, final List<Edge> edges) {
-		super(totalWeight, edges);
-	}
-
-	public static Path createPath(final Weight totalWeight, final List<Edge> edges) {
-		return new PathImpl(totalWeight, edges);
-	}
-
+    }
 }

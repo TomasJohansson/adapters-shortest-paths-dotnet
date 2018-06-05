@@ -3,73 +3,69 @@
 * The code is made available under the terms of the MIT License.
 * https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
 */
-package com.programmerare.shortestpaths.core.impl;
+using com.programmerare.shortestpaths.core.api;
+using System;
 
-import com.programmerare.shortestpaths.core.api.Weight;
+namespace com.programmerare.shortestpaths.core.impl
+{
+    /**
+     * @author Tomas Johansson
+     */
+    public sealed class WeightImpl : Weight {
 
-/**
- * @author Tomas Johansson
- */
-public final class WeightImpl implements Weight {
+	    private readonly double value;
 
-	private final double value;
-
-	public static Weight createWeight(
-		final double value			
-	) {
-		return new WeightImpl(
-			value
-		);
-	}
+	    public static Weight createWeight(
+	        double value			
+	    ) {
+		    return new WeightImpl(
+			    value
+		    );
+	    }
 	
-	private WeightImpl(final double value) {
-		this.value = value;
-	}
+	    private WeightImpl(double value) {
+		    this.value = value;
+	    }
 
-	public double getWeightValue() {
-		return value;
-	}
+	    public double getWeightValue() {
+		    return value;
+	    }
 
-	@Override
-	public String toString() {
-		return "WeightImpl [value=" + value + "]";
-	}
+	    public override string ToString() {
+		    return "WeightImpl [value=" + value + "]";
+	    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(value);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
+	    public override int GetHashCode() {
+		    int prime = 31;
+		    int result = 1;
+		    long temp;
+		    temp = BitConverter.DoubleToInt64Bits(value);
+		    //result = prime * result + (int) (temp ^ (temp >>> 32));
+            result = (int)temp; // TODO: Java >>> is not valid in C#
+		    return result;
+	    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (!(obj instanceof WeightImpl))
-			return false;
-		WeightImpl other = (WeightImpl) obj;
-		if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value))
-			return false;
-		return true;
-	}
+	    public override bool Equals(object obj) {
+		    if (this == obj)
+			    return true;
+		    if (obj == null)
+			    return false;
+		    if (!(obj is WeightImpl))
+			    return false;
+		    WeightImpl other = (WeightImpl) obj;
+		    if (BitConverter.DoubleToInt64Bits(value) != BitConverter.DoubleToInt64Bits(other.value))
+			    return false;
+		    return true;
+	    }
 
-	public final static double SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS = 0.0000000001;
+	    public const double SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS = 0.0000000001;
 	
-	public String renderToString() {
-		return toString();
-	}
+	    public string renderToString() {
+		    return ToString();
+	    }
 
-	public Weight create(double value) {
-		return WeightImpl.createWeight(value);
-	}
-
-//	public Weight create(final double value) {
-//		return createWeight(value);
-//	}	
+	    public Weight create(double value) {
+		    return WeightImpl.createWeight(value);
+	    }
+    }
 }
