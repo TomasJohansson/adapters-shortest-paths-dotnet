@@ -50,7 +50,7 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph.generics
 		    GraphGenerics<E, V, W> graph, 
 		    PathFactory<P, E, V, W> pathFactory
 	    ): base(graph, pathFactory) {
-		    MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.createIdMapper(0);
+		    MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.CreateIdMapper(0);
 		    
       //      IList<EdgeYanQi> vertices = createListOfVerticesWhileAlsoPopulatingIdMapper(idMapper);
 		    //// "Adaptee" https://en.wikipedia.org/wiki/Adapter_pattern
@@ -60,12 +60,12 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph.generics
 		    //);
             // "Adaptee" https://en.wikipedia.org/wiki/Adapter_pattern
             this.graphAdaptee = new AdjacencyGraph<string, TaggedEquatableEdge<string,double>>(false);
-            IList<string> verticesAsListOfStrings = graph.getVertices().Select(v => v.getVertexId()).ToList();
+            IList<string> verticesAsListOfStrings = graph.Vertices.Select(v => v.VertexId).ToList();
             this.graphAdaptee.AddVertexRange(verticesAsListOfStrings);
-            var edges = graph.getEdges();
+            var edges = graph.Edges;
             foreach(E e in edges)
             {
-                this.graphAdaptee.AddEdge(new TaggedEquatableEdge<string, double>(e.getStartVertex().getVertexId(), e.getEndVertex().getVertexId(), e.getEdgeWeight().getWeightValue()));
+                this.graphAdaptee.AddEdge(new TaggedEquatableEdge<string, double>(e.StartVertex.VertexId, e.EndVertex.VertexId, e.EdgeWeight.WeightValue));
             }
 
 		    this.idMapper = idMapper;
@@ -89,12 +89,12 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph.generics
 	     * Otherwise, if the semantic of the method is not respected it can not for example be tested 
 	     * against results from other implementations since then they would return a different number of paths.      
 	     */
-	    protected override IList<P> findShortestPathHook(
+	    protected override IList<P> FindShortestPathHook(
 		    V startVertex, 
 		    V endVertex, 
 		    int maxNumberOfPaths
 	    ) {
-            var yen = new YenShortestPathsAlgorithm<string>(this.graphAdaptee, startVertex.getVertexId(), endVertex.getVertexId(), maxNumberOfPaths);
+            var yen = new YenShortestPathsAlgorithm<string>(this.graphAdaptee, startVertex.VertexId, endVertex.VertexId, maxNumberOfPaths);
 
 		    IList<P> paths = new List<P>();
 		    //int startVertexId = idMapper.createOrRetrieveIntegerId(startVertex.getVertexId());
@@ -110,15 +110,15 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph.generics
                 double pathWeight = 0;
                 while(edgesEnumerator.MoveNext()) {
                     TaggedEquatableEdge<string, double> edgeAdaptee = edgesEnumerator.Current;
-                    E edge = getOriginalEdgeInstance(edgeAdaptee.Source, edgeAdaptee.Target);
+                    E edge = GetOriginalEdgeInstance(edgeAdaptee.Source, edgeAdaptee.Target);
                     edges.Add(
                         edge
                     );	
                     pathWeight += edgeAdaptee.Tag;
                 }
                 // TODO kanske
-                W totalWeight = base.createInstanceWithTotalWeight(pathWeight, edges);
-                paths.Add(base.createPath(totalWeight, edges));
+                W totalWeight = base.CreateInstanceWithTotalWeight(pathWeight, edges);
+                paths.Add(base.CreatePath(totalWeight, edges));
                 if (maxNumberOfPaths == paths.Count)
                 {
                     break;

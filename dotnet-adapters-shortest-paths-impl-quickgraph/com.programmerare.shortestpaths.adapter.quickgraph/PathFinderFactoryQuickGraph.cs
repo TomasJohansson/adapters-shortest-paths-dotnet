@@ -14,7 +14,7 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph
 		    >	
 	    , PathFinderFactory 
     {
-	    public override PathFinder createPathFinder(
+	    public override PathFinder CreatePathFinder(
 		    GraphGenerics<Edge, Vertex, Weight> graph
 	    ) {
 		    return new PathFinderQuickGraph(graph);
