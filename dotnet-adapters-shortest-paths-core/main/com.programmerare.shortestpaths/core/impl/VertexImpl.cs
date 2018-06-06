@@ -14,7 +14,7 @@ namespace com.programmerare.shortestpaths.core.impl
 
 	    private readonly string id;
 	
-	    public static Vertex createVertex(
+	    public static Vertex CreateVertex(
 		    string id		
 	    ) {
 		    return new VertexImpl(
@@ -22,21 +22,19 @@ namespace com.programmerare.shortestpaths.core.impl
 		    );
 	    }
 
-	    public static Vertex createVertex(
+	    public static Vertex CreateVertex(
 		    int id			
 	    ) {
-		    return createVertex(id.ToString());
+		    return CreateVertex(id.ToString());
 	    }
 	
 	    private VertexImpl(string id) {
 		    this.id = id;
 	    }
 
-	    public string getVertexId() {
-		    return id;
-	    }
+        public string VertexId => id;
 
-	    public override string ToString() {
+        public override string ToString() {
 		    return "VertexImpl [id=" + id + "]";
 	    }
 
@@ -63,7 +61,7 @@ namespace com.programmerare.shortestpaths.core.impl
 		    return true;
 	    }
 
-	    public string renderToString() {
+	    public string RenderToString() {
 		    return ToString();
 	    }
     }

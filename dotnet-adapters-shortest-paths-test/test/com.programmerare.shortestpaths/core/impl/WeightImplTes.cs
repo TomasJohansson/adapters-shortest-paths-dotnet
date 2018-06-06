@@ -25,15 +25,15 @@ namespace com.programmerare.shortestpaths.core.impl
 	    public void setUp()  {
 		    weightValueA = 12345.6789;
 		    weightValueB = 12345.6789;
-		    weightA = createWeight(weightValueA);
-		    weightB = createWeight(weightValueB);
+		    weightA = CreateWeight(weightValueA);
+		    weightB = CreateWeight(weightValueB);
 	    }
 	
 	    [Test]
 	    public void testGetWeightValue() {
 		    AreEqual(
 			    weightValueA, 
-			    weightA.getWeightValue(), 
+			    weightA.WeightValue, 
 			    SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 		    );
 	    }

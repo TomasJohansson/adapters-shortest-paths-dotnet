@@ -37,6 +37,6 @@ namespace com.programmerare.shortestpaths.core.api.generics
 	     * Each returned Path contains a list of Edge instances. The start Vertex for the first Edge, and the end Vertex for the last Edge, 
 	     * should be the same for each returned paths, i.e. those should be the same start vertex and end vertex as were used as method input parameters.     
 	     */
-	    IList<P> findShortestPaths(V startVertex, V endVertex, int maxNumberOfPaths);
+	    IList<P> FindShortestPaths(V startVertex, V endVertex, int maxNumberOfPaths);
     }
 }

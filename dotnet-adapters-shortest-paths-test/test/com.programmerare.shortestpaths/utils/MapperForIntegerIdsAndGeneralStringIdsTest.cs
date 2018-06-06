@@ -35,35 +35,35 @@ public class MapperForIntegerIdsAndGeneralStringIdsTest {
 
 	[Test]
 	public void testStartIndexZero() {
-		MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.createIdMapper(0);
-		AreEqual(0, idMapper.createOrRetrieveIntegerId("A"));
-		AreEqual(1, idMapper.createOrRetrieveIntegerId("B"));
-		AreEqual(0, idMapper.createOrRetrieveIntegerId("A"));
-		AreEqual(2, idMapper.createOrRetrieveIntegerId("C"));
-		AreEqual(0, idMapper.createOrRetrieveIntegerId("A"));
-		AreEqual(3, idMapper.createOrRetrieveIntegerId("D"));
+		MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.CreateIdMapper(0);
+		AreEqual(0, idMapper.CreateOrRetrieveIntegerId("A"));
+		AreEqual(1, idMapper.CreateOrRetrieveIntegerId("B"));
+		AreEqual(0, idMapper.CreateOrRetrieveIntegerId("A"));
+		AreEqual(2, idMapper.CreateOrRetrieveIntegerId("C"));
+		AreEqual(0, idMapper.CreateOrRetrieveIntegerId("A"));
+		AreEqual(3, idMapper.CreateOrRetrieveIntegerId("D"));
 
-		AreEqual(4, idMapper.getNumberOfVertices());
+		AreEqual(4, idMapper.GetNumberOfVertices());
 		
-		AreEqual("A", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(0));
-		AreEqual("B", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(1));
-		AreEqual("C", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(2));
-		AreEqual("D", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(3));
+		AreEqual("A", idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(0));
+		AreEqual("B", idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(1));
+		AreEqual("C", idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(2));
+		AreEqual("D", idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(3));
 	}
 	
 	[Test]
 	public void testStartIndexOne() {
-		MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.createIdMapper(1);
-		AreEqual(1, idMapper.createOrRetrieveIntegerId("ABC"));
-		AreEqual(2, idMapper.createOrRetrieveIntegerId("DEF"));
-		AreEqual(3, idMapper.createOrRetrieveIntegerId("GHI"));
-		AreEqual(2, idMapper.createOrRetrieveIntegerId("DEF"));
+		MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.CreateIdMapper(1);
+		AreEqual(1, idMapper.CreateOrRetrieveIntegerId("ABC"));
+		AreEqual(2, idMapper.CreateOrRetrieveIntegerId("DEF"));
+		AreEqual(3, idMapper.CreateOrRetrieveIntegerId("GHI"));
+		AreEqual(2, idMapper.CreateOrRetrieveIntegerId("DEF"));
 		
-		AreEqual(3, idMapper.getNumberOfVertices());
+		AreEqual(3, idMapper.GetNumberOfVertices());
 		
-		AreEqual("ABC", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(1));
-		AreEqual("DEF", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(2));
-		AreEqual("GHI", idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(3));
+		AreEqual("ABC", idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(1));
+		AreEqual("DEF", idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(2));
+		AreEqual("GHI", idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(3));
 	}	
 	
 //	@Test

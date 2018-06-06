@@ -21,7 +21,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    private readonly V endVertex;
 	    private readonly W weight;
 
-	    public static EdgeGenerics<V, W> createEdgeGenerics<V, W>(
+	    public static EdgeGenerics<V, W> CreateEdgeGenerics<V, W>(
 		    string edgeId,
 		    V startVertex, 
 		    V endVertex, 
@@ -39,7 +39,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    return e;
 	    }
 	
-	    public static EdgeGenerics<V, W> createEdgeGenerics<V, W>(
+	    public static EdgeGenerics<V, W> CreateEdgeGenerics<V, W>(
 		    V startVertex, 
 		    V endVertex, 
 		    W weight			
@@ -47,8 +47,8 @@ namespace com.programmerare.shortestpaths.core.impl.generics
             where V : Vertex
             where W : Weight
         {
-		    return createEdgeGenerics(
-			    createEdgeIdValue(startVertex.getVertexId(), endVertex.getVertexId()),
+		    return CreateEdgeGenerics(
+			    CreateEdgeIdValue(startVertex.VertexId, endVertex.VertexId),
 			    startVertex, 
 			    endVertex, 
 			    weight					
@@ -66,24 +66,16 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    this.weight = weight;
 		    this.id = edgeId;
 	    }
-	
-	    public V getStartVertex() {
-		    return startVertex;
-	    }
 
-	    public V getEndVertex() {
-		    return endVertex;
-	    }
+        public V StartVertex => startVertex;
 
-	    public W getEdgeWeight() {
-		    return weight;
-	    }
-	
-	    public string getEdgeId() {
-		    return id;
-	    }
+        public V EndVertex => endVertex;
 
-	    private const string SEPARATOR_BETWEEN_START_AND_END_VERTEX_ID = "_";
+        public W EdgeWeight => weight;
+
+        public string EdgeId => id;
+
+        private const string SEPARATOR_BETWEEN_START_AND_END_VERTEX_ID = "_";
 
 
 	    /**
@@ -91,7 +83,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	     * @param endVertexId the id for the vertex at the end of an edge
 	     * @return the id to be used for the edge, as documented by {@link Vertex#getVertexId()}
 	     */
-	    public static string createEdgeIdValue(string startVertexId, string endVertexId) {
+	    public static string CreateEdgeIdValue(string startVertexId, string endVertexId) {
 		    // It could be nicer to place this method somewhere else but the important thing is 
 		    // to avoid the duplication, i.e. avoid implementing the concatenation in different places.		
 		    return startVertexId + SEPARATOR_BETWEEN_START_AND_END_VERTEX_ID + endVertexId;
@@ -143,7 +135,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    return true;
 	    }
 
-	    public string renderToString() {
+	    public string RenderToString() {
 		    return ToString();
 	    }
     }

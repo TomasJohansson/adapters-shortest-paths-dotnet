@@ -45,53 +45,53 @@ namespace com.programmerare.shortestpaths.core.parsers
         [SetUp]
         public void setUp()
         {
-            edgeParser = EdgeParser<Edge,Vertex,Weight>.createEdgeParserDefault();
+            edgeParser = EdgeParser<Edge,Vertex,Weight>.CreateEdgeParserDefault();
         }
 
         [Test]
         public void testFromStringToEdge()
         {
-            Edge edge = edgeParser.fromStringToEdge("A B 3.7");
+            Edge edge = edgeParser.FromStringToEdge("A B 3.7");
             IsNotNull(edge);
-            IsNotNull(edge.getStartVertex());
-            IsNotNull(edge.getEndVertex());
-            IsNotNull(edge.getEdgeWeight());
-            AreEqual("A", edge.getStartVertex().getVertexId());
-            AreEqual("B", edge.getEndVertex().getVertexId());
-            AreEqual(3.7, edge.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            IsNotNull(edge.StartVertex);
+            IsNotNull(edge.EndVertex);
+            IsNotNull(edge.EdgeWeight);
+            AreEqual("A", edge.StartVertex.VertexId);
+            AreEqual("B", edge.EndVertex.VertexId);
+            AreEqual(3.7, edge.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
         }
         // TODO: refactor away duplication from above and below methods
         [Test]
         public void testFromStringToEdgeGenerics()
         {
-            Edge edge = edgeParser.fromStringToEdge("A B 3.7");
+            Edge edge = edgeParser.FromStringToEdge("A B 3.7");
             IsNotNull(edge);
-            IsNotNull(edge.getStartVertex());
-            IsNotNull(edge.getEndVertex());
-            IsNotNull(edge.getEdgeWeight());
-            AreEqual("A", edge.getStartVertex().getVertexId());
-            AreEqual("B", edge.getEndVertex().getVertexId());
-            AreEqual(3.7, edge.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            IsNotNull(edge.StartVertex);
+            IsNotNull(edge.EndVertex);
+            IsNotNull(edge.EdgeWeight);
+            AreEqual("A", edge.StartVertex.VertexId);
+            AreEqual("B", edge.EndVertex.VertexId);
+            AreEqual(3.7, edge.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
         }
 
         [Test]
         public void testFromEdgeParserGenericsToString()
         {
-            Vertex startVertex = createVertex("A");
-            Vertex endVertex = createVertex("B");
-            Weight weight = createWeight(3.7);
-            Edge edge = createEdge(startVertex, endVertex, weight);
-            AreEqual("A B 3.7", edgeParser.fromEdgeToString(edge));
+            Vertex startVertex = CreateVertex("A");
+            Vertex endVertex = CreateVertex("B");
+            Weight weight = CreateWeight(3.7);
+            Edge edge = CreateEdge(startVertex, endVertex, weight);
+            AreEqual("A B 3.7", edgeParser.FromEdgeToString(edge));
         }
         // TODO: refactor away duplication from above and below methods	
         [Test]
         public void testFromEdgeToString()
         {
-            Vertex startVertex = createVertex("A");
-            Vertex endVertex = createVertex("B");
-            Weight weight = createWeight(3.7);
-            Edge edge = createEdge(startVertex, endVertex, weight);
-            AreEqual("A B 3.7", edgeParser.fromEdgeToString(edge));
+            Vertex startVertex = CreateVertex("A");
+            Vertex endVertex = CreateVertex("B");
+            Weight weight = CreateWeight(3.7);
+            Edge edge = CreateEdge(startVertex, endVertex, weight);
+            AreEqual("A B 3.7", edgeParser.FromEdgeToString(edge));
         }
 
         [Test]
@@ -109,7 +109,7 @@ namespace com.programmerare.shortestpaths.core.parsers
                     "B C 7\r\n" +
                     "B D 8\r\n" +
                     "C D 9";
-            IList<Edge> edges = edgeParser.fromMultiLinedStringToListOfEdges(multiLinedString);
+            IList<Edge> edges = edgeParser.FromMultiLinedStringToListOfEdges(multiLinedString);
             IsNotNull(edges);
             AreEqual(5, edges.Count);
             EdgeGenerics<Vertex, Weight> firstEdge = edges[0];
@@ -117,13 +117,13 @@ namespace com.programmerare.shortestpaths.core.parsers
             assertNotNulls(firstEdge);
             assertNotNulls(lastEdge);
 
-            AreEqual("A", firstEdge.getStartVertex().getVertexId());
-            AreEqual("B", firstEdge.getEndVertex().getVertexId());
-            AreEqual(5, firstEdge.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            AreEqual("A", firstEdge.StartVertex.VertexId);
+            AreEqual("B", firstEdge.EndVertex.VertexId);
+            AreEqual(5, firstEdge.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
 
-            AreEqual("C", lastEdge.getStartVertex().getVertexId());
-            AreEqual("D", lastEdge.getEndVertex().getVertexId());
-            AreEqual(9, lastEdge.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            AreEqual("C", lastEdge.StartVertex.VertexId);
+            AreEqual("D", lastEdge.EndVertex.VertexId);
+            AreEqual(9, lastEdge.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
         }
         // TODO: refactor away duplication from above and below methods	
         [Test]
@@ -141,7 +141,7 @@ namespace com.programmerare.shortestpaths.core.parsers
                     "B C 7\r\n" +
                     "B D 8\r\n" +
                     "C D 9";
-            IList<Edge> edges = edgeParser.fromMultiLinedStringToListOfEdges(multiLinedString);
+            IList<Edge> edges = edgeParser.FromMultiLinedStringToListOfEdges(multiLinedString);
             IsNotNull(edges);
             AreEqual(5, edges.Count);
             EdgeGenerics<Vertex, Weight> firstEdge = edges[0];
@@ -149,21 +149,21 @@ namespace com.programmerare.shortestpaths.core.parsers
             assertNotNulls(firstEdge);
             assertNotNulls(lastEdge);
 
-            AreEqual("A", firstEdge.getStartVertex().getVertexId());
-            AreEqual("B", firstEdge.getEndVertex().getVertexId());
-            AreEqual(5, firstEdge.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            AreEqual("A", firstEdge.StartVertex.VertexId);
+            AreEqual("B", firstEdge.EndVertex.VertexId);
+            AreEqual(5, firstEdge.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
 
-            AreEqual("C", lastEdge.getStartVertex().getVertexId());
-            AreEqual("D", lastEdge.getEndVertex().getVertexId());
-            AreEqual(9, lastEdge.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            AreEqual("C", lastEdge.StartVertex.VertexId);
+            AreEqual("D", lastEdge.EndVertex.VertexId);
+            AreEqual(9, lastEdge.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
         }
 
         private void assertNotNulls(EdgeGenerics<Vertex, Weight> edge)
         {
             IsNotNull(edge);
-            IsNotNull(edge.getStartVertex());
-            IsNotNull(edge.getEndVertex());
-            IsNotNull(edge.getEdgeWeight());
+            IsNotNull(edge.StartVertex);
+            IsNotNull(edge.EndVertex);
+            IsNotNull(edge.EdgeWeight);
         }
 
     }

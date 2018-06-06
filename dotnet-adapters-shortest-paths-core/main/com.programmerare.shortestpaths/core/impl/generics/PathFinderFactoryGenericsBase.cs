@@ -26,16 +26,16 @@ public abstract class PathFinderFactoryGenericsBase<F, P, E, V, W>
 	 * @param graphEdgesValidationDesired should be NO (for performance reason) if validation has already been done
 	 * @return an instance of a PathFinderGenerics implementation
 	 */
-	public F createPathFinder(
+	public F CreatePathFinder(
 		IList<E> edges, 
 		GraphEdgesValidationDesired graphEdgesValidationDesired
 	)
     {
-		GraphGenerics<E, V, W> graph = GraphGenericsImpl<E, V, W>.createGraphGenerics<E, V, W>(edges, graphEdgesValidationDesired);
-		return createPathFinder(graph); // the overloaded method must be implemented by subclasses
+		GraphGenerics<E, V, W> graph = GraphGenericsImpl<E, V, W>.CreateGraphGenerics<E, V, W>(edges, graphEdgesValidationDesired);
+		return CreatePathFinder(graph); // the overloaded method must be implemented by subclasses
 	}
 
-    abstract public F createPathFinder(
+    abstract public F CreatePathFinder(
 		GraphGenerics<E, V, W> graph 
 	);
 }

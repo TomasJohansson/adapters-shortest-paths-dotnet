@@ -21,14 +21,14 @@ namespace com.programmerare.shortestpaths.core.impl
 	
 	    [SetUp]
 	    public void setUp() {
-		    vertexA = createVertex(357);
-		    vertexB = createVertex("357");		
+		    vertexA = CreateVertex(357);
+		    vertexB = CreateVertex("357");		
 	    }
 	
 	    [Test]
 	    public void testGetVertexId() {
 		
-		    AreEqual(vertexA.getVertexId(), vertexB.getVertexId());
+		    AreEqual(vertexA.VertexId, vertexB.VertexId);
 		
 		    AreEqual(vertexA, vertexB);
 		    AreEqual(vertexA.GetHashCode(), vertexB.GetHashCode());

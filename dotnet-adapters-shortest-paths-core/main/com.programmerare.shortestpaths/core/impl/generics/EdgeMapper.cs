@@ -32,7 +32,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	     * @param edges a list of edges to be used for constructing a graph. Note that they are assumed to be validated as a precondition.
 	     * @return
 	     */
-	    public static EdgeMapper<E, V, W> createEdgeMapper<E, V, W>(IList<E> edges)
+	    public static EdgeMapper<E, V, W> CreateEdgeMapper<E, V, W>(IList<E> edges)
             where E : EdgeGenerics<V, W>
             where V : Vertex
             where W : Weight
@@ -42,33 +42,33 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	
 	    private EdgeMapper(IList<E> edges) {
 		    foreach (E edge in edges) {
-			    string idForMapping = getIdForMapping(edge);
+			    string idForMapping = GetIdForMapping(edge);
 			    edgeMapWithVertexIdsAsKey.Add(idForMapping, edge);
 		    }
 	    }
 
-	    public IList<E> getOriginalObjectInstancesOfTheEdges(IList<E> edges) {
+	    public IList<E> GetOriginalObjectInstancesOfTheEdges(IList<E> edges) {
 		    IList<E> originalObjectInstancesOfTheEdges = new List<E>();
 		    foreach (E edge in edges) {
-			    originalObjectInstancesOfTheEdges.Add(edgeMapWithVertexIdsAsKey[getIdForMapping(edge)]);
+			    originalObjectInstancesOfTheEdges.Add(edgeMapWithVertexIdsAsKey[GetIdForMapping(edge)]);
 		    }		
 		    return originalObjectInstancesOfTheEdges;
 	    }
 
-	    public E getOriginalEdgeInstance(string startVertexId, string endVertexId) {
-		    return edgeMapWithVertexIdsAsKey[getIdForMapping(startVertexId, endVertexId)];
+	    public E GetOriginalEdgeInstance(string startVertexId, string endVertexId) {
+		    return edgeMapWithVertexIdsAsKey[GetIdForMapping(startVertexId, endVertexId)];
 	    }
 	
-	    private string getIdForMapping(E edge) {
-		    return getIdForMapping(edge.getStartVertex(), edge.getEndVertex());
+	    private string GetIdForMapping(E edge) {
+		    return GetIdForMapping(edge.StartVertex, edge.EndVertex);
 	    }
 	
-	    private string getIdForMapping(V startVertex, V endVertex) {
-		    return getIdForMapping(startVertex.getVertexId(), endVertex.getVertexId());
+	    private string GetIdForMapping(V startVertex, V endVertex) {
+		    return GetIdForMapping(startVertex.VertexId, endVertex.VertexId);
 	    }
 	
-	    private string getIdForMapping(string startVertexId, string endVertexId) {
-		    return EdgeGenericsImpl<V, W>.createEdgeIdValue(startVertexId, endVertexId);
+	    private string GetIdForMapping(string startVertexId, string endVertexId) {
+		    return EdgeGenericsImpl<V, W>.CreateEdgeIdValue(startVertexId, endVertexId);
 	    }	
     }
 }

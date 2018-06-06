@@ -24,10 +24,10 @@ namespace com.programmerare.shortestpaths.core.impl
 	     * @param edges list of all the edges for the graph
 	     * @return an instance implementing the Graph interface
 	     */	
-	    public static Graph createGraph(
+	    public static Graph CreateGraph(
 		    IList<Edge> edges
 	    ) {
-		    return createGraph(edges, GraphEdgesValidationDesired.YES);
+		    return CreateGraph(edges, GraphEdgesValidationDesired.YES);
 	    }
 	
 	    /**
@@ -35,7 +35,7 @@ namespace com.programmerare.shortestpaths.core.impl
 	     * @param graphEdgesValidationDesired enum specifying whether or not validation is desired
 	     * @return an instance implementing the Graph interface
 	     */
-	    public static Graph createGraph(
+	    public static Graph CreateGraph(
 		    IList<Edge> edges,
 		    GraphEdgesValidationDesired graphEdgesValidationDesired
 	    ) {

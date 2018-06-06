@@ -40,24 +40,24 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 		    GraphGenerics<E, V, W> graph, 
 		    PathFactory<P, E, V, W> pathFactory
 	    ): base(graph, pathFactory) {
-		    MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.createIdMapper(0);
-		    IList<EdgeYanQi> vertices = createListOfVerticesWhileAlsoPopulatingIdMapper(idMapper);
+		    MapperForIntegerIdsAndGeneralStringIds idMapper = MapperForIntegerIdsAndGeneralStringIds.CreateIdMapper(0);
+		    IList<EdgeYanQi> vertices = CreateListOfVerticesWhileAlsoPopulatingIdMapper(idMapper);
 		
 		    // "Adaptee" https://en.wikipedia.org/wiki/Adapter_pattern		
 		    this.graphAdaptee = new GraphPossibleToCreateProgrammatically(
-			    idMapper.getNumberOfVertices(),
+			    idMapper.GetNumberOfVertices(),
 			    vertices
 		    );
 		    this.idMapper = idMapper;
 	    }
 	
-	    private IList<EdgeYanQi> createListOfVerticesWhileAlsoPopulatingIdMapper(MapperForIntegerIdsAndGeneralStringIds idMapper) {
-		    IList<E> edges = this.getGraph().getEdges();
+	    private IList<EdgeYanQi> CreateListOfVerticesWhileAlsoPopulatingIdMapper(MapperForIntegerIdsAndGeneralStringIds idMapper) {
+		    IList<E> edges = this.GetGraph().Edges;
 		    IList<EdgeYanQi> vertices = new List<EdgeYanQi>();
 		    foreach (E edge in edges) {
-			    int integerIdForStartVertex = idMapper.createOrRetrieveIntegerId(edge.getStartVertex().getVertexId());
-			    int integerIdForEndVertex = idMapper.createOrRetrieveIntegerId(edge.getEndVertex().getVertexId());
-			    vertices.Add(new EdgeYanQi(integerIdForStartVertex, integerIdForEndVertex, edge.getEdgeWeight().getWeightValue()));
+			    int integerIdForStartVertex = idMapper.CreateOrRetrieveIntegerId(edge.StartVertex.VertexId);
+			    int integerIdForEndVertex = idMapper.CreateOrRetrieveIntegerId(edge.EndVertex.VertexId);
+			    vertices.Add(new EdgeYanQi(integerIdForStartVertex, integerIdForEndVertex, edge.EdgeWeight.WeightValue));
 		    }
 		    return vertices;
 	    }
@@ -69,14 +69,14 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 	     * Otherwise, if the semantic of the method is not respected it can not for example be tested 
 	     * against results from other implementations since then they would return a different number of paths.      
 	     */
-	    protected override IList<P> findShortestPathHook(
+	    protected override IList<P> FindShortestPathHook(
 		    V startVertex, 
 		    V endVertex, 
 		    int maxNumberOfPaths
 	    ) {
 		    IList<P> paths = new List<P>();
-		    int startVertexId = idMapper.createOrRetrieveIntegerId(startVertex.getVertexId());
-		    int endVertexId = idMapper.createOrRetrieveIntegerId(endVertex.getVertexId());
+		    int startVertexId = idMapper.CreateOrRetrieveIntegerId(startVertex.VertexId);
+		    int endVertexId = idMapper.CreateOrRetrieveIntegerId(endVertex.VertexId);
 		    YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graphAdaptee, graphAdaptee.getVertex(startVertexId), graphAdaptee.getVertex(endVertexId));
 		    while(yenAlg.hasNext()) {
 			    global::edu.asu.emit.algorithm.graph.Path path = yenAlg.next();
@@ -85,13 +85,13 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 			    for (int i = 1; i < vertexList.size(); i++) {
 				    BaseVertex startVertexForEdge = vertexList.get(i-1);
 				    BaseVertex endVertexForEdge = vertexList.get(i);
-				    E edge = getOriginalEdgeInstance(startVertexForEdge, endVertexForEdge); 
+				    E edge = GetOriginalEdgeInstance(startVertexForEdge, endVertexForEdge); 
 				    edges.Add(
 					    edge
 				    );				
 			    }
-			    W totalWeight = base.createInstanceWithTotalWeight(path.getWeight(), edges);
-			    paths.Add(base.createPath(totalWeight, edges));
+			    W totalWeight = base.CreateInstanceWithTotalWeight(path.getWeight(), edges);
+			    paths.Add(base.CreatePath(totalWeight, edges));
 			    if(maxNumberOfPaths == paths.Count) {
 				    break;
 			    }
@@ -99,10 +99,10 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 		    return new ReadOnlyCollection<P>(paths);
 	    }
 
-	    private E getOriginalEdgeInstance(BaseVertex startVertexForEdge, BaseVertex endVertexForEdge) {
-		    string startVertexId = idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(startVertexForEdge.getId());
-		    string endVertexId = idMapper.getBackThePreviouslyStoredGeneralStringIdForInteger(endVertexForEdge.getId());		
-		    return base.getOriginalEdgeInstance(startVertexId, endVertexId);
+	    private E GetOriginalEdgeInstance(BaseVertex startVertexForEdge, BaseVertex endVertexForEdge) {
+		    string startVertexId = idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(startVertexForEdge.getId());
+		    string endVertexId = idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(endVertexForEdge.getId());		
+		    return base.GetOriginalEdgeInstance(startVertexId, endVertexId);
 	    }
     }
 }

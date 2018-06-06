@@ -15,28 +15,28 @@ namespace com.programmerare.shortestpaths.core.api.generics
     public interface EdgeGenerics<V , W> : StringRenderable 
         where V : Vertex
         where W : Weight
-    { 
+    {
 
-	    /**
+        /**
 	     * @return an id which must be unique within a Graph, i.e. a Graph should not have more than one Edge with the same id. 
 	     * 	One possible way of implementing it is to return a concatenation of the id's for the start vertex and the end vertex, with a separator between (e.g. an underscore).
 	     *  Such an implementation will make it unique since each vertex id should also be unique within a graph. 
 	     */
-	    string getEdgeId();
-	
-	    /**
+        string EdgeId { get; }
+
+        /**
 	     * @return the Vertex where the directed Edge starts
 	     */
-	    V getStartVertex();
+        V StartVertex { get; }
 
-	    /**
+        /**
 	     * @return the Vertex where the directed Edge ends
 	     */
-	    V getEndVertex();
+        V EndVertex { get; }
 
-	    /**
+        /**
 	     * @return the Weight for the edge, i.e. some kind of 'cost' (e.g. time or distance) for going from the start Vertex to the end Vertex. 
-	     */	
-	    W getEdgeWeight();
+	     */
+        W EdgeWeight { get; }
     }
 }

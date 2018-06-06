@@ -33,7 +33,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    ) {
 		    this.edges = new ReadOnlyCollection<E>(edges);
 		    if(graphEdgesValidationDesired == GraphEdgesValidationDesired.YES) {
-			    GraphEdgesValidator<PathGenerics<E,V,W>, E, V, W>.validateEdgesForGraphCreation<PathGenerics<E,V,W>, E, V, W>(this.edges);
+			    GraphEdgesValidator<PathGenerics<E,V,W>, E, V, W>.ValidateEdgesForGraphCreation<PathGenerics<E,V,W>, E, V, W>(this.edges);
 		    }		
 	    }
 	
@@ -46,17 +46,17 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	     * @param edges list of edges
 	     * @return an instance implementing the interface GraphGenerics
 	     */
-	    public static GraphGenerics<E, V, W> createGraphGenerics<E, V, W>(
+	    public static GraphGenerics<E, V, W> CreateGraphGenerics<E, V, W>(
 		    IList<E> edges
 	    )
             where E : EdgeGenerics<V, W>
             where V : Vertex
             where W : Weight
         {
-		    return createGraphGenerics<E, V, W>(edges, GraphEdgesValidationDesired.YES);
+		    return CreateGraphGenerics<E, V, W>(edges, GraphEdgesValidationDesired.YES);
 	    }
 	
-	    public static GraphGenerics<E, V, W> createGraphGenerics<E, V, W>(
+	    public static GraphGenerics<E, V, W> CreateGraphGenerics<E, V, W>(
 		    IList<E> edges,
 		    GraphEdgesValidationDesired graphEdgesValidationDesired
 	    )
@@ -70,48 +70,54 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    );
 		    return g;
 	    }
-	
-	    public IList<E> getEdges() {
-		    return edges;
+
+        public IList<E> Edges => edges;
+
+        public IList<V> Vertices
+        {
+            get
+            {
+                if (vertices == null)
+                { // lazy loading
+                    IList<V> vertices = new List<V>();
+                    IDictionary<string, V> map = new Dictionary<string, V>();
+                    foreach (E edge in edges)
+                    {
+                        V startVertex = edge.StartVertex;
+                        V endVertex = edge.EndVertex;
+
+                        if (!map.ContainsKey(startVertex.VertexId))
+                        {
+                            map.Add(startVertex.VertexId, startVertex);
+                            vertices.Add(startVertex);
+                        }
+
+                        if (!map.ContainsKey(endVertex.VertexId))
+                        {
+                            map.Add(endVertex.VertexId, endVertex);
+                            vertices.Add(endVertex);
+                        }
+                    }
+                    this.vertices = vertices;
+                    this.mapWithVertices = map;
+                }
+                return vertices;
+            }
+        }
+
+        public bool ContainsVertex(V vertex) {
+		    var v = Vertices; // triggers the lazy loading if needed, TODO refactor instead of using a getter for this purpose
+		    return mapWithVertices.ContainsKey(vertex.VertexId);
 	    }
 
-	    public IList<V> getVertices() {
-		    if(vertices == null) { // lazy loading
-			    IList<V> vertices = new List<V>(); 
-			    IDictionary<string, V> map = new Dictionary<string, V>();
-			    foreach (E edge in edges) {
-				    V startVertex = edge.getStartVertex();
-				    V  endVertex = edge.getEndVertex();
-
-				    if(!map.ContainsKey(startVertex.getVertexId())) {
-					    map.Add(startVertex.getVertexId(), startVertex);
-					    vertices.Add(startVertex);
-				    }
-				
-				    if(!map.ContainsKey(endVertex.getVertexId())) {
-					    map.Add(endVertex.getVertexId(), endVertex);
-					    vertices.Add(endVertex);
-				    }			
-			    }
-			    this.vertices = vertices;
-			    this.mapWithVertices = map;
-		    }
-		    return vertices;
-	    }
-	
-	    public bool containsVertex(V vertex) {
-		    getVertices(); // triggers the lazy loading if needed, TODO refactor instead of using a getter for this purpose
-		    return mapWithVertices.ContainsKey(vertex.getVertexId());
-	    }
-
-	    public bool containsEdge(E edge) {
+	    public bool ContainsEdge(E edge) {
 		    if(mapWithEdges == null) {
 			    mapWithEdges = new Dictionary<string, E>();
 			    foreach (E e in edges) {
-				    mapWithEdges.Add(e.getEdgeId(), e);
+				    mapWithEdges.Add(e.EdgeId, e);
 			    }			
 		    }
-		    return mapWithEdges.ContainsKey(edge.getEdgeId());
+		    return mapWithEdges.ContainsKey(edge.EdgeId);
 	    }
     }
 }

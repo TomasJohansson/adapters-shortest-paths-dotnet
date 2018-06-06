@@ -35,7 +35,7 @@ namespace com.programmerare.shortestpaths.utils
 				    "\r\n" + 
 				    "\r\n" + 
 				    "";
-		    IList<string> list = StringUtility.getMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(s);
+		    IList<string> list = StringUtility.GetMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(s);
 		    IsNotNull(list);
 		    AreEqual(5, list.Count);
 		    AreEqual("AB", list[0]);
@@ -68,11 +68,11 @@ namespace com.programmerare.shortestpaths.utils
 		    assertStringResult("13.0010", "13.001");
 	    }
 	    private void assertStringResult(string doubleAsString, string expected) {
-            string s = StringUtility.getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(doubleAsString);
+            string s = StringUtility.GetDoubleAsStringWithoutZeroesAndDotIfNotRelevant(doubleAsString);
             AreEqual(expected, s);
         }
 	    private void assertDoubleResult(double d, string expected) {
-		    string s = StringUtility.getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(d);
+		    string s = StringUtility.GetDoubleAsStringWithoutZeroesAndDotIfNotRelevant(d);
 		    AreEqual(expected, s);
 		
 	    }

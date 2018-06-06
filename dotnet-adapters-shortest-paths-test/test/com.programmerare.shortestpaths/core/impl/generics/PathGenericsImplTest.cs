@@ -52,21 +52,21 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    weightThirdEdge = 7;
 		    totalWeight = weightFirstEdge + weightSecondEdge + weightThirdEdge;
 		
-		    edgeAB3 = createEdge(createVertex(firstVertex), createVertex(secondVertex), createWeight(weightFirstEdge));
-		    edgeBC5 = createEdge(createVertex(secondVertex), createVertex(thirdVertex), createWeight(weightSecondEdge));
-		    edgeCD7 = createEdge(createVertex(thirdVertex), createVertex(fourthVertex), createWeight(weightThirdEdge));
+		    edgeAB3 = CreateEdge(CreateVertex(firstVertex), CreateVertex(secondVertex), CreateWeight(weightFirstEdge));
+		    edgeBC5 = CreateEdge(CreateVertex(secondVertex), CreateVertex(thirdVertex), CreateWeight(weightSecondEdge));
+		    edgeCD7 = CreateEdge(CreateVertex(thirdVertex), CreateVertex(fourthVertex), CreateWeight(weightThirdEdge));
 		
-		    path = createPath(createWeight(totalWeight), new List<Edge> {edgeAB3, edgeBC5, edgeCD7 });
+		    path = CreatePath(CreateWeight(totalWeight), new List<Edge> {edgeAB3, edgeBC5, edgeCD7 });
 	    }
 
 	    [Test]
 	    public void testGetTotalWeightForPath() {
-		    AreEqual(totalWeight, path.getTotalWeightForPath().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+		    AreEqual(totalWeight, path.TotalWeightForPath.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
 	    }
 
 	    [Test]
 	    public void testGetEdgesForPath() {
-		    var edgesForPath = path.getEdgesForPath();
+		    var edgesForPath = path.EdgesForPath;
 		    AreEqual(3, edgesForPath.Count);
 		    AreEqual(edgeAB3, edgesForPath[0]);
 		    AreEqual(edgeBC5, edgesForPath[1]);
@@ -76,13 +76,13 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    [Test]//@Test(expected = RuntimeException.class) 
 	    public void testExceptionIsThrownIfVerticesIsNotMatching() { 
             var exceptionThrown = Assert.Throws<Exception>(() => {
-                PathGenericsImpl<Edge, Vertex, Weight>.createPathGenerics<Edge, Vertex, Weight>(
-                    createWeight(15d),
+                PathGenericsImpl<Edge, Vertex, Weight>.CreatePathGenerics<Edge, Vertex, Weight>(
+                    CreateWeight(15d),
                     new List<Edge>{
-                        createEdge(createVertex("A"), createVertex("B"), createWeight(3d)),
-                        createEdge(createVertex("B"), createVertex("C"), createWeight(5d)),
+                        CreateEdge(CreateVertex("A"), CreateVertex("B"), CreateWeight(3d)),
+                        CreateEdge(CreateVertex("B"), CreateVertex("C"), CreateWeight(5d)),
                         // Note that "X" should be "C" below, which is the reason for expected exceotion
-                        createEdge(createVertex("X"), createVertex("D"), createWeight(7d))
+                        CreateEdge(CreateVertex("X"), CreateVertex("D"), CreateWeight(7d))
                     },
                     false,
                     true // tell creation method to throw exception if not all vertices are matching
@@ -94,12 +94,12 @@ namespace com.programmerare.shortestpaths.core.impl.generics
         [Test]
 	    public void testExceptionIsTotalWeightIsNotMatching() {
             var exceptionThrown = Assert.Throws<Exception>(() => {
-                PathGenericsImpl<Edge, Vertex, Weight>.createPathGenerics<Edge, Vertex, Weight>(
-                    createWeight(16), // SHOULD be 15 ( 3 + 5 + 7 ) and therefore an exception should be thrown 
+                PathGenericsImpl<Edge, Vertex, Weight>.CreatePathGenerics<Edge, Vertex, Weight>(
+                    CreateWeight(16), // SHOULD be 15 ( 3 + 5 + 7 ) and therefore an exception should be thrown 
                     new List<Edge>{
-                        createEdge(createVertex("A"), createVertex("B"), createWeight(3d)),
-                        createEdge(createVertex("B"), createVertex("C"), createWeight(5d)),
-                        createEdge(createVertex("C"), createVertex("D"), createWeight(7d))
+                        CreateEdge(CreateVertex("A"), CreateVertex("B"), CreateWeight(3d)),
+                        CreateEdge(CreateVertex("B"), CreateVertex("C"), CreateWeight(5d)),
+                        CreateEdge(CreateVertex("C"), CreateVertex("D"), CreateWeight(7d))
                     },
                     true,  // tell creation method to throw exception if sum is not matching
                     false

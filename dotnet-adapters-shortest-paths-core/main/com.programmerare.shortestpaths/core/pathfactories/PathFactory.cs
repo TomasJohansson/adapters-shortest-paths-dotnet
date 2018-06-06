@@ -32,6 +32,6 @@ namespace com.programmerare.shortestpaths.core.pathfactories
         where V : Vertex
         where W : Weight
     {
-	    P createPath(W totalWeight, IList<E> edges);
+	    P CreatePath(W totalWeight, IList<E> edges);
     }
 }

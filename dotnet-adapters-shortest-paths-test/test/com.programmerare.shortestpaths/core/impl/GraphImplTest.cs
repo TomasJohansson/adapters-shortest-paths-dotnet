@@ -34,31 +34,31 @@ namespace com.programmerare.shortestpaths.core.impl
 	    [SetUp]
 	    public void setUp()  {
 		
-		    Edge edge_A_B = createEdge(createVertex("A"), createVertex("B"), createWeight(123));
-		    Edge edge_B_C = createEdge(createVertex("B"), createVertex("C"), createWeight(456));
+		    Edge edge_A_B = CreateEdge(CreateVertex("A"), CreateVertex("B"), CreateWeight(123));
+		    Edge edge_B_C = CreateEdge(CreateVertex("B"), CreateVertex("C"), CreateWeight(456));
 		    edgesForAcceptableGraph = new List<Edge> { edge_A_B, edge_B_C };
 
 		    // the same edge (A to B) defined once again is NOT correct
-		    Edge edge_A_B_again = createEdge(createVertex("A"), createVertex("B"), createWeight(789));
+		    Edge edge_A_B_again = CreateEdge(CreateVertex("A"), CreateVertex("B"), CreateWeight(789));
 		    edgesForUnacceptableGraph = new List<Edge> { edge_A_B, edge_A_B_again };
 	    }
 
         internal static EdgeGenerics<Vertex, Weight> createEdgeGenerics(Vertex vertex1, Vertex vertex2, Weight weight)
         {
-            return com.programmerare.shortestpaths.core.impl.generics.EdgeGenericsImpl<Vertex, Weight>.createEdgeGenerics(vertex1, vertex2, weight);
+            return com.programmerare.shortestpaths.core.impl.generics.EdgeGenericsImpl<Vertex, Weight>.CreateEdgeGenerics(vertex1, vertex2, weight);
         }
 
         [Test]
 	    public void testCreateGraph_SHOULD_throw_exception_for_unacceptable_graph_when_validation_REQUIRED() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-    		    graph = createGraph(edgesForUnacceptableGraph, GraphEdgesValidationDesired.YES);
+    		    graph = CreateGraph(edgesForUnacceptableGraph, GraphEdgesValidationDesired.YES);
             });
             IsNotNull(exceptionThrown);
 	    }
 	
 	    [Test]
 	    public void testCreateGraph_should_NOT_throw_exception_for_unacceptable_graph_when_validation_NOT_required() {
-		    graph = createGraph(edgesForUnacceptableGraph, GraphEdgesValidationDesired.NO);
+		    graph = CreateGraph(edgesForUnacceptableGraph, GraphEdgesValidationDesired.NO);
 	    }	
 
 	    [Test]
@@ -67,8 +67,8 @@ namespace com.programmerare.shortestpaths.core.impl
 		    // but since the graph should be acceptable, no exception should be thrown 
 		    // regardless if validation is required
 		    
-            graph = createGraph(edgesForAcceptableGraph, GraphEdgesValidationDesired.NO);
-		    graph = createGraph(edgesForAcceptableGraph, GraphEdgesValidationDesired.YES);
+            graph = CreateGraph(edgesForAcceptableGraph, GraphEdgesValidationDesired.NO);
+		    graph = CreateGraph(edgesForAcceptableGraph, GraphEdgesValidationDesired.YES);
 	    }	
     }
 }

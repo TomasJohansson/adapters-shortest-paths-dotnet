@@ -7,7 +7,7 @@ namespace com.programmerare.shortestpaths.utils
 {
     public sealed class TimeMeasurer {
 
-	    public static TimeMeasurer start() {
+	    public static TimeMeasurer Start() {
 		    return new TimeMeasurer();
 	    }
 	
@@ -17,7 +17,7 @@ namespace com.programmerare.shortestpaths.utils
 		    this.startTime = 0;// TODO(new Date()).getTime();
 	    }
 	
-	    public long getSeconds() {
+	    public long GetSeconds() {
 		    return 0;// TODO((new Date()).getTime()-startTime) / 1000;
 	    }
     }

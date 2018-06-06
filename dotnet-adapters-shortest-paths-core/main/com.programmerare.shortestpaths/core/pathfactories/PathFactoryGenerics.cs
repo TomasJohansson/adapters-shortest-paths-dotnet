@@ -16,8 +16,8 @@ namespace com.programmerare.shortestpaths.core.pathfactories
         where V : Vertex
         where W : Weight
     {
-	    public P createPath(W totalWeight, IList<E> edges) {
-		    PathGenerics<E, V, W> path = PathGenericsImpl<E, V, W>.createPathGenerics<E, V, W>(totalWeight, edges);
+	    public P CreatePath(W totalWeight, IList<E> edges) {
+		    PathGenerics<E, V, W> path = PathGenericsImpl<E, V, W>.CreatePathGenerics<E, V, W>(totalWeight, edges);
 		    P p = (P) path;
 		    return p;
 	    }

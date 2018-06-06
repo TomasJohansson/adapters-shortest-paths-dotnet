@@ -21,16 +21,16 @@ namespace com.programmerare.shortestpaths.core.impl
 	    ) : base(edgeId, startVertex, endVertex, weight) {
 	    }
 
-	    public static Edge createEdge(
+	    public static Edge CreateEdge(
 		    Vertex startVertex, 
 		    Vertex endVertex, 
 		    Weight weight
 	    ) {
-		    string edgeId = createEdgeIdValue(startVertex.getVertexId(), endVertex.getVertexId());
-		    return createEdge(edgeId, startVertex, endVertex, weight);
+		    string edgeId = CreateEdgeIdValue(startVertex.VertexId, endVertex.VertexId);
+		    return CreateEdge(edgeId, startVertex, endVertex, weight);
 	    }
 
-	    public static Edge createEdge(
+	    public static Edge CreateEdge(
 		    string edgeId, 
 		    Vertex startVertex, 
 		    Vertex endVertex, 

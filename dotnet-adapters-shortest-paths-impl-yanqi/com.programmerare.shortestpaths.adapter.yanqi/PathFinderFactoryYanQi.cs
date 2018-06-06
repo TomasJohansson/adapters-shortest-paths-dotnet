@@ -14,8 +14,7 @@ namespace com.programmerare.shortestpaths.adapter.yanqi
 		    >	
 	    , PathFinderFactory 
     {
-	    //@Override
-	    public PathFinder createPathFinder(
+	    public override PathFinder CreatePathFinder(
 		    GraphGenerics<Edge, Vertex, Weight> graph
 	    ) {
 		    return new PathFinderYanQi(graph);

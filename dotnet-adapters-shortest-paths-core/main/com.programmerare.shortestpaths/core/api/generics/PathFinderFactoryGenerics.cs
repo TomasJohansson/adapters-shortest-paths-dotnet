@@ -33,7 +33,7 @@ namespace com.programmerare.shortestpaths.core.api.generics
 	     * 	since the PathFinder find method will not receive the Graph as parameter.   
 	     * @return an Adapter implementation of the PathFinder, which will use some "Adaptee" (third-part library) for finding shortest paths.
 	     */	
-	    F createPathFinder(
+	    F CreatePathFinder(
 		    GraphGenerics<E, V, W> graph 
 	    );
 
@@ -46,7 +46,7 @@ namespace com.programmerare.shortestpaths.core.api.generics
 	     * @param graphEdgesValidationDesired see the documentation for the overloaded method
 	     * @return see the documentation for the overloaded method
 	     */	
-	    F createPathFinder(
+	    F CreatePathFinder(
 		    IList<E> edges, 
 		    GraphEdgesValidationDesired graphEdgesValidationDesired
 	    );

@@ -15,6 +15,6 @@ namespace com.programmerare.shortestpaths.core.api
      * @author Tomas Johansson
      */
     public interface StringRenderable {
-	    string renderToString();
+	    string RenderToString();
     }
 }

@@ -103,9 +103,9 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * @param edgeFactory factory object used for creating Edge instances
 	     * @return an instance of EdgeParser 
 	     */
-	    public static EdgeParser<E, V, W> createEdgeParser(EdgeFactory<E, V , W> edgeFactory)
+	    public static EdgeParser<E, V, W> CreateEdgeParser(EdgeFactory<E, V , W> edgeFactory)
         {
-		    return createEdgeParser(edgeFactory, "\\s+", " ", 1, 2, 3);
+		    return CreateEdgeParser(edgeFactory, "\\s+", " ", 1, 2, 3);
 	    }	
 
 	
@@ -116,7 +116,7 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * @param <W> weight
 	     * @return an instance of EdgeParser constructed with a generics version of the edgeFactory 
 	     */
-	    public static EdgeParser<E, V, W> createEdgeParserGenerics<E, V, W>()
+	    public static EdgeParser<E, V, W> CreateEdgeParserGenerics<E, V, W>()
             where E : EdgeGenerics<V, W>
             where V : Vertex
             where W : Weight
@@ -138,7 +138,7 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * Convenience methods.
 	     * @return an instance of EdgeParser constructed with a simple/standard version of the edgeFactory 
 	     */
-	    public static EdgeParser<Edge, Vertex, Weight> createEdgeParserDefault()
+	    public static EdgeParser<Edge, Vertex, Weight> CreateEdgeParserDefault()
         {
             var ef = new EdgeFactoryDefault();
             return new EdgeParser<Edge, Vertex, Weight>(
@@ -160,7 +160,7 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * @param orderForWeight
 	     * @return
 	     */
-	    public static EdgeParser<E, V, W> createEdgeParser<E, V, W>(
+	    public static EdgeParser<E, V, W> CreateEdgeParser<E, V, W>(
 		    EdgeFactory<E, V , W> edgeFactory,
 		    string separatorBetweenEdgesAndWeightWhenSplitting, 
 		    string separatorBetweenEdgesAndWeightWhenCreating, 
@@ -190,22 +190,22 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * 	for example "X Y 12.34" for an edge from vertex X to vertex Y with 12.34 as the weight 
 	     * @return an Edge
 	     */
-	    public E fromStringToEdge(string stringRepresentationOfEdge) {
+	    public E FromStringToEdge(string stringRepresentationOfEdge) {
 		    string[] array = Regex.Split(stringRepresentationOfEdge, separatorBetweenEdgesAndWeightWhenSplitting);
 		    // if(split.length < 3) // TODO throw
 		    string startVertexId = array[orderForStartVertex-1];
 		    string endVertexId = array[orderForEndVertex-1];
 		    double weightValue = double.Parse(array[orderForWeight-1]);
-		    E e = createEdge(startVertexId, endVertexId, weightValue);
+		    E e = CreateEdge(startVertexId, endVertexId, weightValue);
 		    return e;
 	    }
 
 	    // the purpose of the method name is not reduce the risk of forgetting to refactor .... 
-	    private E createEdge(string startVertexId, string endVertexId, double weightValue) {
-		    V startVertex = (V)createVertex(startVertexId);
-		    V endVertex = (V)createVertex(endVertexId);
-		    W weight = (W)createWeight(weightValue);
-		    return (E) edgeFactory.createEdge(startVertex, endVertex, weight);
+	    private E CreateEdge(string startVertexId, string endVertexId, double weightValue) {
+		    V startVertex = (V)CreateVertex(startVertexId);
+		    V endVertex = (V)CreateVertex(endVertexId);
+		    W weight = (W)CreateWeight(weightValue);
+		    return (E) edgeFactory.CreateEdge(startVertex, endVertex, weight);
 	    }
 
 	    /**
@@ -223,12 +223,12 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * @param edge an Edge
 	     * @return a string representation of the edge for example  "A B 3.7" for an edge from vertex A to B with weight 3.7 
 	     */
-	    public string fromEdgeToString(E edge) {
+	    public string FromEdgeToString(E edge) {
 		    // if(edge == null) // TODO throw		
 		    string[] array = new string[3];
-		    array[orderForStartVertex-1] = edge.getStartVertex().getVertexId();
-		    array[orderForEndVertex-1] = edge.getEndVertex().getVertexId();
-		    array[orderForWeight-1] = edge.getEdgeWeight().getWeightValue().ToString();
+		    array[orderForStartVertex-1] = edge.StartVertex.VertexId;
+		    array[orderForEndVertex-1] = edge.EndVertex.VertexId;
+		    array[orderForWeight-1] = edge.EdgeWeight.WeightValue.ToString();
 		    return array[0] + separatorBetweenEdgesAndWeightWhenCreating + array[1] + separatorBetweenEdgesAndWeightWhenCreating + array[2];
 	    }
 
@@ -242,11 +242,11 @@ namespace com.programmerare.shortestpaths.core.parsers
 	        C D 9    
 	     * @return a list of edges
 	     */
-	    public IList<E> fromMultiLinedStringToListOfEdges(string multiLinedString) {
+	    public IList<E> FromMultiLinedStringToListOfEdges(string multiLinedString) {
 		    IList<E> edges = new List<E>();
-		    IList<string> edgesAsStrings = StringUtility.getMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(multiLinedString);
+		    IList<string> edgesAsStrings = StringUtility.GetMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(multiLinedString);
 		    foreach (string edgeAsString in edgesAsStrings) {
-			    edges.Add(fromStringToEdge(edgeAsString));
+			    edges.Add(FromStringToEdge(edgeAsString));
 		    }
 		    return edges;
 	    }
@@ -258,7 +258,7 @@ namespace com.programmerare.shortestpaths.core.parsers
         where V : Vertex
         where W : Weight
     {
-		E createEdge(V startVertex, V endVertex, W weightValue);
+		E CreateEdge(V startVertex, V endVertex, W weightValue);
 	}
 	
 	public class EdgeFactoryGenerics<E, V, W> : EdgeFactory<E, V, W> 
@@ -266,15 +266,15 @@ namespace com.programmerare.shortestpaths.core.parsers
         where V : Vertex
         where W : Weight
     {
-		public E createEdge(V startVertex, V endVertex, W weight) {
-			EdgeGenerics<V, W> edge = EdgeGenericsImpl<V, W>.createEdgeGenerics(startVertex, endVertex, weight);
+		public E CreateEdge(V startVertex, V endVertex, W weight) {
+			EdgeGenerics<V, W> edge = EdgeGenericsImpl<V, W>.CreateEdgeGenerics(startVertex, endVertex, weight);
 			return (E) edge;
 		}
 	}
 	
 	public class EdgeFactoryDefault : EdgeFactory<Edge , Vertex , Weight> {
-		public Edge createEdge(Vertex startVertex, Vertex endVertex, Weight weight) {
-			return EdgeImpl.createEdge(startVertex, endVertex, weight);
+		public Edge CreateEdge(Vertex startVertex, Vertex endVertex, Weight weight) {
+			return EdgeImpl.CreateEdge(startVertex, endVertex, weight);
 		}
 	}
 }

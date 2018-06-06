@@ -30,11 +30,11 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	
 	    [SetUp]
 	    public void setUp()  {
-		    edgeX1 = createEdge(createVertex("A"), createVertex("B"), createWeight(7));
-		    edgeX2 = createEdge(createVertex("A"), createVertex("B"), createWeight(7));
+		    edgeX1 = CreateEdge(CreateVertex("A"), CreateVertex("B"), CreateWeight(7));
+		    edgeX2 = CreateEdge(CreateVertex("A"), CreateVertex("B"), CreateWeight(7));
 		
-		    edgeY1 = createEdge(createVertex("B"), createVertex("C"), createWeight(8));
-		    edgeY2 = createEdge(createVertex("B"), createVertex("C"), createWeight(8));
+		    edgeY1 = CreateEdge(CreateVertex("B"), CreateVertex("C"), CreateWeight(8));
+		    edgeY2 = CreateEdge(CreateVertex("B"), CreateVertex("C"), CreateWeight(8));
 		
 		
 	    }
@@ -51,8 +51,8 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    IsFalse(originalEdges[1] == equalEdgesButOtherInstances[1]);
 
 		
-		    EdgeMapper<Edge, Vertex, Weight> edgeMapper = EdgeMapper<Edge, Vertex, Weight>.createEdgeMapper<Edge, Vertex, Weight>(originalEdges);
-		    IList<Edge> originalObjectInstancesOfTheEdges = edgeMapper.getOriginalObjectInstancesOfTheEdges(equalEdgesButOtherInstances);
+		    EdgeMapper<Edge, Vertex, Weight> edgeMapper = EdgeMapper<Edge, Vertex, Weight>.CreateEdgeMapper<Edge, Vertex, Weight>(originalEdges);
+		    IList<Edge> originalObjectInstancesOfTheEdges = edgeMapper.GetOriginalObjectInstancesOfTheEdges(equalEdgesButOtherInstances);
 		    // Note that the input parameter above vas the list which did NOT have the same instances as the original
 		    // list (i.e. the list passed into the constructor of EdgeMapper) but the returned list should have the same 
 		    // instances, and they should be mapped through the id of the edge
@@ -64,12 +64,12 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	    public void testGetOriginalEdgeInstance() {
 		    IList<Edge> originalEdges = new List<Edge> {edgeX1, edgeY1 };
 		
-		    EdgeMapper<Edge, Vertex, Weight> edgeMapper = EdgeMapper<Edge, Vertex, Weight>.createEdgeMapper<Edge, Vertex, Weight>(originalEdges);
+		    EdgeMapper<Edge, Vertex, Weight> edgeMapper = EdgeMapper<Edge, Vertex, Weight>.CreateEdgeMapper<Edge, Vertex, Weight>(originalEdges);
 
 		    // the same edge instance should be retrieve when we below pass in the string ids for the vertices of the edge 
 		
-		    AreSame(edgeX1, edgeMapper.getOriginalEdgeInstance(edgeX1.getStartVertex().getVertexId(), edgeX1.getEndVertex().getVertexId()));
-		    AreSame(edgeY1, edgeMapper.getOriginalEdgeInstance(edgeY1.getStartVertex().getVertexId(), edgeY1.getEndVertex().getVertexId()));
+		    AreSame(edgeX1, edgeMapper.GetOriginalEdgeInstance(edgeX1.StartVertex.VertexId, edgeX1.EndVertex.VertexId));
+		    AreSame(edgeY1, edgeMapper.GetOriginalEdgeInstance(edgeY1.StartVertex.VertexId, edgeY1.EndVertex.VertexId));
 	    }
     }
 }

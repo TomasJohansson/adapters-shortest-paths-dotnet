@@ -16,7 +16,7 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
         where V : Vertex
         where W : Weight
     {
-        public override F createPathFinder(GraphGenerics<E, V, W> graph)
+        public override F CreatePathFinder(GraphGenerics<E, V, W> graph)
         {
             PathFinderGenerics<P, E, V, W> pathFinder =  new PathFinderYanQiGenerics<P, E, V, W>(graph);
             // TODO: try to get rid of the casting below ( warning: "Type safety: Unchecked cast from PathFinderYanQi<P,E,V,W> to F" )

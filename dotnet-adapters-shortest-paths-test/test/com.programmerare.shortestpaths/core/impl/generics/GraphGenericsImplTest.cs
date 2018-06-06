@@ -21,8 +21,8 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	
 	    [SetUp]
 	    public void setUp() {
-		    edge1 = createEdgeGenerics(createVertex("A"), createVertex("B"), createWeight(123));
-		    edge2 = createEdgeGenerics(createVertex("B"), createVertex("C"), createWeight(456));		
+		    edge1 = createEdgeGenerics(CreateVertex("A"), CreateVertex("B"), CreateWeight(123));
+		    edge2 = createEdgeGenerics(CreateVertex("B"), CreateVertex("C"), CreateWeight(456));		
 	    }
 
 	    [Test]
@@ -34,7 +34,7 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 
 		    GraphGenerics<EdgeGenerics<Vertex,Weight>, Vertex,Weight> graph = createGraphGenerics(edges);
 		
-		    IList<EdgeGenerics<Vertex, Weight>> allEdges = graph.getEdges();
+		    IList<EdgeGenerics<Vertex, Weight>> allEdges = graph.Edges;
 		
 		    AreEqual(2,  allEdges.Count);
 		    AreSame(edge1, allEdges[0]);
@@ -43,22 +43,22 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 
         private GraphGenerics<EdgeGenerics<Vertex, Weight>, Vertex, Weight> createGraphGenerics(IList<EdgeGenerics<Vertex, Weight>> edges)
         {
-            return GraphGenericsImpl<EdgeGenerics<Vertex, Weight>, Vertex, Weight>.createGraphGenerics<EdgeGenerics<Vertex, Weight>, Vertex, Weight>(edges);
+            return GraphGenericsImpl<EdgeGenerics<Vertex, Weight>, Vertex, Weight>.CreateGraphGenerics<EdgeGenerics<Vertex, Weight>, Vertex, Weight>(edges);
         }
 
         [Test]
 	    public void testGetVertices() {
 		    IList<EdgeGenerics<Vertex,Weight>> edges = new List<EdgeGenerics<Vertex,Weight>>();
-		    edges.Add(createEdgeGenerics(createVertex("A"), createVertex("B"), createWeight(1)));
-		    edges.Add(createEdgeGenerics(createVertex("A"), createVertex("C"), createWeight(2)));
-		    edges.Add(createEdgeGenerics(createVertex("A"), createVertex("D"), createWeight(3)));
-		    edges.Add(createEdgeGenerics(createVertex("B"), createVertex("C"), createWeight(4)));
-		    edges.Add(createEdgeGenerics(createVertex("B"), createVertex("D"), createWeight(5)));
-		    edges.Add(createEdgeGenerics(createVertex("C"), createVertex("D"), createWeight(6)));
+		    edges.Add(createEdgeGenerics(CreateVertex("A"), CreateVertex("B"), CreateWeight(1)));
+		    edges.Add(createEdgeGenerics(CreateVertex("A"), CreateVertex("C"), CreateWeight(2)));
+		    edges.Add(createEdgeGenerics(CreateVertex("A"), CreateVertex("D"), CreateWeight(3)));
+		    edges.Add(createEdgeGenerics(CreateVertex("B"), CreateVertex("C"), CreateWeight(4)));
+		    edges.Add(createEdgeGenerics(CreateVertex("B"), CreateVertex("D"), CreateWeight(5)));
+		    edges.Add(createEdgeGenerics(CreateVertex("C"), CreateVertex("D"), CreateWeight(6)));
 		
 		    GraphGenerics<EdgeGenerics<Vertex,Weight>, Vertex,Weight> graph = createGraphGenerics(edges);
 		
-		    IList<Vertex> vertices = graph.getVertices();
+		    IList<Vertex> vertices = graph.Vertices;
 		
 		    IList<string> expectedVerticesIds = new List<string>{"A", "B", "C", "D" };
 		
@@ -69,8 +69,8 @@ namespace com.programmerare.shortestpaths.core.impl.generics
                 // Java version used hamcrest as below:
 			    //assertThat(expectedVerticesIds, hasItem(edge.getStartVertex().getVertexId()));
 			    //assertThat(expectedVerticesIds, hasItem(edge.getEndVertex().getVertexId()));
-                IsTrue(expectedVerticesIds.Contains(edge.getStartVertex().getVertexId()));
-                IsTrue(expectedVerticesIds.Contains(edge.getEndVertex().getVertexId()));
+                IsTrue(expectedVerticesIds.Contains(edge.StartVertex.VertexId));
+                IsTrue(expectedVerticesIds.Contains(edge.EndVertex.VertexId));
                 //Fail("fix the test");
 		    }		
 	    }
@@ -84,13 +84,13 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		
 		    GraphGenerics<EdgeGenerics<Vertex,Weight>, Vertex,Weight> graph = createGraphGenerics(edges);
 
-		    IsTrue(graph.containsVertex(edge1.getStartVertex()));
-		    IsTrue(graph.containsVertex(edge1.getEndVertex()));
-		    IsTrue(graph.containsVertex(edge2.getStartVertex()));
-		    IsTrue(graph.containsVertex(edge2.getEndVertex()));
+		    IsTrue(graph.ContainsVertex(edge1.StartVertex));
+		    IsTrue(graph.ContainsVertex(edge1.EndVertex));
+		    IsTrue(graph.ContainsVertex(edge2.StartVertex));
+		    IsTrue(graph.ContainsVertex(edge2.EndVertex));
 		
-		    Vertex vertex = createVertex("QWERTY");
-		    IsFalse(graph.containsVertex(vertex));
+		    Vertex vertex = CreateVertex("QWERTY");
+		    IsFalse(graph.ContainsVertex(vertex));
 	    }
 	    // TODO: refactor some code duplicated above and below i.e. put some code in setup method
 	    [Test]
@@ -102,11 +102,11 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		
 		    GraphGenerics<EdgeGenerics<Vertex,Weight>, Vertex,Weight> graph = createGraphGenerics(edges);
 
-		    IsTrue(graph.containsEdge(edge1));
-		    IsTrue(graph.containsEdge(edge2));
+		    IsTrue(graph.ContainsEdge(edge1));
+		    IsTrue(graph.ContainsEdge(edge2));
 		
-		    EdgeGenerics<Vertex,Weight> edgeNotInTheGraph = createEdgeGenerics(createVertex("XYZ"), createVertex("QWERTY"), createWeight(987));
-		    IsFalse(graph.containsEdge(edgeNotInTheGraph));
+		    EdgeGenerics<Vertex,Weight> edgeNotInTheGraph = createEdgeGenerics(CreateVertex("XYZ"), CreateVertex("QWERTY"), CreateWeight(987));
+		    IsFalse(graph.ContainsEdge(edgeNotInTheGraph));
 	    }	
     }
 

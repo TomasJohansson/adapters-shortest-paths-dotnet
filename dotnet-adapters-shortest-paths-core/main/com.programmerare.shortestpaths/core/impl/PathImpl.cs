@@ -16,7 +16,7 @@ namespace com.programmerare.shortestpaths.core.impl
 		
 	    }
 
-	    public static Path createPath(Weight totalWeight, IList<Edge> edges) {
+	    public static Path CreatePath(Weight totalWeight, IList<Edge> edges) {
 		    return new PathImpl(totalWeight, edges);
 	    }
 

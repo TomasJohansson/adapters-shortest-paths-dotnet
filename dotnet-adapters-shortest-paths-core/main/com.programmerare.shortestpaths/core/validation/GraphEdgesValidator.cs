@@ -24,7 +24,7 @@ namespace com.programmerare.shortestpaths.core.validation
 	
 	    private GraphEdgesValidator() {	}
 	
-	    public static GraphEdgesValidator<P, E, V, W> createGraphEdgesValidator<P, E, V, W>()
+	    public static GraphEdgesValidator<P, E, V, W> CreateGraphEdgesValidator<P, E, V, W>()
             where P : PathGenerics<E,V,W>
             where E : EdgeGenerics<V, W>
             where V : Vertex
@@ -33,7 +33,7 @@ namespace com.programmerare.shortestpaths.core.validation
 		    return new GraphEdgesValidator<P, E, V, W>();
 	    }	
 
-	    public void validateEdgesAsAcceptableInputForGraphConstruction(IList<E> edges) {
+	    public void ValidateEdgesAsAcceptableInputForGraphConstruction(IList<E> edges) {
 
 		    IDictionary<string, bool> mapForValidatingUniqueEdgeId = new Dictionary<string, bool>(); 
 		    IDictionary<string, bool> mapForValidatingUniqueVerticesIds = new Dictionary<string, bool>();
@@ -45,45 +45,45 @@ namespace com.programmerare.shortestpaths.core.validation
 		    //  	unique combination of start vertex and end vertex (i.e. not multiple weights for an edge between two vertices)
 		    //  	(but it can be noted that often the above two are same i.e. the vertex id is a concatenation if not set explicitly)
 		    foreach (E edge in edges) {
-			    validateNonNullObjects(edge);
-			    validateNonBlankIds(edge);
+			    ValidateNonNullObjects(edge);
+			    ValidateNonBlankIds(edge);
 
-			    validateUniqueEdgeId(edge, mapForValidatingUniqueEdgeId);
-			    validateUniqueVerticesIds(edge, mapForValidatingUniqueVerticesIds);
+			    ValidateUniqueEdgeId(edge, mapForValidatingUniqueEdgeId);
+			    ValidateUniqueVerticesIds(edge, mapForValidatingUniqueVerticesIds);
 		    }		
 	    }
 
-	    public void validateNonNullObjects(E edge) {
-		    throwExceptionIfConditionTrue(edge == null, "edge == null", edge);
-		    throwExceptionIfConditionTrue(edge.getStartVertex() == null, "start vertex is null for edge", edge);
-		    throwExceptionIfConditionTrue(edge.getEndVertex() == null, "end vertex is null for edge", edge);
-		    throwExceptionIfConditionTrue(edge.getEdgeWeight() == null, "weight is null for edge", edge);
+	    public void ValidateNonNullObjects(E edge) {
+		    ThrowExceptionIfConditionTrue(edge == null, "edge == null", edge);
+		    ThrowExceptionIfConditionTrue(edge.StartVertex== null, "start vertex is null for edge", edge);
+		    ThrowExceptionIfConditionTrue(edge.EndVertex== null, "end vertex is null for edge", edge);
+		    ThrowExceptionIfConditionTrue(edge.EdgeWeight== null, "weight is null for edge", edge);
 	    }
 
 	    /**
 	     * Precondition: the "outer" objects (e.g. "edge" and "edge.getStartVertex()" should already have been checked for not being null 
 	     * @param edge
 	     */
-	    public void validateNonBlankIds(E edge) {
-		    validateNonBlankId(edge.getEdgeId(), edge);
-		    validateNonBlankId(edge.getStartVertex().getVertexId(), edge.getStartVertex());
-		    validateNonBlankId(edge.getEndVertex().getVertexId(), edge.getEndVertex());
+	    public void ValidateNonBlankIds(E edge) {
+		    ValidateNonBlankId(edge.EdgeId, edge);
+		    ValidateNonBlankId(edge.StartVertex.VertexId, edge.StartVertex);
+		    ValidateNonBlankId(edge.EndVertex.VertexId, edge.EndVertex);
 	    }
 	
-	    private void throwExceptionIfConditionTrue(bool conditionFoExceptionToBeThrown, string exceptionMessagePrefix, StringRenderable edgeOrVertexOrWeight) {
+	    private void ThrowExceptionIfConditionTrue(bool conditionFoExceptionToBeThrown, string exceptionMessagePrefix, StringRenderable edgeOrVertexOrWeight) {
 		    if(conditionFoExceptionToBeThrown) {
-			    string exceptionMessageSuffix = edgeOrVertexOrWeight == null ? "null" : edgeOrVertexOrWeight.renderToString();
+			    string exceptionMessageSuffix = edgeOrVertexOrWeight == null ? "null" : edgeOrVertexOrWeight.RenderToString();
 			    throw new GraphValidationException(exceptionMessagePrefix + " " + exceptionMessageSuffix);
 		    }
 	    }
 
-	    private void validateNonBlankId(string id, StringRenderable edgeOrVertex) {
-		    throwExceptionIfConditionTrue(id == null || id.Trim().Equals(""), "id value must not be empty", edgeOrVertex);
+	    private void ValidateNonBlankId(string id, StringRenderable edgeOrVertex) {
+		    ThrowExceptionIfConditionTrue(id == null || id.Trim().Equals(""), "id value must not be empty", edgeOrVertex);
 	    }
 	
-	    public void validateUniqueEdgeId(E edge, IDictionary<string, bool> mapForValidatingUniqueEdgeId) {
-		    throwExceptionIfConditionTrue(mapForValidatingUniqueEdgeId.ContainsKey(edge.getEdgeId()), "Edge id must be unique wich it was not. To remove duplicated edges, you can use a method in the class " + nameOfClassForRemovingDuplicateEdges, edge);
-		    mapForValidatingUniqueEdgeId.Add(edge.getEdgeId(), true);
+	    public void ValidateUniqueEdgeId(E edge, IDictionary<string, bool> mapForValidatingUniqueEdgeId) {
+		    ThrowExceptionIfConditionTrue(mapForValidatingUniqueEdgeId.ContainsKey(edge.EdgeId), "Edge id must be unique wich it was not. To remove duplicated edges, you can use a method in the class " + nameOfClassForRemovingDuplicateEdges, edge);
+		    mapForValidatingUniqueEdgeId.Add(edge.EdgeId, true);
 	    }
 
 	    /**
@@ -92,9 +92,9 @@ namespace com.programmerare.shortestpaths.core.validation
 	     * @param edge
 	     * @param mapForValidatingUniqueVerticesIds
 	     */
-	    public void validateUniqueVerticesIds(E edge, IDictionary<string, bool> mapForValidatingUniqueVerticesIds) {
-		    string concatenationOdVerticesIds = edge.getStartVertex().getVertexId() + "_" + edge.getEndVertex().getVertexId();
-		    throwExceptionIfConditionTrue(mapForValidatingUniqueVerticesIds.ContainsKey(concatenationOdVerticesIds), "edge id must be unique wich it was not " + concatenationOdVerticesIds, edge);
+	    public void ValidateUniqueVerticesIds(E edge, IDictionary<string, bool> mapForValidatingUniqueVerticesIds) {
+		    string concatenationOdVerticesIds = edge.StartVertex.VertexId+ "_" + edge.EndVertex.VertexId;
+		    ThrowExceptionIfConditionTrue(mapForValidatingUniqueVerticesIds.ContainsKey(concatenationOdVerticesIds), "edge id must be unique wich it was not " + concatenationOdVerticesIds, edge);
 		    mapForValidatingUniqueVerticesIds.Add(concatenationOdVerticesIds, true);		
 	    }
 
@@ -108,19 +108,19 @@ namespace com.programmerare.shortestpaths.core.validation
 	     * @param paths list of paths
 	     * @param allEdgesForGraph all edges for the graph
 	     */
-	    public void validateAllPathsOnlyContainEdgesDefinedInGraph(
+	    public void ValidateAllPathsOnlyContainEdgesDefinedInGraph(
 		    IList<P> paths, 
 		    IList<E> allEdgesForGraph
 	    ) {
-		    IDictionary<string, E> mapWithAllEdgesInGraph = createMapWithAllEdgesInGraph(allEdgesForGraph);
+		    IDictionary<string, E> mapWithAllEdgesInGraph = CreateMapWithAllEdgesInGraph(allEdgesForGraph);
 		
 		    foreach (P path in paths) {
-			    IList<E> edgesForPath = path.getEdgesForPath();
+			    IList<E> edgesForPath = path.EdgesForPath;
 			    foreach (E edgeInPath in edgesForPath) {
-				    validateNonNullObjects(edgeInPath);
-				    validateNonBlankIds(edgeInPath);
-				    string key = createMapKeyUsedInMapWithEdges(edgeInPath);
-				    throwExceptionIfConditionTrue(!mapWithAllEdgesInGraph.ContainsKey(key), "The edge in path is not part of the graph", edgeInPath);
+				    ValidateNonNullObjects(edgeInPath);
+				    ValidateNonBlankIds(edgeInPath);
+				    string key = CreateMapKeyUsedInMapWithEdges(edgeInPath);
+				    ThrowExceptionIfConditionTrue(!mapWithAllEdgesInGraph.ContainsKey(key), "The edge in path is not part of the graph", edgeInPath);
 			    }
 		    }
 	    }
@@ -129,11 +129,11 @@ namespace com.programmerare.shortestpaths.core.validation
 	     * @param edgesForGraph
 	     * @return a map with edges as values, and the key is a string created with a private helper method in this same class   
 	     */
-	    private IDictionary<string, E> createMapWithAllEdgesInGraph(IList<E> edgesForGraph) {
+	    private IDictionary<string, E> CreateMapWithAllEdgesInGraph(IList<E> edgesForGraph) {
 		    IDictionary<string, E> mapWithAllEdgesInGraph = new Dictionary<string, E>();
 		    foreach (E edgeInGraph in edgesForGraph) {
 			    // the method used below should never cause a NullPointerException if the above documented precondition is fulfilled
-			    string key = createMapKeyUsedInMapWithEdges(edgeInGraph);
+			    string key = CreateMapKeyUsedInMapWithEdges(edgeInGraph);
 			    mapWithAllEdgesInGraph.Add(key, edgeInGraph);
 		    }
 		    return mapWithAllEdgesInGraph;
@@ -145,8 +145,8 @@ namespace com.programmerare.shortestpaths.core.validation
 	     * @param edge
 	     * @return
 	     */
-	    private string createMapKeyUsedInMapWithEdges(E edge) {
-		    string key = edge.getEdgeId() + "_" + edge.getStartVertex().getVertexId() + "_" +  edge.getEndVertex().getVertexId();
+	    private string CreateMapKeyUsedInMapWithEdges(E edge) {
+		    string key = edge.EdgeId+ "_" + edge.StartVertex.VertexId+ "_" +  edge.EndVertex.VertexId;
 		    return key;
 	    }
 
@@ -162,14 +162,14 @@ namespace com.programmerare.shortestpaths.core.validation
 	     * @param edges list of edges
 	     */
 	    //public static <E extends Edge> void validateEdgesForGraphCreation(final List<E> edges) {
-	    public static void validateEdgesForGraphCreation<P, E, V, W>(IList<E> edges) 
+	    public static void ValidateEdgesForGraphCreation<P, E, V, W>(IList<E> edges) 
             where P : PathGenerics<E,V,W>
             where E : EdgeGenerics<V, W>
             where V : Vertex
             where W : Weight
         {
-		    GraphEdgesValidator<P, E, V, W> graphEdgesValidator = createGraphEdgesValidator<P, E, V, W>();
-		    graphEdgesValidator.validateEdgesAsAcceptableInputForGraphConstruction(edges);
+		    GraphEdgesValidator<P, E, V, W> graphEdgesValidator = CreateGraphEdgesValidator<P, E, V, W>();
+		    graphEdgesValidator.ValidateEdgesAsAcceptableInputForGraphConstruction(edges);
 	    }
     }
 }
