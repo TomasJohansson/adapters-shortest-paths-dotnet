@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet-yan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-yanqi-translation-Test", "K-shortest-paths-DotNet-yanqi-translation-Test\K-shortest-paths-DotNet-yanqi-translation-Test.csproj", "{992E5467-337A-47BF-BDB4-1E3BF77E79C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-adapters-shortest-paths-impl-yanqi", "dotnet-adapters-shortest-paths-impl-yanqi\dotnet-adapters-shortest-paths-impl-yanqi.csproj", "{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-adapters-shortest-paths-impl-yanqi", "dotnet-adapters-shortest-paths-impl-yanqi\dotnet-adapters-shortest-paths-impl-yanqi.csproj", "{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "java-to-dotnet-translation-helpers", "java-to-dotnet-translation-helpers\java-to-dotnet-translation-helpers.csproj", "{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

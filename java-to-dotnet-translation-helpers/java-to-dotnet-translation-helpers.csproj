@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>java_to_dotnet_translation_helpers</RootNamespace>
+  </PropertyGroup>
+
+</Project>

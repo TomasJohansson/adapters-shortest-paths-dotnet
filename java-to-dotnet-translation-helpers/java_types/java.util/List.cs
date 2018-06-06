@@ -99,7 +99,7 @@ namespace java.util
             return _list[i];
         }
 
-        internal T remove(int i)
+        public T remove(int i)
         {
             var element = get(i);
             _list.RemoveAt(i);
