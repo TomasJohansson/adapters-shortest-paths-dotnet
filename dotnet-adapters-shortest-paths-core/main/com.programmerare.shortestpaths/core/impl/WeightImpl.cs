@@ -16,7 +16,7 @@ namespace com.programmerare.shortestpaths.core.impl
 
 	    private readonly double value;
 
-	    public static Weight createWeight(
+	    public static Weight CreateWeight(
 	        double value			
 	    ) {
 		    return new WeightImpl(
@@ -28,11 +28,9 @@ namespace com.programmerare.shortestpaths.core.impl
 		    this.value = value;
 	    }
 
-	    public double getWeightValue() {
-		    return value;
-	    }
+        public double WeightValue => value;
 
-	    public override string ToString() {
+        public override string ToString() {
 		    return "WeightImpl [value=" + value + "]";
 	    }
 
@@ -61,12 +59,12 @@ namespace com.programmerare.shortestpaths.core.impl
 
 	    public const double SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS = 0.0000000001;
 	
-	    public string renderToString() {
+	    public string RenderToString() {
 		    return ToString();
 	    }
 
-	    public Weight create(double value) {
-		    return WeightImpl.createWeight(value);
+	    public Weight Create(double value) {
+		    return WeightImpl.CreateWeight(value);
 	    }
     }
 }

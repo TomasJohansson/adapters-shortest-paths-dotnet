@@ -20,27 +20,27 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
         [SetUp]
         public void SetUp()
         {
-	        a = createVertex("A");
-	        b = createVertex("B");
-	        c = createVertex("C");
-	        d = createVertex("D");            
+	        a = CreateVertex("A");
+	        b = CreateVertex("B");
+	        c = CreateVertex("C");
+	        d = CreateVertex("D");            
 	        
             IList<Edge> edges = new List<Edge>{
-		        createEdge(a, b, createWeight(5)),
-		        createEdge(a, c, createWeight(6)),
-		        createEdge(b, c, createWeight(7)),
-		        createEdge(b, d, createWeight(8)),
-		        createEdge(c, d, createWeight(9))
+		        CreateEdge(a, b, CreateWeight(5)),
+		        CreateEdge(a, c, CreateWeight(6)),
+		        CreateEdge(b, c, CreateWeight(7)),
+		        CreateEdge(b, d, CreateWeight(8)),
+		        CreateEdge(c, d, CreateWeight(9))
             };
-            Graph graph = createGraph(edges, GraphEdgesValidationDesired.YES); 
+            Graph graph = CreateGraph(edges, GraphEdgesValidationDesired.YES); 
             PathFinderFactory pathFinderFactory = new PathFinderFactoryYanQi();
-            pathFinder = pathFinderFactory.createPathFinder(graph);
+            pathFinder = pathFinderFactory.CreatePathFinder(graph);
         }
         
         [Test]
         public void PathFinderTest()
         {
-            IList<Path> shortestPaths = pathFinder.findShortestPaths(a, d, 10);
+            IList<Path> shortestPaths = pathFinder.FindShortestPaths(a, d, 10);
             AreEqual(3, shortestPaths.Count);
 
             // path1 : A -> B -> D (with total weight 13)
@@ -55,13 +55,13 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
 
         private void assertPath(Path path, double expectedTotalWeight, params string[] expectedVertices)
         {
-            AreEqual(expectedTotalWeight, path.getTotalWeightForPath().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
-            var edges = path.getEdgesForPath();
-            AreEqual(expectedVertices[0], edges[0].getStartVertex().getVertexId());
+            AreEqual(expectedTotalWeight, path.TotalWeightForPath.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+            var edges = path.EdgesForPath;
+            AreEqual(expectedVertices[0], edges[0].StartVertex.VertexId);
             AreEqual(expectedVertices.Length, edges.Count + 1); // one more since each edge contain two nodes
             for(int i=0; i<edges.Count; i++)
             {
-                AreEqual(expectedVertices[i+1], edges[i].getEndVertex().getVertexId());
+                AreEqual(expectedVertices[i+1], edges[i].EndVertex.VertexId);
             }
         }
     }

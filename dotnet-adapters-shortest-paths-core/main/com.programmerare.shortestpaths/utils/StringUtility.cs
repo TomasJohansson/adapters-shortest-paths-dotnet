@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 namespace com.programmerare.shortestpaths.utils
 {
     public sealed class StringUtility {
-	    public static IList<string> getMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(string multilinedStringWithLineBreaks) {
+	    public static IList<string> GetMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(string multilinedStringWithLineBreaks) {
 		    string[] lines = Regex.Split(multilinedStringWithLineBreaks, "[\r\n]+");
 		    IList<string> listOfLines = new List<string>(); 
 		    foreach (string line in lines) {
@@ -28,15 +28,15 @@ namespace com.programmerare.shortestpaths.utils
 	     * @param s
 	     * @return
 	     */
-	    public static string getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(string s) {
+	    public static string GetDoubleAsStringWithoutZeroesAndDotIfNotRelevant(string s) {
             s = Regex.Replace(s, "\\.0+$", "");
 		    s = Regex.Replace(s, "^([0-9]*\\.[0-9]*)(0+)$", "$1");
 		    // TODO overkill to implement with regexp as above. instead use some formatter https://stackoverflow.com/questions/703396/how-to-nicely-format-floating-numbers-to-string-without-unnecessary-decimal-0
 		    return s;		
 	    }
 	
-	    public static string getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(double d) {
-		    return getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(d.ToString());
+	    public static string GetDoubleAsStringWithoutZeroesAndDotIfNotRelevant(double d) {
+		    return GetDoubleAsStringWithoutZeroesAndDotIfNotRelevant(d.ToString());
 	    }
     }
 }

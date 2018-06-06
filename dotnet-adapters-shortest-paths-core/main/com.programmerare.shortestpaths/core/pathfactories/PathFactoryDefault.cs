@@ -12,8 +12,8 @@ namespace com.programmerare.shortestpaths.core.pathfactories
     public sealed class PathFactoryDefault
 	    : PathFactory<Path , Edge , Vertex , Weight>
     {
-	    public Path createPath(Weight totalWeight, IList<Edge> edges) {
-		    Path pathDefault = PathImpl.createPath((Weight)totalWeight, edges);
+	    public Path CreatePath(Weight totalWeight, IList<Edge> edges) {
+		    Path pathDefault = PathImpl.CreatePath((Weight)totalWeight, edges);
 		    return pathDefault;
 	    }
     }

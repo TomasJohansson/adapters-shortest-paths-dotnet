@@ -17,7 +17,7 @@ namespace com.programmerare.shortestpaths.utils
 	    private EdgeUtility() {
 	    }
 	
-	    public static EdgeUtility<E, V, W> create<E, V, W>()
+	    public static EdgeUtility<E, V, W> Create<E, V, W>()
             where E : EdgeGenerics<V, W>
             where V : Vertex
             where W : Weight
@@ -27,7 +27,7 @@ namespace com.programmerare.shortestpaths.utils
 	
 	    private IDictionary<SelectionStrategyWhenEdgesAreDuplicated, SelectionStrategy<E, V, W>> tableLookupMapForSelectionStrategies;
 	
-	    private IDictionary<SelectionStrategyWhenEdgesAreDuplicated, SelectionStrategy<E, V, W>> getTableLookupMapForSelectionStrategies() {
+	    private IDictionary<SelectionStrategyWhenEdgesAreDuplicated, SelectionStrategy<E, V, W>> GetTableLookupMapForSelectionStrategies() {
 		    if(tableLookupMapForSelectionStrategies == null) {
 			    tableLookupMapForSelectionStrategies = new Dictionary<SelectionStrategyWhenEdgesAreDuplicated, SelectionStrategy<E, V, W>>();
 			    tableLookupMapForSelectionStrategies.Add(SelectionStrategyWhenEdgesAreDuplicated.FIRST_IN_LIST_OF_EDGES, new SelectionStrategyFirst<E, V, W>());
@@ -38,26 +38,26 @@ namespace com.programmerare.shortestpaths.utils
 		    return tableLookupMapForSelectionStrategies;
 	    }
 	
-	    public IList<E> getEdgesWithoutDuplicates(
+	    public IList<E> GetEdgesWithoutDuplicates(
 		    IList<E> edges, 
 		    SelectionStrategyWhenEdgesAreDuplicated selectionStrategyWhenEdgesAreDuplicated
 	    ) {
-		    IDictionary<string, IList<E>> map = getMap(edges);
-		    IList<E> reduced = getReduced(edges, map, getTableLookupMapForSelectionStrategies()[selectionStrategyWhenEdgesAreDuplicated] );
+		    IDictionary<string, IList<E>> map = GetMap(edges);
+		    IList<E> reduced = GetReduced(edges, map, GetTableLookupMapForSelectionStrategies()[selectionStrategyWhenEdgesAreDuplicated] );
 		    return reduced;
 	    }
 	
-	    private IList<E> getReduced(
+	    private IList<E> GetReduced(
 		    IList<E> edges, 
 		    IDictionary<string, IList<E>> map,
 		    SelectionStrategy<E, V, W> selectionStrategy
 	    ) {
 		    IList<E> edgesToReturn = new List<E>(); 	
 		    foreach (E edge in edges) {
-			    string key = edge.getEdgeId();
+			    string key = edge.EdgeId;
 			    if(map.ContainsKey(key)) {
 				    IList<E> list = map[key];
-				    E reduce = selectionStrategy.reduce(list);
+				    E reduce = selectionStrategy.Reduce(list);
 				    edgesToReturn.Add(reduce);
 				    map.Remove(key);
 			    }
@@ -65,11 +65,11 @@ namespace com.programmerare.shortestpaths.utils
 		    return edgesToReturn;
 	    }
 
-	    private IDictionary<string, IList<E>> getMap(IList<E> edges) {
+	    private IDictionary<string, IList<E>> GetMap(IList<E> edges) {
 		    IDictionary<string, IList<E>> map = new Dictionary<string, IList<E>>();
 		    foreach (E edge in edges) {
 			    IList<E> list;
-			    string key = edge.getEdgeId();
+			    string key = edge.EdgeId;
 			    if(map.ContainsKey(key)) {
 				    list = map[key];	
 			    }
@@ -94,14 +94,14 @@ namespace com.programmerare.shortestpaths.utils
         where V : Vertex
         where W : Weight
     {
-		E reduce(IList<E> edges);
+		E Reduce(IList<E> edges);
 	}
 	public class SelectionStrategyFirst<E, V, W> : SelectionStrategy<E, V, W> 
         where E : EdgeGenerics<V, W>
         where V : Vertex
         where W : Weight
     {
-		public E reduce(IList<E> edges) {
+		public E Reduce(IList<E> edges) {
 			return edges[0];
 		}
 	}
@@ -110,7 +110,7 @@ namespace com.programmerare.shortestpaths.utils
         where V : Vertex
         where W : Weight
     {
-		public E reduce(IList<E> edges) {
+		public E Reduce(IList<E> edges) {
 			return edges[edges.Count-1];
 		}
 	}
@@ -120,11 +120,11 @@ namespace com.programmerare.shortestpaths.utils
         where V : Vertex
         where W : Weight
     {
-		public E reduce(IList<E> edges) {
+		public E Reduce(IList<E> edges) {
 			double weightMin = double.MaxValue;
 			E edgeToReturn = default(E); // null in the Java version
 			foreach (E edge in edges) {
-				double w = edge.getEdgeWeight().getWeightValue();
+				double w = edge.EdgeWeight.WeightValue;
 				if(w < weightMin) {
 					weightMin = w;
 					edgeToReturn = edge;
@@ -139,11 +139,11 @@ namespace com.programmerare.shortestpaths.utils
         where V : Vertex
         where W : Weight
     {
-		public E reduce(IList<E> edges) {
+		public E Reduce(IList<E> edges) {
 			double weightMax = double.MaxValue;
 			E edgeToReturn = default(E); // null in the Java version
 			foreach (E edge in edges) {
-				double w = edge.getEdgeWeight().getWeightValue();
+				double w = edge.EdgeWeight.WeightValue;
 				if(w > weightMax) {
 					weightMax = w;
 					edgeToReturn = edge;

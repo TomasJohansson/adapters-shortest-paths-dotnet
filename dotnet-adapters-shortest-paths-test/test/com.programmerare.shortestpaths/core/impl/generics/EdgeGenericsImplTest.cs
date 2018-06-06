@@ -29,32 +29,32 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	
 	    [SetUp]
 	    public void setUp()  {
-		    vertexA = createVertex("A");
-		    vertexB = createVertex("B");
+		    vertexA = CreateVertex("A");
+		    vertexB = CreateVertex("B");
 		    weightValue = 123.45;
-		    weight = createWeight(weightValue);
-		    edgeX = createEdge(vertexA, vertexB, weight);
+		    weight = CreateWeight(weightValue);
+		    edgeX = CreateEdge(vertexA, vertexB, weight);
 		
-		    edgeY = createEdge(createVertex("A"), createVertex("B"), createWeight(weightValue));
+		    edgeY = CreateEdge(CreateVertex("A"), CreateVertex("B"), CreateWeight(weightValue));
 	    }
 
 
 	    [Test]
 	    public void testGetStartVertex() {
-		    AreEqual(vertexA.getVertexId(), edgeX.getStartVertex().getVertexId());
-		    AreEqual(vertexA, edgeX.getStartVertex());
+		    AreEqual(vertexA.VertexId, edgeX.StartVertex.VertexId);
+		    AreEqual(vertexA, edgeX.StartVertex);
 	    }
 	
 	    [Test]
 	    public void testGetEndVertex() {
-		    AreEqual(vertexB.getVertexId(), edgeX.getEndVertex().getVertexId());
-		    AreEqual(vertexB, edgeX.getEndVertex());
+		    AreEqual(vertexB.VertexId, edgeX.EndVertex.VertexId);
+		    AreEqual(vertexB, edgeX.EndVertex);
 	    }	
 	
 	    [Test]
 	    public void testgetEdgeWeight() {
-		    AreEqual(weightValue, edgeX.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
-		    AreEqual(weight, edgeX.getEdgeWeight());		
+		    AreEqual(weightValue, edgeX.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+		    AreEqual(weight, edgeX.EdgeWeight);		
 	    }
 	
 	    [Test]

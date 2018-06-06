@@ -14,13 +14,13 @@ namespace com.programmerare.shortestpaths.core.api
      */
     public interface Weight : StringRenderable {
 
-	    /**
+        /**
 	     * @return the actual numerical value for the weight.
 	     * TODO maybe: Motivate why not a double is simuply used wverywhere instead of defining a trivial interface ... ( maybe mention DDD and the book Prefactoring ...) 
 	     */
-	    double getWeightValue();
+        double WeightValue { get; }
 
-	    /**
+        /**
 	     * Factory method not intended to be used by client code, but must of course be implemented if 
 	     * you create your own implementation instead of the default implementation.
 	     * The purpose is that it will be used by PathFinderBase, for creating the total weight with the same implementing class as the weights in the edges. 
@@ -32,6 +32,6 @@ namespace com.programmerare.shortestpaths.core.api
 	     * @return an instance of Weight which should be of the same class as the implementing class.
 	     *		For example: if "class A implements Weight" then class A should implement the method as something like "return new A(value)"
 	     */
-	    Weight create(double value);
+        Weight Create(double value);
     }
 }

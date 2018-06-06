@@ -60,7 +60,7 @@ namespace com.programmerare.shortestpaths.core.validation
 	
 	    [SetUp]
 	    public void setUp() {
-		    graphEdgesValidator = GraphEdgesValidator<Path, Edge, Vertex, Weight>.createGraphEdgesValidator<Path, Edge, Vertex, Weight>();
+		    graphEdgesValidator = GraphEdgesValidator<Path, Edge, Vertex, Weight>.CreateGraphEdgesValidator<Path, Edge, Vertex, Weight>();
 		
 		    vertexA = createTestVertex("A");
 		    vertexB = createTestVertex("B");
@@ -85,34 +85,34 @@ namespace com.programmerare.shortestpaths.core.validation
 	    // tests for validateNonNullObjects below
 	
 	    public void testValidateNonNullObjects_whenAllEdgePartsAreValid() {
-		    graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, vertexA, vertexB, weight5));
+		    graphEdgesValidator.ValidateNonNullObjects(createTestEdge(stringIdX, vertexA, vertexB, weight5));
 	    }
 
         [Test]	
 	    public void testValidateNonNullObjects_whenEdgeIsNull() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonNullObjects(null);    
+                graphEdgesValidator.ValidateNonNullObjects(null);    
             });
 	    }
 	
 	    [Test]
 	    public void testValidateNonNullObjects_whenStartVertexIsNull() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, null, vertexA, weight6));    
+                graphEdgesValidator.ValidateNonNullObjects(createTestEdge(stringIdX, null, vertexA, weight6));    
             });
 	    }
 	
         [Test]
 	    public void testValidateNonNullObjects_whenEndVertexIsNull() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, vertexA, null, weight6));    
+                graphEdgesValidator.ValidateNonNullObjects(createTestEdge(stringIdX, vertexA, null, weight6));    
             });
 	    }
 	
         [Test]
 	    public void testValidateNonNullObjects_whenWeightIsNull() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonNullObjects(createTestEdge(stringIdX, vertexA, vertexB, null));    
+                graphEdgesValidator.ValidateNonNullObjects(createTestEdge(stringIdX, vertexA, vertexB, null));    
             });
 	    }	
 
@@ -121,7 +121,7 @@ namespace com.programmerare.shortestpaths.core.validation
 	    // tests for validateNonBlankIds below
 	    [Test]
 	    public void testValidateNonBlankIds_whenAllEdgePartsAreValid() {
-            graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdX, vertexA, vertexB, weight5));    
+            graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdX, vertexA, vertexB, weight5));    
 	    }
 	
 	    // - - - - - -
@@ -130,21 +130,21 @@ namespace com.programmerare.shortestpaths.core.validation
         [Test]
 	    public void testValidateNonBlankIds_whenEdgeIdIsNull() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexB, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexB, weight5));    
             });
 	    }	
 
         [Test]	
 	    public void testValidateNonBlankIds_whenEdgeIdIsEmptyString() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexB, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexB, weight5));    
             });
 	    }
 	
         [Test]	
 	    public void testValidateNonBlankIds_whenEdgeIdIsSomeSpaces() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexB, weight5));
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexB, weight5));
             });
             IsNotNull(exceptionThrown);
 	    }	
@@ -154,21 +154,21 @@ namespace com.programmerare.shortestpaths.core.validation
 	    [Test]
 	    public void testValidateNonBlankIds_whenStartVertexIdIsNull() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexWithNullAsId, vertexB, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdNull, vertexWithNullAsId, vertexB, weight5));    
             });
 	    }	
 	
 	    [Test]
 	    public void testValidateNonBlankIds_whenStartVertexIdIsEmptyString() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexWithEmptyStringAsId, vertexB, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdEmpty, vertexWithEmptyStringAsId, vertexB, weight5));    
             });
 	    }
 	
 	    [Test]
 	    public void testValidateNonBlankIds_whenStartVertexIdIsSomeSpaces() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexWithSomeSpacesAsId, vertexB, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexWithSomeSpacesAsId, vertexB, weight5));    
             });
 	    }
 	
@@ -177,21 +177,21 @@ namespace com.programmerare.shortestpaths.core.validation
 	    [Test]
 	    public void testValidateNonBlankIds_whenEndVertexIdIsNull() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexWithNullAsId, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdNull, vertexA, vertexWithNullAsId, weight5));    
             });
 	    }	
 	
 	    [Test]
 	    public void testValidateNonBlankIds_whenEndVertexIdIsEmptyString() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexWithEmptyStringAsId, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdEmpty, vertexA, vertexWithEmptyStringAsId, weight5));    
             });
 	    }
 	
 	    [Test]
 	    public void testValidateNonBlankIds_whenEndVertexIdIsSomeSpaces() {
             var exceptionThrown = Assert.Throws<GraphValidationException>(() => {
-                graphEdgesValidator.validateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexWithSomeSpacesAsId, weight5));    
+                graphEdgesValidator.ValidateNonBlankIds(createTestEdge(stringIdSomeSpaces, vertexA, vertexWithSomeSpacesAsId, weight5));    
             });
 	    }
 	    // tests for validateNonBlankIds above
@@ -205,9 +205,9 @@ namespace com.programmerare.shortestpaths.core.validation
                 createTestEdge(stringIdY, vertexB, vertexC, weight6),
                 createTestEdge(stringIdZ, vertexC, vertexD, weight7)
             };
-            graphEdgesValidator.validateUniqueEdgeId(edges[0], mapForValidatingUniqueEdgeId);
-            graphEdgesValidator.validateUniqueEdgeId(edges[1], mapForValidatingUniqueEdgeId);
-            graphEdgesValidator.validateUniqueEdgeId(edges[2], mapForValidatingUniqueEdgeId);
+            graphEdgesValidator.ValidateUniqueEdgeId(edges[0], mapForValidatingUniqueEdgeId);
+            graphEdgesValidator.ValidateUniqueEdgeId(edges[1], mapForValidatingUniqueEdgeId);
+            graphEdgesValidator.ValidateUniqueEdgeId(edges[2], mapForValidatingUniqueEdgeId);
         }
 
         [Test]
@@ -218,9 +218,9 @@ namespace com.programmerare.shortestpaths.core.validation
                         createTestEdge(stringIdY, vertexB, vertexC, weight6),
                         createTestEdge(stringIdX, vertexC, vertexD, weight7) // Note X again, i.e. x NOT unique, should cause Exception 
                     };
-                    graphEdgesValidator.validateUniqueEdgeId(edges[0], mapForValidatingUniqueEdgeId);
-                    graphEdgesValidator.validateUniqueEdgeId(edges[1], mapForValidatingUniqueEdgeId);
-                    graphEdgesValidator.validateUniqueEdgeId(edges[2], mapForValidatingUniqueEdgeId);
+                    graphEdgesValidator.ValidateUniqueEdgeId(edges[0], mapForValidatingUniqueEdgeId);
+                    graphEdgesValidator.ValidateUniqueEdgeId(edges[1], mapForValidatingUniqueEdgeId);
+                    graphEdgesValidator.ValidateUniqueEdgeId(edges[2], mapForValidatingUniqueEdgeId);
             });
 	    }
 	
@@ -234,9 +234,9 @@ namespace com.programmerare.shortestpaths.core.validation
                 createTestEdge(stringIdY, vertexB, vertexC, weight6),
                 createTestEdge(stringIdZ, vertexC, vertexD, weight7)
             };
-            graphEdgesValidator.validateUniqueVerticesIds(edges[0], mapForValidatingUniqueVerticesIds);
-            graphEdgesValidator.validateUniqueVerticesIds(edges[1], mapForValidatingUniqueVerticesIds);
-            graphEdgesValidator.validateUniqueVerticesIds(edges[2], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.ValidateUniqueVerticesIds(edges[0], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.ValidateUniqueVerticesIds(edges[1], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.ValidateUniqueVerticesIds(edges[2], mapForValidatingUniqueVerticesIds);
         }	
 	
 	    [Test]
@@ -247,9 +247,9 @@ namespace com.programmerare.shortestpaths.core.validation
                 createTestEdge(stringIdY, vertexB, vertexC, weight6),
                 createTestEdge(stringIdZ, vertexB, vertexC, weight7) //  // Note "B to C" again, i.e. x NOT unique, should cause Exception
             };
-            graphEdgesValidator.validateUniqueVerticesIds(edges[0], mapForValidatingUniqueVerticesIds);
-            graphEdgesValidator.validateUniqueVerticesIds(edges[1], mapForValidatingUniqueVerticesIds);
-            graphEdgesValidator.validateUniqueVerticesIds(edges[2], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.ValidateUniqueVerticesIds(edges[0], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.ValidateUniqueVerticesIds(edges[1], mapForValidatingUniqueVerticesIds);
+            graphEdgesValidator.ValidateUniqueVerticesIds(edges[2], mapForValidatingUniqueVerticesIds);
             });
         }
 
@@ -261,7 +261,7 @@ namespace com.programmerare.shortestpaths.core.validation
 	    }
 	
 	    private Edge createTestEdge(string edgeId, Vertex startVertex, Vertex endVertex, Weight weight) {
-		    return createEdge(edgeId, startVertex, endVertex, weight);
+		    return CreateEdge(edgeId, startVertex, endVertex, weight);
 	    }
 	
 	    // Test implementations are defined  below, since we are above testimg the behaviour of interface,
@@ -272,10 +272,10 @@ namespace com.programmerare.shortestpaths.core.validation
 		    public VertexTestImpl(string id) {
 			    this.id = id;
 		    }
-		    public string getVertexId() {
-			    return id;
-		    }
-		    public string renderToString() {
+            
+            public string VertexId => id;
+
+		    public string RenderToString() {
 			    return ToString();
 		    }
 		    
@@ -289,17 +289,16 @@ namespace com.programmerare.shortestpaths.core.validation
 		    public WeightTestImpl(double value) {
 			    this.value = value;
 		    }		
-		    public double getWeightValue() {
-			    return value;
-		    }
-		    public string renderToString() {
+            public double WeightValue => value;
+
+		    public string RenderToString() {
 			    return ToString();
 		    }
 		    
 		    public override string ToString() {
 			    return "WeightTestImpl [value=" + value + "]";
 		    }
-		    public Weight create(double value) {
+		    public Weight Create(double value) {
 			    return new WeightTestImpl(value);
 		    }
 	    }
@@ -320,19 +319,12 @@ namespace com.programmerare.shortestpaths.core.validation
 			    this.weight = weight;
 			    this.id = edgeId;
 		    }
-		    public string getEdgeId() {
-			    return id;
-		    }
-		    public Vertex getStartVertex() {
-			    return startVertex;
-		    }
-		    public Vertex getEndVertex() {
-			    return endVertex;
-		    }
-		    public Weight getEdgeWeight() {
-			    return weight;
-		    }
-		    public string renderToString() {
+		    public string EdgeId => id;
+            public Vertex StartVertex => startVertex;
+            public Vertex EndVertex => endVertex;
+            public Weight EdgeWeight => weight;
+
+            public string RenderToString() {
 			    return ToString();
 		    }
 		    
@@ -351,10 +343,10 @@ namespace com.programmerare.shortestpaths.core.validation
 
 		        IList<Edge> edgesForPath = new List<Edge>();
 		        edgesForPath.Add(createTestEdge("11", createTestVertex("a"), createTestVertex("c"), createTestWeight(1)));
-		        Path path = createPath(createTestWeight(1), edgesForPath);
+		        Path path = CreatePath(createTestWeight(1), edgesForPath);
 		        List<Path> paths = new List<Path>{ path };
 
-		        graphEdgesValidator.validateAllPathsOnlyContainEdgesDefinedInGraph(paths, allEdgesForGraph);
+		        graphEdgesValidator.ValidateAllPathsOnlyContainEdgesDefinedInGraph(paths, allEdgesForGraph);
 
 		        // TODO maybe: introduce a new base class for GraphJgrapht and for the other implementations of Graph, 
 		        // and put the validation there, to ensure a reasonable output paths by using the above validation method, 

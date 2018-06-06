@@ -45,43 +45,43 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    PathFactory<P, E, V, W> pathFactory
 	    ) {
 		    this.graph = graph;		
-		    this.pathFactory = pathFactory != null ? pathFactory : createStandardInstanceOfPathFactory();
+		    this.pathFactory = pathFactory != null ? pathFactory : CreateStandardInstanceOfPathFactory();
 		    // Precondition to method below is that validation is performed i.e. 
 		    // the method below will NOT try to validate,
-		    edgeMapper = EdgeMapper<E, V, W>.createEdgeMapper<E, V, W>(graph.getEdges());
+		    edgeMapper = EdgeMapper<E, V, W>.CreateEdgeMapper<E, V, W>(graph.Edges);
 	    }
 
-	    private PathFactory<P, E, V, W> createStandardInstanceOfPathFactory() {
+	    private PathFactory<P, E, V, W> CreateStandardInstanceOfPathFactory() {
 		    return new PathFactoryGenerics<P, E, V, W>();
 	    }
 	
 	    /**
 	     * final method to enforce the validation, and then forward to the hook method for the implementations
 	     */
-	    public IList<P> findShortestPaths(
+	    public IList<P> FindShortestPaths(
 		    V startVertex, 
 		    V endVertex, 
 		    int maxNumberOfPaths
 	    ) {
-		    validateThatBothVerticesArePartOfTheGraph(startVertex, endVertex);
+		    ValidateThatBothVerticesArePartOfTheGraph(startVertex, endVertex);
 		
-		    IList<P> shortestPaths = findShortestPathHook(
+		    IList<P> shortestPaths = FindShortestPathHook(
 			    startVertex, 
 			    endVertex, 
 			    maxNumberOfPaths				
 		    );
 
 		    // TODO: Maybe it should be optional to perform this test (in a parameter)
-		    validateThatAllEdgesInAllPathsArePartOfTheGraph(shortestPaths);
+		    ValidateThatAllEdgesInAllPathsArePartOfTheGraph(shortestPaths);
 		
 		    return shortestPaths;
 	    }
 
-	    void validateThatAllEdgesInAllPathsArePartOfTheGraph(IList<P> paths) {
+	    void ValidateThatAllEdgesInAllPathsArePartOfTheGraph(IList<P> paths) {
 		    foreach (P path in paths) {
-			    IList<E> edgesForPath = path.getEdgesForPath();
+			    IList<E> edgesForPath = path.EdgesForPath;
 			    foreach (E e in edgesForPath) {
-				    if(!graph.containsEdge(e)) {
+				    if(!graph.ContainsEdge(e)) {
 					    // potential improvement: Use Notification pattern to collect all (if more than one) errors instead of throwing at the first error
 					    throw new GraphValidationException("Edge in path is not part of the graph: " + e);
 				    }
@@ -89,13 +89,13 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    }
 	    }
 
-	    private void validateThatBothVerticesArePartOfTheGraph(V startVertex, V endVertex) {
+	    private void ValidateThatBothVerticesArePartOfTheGraph(V startVertex, V endVertex) {
 		    // potential improvement: Use Notification pattern to collect all (if more than one) errors instead of throwing at the first error
-		    if(!graph.containsVertex(startVertex)) {
-			    throwExceptionBecauseVertexNotIncludedInGraph("start", startVertex);
+		    if(!graph.ContainsVertex(startVertex)) {
+			    ThrowExceptionBecauseVertexNotIncludedInGraph("start", startVertex);
 		    }
-		    if(!graph.containsVertex(endVertex)) {
-			    throwExceptionBecauseVertexNotIncludedInGraph("end", endVertex);
+		    if(!graph.ContainsVertex(endVertex)) {
+			    ThrowExceptionBecauseVertexNotIncludedInGraph("end", endVertex);
 		    }		
 	    }
 
@@ -103,34 +103,34 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 	     * @param startOrEndmessagePrefix intended to be one of the strings "start" or "end"
 	     * @param startVertex
 	     */
-	    private void throwExceptionBecauseVertexNotIncludedInGraph(string startOrEndmessagePrefix, V vertex) {
+	    private void ThrowExceptionBecauseVertexNotIncludedInGraph(string startOrEndmessagePrefix, V vertex) {
 		    throw new GraphValidationException(startOrEndmessagePrefix + " vertex is not part of the graph: " + vertex);
 	    }
 
-	    protected E getOriginalEdgeInstance(string startVertexId, string endVertexId) {
-		    return edgeMapper.getOriginalEdgeInstance(startVertexId, endVertexId);
+	    protected E GetOriginalEdgeInstance(string startVertexId, string endVertexId) {
+		    return edgeMapper.GetOriginalEdgeInstance(startVertexId, endVertexId);
 	    }
 
-	    protected GraphGenerics<E, V, W> getGraph() {
+	    protected GraphGenerics<E, V, W> GetGraph() {
 		    return graph;
 	    }
 
 	    // "Hook" : see the Template Method Design Pattern
-	    protected abstract IList<P> findShortestPathHook(V startVertex, V endVertex, int maxNumberOfPaths);
+	    protected abstract IList<P> FindShortestPathHook(V startVertex, V endVertex, int maxNumberOfPaths);
 	
-	    protected W createInstanceWithTotalWeight(double totalWeight, IList<E> edgesUsedForDeterminingWeightClass) {
+	    protected W CreateInstanceWithTotalWeight(double totalWeight, IList<E> edgesUsedForDeterminingWeightClass) {
 		    if(weightProtoypeFactory == null) {
 			    if(edgesUsedForDeterminingWeightClass.Count > 0) {
 				    E e = edgesUsedForDeterminingWeightClass[0];
-				    weightProtoypeFactory = e.getEdgeWeight();
+				    weightProtoypeFactory = e.EdgeWeight;
 			    }
 			    // else throw exception may be a good idea since it does not seem to make any sense with a path witz zero edges 
 		    }
-		    return (W)weightProtoypeFactory.create(totalWeight);
+		    return (W)weightProtoypeFactory.Create(totalWeight);
 	    }
 	
-	    protected P createPath(W totalWeight, IList<E> edges) {
-		    return pathFactory.createPath(totalWeight, edges);
+	    protected P CreatePath(W totalWeight, IList<E> edges) {
+		    return pathFactory.CreatePath(totalWeight, edges);
 	    }
     }
 }

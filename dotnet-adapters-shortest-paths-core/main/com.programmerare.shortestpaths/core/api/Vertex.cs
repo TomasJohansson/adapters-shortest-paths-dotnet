@@ -14,9 +14,9 @@ namespace com.programmerare.shortestpaths.core.api
      */
     public interface Vertex : StringRenderable {
 
-	    /**
+        /**
 	     * @return an id which must be unique within a Graph, i.e. a Graph should not have more than one Vertex with the same id.
 	     */
-	    string getVertexId();
+        string VertexId { get; }
     }
 }

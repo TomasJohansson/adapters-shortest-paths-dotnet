@@ -66,12 +66,12 @@ namespace com.programmerare.shortestpaths.core.parsers
 		
 		    mapWithEdgesAndVertexConcatenationAsKey = new Dictionary<string, E>();
 		    foreach (E edge in edgesUsedForFindingTheWeightsBetweenVerticesInPath) {
-			    string key = EdgeGenericsImpl<V, W>.createEdgeIdValue(edge.getStartVertex().getVertexId(), edge.getEndVertex().getVertexId());
+			    string key = EdgeGenericsImpl<V, W>.CreateEdgeIdValue(edge.StartVertex.VertexId, edge.EndVertex.VertexId);
 			    mapWithEdgesAndVertexConcatenationAsKey.Add(key, edge);
 		    }
 	    }
 	
-	    public static PathParser<P, E, V, W> createPathParser<P, E, V, W>(
+	    public static PathParser<P, E, V, W> CreatePathParser<P, E, V, W>(
 		    PathFactory<P, E, V, W> pathFactory,
 		    IList<E> edgesUsedForFindingTheWeightsBetweenVerticesInPath
 	    )
@@ -83,7 +83,7 @@ namespace com.programmerare.shortestpaths.core.parsers
 		    return new PathParser<P, E, V, W>(pathFactory, edgesUsedForFindingTheWeightsBetweenVerticesInPath);
 	    }
 	
-	    public static PathParser<P, E, V, W> createPathParserGenerics<P, E, V, W>(
+	    public static PathParser<P, E, V, W> CreatePathParserGenerics<P, E, V, W>(
 		    IList<E> edgesUsedForFindingTheWeightsBetweenVerticesInPath
 	    )
             where P : PathGenerics<E, V, W>
@@ -92,25 +92,25 @@ namespace com.programmerare.shortestpaths.core.parsers
             where W : Weight
 
         {
-		    return createPathParser(new PathFactoryGenerics<P, E, V, W>(), edgesUsedForFindingTheWeightsBetweenVerticesInPath);
+		    return CreatePathParser(new PathFactoryGenerics<P, E, V, W>(), edgesUsedForFindingTheWeightsBetweenVerticesInPath);
 	    }	
 
-	    public static PathParser<Path , Edge , Vertex , Weight> createPathParserDefault(
+	    public static PathParser<Path , Edge , Vertex , Weight> CreatePathParserDefault(
 		    IList<Edge> edgesUsedForFindingTheWeightsBetweenVerticesInPath
 	    ) {
-		    return createPathParser(new PathFactoryDefault(), edgesUsedForFindingTheWeightsBetweenVerticesInPath);
+		    return CreatePathParser(new PathFactoryDefault(), edgesUsedForFindingTheWeightsBetweenVerticesInPath);
 	    }	
 	
 	
-	    public IList<P> fromStringToListOfPaths(string multiLinedString) {
-		    IList<string> listOfLines = StringUtility.getMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(multiLinedString);
-		    return fromListOfStringsToListOfPaths(listOfLines);
+	    public IList<P> FromStringToListOfPaths(string multiLinedString) {
+		    IList<string> listOfLines = StringUtility.GetMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(multiLinedString);
+		    return FromListOfStringsToListOfPaths(listOfLines);
 	    }
 	
-	    public IList<P> fromListOfStringsToListOfPaths(IList<string> listOfStrings) {
+	    public IList<P> FromListOfStringsToListOfPaths(IList<string> listOfStrings) {
 		    IList<P> listOfPaths = new List<P>();
 		    foreach (string aString in listOfStrings) {
-			    listOfPaths.Add(fromStringToPath(aString));
+			    listOfPaths.Add(FromStringToPath(aString));
 		    }
 		    return listOfPaths;
 	    }
@@ -120,7 +120,7 @@ namespace com.programmerare.shortestpaths.core.parsers
 	     * 		Example:  "13 A B D"
 	     * @return
 	     */
-	    public P fromStringToPath(string pathString) {
+	    public P FromStringToPath(string pathString) {
 		    string[] array = Regex.Split(pathString, "\\s+");
 
 		    // TODO check "array.length" and throw exception ...
@@ -131,38 +131,38 @@ namespace com.programmerare.shortestpaths.core.parsers
 		    for (int i = 2; i < array.Length; i++) {
 			    string startVertexId = array[i-1];
 			    string endVertexId = array[i];
-			    E edge = getEdgeIncludingTheWeight(startVertexId, endVertexId);
+			    E edge = GetEdgeIncludingTheWeight(startVertexId, endVertexId);
 			    edges.Add(edge);
 		    }
-		    W weight = (W) WeightImpl.createWeight(totalWeight);
-		    return this.createPath(weight, edges);
+		    W weight = (W) WeightImpl.CreateWeight(totalWeight);
+		    return this.CreatePath(weight, edges);
 	    }
 	
-	    public string fromPathToString(P path) {
+	    public string FromPathToString(P path) {
 		    StringBuilder sb = new StringBuilder();
-		    double d = path.getTotalWeightForPath().getWeightValue();
-		    string s = StringUtility.getDoubleAsStringWithoutZeroesAndDotIfNotRelevant(d);
+		    double d = path.TotalWeightForPath.WeightValue;
+		    string s = StringUtility.GetDoubleAsStringWithoutZeroesAndDotIfNotRelevant(d);
 		    sb.Append(s);
-		    IList<E> edgesForPath = path.getEdgesForPath();
+		    IList<E> edgesForPath = path.EdgesForPath;
 		    foreach (E edge in edgesForPath) {
 			    sb.Append(" ");			
-			    sb.Append(edge.getStartVertex().getVertexId());
+			    sb.Append(edge.StartVertex.VertexId);
 		    }
 		    sb.Append(" ");		
-		    sb.Append(edgesForPath[edgesForPath.Count-1].getEndVertex().getVertexId());
+		    sb.Append(edgesForPath[edgesForPath.Count-1].EndVertex.VertexId);
 		    return sb.ToString();
 	    }
 
-	    public E getEdgeIncludingTheWeight(string startVertexId, string endVertexId) {
-		    string key = EdgeGenericsImpl<V, W>.createEdgeIdValue(startVertexId, endVertexId);
+	    public E GetEdgeIncludingTheWeight(string startVertexId, string endVertexId) {
+		    string key = EdgeGenericsImpl<V, W>.CreateEdgeIdValue(startVertexId, endVertexId);
 		    if(!mapWithEdgesAndVertexConcatenationAsKey.ContainsKey(key)) {
 			    throw new GraphValidationException("No edge with these vertices: from " + startVertexId + " to " + endVertexId);
 		    }
 		    return mapWithEdgesAndVertexConcatenationAsKey[key];
 	    }
 
-	    private P createPath(W totalWeight, IList<E> edges) {
-		    P path = this.pathFactory.createPath(totalWeight, edges);
+	    private P CreatePath(W totalWeight, IList<E> edges) {
+		    P path = this.pathFactory.CreatePath(totalWeight, edges);
 		    return path;
 	    }	
     }
