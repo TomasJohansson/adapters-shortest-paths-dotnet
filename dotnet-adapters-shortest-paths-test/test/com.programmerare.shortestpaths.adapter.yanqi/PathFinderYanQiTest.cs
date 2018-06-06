@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using com.programmerare.shortestpaths.adapter.yanqi;
+//using com.programmerare.shortestpaths.adapter.quickgraph;
 using static NUnit.Framework.Assert;
 using com.programmerare.shortestpaths.core.validation;
 using System.Collections.Generic;
@@ -32,8 +33,11 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
 		        createEdge(b, d, createWeight(8)),
 		        createEdge(c, d, createWeight(9))
             };
-            Graph graph = createGraph(edges, GraphEdgesValidationDesired.YES); 
+            Graph graph = createGraph(edges, GraphEdgesValidationDesired.YES);
             PathFinderFactory pathFinderFactory = new PathFinderFactoryYanQi();
+            // Note that the test *SHOULD* work with the below line of code instad of the above but it does not ...
+            //PathFinderFactory pathFinderFactory = new PathFinderFactoryQuickGraph(); // this does not work, only the two best paths are found
+
             pathFinder = pathFinderFactory.createPathFinder(graph);
         }
         

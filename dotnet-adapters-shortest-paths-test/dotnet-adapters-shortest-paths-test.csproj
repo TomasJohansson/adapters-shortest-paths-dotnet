@@ -73,6 +73,10 @@
       <Project>{45de26bc-016f-445c-b625-9d7f04ea3353}</Project>
       <Name>dotnet-adapters-shortest-paths-core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-quickgraph\dotnet-adapters-shortest-paths-impl-quickgraph.csproj">
+      <Project>{683355a2-fbff-450b-a642-088d529c9bda}</Project>
+      <Name>dotnet-adapters-shortest-paths-impl-quickgraph</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-yanqi\dotnet-adapters-shortest-paths-impl-yanqi.csproj">
       <Project>{e5f801d6-0430-4e40-8deb-94ef6def2f8c}</Project>
       <Name>dotnet-adapters-shortest-paths-impl-yanqi</Name>
