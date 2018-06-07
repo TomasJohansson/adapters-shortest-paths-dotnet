@@ -46,7 +46,7 @@ public class DijkstraShortestPathAlg
 
 	// Intermediate variables
 	private Set<BaseVertex> determinedVertexSet = new HashSet<BaseVertex>();
-	private PriorityQueue<BaseVertex> vertexCandidateQueue = new PriorityQueue<BaseVertex>();
+    private PriorityQueue<BaseVertex> vertexCandidateQueue = new PriorityQueue<BaseVertex>();
 	private MapN<BaseVertex, Double> startVertexDistanceIndex = new HashMapN<BaseVertex, Double>();
 	private Map<BaseVertex, BaseVertex> predecessorIndex = new HashMap<BaseVertex, BaseVertex>();
 

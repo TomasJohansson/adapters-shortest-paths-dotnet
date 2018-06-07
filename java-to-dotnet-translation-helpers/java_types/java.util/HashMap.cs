@@ -1,4 +1,6 @@
-﻿namespace java.util
+﻿using System;
+
+namespace java.util
 {
     // see comment in type "MapN" regarding the "N" 
     // suffix in the type "HashMapN" vs "HashMap"

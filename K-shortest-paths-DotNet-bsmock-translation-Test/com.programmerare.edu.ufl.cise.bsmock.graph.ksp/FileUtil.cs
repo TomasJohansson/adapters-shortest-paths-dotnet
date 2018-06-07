@@ -1,18 +1,13 @@
-﻿using edu.asu.emit.algorithm.graph;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace programmerare
+namespace com.programmerare.edu.ufl.cise.bsmock.graph.ksp
 {
-    class GraphFactory
+    class FileUtil
     {
-        internal static Graph createGraph(string fileNamePathRelativeFromProjectDirectory)
-        {
-            return new Graph(GetFullPath(fileNamePathRelativeFromProjectDirectory));
-        }
-
-        internal static VariableGraph createVariableGraph(string fileNamePathRelativeFromProjectDirectory)
-        {
-            return new VariableGraph(GetFullPath(fileNamePathRelativeFromProjectDirectory));
-        }
 
         // TODO: move the currently duplicated method "GetFullPath"
         // to some reusable place...
@@ -28,5 +23,6 @@ namespace programmerare
             string fileNamePathRelativePart = fileNamePathRelativeFromProjectDirectory.Replace('/', '\\');
             return System.IO.Path.Combine(basePath, fileNamePathRelativePart);
         }
+
     }
 }

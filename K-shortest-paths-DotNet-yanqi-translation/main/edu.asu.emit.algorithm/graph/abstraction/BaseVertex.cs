@@ -29,6 +29,8 @@
  *
  */
 
+using java.lang;
+
 namespace edu.asu.emit.algorithm.graph.abstraction
 {
 /**
@@ -36,7 +38,7 @@ namespace edu.asu.emit.algorithm.graph.abstraction
  * 
  * @author yqi
  */
-public interface BaseVertex {
+public interface BaseVertex : Comparable<BaseVertex> {
 	
 	int getId();
 	double getWeight();

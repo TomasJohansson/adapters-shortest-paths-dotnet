@@ -77,7 +77,7 @@ namespace java.util
 
         // IList is not a java type but still exposed
         // here in method signature to support foreach statement
-        public IList<T> keySet()
+        public IList<T> __keySetAsDotNetList()
         {
             var list = new System.Collections.Generic.List<T>();
             foreach(T t in map.Keys)
@@ -87,5 +87,27 @@ namespace java.util
             return list;
         }
 
+        public IEnumerable<U> __valuesAsDotNetEnumerable()
+        {
+            return map.Values;
+        }
+
+        public U remove(T t)
+        {
+            var u = map[t];
+            this.map.Remove(t);
+            return u;
+        }
+
+        public Set<T> keySet()
+        {
+            var set = new Set<T>();
+            var keys = map.Keys;
+            foreach(var key in keys)
+            {
+                set.add(key);
+            }
+            return set;
+        }
     }
 }

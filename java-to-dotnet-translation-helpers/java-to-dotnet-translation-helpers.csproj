@@ -5,4 +5,8 @@
     <RootNamespace>java_to_dotnet_translation_helpers</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="OptimizedPriorityQueue" Version="4.1.1" />
+  </ItemGroup>
+
 </Project>

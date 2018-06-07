@@ -5,4 +5,8 @@
     <RootNamespace>K_shortest_paths_DotNet_bsmock_translation</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\java-to-dotnet-translation-helpers\java-to-dotnet-translation-helpers.csproj" />
+  </ItemGroup>
+
 </Project>

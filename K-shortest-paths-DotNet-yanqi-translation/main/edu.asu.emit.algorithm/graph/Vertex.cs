@@ -60,8 +60,8 @@ public class Vertex : BaseVertex, Comparable<Vertex> {
 		weight = status;
 	}
 	
-	public int compareTo(Vertex rVertex) {
-		double diff = this.weight - rVertex.weight;
+    private int compareToo(BaseVertex rVertex) {
+		double diff = this.weight - rVertex.getWeight();
 		if (diff > 0) {
 			return 1;
 		} else if (diff < 0) {
@@ -74,5 +74,27 @@ public class Vertex : BaseVertex, Comparable<Vertex> {
 	public static void reset() {
 		currentVertexNum = 0;
 	}
+
+    // Some methods related to conversion from 
+    // Java code to .NET code
+    // (Java Comparable and .NET IComparable)
+    public int CompareTo(Vertex other)
+    {
+        return compareToo(other);
+    }
+
+    public int compareTo(BaseVertex other)
+    {
+        return compareToo(other);
+    }
+
+    public int CompareTo(BaseVertex other)
+    {
+        return compareToo(other);
+    }
+    
+    public int compareTo(Vertex rVertex) {
+        return compareToo(rVertex);
+    }
 }
 }

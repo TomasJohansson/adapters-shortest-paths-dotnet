@@ -66,7 +66,6 @@ namespace java.util
         {
             _enumerator = GetEnumerator();
         }
-
         public void Dispose()
         {
         }
@@ -80,5 +79,16 @@ namespace java.util
         {
             return _set.GetEnumerator();
         }
+
+        public Iterator<T> iterator()
+        {
+            return new Iterator<T>(_set);
+        }
+
+        public int size()
+        {
+            return _set.Count;
+        }
+
     }
 }

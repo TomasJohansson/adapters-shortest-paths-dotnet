@@ -14,8 +14,15 @@ namespace extensionClassesForJavaTypes
         {
             return Regex.Split(s, regularExpression);
         }
+        public static void printStackTrace(this Exception e)
+        {
+            Console.Error.WriteLine(e);
+        }
 
-
+        //public static string toString(this object o)
+        //{
+        //    return o.ToString();
+        //}
 
     }
 }
