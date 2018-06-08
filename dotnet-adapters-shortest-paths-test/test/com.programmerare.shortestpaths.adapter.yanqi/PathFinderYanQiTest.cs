@@ -10,6 +10,10 @@ using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELT
 using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
 using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
 
+// Two test classes for QuickGraph:
+// PathFinderYanQiTest (using the adapters API)
+// QuickGraphTest (NOT using the adapters API, i.e. direct usage of QuickGraph)
+
 namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpaths.adapter.yanqi
 {
     [TestFixture]
