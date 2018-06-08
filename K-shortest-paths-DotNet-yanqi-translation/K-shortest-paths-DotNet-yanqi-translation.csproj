@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\java-to-dotnet-translation-helpers\java-to-dotnet-translation-helpers.csproj" />
+  </ItemGroup>
+
 </Project>

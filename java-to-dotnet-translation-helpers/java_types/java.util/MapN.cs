@@ -1,29 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// see comment in type "MapN" regarding the "N" suffix
+// Java Double is a class and can be used in the 
+// same generics types, but in .NET the Double 
+// is a struct, which is the reason for creating separate 
+// types here in the port, with "N" as suffix 
+// for the struct based generics which use 
+// a nullable "U?" as return type for one method.
+// "Map<T, U>"  ---> ... where U : class
+// "MapN<T, U>" ---> ... where U : struct
+
+// Currently most of the two above two types "Map" and "MapN"
+// contain lots of duplication. In fact everything is duplicated 
+// except "where U : class" vs "where U : struct"
+// and "public U get(T t)" vs "public U? get(T t)"
+// and of course it would be desirable to 
+// eliminate or reduce the duplication ...
+
 namespace java.util
 {
     // TODO: make this Map into an interface like in Java
     // https://docs.oracle.com/javase/7/docs/api/java/util/Map.html
-    public class Map<T, U> where U : class // nullable 
+    public class MapN<T, U> where U : struct // nullable 
     {
         private Dictionary<T, U> map = new Dictionary<T, U>();
 
-        public void putAll(Map<T, U> idVertexIndex)
+        public void putAll(MapN<T, U> idVertexIndex)
         {
-            foreach(KeyValuePair<T, U> kv in idVertexIndex.map)
+            foreach (KeyValuePair<T, U> kv in idVertexIndex.map)
             {
                 this.put(kv.Key, kv.Value);
             }
         }
 
-        internal void clear()
+        public void clear()
         {
             this.map.Clear();
         }
 
-        internal void put(T t, U u)
+        public void put(T t, U u)
         {
             // TODO: dotnet Add can not automatically overwrite
             // but Java .. ?
