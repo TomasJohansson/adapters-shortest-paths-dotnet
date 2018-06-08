@@ -103,6 +103,7 @@
     <Compile Include="test\QuickGraphTest\ExpectedTestResult.cs" />
     <Compile Include="test\QuickGraphTest\GraphTestData.cs" />
     <Compile Include="test\QuickGraphTest\QuickGraphTest.cs" />
+    <Compile Include="test\QuickGraphTest\QuickGraphTest2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
