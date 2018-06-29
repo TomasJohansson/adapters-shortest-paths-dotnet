@@ -240,6 +240,6 @@ def yensImpl(nodes, fromNode, toNode, numPaths):
 
 
 #Execute the main function when called from command line
-main();
-input("Done with program")
+# main();
+# input("Done with program")
 
