@@ -9,7 +9,7 @@ namespace YenKsp {
     {
         private List<(Node n_cost, Path p_cost)> cost_list = new List<(Node n_cost, Path p_cost)>();
 
-        public void append((Node, Path) p) {
+        public void Append((Node, Path) p) {
             cost_list.Add(p);
         }
 
@@ -21,7 +21,7 @@ namespace YenKsp {
             cost_list[idx] = p;
         }
 
-        public (Node n_cost, Path candidatePath) pop(int idx) {
+        public (Node n_cost, Path candidatePath) Pop(int idx) {
             var item = this.cost_list[idx];
             this.cost_list.RemoveAt(idx);
             return item;
@@ -34,7 +34,7 @@ namespace YenKsp {
 
     public class NodePathTupleComparer : IComparer<(Node n_cost, Path p_cost)> {
         public int Compare((Node n_cost, Path p_cost) x, (Node n_cost, Path p_cost) y) {
-            return (int)(x.p_cost.getPathCost() - y.p_cost.getPathCost());
+            return (int)(x.p_cost.GetPathCost() - y.p_cost.GetPathCost());
         }
     }
 }

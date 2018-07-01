@@ -9,7 +9,7 @@ namespace YenKsp {
     public class PathTest
     {
         [Test]
-        public void operatorPlusTest() {
+        public void OperatorPlusTest() {
             var n0 = new Node(0);
             var n1 = new Node(1);
             var n2 = new Node(2);
@@ -17,11 +17,11 @@ namespace YenKsp {
             var n4 = new Node(4);
             var n5 = new Node(5);
 
-            n0.addEdge(1, 9);
-            n1.addEdge(2, 9);
-            n2.addEdge(3, 9);
-            n3.addEdge(4, 9);
-            n4.addEdge(5, 9);
+            n0.AddEdge(1, 9);
+            n1.AddEdge(2, 9);
+            n2.AddEdge(3, 9);
+            n3.AddEdge(4, 9);
+            n4.AddEdge(5, 9);
 
             var path_0_1_2 = new Path(new List<Node>{n0, n1, n2});
             var path_3_4_5 = new Path(new List<Node>{n3, n4, n5});

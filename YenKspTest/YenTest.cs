@@ -22,18 +22,18 @@ namespace YenKsp {
             n2 = new Node(2);
             n3 = new Node(3);
         
-            n0.addEdge(1, 5);
-            n0.addEdge(2, 6);
-            n1.addEdge(2, 7);
-            n1.addEdge(3, 8);
-            n2.addEdge(3, 9);
+            n0.AddEdge(1, 5);
+            n0.AddEdge(2, 6);
+            n1.AddEdge(2, 7);
+            n1.AddEdge(3, 8);
+            n2.AddEdge(3, 9);
 
             graphNodes = new List<Node>(){n0, n1, n2, n3 };
         }
 
         [Test]
-        public void yensImplTest() {
-            IList<Path> shortestPaths = yen.yensImpl(graphNodes, 0, 3, 3); // # yensImpl(nodes, fromNode, toNode, numPaths):
+        public void YensImplTest() {
+            IList<Path> shortestPaths = yen.YensImpl(graphNodes, 0, 3, 3); // # yensImpl(nodes, fromNode, toNode, numPaths):
         
             // Expected shortest paths:
             // 0 -> 1 -> 3 (Cost: 13)
@@ -41,9 +41,9 @@ namespace YenKsp {
             // 0 -> 1 -> 2 -> 3 (Cost: 21)
 
             Assert.AreEqual(shortestPaths.Count, 3);
-            Assert.AreEqual(shortestPaths[0].getPathCost(), 13, DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
-            Assert.AreEqual(shortestPaths[1].getPathCost(), 15, DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
-            Assert.AreEqual(shortestPaths[2].getPathCost(), 21, DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
+            Assert.AreEqual(shortestPaths[0].GetPathCost(), 13, DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
+            Assert.AreEqual(shortestPaths[1].GetPathCost(), 15, DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
+            Assert.AreEqual(shortestPaths[2].GetPathCost(), 21, DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
 
             Assert.AreEqual(shortestPaths[0].Nodes[0], n0);
             Assert.AreEqual(shortestPaths[0].Nodes[1], n1);
@@ -60,10 +60,10 @@ namespace YenKsp {
         }
 
         [Test]
-        public void dijkstraImplTest() {
-            Path shortestPath = yen.dijkstraImpl(graphNodes, 0, 3);
+        public void DijkstraImplTest() {
+            Path shortestPath = yen.DijkstraImpl(graphNodes, 0, 3);
             // Expected shortest path: 0 -> 1 -> 3 (Cost: 13)
-            Assert.AreEqual(13, shortestPath.getPathCost(), DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
+            Assert.AreEqual(13, shortestPath.GetPathCost(), DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES);
             Assert.AreEqual(shortestPath.Nodes[0], n0);
             Assert.AreEqual(shortestPath.Nodes[1], n1);
             Assert.AreEqual(shortestPath.Nodes[2], n3);

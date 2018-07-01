@@ -19,13 +19,13 @@ namespace YenKsp {
 	    //  Note: Does not protect against duplicate edges at this point
 	    //  Arguments:
 	    //    toNode: Integer, index of the nodes this edge points to
-	    public void addEdge(int toNode, double weight_in) {
+	    public void AddEdge(int toNode, double weight_in) {
 		    Edges.Add(new Edge(Index, toNode, weight_in));
         }
 	    // Searches the edge list for a connection to "toNode"
 	    //  Arguments:
 	    //     toNode: Integer, index of the node to search for
-	    public double hasEdgeTo(int toNode) {
+	    public double HasEdgeTo(int toNode) {
             foreach(Edge edge in Edges) {
 		        if(edge.ToNode == toNode) {
                     return edge.Weight;
@@ -33,15 +33,15 @@ namespace YenKsp {
             }
 		    return -1;
         }
-	    public bool hasEdgeToNode(int toNode) {
-            double d = hasEdgeTo(toNode);
+	    public bool HasEdgeToNode(int toNode) {
+            double d = HasEdgeTo(toNode);
             // return false if the value is -1 and otherwise true
             double diffAbsValue = Math.Abs(d + 1);
             return diffAbsValue > 0.0000001;
         }
 
 	    // Returns a shallow copy list of the Edge objects that emanate from this node
-	    public IList<Edge> getEdgesFrom() {
+	    public IList<Edge> GetEdgesFrom() {
 		    var edgeList = new List<Edge>();
 		    foreach(Edge edge in Edges) {
 			    if(!edge.Broken) {
@@ -51,7 +51,7 @@ namespace YenKsp {
 		    return edgeList;
         }
 	
-        public void breakEdge(int toNode) {
+        public void BreakEdge(int toNode) {
 		    foreach(Edge edge in Edges) {
                 if(edge.ToNode == toNode) {
                     // #print("Breaking edge from " + str(i.fromNode+1) + " to " + str(i.toNode+1))
@@ -60,7 +60,7 @@ namespace YenKsp {
             }
         }
 
-	    public void fixEdges() {
+	    public void FixEdges() {
 		    foreach(Edge edge in Edges) {
                 edge.Broken = false;
             }

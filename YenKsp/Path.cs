@@ -19,17 +19,17 @@ namespace YenKsp {
 
         public Path(Path path): this() {
             foreach(Node node in path.Nodes) {
-                this.addNode(node);
+                this.AddNode(node);
             }
         }
 
         public Path(Node node): this() {
-            this.addNode(node);
+            this.AddNode(node);
         }
 
         public Path(IList<Node> nodes): this() {
             foreach(Node node in nodes) {
-                this.addNode(node);
+                this.AddNode(node);
             }
         }
 
@@ -37,43 +37,43 @@ namespace YenKsp {
         public static Path operator +(Path path, Path other) {
 		    Path temp = new Path(path);
             foreach(Node other_node in other.Nodes) {
-                temp.addNode(other_node);
+                temp.AddNode(other_node);
             }
 		    return temp;
         }
 
 	    // Adds a node to the end of the path if a valid connection exists
-	    public void addNode(Node nodeToAdd) {
-		    if(Nodes.Count  == 0 || Nodes[Nodes.Count -1].hasEdgeToNode(nodeToAdd.Index)) {
+	    public void AddNode(Node nodeToAdd) {
+		    if(Nodes.Count  == 0 || Nodes[Nodes.Count -1].HasEdgeToNode(nodeToAdd.Index)) {
 		        Nodes.Add(nodeToAdd);
             }
 		    else  {
-                print("Error adding node to path, no edge exists");
+                Print("Error adding node to path, no edge exists");
             }
         }
 
 	    // Find the total cost of the path by iterating through each pair of nodes
-	    public double getPathCost() {
+	    public double GetPathCost() {
 		    double sum = 0;
             for(int i=0; i<Nodes.Count-1; i++) {
                 //#print("checking cost between " + str(self.nodes[i].index) + " and " + str(self.nodes[i+1].index))
-                sum = sum + Nodes[i].hasEdgeTo(Nodes[i+1].Index);
+                sum = sum + Nodes[i].HasEdgeTo(Nodes[i+1].Index);
             }
 		    return sum;
         }
 	    // Prints a human readable version of the path
-	    public void printPath() {
+	    public void PrintPath() {
             //print(" -> ".join(str(i.index + 1) for i in self.nodes) + " (Cost: " + str(self.getPathCost()) + "): ")
-            debugPrintPath();
+            DebugPrintPath();
         }
 
 	    // Used for debug only
-	    public void debugPrintPath() {
+	    public void DebugPrintPath() {
             foreach(Node node in this.Nodes) {
-                print(node.Index + " ");
+                Print(node.Index + " ");
             }
         }
-        private void print(string s) {
+        private void Print(string s) {
             Console.Write(s);
         }
     
@@ -87,13 +87,13 @@ namespace YenKsp {
     }
 
     public static class ExtensionMethods {
-        public static Path pop(this IList<Path> paths, int indexForItemToRemove) {
+        public static Path Pop(this IList<Path> paths, int indexForItemToRemove) {
             Path path = paths[indexForItemToRemove];
             paths.RemoveAt(indexForItemToRemove);
             return path;
         }
 
-        public static void sortByPathCost(this List<Path> paths) {
+        public static void SortByPathCost(this List<Path> paths) {
             paths.Sort(new PathComparer());
         }
 
@@ -101,7 +101,7 @@ namespace YenKsp {
         {
             public int Compare(Path x, Path y)
             {
-                return (int)(x.getPathCost() - y.getPathCost());
+                return (int)(x.GetPathCost() - y.GetPathCost());
             }
         }
     }
