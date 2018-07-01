@@ -8,7 +8,7 @@ namespace YenKsp {
     [TestFixture]
     public class YenTest {
 	    private Yen yen;
-        private Node n0, n1, n2, n3, n4;
+        private Node n0, n1, n2, n3;
         private IList<Node> graphNodes;
     
         private const double DELTA_FOR_COMPARISONS_WITH_DOUBLE_VALUES = 0.000001;
