@@ -70,7 +70,6 @@ namespace YenKsp {
 		        } //#End the for statement iterating through edges from current node
 		        //#If cost_list is empty at this point, no valid path exists to the destination
 		        if (cost_list.GetCostList().Count == 0) {
-			        Print("All path options exhausted, no valid path exists");
                     whileLoopExitedWithBreak = true;
 			        break;
                 }
@@ -107,11 +106,6 @@ namespace YenKsp {
                 return null;
             }
         }
-
-        private void Print(string s) {
-            Console.WriteLine(s);
-        }
-
 
         // Implementation of Yen's algorithm for finding K shortest paths in a network
         //  Uses Dijkstra implemented above for shortest path calculation
@@ -167,10 +161,6 @@ namespace YenKsp {
                         //#totalPath.printPath()
                         Bpaths.Add(totalPath);
                     }
-        		    else {
-                        Print("Not adding a path to Bpaths because it already existed:");
-                        totalPath.PrintPath();
-                    }
                 } // "for i"-loop
 
                 //#If Bpaths is empty, no more possible paths exist, so exit
@@ -182,7 +172,6 @@ namespace YenKsp {
                 //#Move the lowest path cost from B to A
                 Apaths.Add(Bpaths.Pop(0));
                 //print("Found shortest path " + str(k+1) + ": ");
-                Apaths[k].PrintPath();
             } // "for k"-loop ends
             return Apaths;
         }

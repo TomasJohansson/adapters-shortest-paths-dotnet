@@ -47,9 +47,6 @@ namespace YenKsp {
 		    if(Nodes.Count  == 0 || Nodes[Nodes.Count -1].HasEdgeToNode(nodeToAdd.Index)) {
 		        Nodes.Add(nodeToAdd);
             }
-		    else  {
-                Print("Error adding node to path, no edge exists");
-            }
         }
 
 	    // Find the total cost of the path by iterating through each pair of nodes
@@ -60,21 +57,6 @@ namespace YenKsp {
                 sum = sum + Nodes[i].HasEdgeTo(Nodes[i+1].Index);
             }
 		    return sum;
-        }
-	    // Prints a human readable version of the path
-	    public void PrintPath() {
-            //print(" -> ".join(str(i.index + 1) for i in self.nodes) + " (Cost: " + str(self.getPathCost()) + "): ")
-            DebugPrintPath();
-        }
-
-	    // Used for debug only
-	    public void DebugPrintPath() {
-            foreach(Node node in this.Nodes) {
-                Print(node.Index + " ");
-            }
-        }
-        private void Print(string s) {
-            Console.Write(s);
         }
     
         public IList<Node> GetSubsetOfNodes(int startIndexInclusive, int endIndexInclusive) {
