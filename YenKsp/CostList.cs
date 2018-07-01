@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace YenKsp
-{
+namespace YenKsp {
     // this class was added to use instead of the 
     // Python variable "cost_list" (used from method dijkstraImpl) 
     // containing tuple values with a Node and a Path

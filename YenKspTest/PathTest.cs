@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-namespace YenKspTest
-{
+
+namespace YenKsp {
+
     [TestFixture]
     public class PathTest
     {
