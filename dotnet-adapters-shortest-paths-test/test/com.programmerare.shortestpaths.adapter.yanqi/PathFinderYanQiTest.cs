@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using com.programmerare.shortestpaths.adapter.yanqi;
+using com.programmerare.shortestpaths.adapter.parrisha;
 using static NUnit.Framework.Assert;
 using com.programmerare.shortestpaths.core.validation;
 using System.Collections.Generic;
@@ -33,7 +34,9 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
 		        CreateEdge(c, d, CreateWeight(9))
             };
             Graph graph = CreateGraph(edges, GraphEdgesValidationDesired.YES); 
-            PathFinderFactory pathFinderFactory = new PathFinderFactoryYanQi();
+            //PathFinderFactory pathFinderFactory = new PathFinderFactoryYanQi();
+            // TODO: refactor the test class to let it test multiple implementations
+            PathFinderFactory pathFinderFactory = new PathFinderFactoryParrisha();
             pathFinder = pathFinderFactory.CreatePathFinder(graph);
         }
         

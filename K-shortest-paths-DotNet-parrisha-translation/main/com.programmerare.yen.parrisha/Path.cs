@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace YenKsp {
+namespace com.programmerare.yen.parrisha {
 
     public class Path {
         public IList<Node> Nodes { get; }

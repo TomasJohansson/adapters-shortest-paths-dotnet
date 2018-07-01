@@ -3,7 +3,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace YenKsp {
+namespace com.programmerare.yen.parrisha {
 
     [TestFixture]
     public class YenTest {

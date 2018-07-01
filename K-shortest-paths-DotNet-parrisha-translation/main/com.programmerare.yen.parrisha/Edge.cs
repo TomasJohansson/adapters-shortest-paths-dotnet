@@ -2,7 +2,7 @@
 
 // A class that contains a list of Nodes representing a path
 
-namespace YenKsp {
+namespace com.programmerare.yen.parrisha {
 
     // Simple class that represents an edge between two nodes
     //    Class Variables:

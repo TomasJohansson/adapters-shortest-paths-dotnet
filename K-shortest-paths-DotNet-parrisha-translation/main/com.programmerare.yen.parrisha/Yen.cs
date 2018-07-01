@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace YenKsp {
+namespace com.programmerare.yen.parrisha {
 
     public class Yen {
 

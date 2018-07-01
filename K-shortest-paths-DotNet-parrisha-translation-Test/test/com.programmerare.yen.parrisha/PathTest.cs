@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace YenKsp {
+namespace com.programmerare.yen.parrisha {
 
     [TestFixture]
     public class PathTest

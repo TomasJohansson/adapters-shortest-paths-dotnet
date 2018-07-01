@@ -1,7 +1,7 @@
 ﻿/// MIT license. For more information see the file "LICENSE"
 using System.Collections.Generic;
 
-namespace YenKsp {
+namespace com.programmerare.yen.parrisha {
     // this class was added to use instead of the 
     // Python variable "cost_list" (used from method dijkstraImpl) 
     // containing tuple values with a Node and a Path

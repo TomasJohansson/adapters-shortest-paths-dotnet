@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace YenKsp {
+namespace com.programmerare.yen.parrisha {
 
     public class Node {
         private IList<Edge> Edges { get; }
