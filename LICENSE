@@ -1,0 +1,55 @@
+The C# source code is released with MIT license.
+It is based on Python code also released with MIT license as in the text copied at the bottom of this file.
+
+The C# code was implemented as a "translation" of the Python code.
+Initially it was fairly close to the original code with essentially the same class and method names
+and a verys similar implementation with the same variable names and comments remaining from the original code.
+
+However, I can below mention three details in the initial code where the C# code diverged 
+a little bit more (i.e. more than the minimal difference) from the original Python code:
+
+* Added a class "CostList" to emulate the Python list "cost_list" used in the function "dijkstraImpl" in the original file "project.py".
+* Did not use the method "__getitem__" in the class "Path" in the original file "Node.py" (but instead used the Nodes property directly).
+* Added the method "hasEdgeToNode" (returning a bool) to the class "Node" instead of using "if(...hasEdgeTo(nodeToAdd.index) != -1)" as in the original file "Node.py".
+
+There might be some more differences (which I forgot about above) except those I have mentioned above but probably not many.
+Also, there are natural necessary differences when translating code from one language to another,
+so it is also subjective about what should be mentioned here.
+For example, the "+" operator overload in the original Python code was made 
+with the Python method "def __add__(self, other):" in the class "Path" but in the C# code I implemented it with 
+the method "public static Path operator +(Path path, Path other)" but that kind of difference is not 
+mentioned as a divergence in the above list.
+
+The initial translation from Python to C# was made in the git commit bcf0d1881dda33a402a6378cb7de8ddbd77f576b.
+That change modified from Python code to functional C# code with a succeeding C# test for finding the shortest paths.
+
+After the above mentioned commit, the C# code may diverge more than as described above, 
+for example with large first letter in the method names (which is convention in C# code).
+
+/ Tomas Johansson
+
+The following license information was copied from the Python project at this URL:
+https://github.com/parrisha/python-yens-ksp
+------------------------------------------------------------------
+MIT License
+
+Copyright (c) 2015 Aaron Joe Parrish
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+------------------------------------------------------------------
