@@ -1,49 +1,78 @@
-import unittest
+//import unittest
+//from Node import *
+//from project import yensImpl
+using NUnit.Framework;
+using System.Collections.Generic;
 
-from Node import *
-from project import yensImpl
+[TestFixture]
+public class TestYensImpl {
+	// unit test for the same graph as specified in the file "yens_tomas.txt"
 
-class TestYensImpl(unittest.TestCase):
-
-	# unit test for the same graph as specified in the file "yens_tomas.txt"
-
-    def test_yensImpl(self):
-        n0 = Node(0)
-        n1 = Node(1)
-        n2 = Node(2)
-        n3 = Node(3)
+    [Test]
+    public void yensImplTest() {
+        var n0 = new Node(0);
+        var n1 = new Node(1);
+        var n2 = new Node(2);
+        var n3 = new Node(3);
         
-        n0.addEdge(1, 5)
-        n0.addEdge(2, 6)
-        n1.addEdge(2, 7)
-        n1.addEdge(3, 8)
-        n2.addEdge(3, 9)
+        n0.addEdge(1, 5);
+        n0.addEdge(2, 6);
+        n1.addEdge(2, 7);
+        n1.addEdge(3, 8);
+        n2.addEdge(3, 9);
+        
+        var nodes = new List<Node>(){n0, n1, n2, n3 };
+        var yen = new Yen();
+        var paths = yen.yensImpl(nodes, 0, 3, 3); // # yensImpl(nodes, fromNode, toNode, numPaths):
+        //# print(paths[0].printPath()) # 1 -> 2 -> 4 (Cost: 13)
+        //# print(paths[1].printPath()) # 1 -> 3 -> 4 (Cost: 15)
+        //# print(paths[2].printPath()) # 1 -> 2 -> 3 -> 4 (Cost: 21)
+
+        Assert.AreEqual(paths.Count, 3);
+        //Assert.AreEqual(13, paths.getPathCost());
+        double delta = 0.000001;
+        Assert.AreEqual(paths[0].getPathCost(), 13, delta);
+        Assert.AreEqual(paths[1].getPathCost(), 15, delta);
+        Assert.AreEqual(paths[2].getPathCost(), 21, delta);
+
+        Assert.AreEqual(paths[0].Nodes[0], n0);
+        Assert.AreEqual(paths[0].Nodes[1], n1);
+        Assert.AreEqual(paths[0].Nodes[2], n3);
+
+        Assert.AreEqual(paths[1].Nodes[0], n0);
+        Assert.AreEqual(paths[1].Nodes[1], n2);
+        Assert.AreEqual(paths[1].Nodes[2], n3);
+
+        Assert.AreEqual(paths[2].Nodes[0], n0);
+        Assert.AreEqual(paths[2].Nodes[1], n1);
+        Assert.AreEqual(paths[2].Nodes[2], n2);
+        Assert.AreEqual(paths[2].Nodes[3], n3);
+    }
+
+    [Test]
+    public void dijkstraImplTest() {
+        var n0 = new Node(0);
+        var n1 = new Node(1);
+        var n2 = new Node(2);
+        var n3 = new Node(3);
+        
+        n0.addEdge(1, 5);
+        n0.addEdge(2, 6);
+        n1.addEdge(2, 7);
+        n1.addEdge(3, 8);
+        n2.addEdge(3, 9);
 		
-        nodes = [n0, n1, n2, n3]
-        
-        paths = yensImpl(nodes, 0, 3, 5) # yensImpl(nodes, fromNode, toNode, numPaths):
-        # print(paths[0].printPath()) # 1 -> 2 -> 4 (Cost: 13)
-        # print(paths[1].printPath()) # 1 -> 3 -> 4 (Cost: 15)
-        # print(paths[2].printPath()) # 1 -> 2 -> 3 -> 4 (Cost: 21)
+        var nodes = new List<Node>(){n0, n1, n2, n3 };
+        var yen = new Yen();
+        var path = yen.dijkstraImpl(nodes, 0, 3); // # yensImpl(nodes, fromNode, toNode, numPaths):
+        //# print(paths[0].printPath()) # 1 -> 2 -> 4 (Cost: 13)
+        //# print(paths[1].printPath()) # 1 -> 3 -> 4 (Cost: 15)
+        //# print(paths[2].printPath()) # 1 -> 2 -> 3 -> 4 (Cost: 21)
 
-        self.assertEqual(len(paths), 3)
-        self.assertAlmostEqual(paths[0].getPathCost(), 13) # assertAlmostEqual(first, second, places=7, msg=None, delta=None) # https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertEqual
-        self.assertAlmostEqual(paths[1].getPathCost(), 15)
-        self.assertAlmostEqual(paths[2].getPathCost(), 21)
-
-        self.assertEqual(paths[0].nodes[0], n0)
-        self.assertEqual(paths[0].nodes[1], n1)
-        self.assertEqual(paths[0].nodes[2], n3)
-
-        self.assertEqual(paths[1].nodes[0], n0)
-        self.assertEqual(paths[1].nodes[1], n2)
-        self.assertEqual(paths[1].nodes[2], n3)		
-
-        self.assertEqual(paths[2].nodes[0], n0)
-        self.assertEqual(paths[2].nodes[1], n1)
-        self.assertEqual(paths[2].nodes[2], n2)				
-        self.assertEqual(paths[2].nodes[3], n3)				
-
-if __name__ == '__main__':
-	unittest.main()
-
+        //Assert.AreEqual(paths.co, 3)
+        Assert.AreEqual(13, path.getPathCost());
+        Assert.AreEqual(path.Nodes[0], n0);
+        Assert.AreEqual(path.Nodes[1], n1);
+        Assert.AreEqual(path.Nodes[2], n3);
+    }
+}

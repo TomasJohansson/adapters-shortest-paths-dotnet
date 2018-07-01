@@ -1,33 +1,35 @@
+/*
 import sys
 import argparse
 
-from Node import *
+from Node import*
 
-def main():
+def main() :
 
-	#Parse the command line searching for a single string argument of the file to open
-	parser = argparse.ArgumentParser(description='ECE 643 KSP Project')
+    # Parse the command line searching for a single string argument of the file to open
+parser = argparse.ArgumentParser(description='ECE 643 KSP Project')
 	parser.add_argument('--infile', dest='file_in', default="input.txt", help='File to process network from and find KSP for')
 	parser.add_argument('--k', dest='k', type=int, default='3', help='Number of K shortest paths to find')
 	parser.add_argument('--source', dest='source', type=int, default='1', help='Index of starting node')
 	parser.add_argument('--sink', dest='sink', type=int, default='-1', help='Index of sink node, defaults to last node')
-	
+
 	args = parser.parse_args()
 
-	#Project Parts 1 and 2
-	#Open the file and build a network of nodes with edges
-	print("ECE 643 Project Part 1 and 2")
-	nodes = build_table(args.file_in)
+# Project Parts 1 and 2
+# Open the file and build a network of nodes with edges
+    print("ECE 643 Project Part 1 and 2")
+
+    nodes = build_table(args.file_in)
 
 	#If sink was not explicitly specified, assign it to the last node
 	if args.sink == -1:
 		args.sink = len(nodes)
-	
-	#Project Part 3
-	#Run djikstra from each node (except the sink node) to each other node
-	print("\nECE 643 Project Part 3")
-	for i in range(len(nodes)-1):
-		for j in range(len(nodes)):
+
+    # Project Part 3
+# Run djikstra from each node (except the sink node) to each other node
+print("\nECE 643 Project Part 3")
+	for i in range(len(nodes)-1) :
+		for j in range(len(nodes)) :
 			if i != j:
 				print("Searching for shortest path from " + str(i+1) + " to " + str(j+1))
 				shortestPath = dijkstraImpl(nodes, i, j)
@@ -37,30 +39,35 @@ def main():
 					print("No path found")
 
 
-	#Project Part 4
-	#Run Yens KSP algorithm to find the 3 shortest paths
-	print("\nECE 643 Project Part 4")
-	KSPs = yensImpl(nodes, args.source-1, args.sink-1, args.k)
-	print("\n\nResults of searching for " + str(args.k) + " shortest paths from " + str(args.source) + " to " + str(args.sink))
-	for i, ksp in enumerate(KSPs):
-		print("Found KSP " + str(i+1))
+    # Project Part 4
+# Run Yens KSP algorithm to find the 3 shortest paths
+print("\nECE 643 Project Part 4")
+
+    KSPs = yensImpl(nodes, args.source-1, args.sink-1, args.k)
+
+    print("\n\nResults of searching for " + str(args.k) + " shortest paths from " + str(args.source) + " to " + str(args.sink))
+	for i, ksp in enumerate(KSPs) :
+
+        print("Found KSP " + str(i+1))
 		ksp.printPath()
 
-	for i in range(len(KSPs), args.k):
-		print("Not enough paths to find KSP " + str(i+1))
+	for i in range(len(KSPs), args.k) :
+
+        print("Not enough paths to find KSP " + str(i+1))
 
 #Takes an input file as an argument and builds a Node/Edge structure
 def build_table(file_in):
 
-	#Open the file as readonly
-	with open(file_in, 'r') as f:
+    # Open the file as readonly
+with open(file_in, 'r') as f:
 		#The first line of the file is a single integer for number of Nodes
-		for i in f.readline().split():
-			numNodes = int(i)
-		#print(numNodes)
+		for i in f.readline().split() :
 
-		#Create a list of Nodes
-		nodes = [Node(i) for i in range(numNodes)]
+            numNodes = int (i)
+# print(numNodes)
+
+# Create a list of Nodes
+        nodes = [Node(i) for i in range(numNodes)]
 
 		#Read the rest of the file and create edges
 		# Each line contain 4 integers, comma separated
@@ -68,21 +75,22 @@ def build_table(file_in):
 		#But! Nodes are 1-indexed, so subtract 1 internally
 		for line in f.readlines():
 			ID, FromNode, ToNode, Weight = [int(i) for i in line.split(",")]
-			FromNode = FromNode - 1;
+FromNode = FromNode - 1;
 			ToNode = ToNode - 1;
 			#print (ID, FromNode, ToNode, Weight)
 			#The data structure uses unidirectional links, so create an edge in each direction
 			nodes[FromNode].addEdge(ToNode, Weight);
-			#nodes[ToNode].addEdge(FromNode, Weight);
+# nodes[ToNode].addEdge(FromNode, Weight);
 
-	#End the "with" statement, which closes the file
+# End the "with" statement, which closes the file
 
-	#Print an adjacency/weight matrix
-	print("   " + "".join(' {} '.format(i+1) for i in range(numNodes)))
+# Print an adjacency/weight matrix
+print("   " + "".join(' {} '.format(i+1) for i in range(numNodes)))
 	print("  " + "".join('___' for _ in range(numNodes)))
-	for i in range(numNodes):
-		adjacency = [];
-		for j in range(numNodes):
+	for i in range(numNodes) :
+
+        adjacency = [];
+		for j in range(numNodes) :
 			if i == j:
 				adjacency.append('-')
 				continue
@@ -91,155 +99,218 @@ def build_table(file_in):
 				adjacency.append('X')
 			else:
 				adjacency.append(distance)
-		print(str(i+1) + " | " + "".join('{}  '.format(k) for k in adjacency))
+        print(str(i+1) + " | " + "".join('{}  '.format(k) for k in adjacency))
 
 	return nodes;
 
 
-#Implementation of Dijkstra's algorithm
-#Arguments:
-#   nodes: A list of nodes created by the build_table function above
-#   fromNode: integer of the starting Node
-#   toNode: integer of the Node to find the shortest path to
-def dijkstraImpl(nodes, fromNode, toNode):
-	#Create a list of visited nodes initialized with the starting node
-	visited = [nodes[fromNode]]
-	#cost_list is a list potential nodes to visit and paths to them
-	cost_list = []
-	#Initialize some variables
-	# current_node: The node which edges will be checked from and evaluated for lower costs
-	# current_path: The Path (essentially a list of nodes) that was traversed to get to the current node
-	# 				Keep track of and store the current_path in the cost_list structure because the lowest
-	#				cost edge to traverse next may not originate from the current_node
-	current_node = nodes[fromNode];
-	current_path = Path(nodes[fromNode])
+ Implementation of Dijkstra's algorithm
+ Arguments:
+    nodes: A list of nodes created by the build_table function above
+    fromNode: integer of the starting Node
+    toNode: integer of the Node to find the shortest path to
 
-	#Continue to search nodes until we reach the destination
-	while current_node.index != toNode:
-		#Find connections from the current Node and assign costs
-		for edge in current_node.getEdgesFrom():
-			#print("Checking edge from " + str(edge.fromNode) + " to " + str(edge.toNode))
-			#If the visited list does not have any instances of the toNode for this edge
-			if not any(n_visited.index == edge.toNode for n_visited in visited):
-				#Search for a cost entry for this node
-				for idx, (n_cost, p_cost) in enumerate(cost_list):
-					if n_cost.index == edge.toNode:
-						#Compute total cost and update if less than
-						if current_path.getPathCost() + edge.weight < p_cost.getPathCost():
-							#Create a potential path to this node to update the cost_list entry with
-							candidatePath = Path(current_path)
-							candidatePath.addNode(nodes[edge.toNode])
-							#Use the idx variable from enumerate loop to update the correct cost_list entry
-							cost_list[idx] = (n_cost, candidatePath)
-						#Having found a matching cost_list entry, exit the search
-						break
-				else:
-					#The else statement will not be executed if a break was triggered
-					#If no cost entry was found, add to the cost table
-					# Note: This is equivalent to the cost having been infinity
-					#Create a potential path to this node to insert into the cost_list
-					candidatePath = Path(current_path)
-					candidatePath.addNode(nodes[edge.toNode])
-					cost_list.append((nodes[edge.toNode], candidatePath))
+*/
+using System;
+using System.Collections.Generic;
+using YenKsp;
+public class Yen {
 
-			#End the if statement checking the visited list
-		#End the for statement iterating through edges from current node
+    //#Implementation of Dijkstra's algorithm
+    //#Arguments:
+    //#   nodes: A list of nodes created by the build_table function above
+    //#   fromNode: integer of the starting Node
+    //#   toNode: integer of the Node to find the shortest path to
+    public Path dijkstraImpl(IList<Node> nodes, int fromNode, int toNode) {
+	    // #Create a list of visited nodes initialized with the starting node
+	    var visited = new List<Node> { nodes[fromNode] };
+	    //#cost_list is a list potential nodes to visit and paths to them
+	    var cost_list = new CostList();
+	    //#Initialize some variables
+	    //# current_node: The node which edges will be checked from and evaluated for lower costs
+	    //# current_path: The Path (essentially a list of nodes) that was traversed to get to the current node
+	    //# 				Keep track of and store the current_path in the cost_list structure because the lowest
+	    //#				cost edge to traverse next may not originate from the current_node
+	    var current_node = nodes[fromNode];
+	    var current_path = new Path(nodes[fromNode]);
 
-		#If cost_list is empty at this point, no valid path exists to the destination
-		if (len(cost_list) == 0):
-			print("All path options exhausted, no valid path exists")
-			break
-		#Pick a new node!
-		#Sort cost_list by the path cost of the Path component
-		cost_list.sort(key = lambda cost: cost[1].getPathCost())
-		#Pop the first entry in the now sorted list
-		# Update the current_node and current_path variables from that entry
-		(current_node, current_path) = cost_list.pop(0)
-		#print("Selected a new node to visit: " + str(current_node.index) + ", it had a cost of " + str(current_path.getPathCost()))
-		#current_path.printPath();
+        Path candidatePath;
+	    //#Continue to search nodes until we reach the destination
+        bool whileLoopExitedWithBreak = false;
+	    while(current_node.Index != toNode) {
+		    //#Find connections from the current Node and assign costs
+            var edgesToIterate = current_node.getEdgesFrom();
+		    foreach(Edge edge in edgesToIterate) {
+			    //#print("Checking edge from " + str(edge.fromNode) + " to " + str(edge.toNode))
+			    //#If the visited list does not have any instances of the toNode for this edge
+                if(!visited.Exists( n_visited => n_visited.Index == edge.ToNode)) {
+				    //#Search for a cost entry for this node
+                    IList<(Node n_cost, Path p_cost)> costList = cost_list.GetCostList();
+                    bool forLoopExitedWithBreak = false;
+				    for(int idx=0; idx < costList.Count; idx++) {
+                        var (n_cost, p_cost) = costList[idx];
+					    if(n_cost.Index == edge.ToNode) {
+						    //#Compute total cost and update if less than
+						    if(current_path.getPathCost() + edge.Weight < p_cost.getPathCost()) {
+							    //#Create a potential path to this node to update the cost_list entry with
+							    candidatePath = new Path(current_path);
+							    candidatePath.addNode(nodes[edge.ToNode]);
+							    //#Use the idx variable from enumerate loop to update the correct cost_list entry
+							    //cost_list[idx] = (n_cost, candidatePath)
+                                cost_list.SetCostListTuple(idx, (n_cost, candidatePath));
+                            }
+						    //#Having found a matching cost_list entry, exit the search
+                            forLoopExitedWithBreak = true;
+						    break;
+                        }
+                    } // for
+                    if(!forLoopExitedWithBreak) {
+    				    //else: // Python syntax belong to the for-loop
+					    //#The else statement will not be executed if a break was triggered
+					    //#If no cost entry was found, add to the cost table
+					    //# Note: This is equivalent to the cost having been infinity
+					    //#Create a potential path to this node to insert into the cost_list
+					    candidatePath = new Path(current_path);
+					    candidatePath.addNode(nodes[edge.ToNode]);
+					    cost_list.append((nodes[edge.ToNode], candidatePath));
+                    }
+                } // if-statement before the above for-loop
+                //	#End the if statement checking the visited list
+		    } //#End the for statement iterating through edges from current node
+		    //#If cost_list is empty at this point, no valid path exists to the destination
+		    if (cost_list.GetCostList().Count == 0) {
+			    print("All path options exhausted, no valid path exists");
+                whileLoopExitedWithBreak = true;
+			    break;
+            }
+		    //#Pick a new node!
+		    //#Sort cost_list by the path cost of the Path component
+		    //cost_list.sort(key = lambda cost: cost[1].getPathCost())
+            cost_list.SortByPathCost();
+		    //#Pop the first entry in the now sorted list
+		    //# Update the current_node and current_path variables from that entry
+		    (current_node, current_path) = cost_list.pop(0);
+		    //#print("Selected a new node to visit: " + str(current_node.index) + ", it had a cost of " + str(current_path.getPathCost()))
+		    //#current_path.printPath();
+		    //#Add this node to the visited list
+		    visited.Add(current_node);
 
-		#Add this node to the visited list
-		visited.append(current_node)
+	    }//#Repeat the while statement
+	    //else: // Pyhon syntax , belongs to the while statement
+	    //	//#When the while statement exits normally, we have found the final path
+	    //	//#print("Final path picked: ")
+	    //	return current_path
 
-	#Repeat the while statement
-	else:
-		#When the while statement exits normally, we have found the final path
-		#print("Final path picked: ")
-		return current_path
+	    ////#If the while statement exited from a break, the else will not be executed
+	    ////#Need to return a NULL here as no shortest path exists
+        bool whileLoopExitedNormally = !whileLoopExitedWithBreak;
+        if(whileLoopExitedNormally)
+        {
+		    //#When the while statement exits normally, we have found the final path
+		    //#print("Final path picked: ")
+		    return current_path;
+        }
+        else {
+	        //#If the while statement exited from a break, the else will not be executed
+	        //#Need to return a NULL here as no shortest path exists
+            return null;
+        }
+    }
 
-	#If the while statement exited from a break, the else will not be executed
-	#Need to return a NULL here as no shortest path exists
-	return -1
-
-
-#Implementation of Yen's algorithm for finding K shortest paths in a network
-# Uses Dijkstra implemented above for shortest path calculation
-# Returns a list of Path variables.
-# Implemented based on the pseudo-code from "http://en.wikipedia.org/wiki/Yen%27s_algorithm"
-# Arguments:
-#   nodes: A list of nodes created by the build_table function above
-#   fromNode: integer of the starting Node
-#   toNode: integer of the Node to find the shortest path to
-#	numPaths: how many shortest paths to find
-def yensImpl(nodes, fromNode, toNode, numPaths):
-	#Create an empty list of paths that will be returned and a list of potential paths
-	Apaths = []
-	Bpaths = []
-	#First find the 1st shortest path using Dijkstra
-	Apaths.append(dijkstraImpl(nodes, fromNode, toNode))
-
-	#Loop to find the remaining k shortest paths
-	for k in range(1, numPaths):
-
-		#Loop through all but the last node in the previous lowest-cost path
-		for i, spurNode in enumerate(Apaths[k-1][:-1]):
-
-			rootPath = Path(Apaths[k-1][:i+1])
-			#rootPath.printPath()
-
-			#Check the previous shortest paths and compare to rootPath
-			#Break any edges at the end of the rootPath if it coincides with a
-			# previous shortest path
-			for testPath in Apaths:
-				if rootPath[:] == testPath[:i+1]:
-					spurNode.breakEdge(testPath[i+1].index)
-
-			#For each node rootPathNode in rootPath except spurNode:
-			#   remove rootPathNode from Graph
-
-			#Calculate the spur path from the spur node to the sink
-			spurPath = dijkstraImpl(nodes, spurNode.index, toNode)
-			#Fix any edges that were broken
-			spurNode.fixEdges()
-
-			if spurPath == -1:
-				#No valid path exists, skip to next node
-				continue
-
-			totalPath = rootPath + spurPath
-            #Need to check if spurPath already exists in B
-			if not any(totalPath[:] == bpath[:] for bpath in Bpaths):
-				#print("Adding a path to Bpaths:")
-				#totalPath.printPath()
-				Bpaths.append(totalPath)
-			else:
-				print("Not adding a path to Bpaths because it already existed:")
-				totalPath.printPath()
-
-		#If Bpaths is empty, no more possible paths exist, so exit
-		if len(Bpaths) == 0:
-			break
-		#Sort the list of candidate paths
-		Bpaths.sort(key = lambda item: item.getPathCost())
-		#Move the lowest path cost from B to A
-		Apaths.append(Bpaths.pop(0))
-		print("Found shortest path " + str(k+1) + ": ")
-		Apaths[k].printPath()
-
-	return Apaths
+    private void print(string s) {
+        Console.WriteLine(s);
+    }
 
 
-#Execute the main function when called from command line
-# main();
-# input("Done with program")
+    // Implementation of Yen's algorithm for finding K shortest paths in a network
+    //  Uses Dijkstra implemented above for shortest path calculation
+    //  Returns a list of Path variables.
+    //  Implemented based on the pseudo-code from "http://en.wikipedia.org/wiki/Yen%27s_algorithm"
+    //  Arguments:
+    //    nodes: A list of nodes created by the build_table function above
+    //    fromNode: integer of the starting Node
+    //    toNode: integer of the Node to find the shortest path to
+    // 	numPaths: how many shortest paths to find
+    public IList<Path> yensImpl(IList<Node> nodes, int fromNode, int toNode, int numPaths) {
+	    // Create an empty list of paths that will be returned and a list of potential paths
+	    var Apaths = new List<Path>();
+	    var Bpaths = new List<Path>();
+	    // First find the 1st shortest path using Dijkstra
 
+        var firstPath = dijkstraImpl(nodes, fromNode, toNode);
+	    Apaths.Add(firstPath);
+        Path totalPath, rootPath, spurPath;
+        Node spurNode;
+        // Loop to find the remaining k shortest paths
+        for (int k = 1; k < numPaths; k++){
+            // Loop through all but the last node in the previous lowest-cost path
+            Path previousLowestCostPath = Apaths[k - 1];
+            IList<Node> allButTheLastNodeInPreviousLowestCostPath = previousLowestCostPath.GetSubsetOfNodes(0, previousLowestCostPath.Nodes.Count-2);
+            for(int i=0; i < allButTheLastNodeInPreviousLowestCostPath.Count; i++) {
+                spurNode = allButTheLastNodeInPreviousLowestCostPath[i];
+                rootPath = new Path(previousLowestCostPath.GetSubsetOfNodes(0, i));
+                // Check the previous shortest paths and compare to rootPath
+                // Break any edges at the end of the rootPath if it coincides with a
+                //  previous shortest path
+                foreach (Path testPath in Apaths) {
+                    if(AreNodesEqual(rootPath.Nodes, testPath.GetSubsetOfNodes(0, i))) {
+                        spurNode.breakEdge(testPath.Nodes[i + 1].Index);
+                    }
+                }
+                // For each node rootPathNode in rootPath except spurNode:
+                //    remove rootPathNode from Graph
+
+                // Calculate the spur path from the spur node to the sink
+                spurPath = dijkstraImpl(nodes, spurNode.Index, toNode);
+                // Fix any edges that were broken
+                spurNode.fixEdges();
+
+                if (spurPath == null) {
+                    //#No valid path exists, skip to next node
+                    continue;
+                }
+                totalPath = rootPath + spurPath;
+                //#Need to check if spurPath already exists in B
+                if(!Bpaths.Exists(bpath => AreNodesEqual(totalPath.Nodes, bpath.Nodes))) {
+                    //#print("Adding a path to Bpaths:")
+                    //#totalPath.printPath()
+                    Bpaths.Add(totalPath);
+                }
+        		else {
+                    print("Not adding a path to Bpaths because it already existed:");
+                    totalPath.printPath();
+                }
+            } // "for i"-loop
+
+            //#If Bpaths is empty, no more possible paths exist, so exit
+            if (Bpaths.Count == 0) {
+                break;
+            }
+            //#Sort the list of candidate paths
+            Bpaths.sortByPathCost(); // Bpaths.sort(key = lambda item: item.getPathCost())
+            //#Move the lowest path cost from B to A
+            Apaths.Add(Bpaths.pop(0));
+            //print("Found shortest path " + str(k+1) + ": ");
+            Apaths[k].printPath();
+        } // "for k"-loop ends
+        return Apaths;
+    }
+
+    private bool AreNodesEqual(
+        IList<Node> rootPathNodes, 
+        IList<Node> testPathNodes
+    ) {
+        //Python:  if (rootPath[:] == testPath[:i + 1]) {
+        if(rootPathNodes.Count != testPathNodes.Count) {
+            return false;
+        }
+        for(int i=0; i<rootPathNodes.Count; i++)
+        {
+            if(!rootPathNodes[i].Equals(testPathNodes[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
