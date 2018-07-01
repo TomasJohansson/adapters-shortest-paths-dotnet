@@ -15,6 +15,7 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
     [TestFixture]
     class PathFinderImplementationsTest
     {
+        private Graph graph;
         private PathFinder pathFinder;
         Vertex a, b, c, d;
 
@@ -33,16 +34,25 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
 		        CreateEdge(b, d, CreateWeight(8)),
 		        CreateEdge(c, d, CreateWeight(9))
             };
-            Graph graph = CreateGraph(edges, GraphEdgesValidationDesired.YES); 
-            //PathFinderFactory pathFinderFactory = new PathFinderFactoryYanQi();
-            // TODO: refactor the test class to let it test multiple implementations
-            PathFinderFactory pathFinderFactory = new PathFinderFactoryParrisha();
-            pathFinder = pathFinderFactory.CreatePathFinder(graph);
+            graph = CreateGraph(edges, GraphEdgesValidationDesired.YES); 
         }
-        
+
         [Test]
-        public void PathFinderTest()
+        public void PathFinderTestYanQi()
         {
+            PathFinderTest(new PathFinderFactoryYanQi());
+        }
+        [Test]
+        public void PathFinderTestParrisha()
+        {
+            PathFinderTest(new PathFinderFactoryParrisha());
+        }
+
+        
+        private void PathFinderTest(PathFinderFactory pathFinderFactory)
+        {
+            pathFinder = pathFinderFactory.CreatePathFinder(graph);
+
             IList<Path> shortestPaths = pathFinder.FindShortestPaths(a, d, 10);
             AreEqual(3, shortestPaths.Count);
 
