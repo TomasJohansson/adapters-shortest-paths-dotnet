@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿/// MIT license. For more information see the file "LICENSE"
+
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace YenKsp {

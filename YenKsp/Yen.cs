@@ -1,3 +1,5 @@
+/// MIT license. For more information see the file "LICENSE"
+
 using System;
 using System.Collections.Generic;
 

@@ -1,3 +1,5 @@
+/// MIT license. For more information see the file "LICENSE"
+
 using NUnit.Framework;
 using System.Collections.Generic;
 

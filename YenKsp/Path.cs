@@ -1,3 +1,5 @@
+/// MIT license. For more information see the file "LICENSE"
+
 // A class that contains a list of Nodes representing a path
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿/// MIT license. For more information see the file "LICENSE"
+using System.Collections.Generic;
 
 namespace YenKsp {
     // this class was added to use instead of the 
