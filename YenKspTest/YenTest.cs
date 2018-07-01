@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace YenKsp {
 
     [TestFixture]
-    public class TestYensImpl {
+    public class YenTest {
 	    private Yen yen;
         private Node n0, n1, n2, n3, n4;
         private IList<Node> graphNodes;
