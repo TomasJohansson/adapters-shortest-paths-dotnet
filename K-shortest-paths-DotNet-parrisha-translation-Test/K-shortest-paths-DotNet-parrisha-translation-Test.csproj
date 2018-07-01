@@ -47,14 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PathTest.cs" />
-    <Compile Include="YenTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\com.programmerare.yen.parrisha\PathTest.cs" />
+    <Compile Include="test\com.programmerare.yen.parrisha\YenTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YenKsp\YenKsp.csproj">
-      <Project>{f35ef7e1-72ad-4b7e-baa5-24a4f36f3e76}</Project>
-      <Name>YenKsp</Name>
+    <ProjectReference Include="..\K-shortest-paths-DotNet-parrisha-translation\K-shortest-paths-DotNet-parrisha-translation.csproj">
+      <Project>{b70ffb71-d9b4-4984-881d-2e5eb25e2aa8}</Project>
+      <Name>K-shortest-paths-DotNet-parrisha-translation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
