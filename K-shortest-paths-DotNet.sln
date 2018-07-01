@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet-par
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-parrisha-translation-Test", "K-shortest-paths-DotNet-parrisha-translation-Test\K-shortest-paths-DotNet-parrisha-translation-Test.csproj", "{41A2D09B-1505-453F-971B-13CFBF0BA988}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-adapters-shortest-paths-impl-parrisha", "dotnet-adapters-shortest-paths-impl-parrisha\dotnet-adapters-shortest-paths-impl-parrisha.csproj", "{082A4853-C644-4A8B-B45A-E7B665BE175A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{41A2D09B-1505-453F-971B-13CFBF0BA988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41A2D09B-1505-453F-971B-13CFBF0BA988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41A2D09B-1505-453F-971B-13CFBF0BA988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{082A4853-C644-4A8B-B45A-E7B665BE175A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082A4853-C644-4A8B-B45A-E7B665BE175A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082A4853-C644-4A8B-B45A-E7B665BE175A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082A4853-C644-4A8B-B45A-E7B665BE175A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
