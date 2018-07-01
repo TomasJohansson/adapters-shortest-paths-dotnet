@@ -13,7 +13,7 @@ using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVert
 namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpaths.adapter.yanqi
 {
     [TestFixture]
-    class PathFinderYanQiTest
+    class PathFinderImplementationsTest
     {
         private PathFinder pathFinder;
         Vertex a, b, c, d;
