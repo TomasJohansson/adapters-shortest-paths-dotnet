@@ -5,21 +5,21 @@ using QuickGraph.Algorithms.RankedShortestPath;
 using QuickGraph;
 using NUnit.Framework;
 
-//QuickGraph 3.6
-//https://archive.codeplex.com/?p=quickgraph
+// QuickGraph 3.6
+// https://archive.codeplex.com/?p=quickgraph
 
-//YC.QuickGraph 3.7.3
-//https://github.com/YaccConstructor/QuickGraph/releases
+// YC.QuickGraph 3.7.3
+// https://github.com/YaccConstructor/QuickGraph/releases
 
-//According to download information from NuGet:
+// According to download information from NuGet:
 
-//QuickGraph 3.6.61119.7
-//November 20, 2011 
-//286 k downloads
+// QuickGraph 3.6.61119.7
+// November 20, 2011 
+// 286 k downloads
 
-//YC.QuickGraph 3.7.3
-//Aug 23, 2016
-//13.9 k downloads
+// YC.QuickGraph 3.7.3
+// Aug 23, 2016
+// 13.9 k downloads
 
 // Regarding above version 3.7.3
 // see the folder QuickGraphTest_3_7_3 
