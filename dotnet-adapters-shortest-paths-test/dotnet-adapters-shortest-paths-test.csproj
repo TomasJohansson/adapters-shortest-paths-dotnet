@@ -76,6 +76,10 @@
       <Project>{45de26bc-016f-445c-b625-9d7f04ea3353}</Project>
       <Name>dotnet-adapters-shortest-paths-core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-bsmock\dotnet-adapters-shortest-paths-impl-bsmock.csproj">
+      <Project>{b15edc9e-b0bd-4cf0-ae98-31649df63d84}</Project>
+      <Name>dotnet-adapters-shortest-paths-impl-bsmock</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-parrisha\dotnet-adapters-shortest-paths-impl-parrisha.csproj">
       <Project>{082a4853-c644-4a8b-b45a-e7b665be175a}</Project>
       <Name>dotnet-adapters-shortest-paths-impl-parrisha</Name>

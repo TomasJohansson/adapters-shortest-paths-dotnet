@@ -9,6 +9,7 @@ using static com.programmerare.shortestpaths.core.impl.GraphImpl;
 using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
 using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using com.programmerare.shortestpaths.adapter.bsmock;
 
 namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpaths.adapter.yanqi
 {
@@ -42,10 +43,17 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
         {
             PathFinderTest(new PathFinderFactoryYanQi());
         }
+
         [Test]
         public void PathFinderTestParrisha()
         {
             PathFinderTest(new PathFinderFactoryParrisha());
+        }
+
+        [Test]
+        public void PathFinderTestBSmock()
+        {
+            PathFinderTest(new PathFinderFactoryBsmock());
         }
 
         

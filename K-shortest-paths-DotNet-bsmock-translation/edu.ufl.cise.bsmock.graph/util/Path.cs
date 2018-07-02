@@ -82,10 +82,11 @@ namespace edu.ufl.cise.bsmock.graph.util
             totalCost += edge.getWeight();
         }
 
-        public void addLastNode(String nodeLabel) {
-            String lastNode = edges.getLast().getToNode();
-            edges.addLast(new Edge(lastNode, nodeLabel,0));
-        }
+        // Disabled method because never used
+        //public void addLastNode(String nodeLabel) {
+        //    String lastNode = edges.getLast().getToNode();
+        //    edges.addLast(new Edge(lastNode, nodeLabel,0));
+        //}
 
         public int size() {
             return edges.size();
