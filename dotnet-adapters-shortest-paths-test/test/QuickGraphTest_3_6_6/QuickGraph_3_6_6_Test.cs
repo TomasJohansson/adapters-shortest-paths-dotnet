@@ -21,10 +21,10 @@ using NUnit.Framework;
 // Aug 23, 2016
 // 13.9 k downloads
 
-// Regarding above version 3.7.3
-// see the folder QuickGraphTest_3_7_3 
-// and also the following bug report:
-// https://github.com/YaccConstructor/QuickGraph/issues/178
+//Regarding above version 3.7.3
+//see the folder QuickGraphTest_3_7_3 
+//and also the following bug report:
+//https://github.com/YaccConstructor/QuickGraph/issues/178
 
 namespace dotnet_adapters_shortest_paths_test.QuickGraphTest_3_6_6
 {
