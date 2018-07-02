@@ -63,6 +63,7 @@ public class TestYen {
         /* Read graph from file */
         SystemOut.println("Reading data from file... ");
         Graph graph = new Graph(graphFilename);
+
         SystemOut.println("complete.");
         printGraph(graph);
         /* Compute the K shortest paths and record the completion time */
@@ -98,6 +99,8 @@ public class TestYen {
             SystemOut.println("edge weight " + e.getWeight());
         }
         SystemOut.println("graph looping ends");
+
+        
     }
 
     private static string GetModifiedPath(string graphFilename)
@@ -121,15 +124,50 @@ public class TestYen {
     // but just a way of triggering the main method 
     // from a library
     [Test]
+    public void YenMain()
+    {
+        TestYen.main(null);
+    }
+
+    [Test]
     public void YenTest()
     {
-        // TODO: currently only one path is returned
-        // when using the test file "tiny_graph_02.txt"
-        // The only path returned (when going from 1 to 9) is 
-        // "10: [1-2-5-8-9]" (node path 1-2-5-8-9 with total weight 10)
-        // The problem might have something to do with the 
-        // implementations (i.e. emulations from this .NET code) 
-        // of Java's LinkedList or PriorityQueue
-        TestYen.main(null);
+        const double deltaValue = 0.0000001;
+        var graph = new Graph();
+        graph.addEdge("A", "B", 5);
+        graph.addEdge("A", "C", 6);
+        graph.addEdge("B", "C", 7);
+        graph.addEdge("B", "D", 8);
+        graph.addEdge("C", "D", 9);
+
+        Yen yenAlgorithm = new Yen();
+        List<Path> paths = yenAlgorithm.ksp(graph, "A", "D", 5);
+        Assert.AreEqual(3, paths.size());
+
+        Path path1 = paths.get(0);
+        Path path2 = paths.get(1);
+        Path path3 = paths.get(2);
+        Assert.AreEqual(13, path1.getTotalCost(), deltaValue);
+        Assert.AreEqual(15, path2.getTotalCost(), deltaValue);
+        Assert.AreEqual(21, path3.getTotalCost(), deltaValue);
+
+        List<String> nodes1 = path1.getNodes();
+        Assert.AreEqual(3, nodes1.size());
+        Assert.AreEqual("A", nodes1.get(0));
+        Assert.AreEqual("B", nodes1.get(1));
+        Assert.AreEqual("D", nodes1.get(2));
+        
+        List<String> nodes2 = path2.getNodes();
+        Assert.AreEqual(3, nodes2.size());
+        Assert.AreEqual("A", nodes2.get(0));
+        Assert.AreEqual("C", nodes2.get(1));
+        Assert.AreEqual("D", nodes2.get(2));
+
+        List<String> nodes3 = path3.getNodes();
+        Assert.AreEqual(4, nodes3.size());
+        Assert.AreEqual("A", nodes3.get(0));
+        Assert.AreEqual("B", nodes3.get(1));
+        Assert.AreEqual("C", nodes3.get(2));
+        Assert.AreEqual("D", nodes3.get(3));
     }
 }

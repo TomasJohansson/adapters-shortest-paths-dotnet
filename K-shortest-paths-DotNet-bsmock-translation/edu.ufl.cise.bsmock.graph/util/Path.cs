@@ -131,6 +131,17 @@ namespace edu.ufl.cise.bsmock.graph.util
             return result;
         }*/
 
+        // The above methods were disabled in the Java code but the below .NET method ("Equals") is needed
+        public override bool Equals(object path2)
+        {
+            var path = path2 as Path;
+            return this.equals(path);
+        }
+        public override int GetHashCode()
+        {
+            return (int)BitConverter.DoubleToInt64Bits(totalCost);
+        }
+
         public bool equals(Path path2) {
             if (path2 == null)
                 return false;
