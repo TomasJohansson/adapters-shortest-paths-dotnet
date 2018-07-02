@@ -9,7 +9,7 @@ using System.Linq;
 
 // https://github.com/YaccConstructor/QuickGraph
 using QuickGraph;
-using QuickGraph.Algorithms.ShortestPath.Yen;
+//using QuickGraph.Algorithms.ShortestPath.Yen;
 // When "YC.QuickGraph 3.7.3" was added through NuGet, 
 // the following packages were also added:
 //Successfully installed 'DotNet.Contracts 1.10.10126.1' to dotnet-adapters-shortest-paths-impl-quickgraph
@@ -94,37 +94,38 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph.generics
 		    V endVertex, 
 		    int maxNumberOfPaths
 	    ) {
-            var yen = new YenShortestPathsAlgorithm<string>(this.graphAdaptee, startVertex.VertexId, endVertex.VertexId, maxNumberOfPaths);
+            throw new System.Exception();
+      //      var yen = new YenShortestPathsAlgorithm<string>(this.graphAdaptee, startVertex.VertexId, endVertex.VertexId, maxNumberOfPaths);
 
-		    IList<P> paths = new List<P>();
-		    //int startVertexId = idMapper.createOrRetrieveIntegerId(startVertex.getVertexId());
-		    //int endVertexId = idMapper.createOrRetrieveIntegerId(endVertex.getVertexId());
+		    //IList<P> paths = new List<P>();
+		    ////int startVertexId = idMapper.createOrRetrieveIntegerId(startVertex.getVertexId());
+		    ////int endVertexId = idMapper.createOrRetrieveIntegerId(endVertex.getVertexId());
 		    
-            var result = yen.Execute().ToList();
+      //      var result = yen.Execute().ToList();
 
-            var pathEnumerator = result.GetEnumerator();
-		    while(pathEnumerator.MoveNext()) {
-                IEnumerable<TaggedEquatableEdge<string, double>> path = pathEnumerator.Current;
-                var edgesEnumerator = path.GetEnumerator();
-                IList<E> edges = new List<E>();
-                double pathWeight = 0;
-                while(edgesEnumerator.MoveNext()) {
-                    TaggedEquatableEdge<string, double> edgeAdaptee = edgesEnumerator.Current;
-                    E edge = GetOriginalEdgeInstance(edgeAdaptee.Source, edgeAdaptee.Target);
-                    edges.Add(
-                        edge
-                    );	
-                    pathWeight += edgeAdaptee.Tag;
-                }
-                // TODO kanske
-                W totalWeight = base.CreateInstanceWithTotalWeight(pathWeight, edges);
-                paths.Add(base.CreatePath(totalWeight, edges));
-                if (maxNumberOfPaths == paths.Count)
-                {
-                    break;
-                }
-            }
-		    return new ReadOnlyCollection<P>(paths);
+      //      var pathEnumerator = result.GetEnumerator();
+		    //while(pathEnumerator.MoveNext()) {
+      //          IEnumerable<TaggedEquatableEdge<string, double>> path = pathEnumerator.Current;
+      //          var edgesEnumerator = path.GetEnumerator();
+      //          IList<E> edges = new List<E>();
+      //          double pathWeight = 0;
+      //          while(edgesEnumerator.MoveNext()) {
+      //              TaggedEquatableEdge<string, double> edgeAdaptee = edgesEnumerator.Current;
+      //              E edge = GetOriginalEdgeInstance(edgeAdaptee.Source, edgeAdaptee.Target);
+      //              edges.Add(
+      //                  edge
+      //              );	
+      //              pathWeight += edgeAdaptee.Tag;
+      //          }
+      //          // TODO kanske
+      //          W totalWeight = base.CreateInstanceWithTotalWeight(pathWeight, edges);
+      //          paths.Add(base.CreatePath(totalWeight, edges));
+      //          if (maxNumberOfPaths == paths.Count)
+      //          {
+      //              break;
+      //          }
+      //      }
+		    //return new ReadOnlyCollection<P>(paths);
 	    }
 
 	    //private E getOriginalEdgeInstance(BaseVertex startVertexForEdge, BaseVertex endVertexForEdge) {
