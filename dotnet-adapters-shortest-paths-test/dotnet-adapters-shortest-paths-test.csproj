@@ -43,7 +43,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\graph\utils\FileReaderForGraphEdges.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\graph\utils\PathFinderFactories.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\utils\FileReader.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\utils\ResourceReader.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\utils\XmlFileReader.cs" />
     <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\PathFinderImplementationsTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\BigGraphTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\EdgeIdValuesTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\PathFinderBaseValidationExceptionTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\SmallGraphTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\XmlDefinedTestCasesTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\utils\FileReaderForGraphEdgesTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\utils\GraphShortestPathAssertionHelper.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\utils\FileReaderTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\utils\ResourceReaderTest.cs" />
+    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\utils\XmlFileReaderTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeGenericsImplTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeMapperTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\GraphGenericsImplTest.cs" />
