@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using com.programmerare.shortestpaths.adapter.yanqi;
+using com.programmerare.shortestpaths.adapter.bsmock;
+using com.programmerare.shortestpaths.adapter.quickgraph;
 using com.programmerare.shortestpaths.adapter.parrisha;
 using static NUnit.Framework.Assert;
 using com.programmerare.shortestpaths.core.validation;
@@ -9,7 +11,10 @@ using static com.programmerare.shortestpaths.core.impl.GraphImpl;
 using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
 using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-using com.programmerare.shortestpaths.adapter.bsmock;
+
+// Regarding QuickGraph there are two test classes:
+// 	QuickGraph_3_6_6_Test (NOT using the adapters API, i.e. direct usage of QuickGraph)
+// 	PathFinderImplementationsTest (this file, using the adapters API)
 
 namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpaths.adapter.yanqi
 {
@@ -56,7 +61,12 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
             PathFinderTest(new PathFinderFactoryBsmock());
         }
 
-        
+        [Test]
+        public void PathFinderTestQuickGraph()
+        {
+            PathFinderTest(new PathFinderFactoryQuickGraph());
+        }
+		
         private void PathFinderTest(PathFinderFactory pathFinderFactory)
         {
             pathFinder = pathFinderFactory.CreatePathFinder(graph);

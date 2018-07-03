@@ -40,6 +40,18 @@
     <Reference Include="Priority Queue, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OptimizedPriorityQueue.4.1.1\lib\net45\Priority Queue.dll</HintPath>
     </Reference>
+    <Reference Include="QuickGraph, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph.Data, Version=3.6.61114.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph.Graphviz, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Graphviz.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickGraph.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,8 +79,12 @@
     <Compile Include="test\com.programmerare.shortestpaths\utils\EdgeUtilityTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\utils\MapperForIntegerIdsAndGeneralStringIdsTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\utils\StringUtilityTest.cs" />
+    <Compile Include="test\QuickGraphTest_3_6_6\QuickGraph_3_6_6_Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,10 +100,17 @@
       <Project>{082a4853-c644-4a8b-b45a-e7b665be175a}</Project>
       <Name>dotnet-adapters-shortest-paths-impl-parrisha</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-quickgraph\dotnet-adapters-shortest-paths-impl-quickgraph.csproj">
+      <Project>{f229a327-aaca-4c63-a3b8-02c51dcbcd66}</Project>
+      <Name>dotnet-adapters-shortest-paths-impl-quickgraph</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-yanqi\dotnet-adapters-shortest-paths-impl-yanqi.csproj">
       <Project>{e5f801d6-0430-4e40-8deb-94ef6def2f8c}</Project>
       <Name>dotnet-adapters-shortest-paths-impl-yanqi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="test\QuickGraphTest_3_7_3\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

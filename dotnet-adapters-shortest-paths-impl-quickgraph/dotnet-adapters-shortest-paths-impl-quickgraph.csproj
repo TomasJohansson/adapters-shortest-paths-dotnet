@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>dotnet_adapters_shortest_paths_impl_quickgraph</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="com.programmerare.shortestpaths.adapter.quickgraph\generics\PathFinderQuickGraphGenerics_3_7_3.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuickGraph" Version="3.6.61119.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dotnet-adapters-shortest-paths-core\dotnet-adapters-shortest-paths-core.csproj" />
+  </ItemGroup>
+
+</Project>
