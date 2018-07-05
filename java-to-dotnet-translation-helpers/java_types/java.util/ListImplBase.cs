@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace java.util
 {
-    public abstract class ListImplBase<T> : List<T> 
+    public abstract class ListImplBase<T> : AbstractList<T> , List<T> 
     {
         // IEnumerator/IEnumerable are needed to support "foreach" iteration
 
@@ -58,7 +58,7 @@ namespace java.util
             return size() == 0;
         }
 
-        public int size()
+        public override int size()
         {
             return _list.Count;
         }
@@ -81,23 +81,7 @@ namespace java.util
             return _list.IndexOf(t);
         }
 
-        public override int GetHashCode()
-        {
-            // return base.GetHashCode();
-            // IMPORTANT: The above standard hashcode 
-            // will NOT work! Tests will fail !
-
-            // The below implementation are copied from here:
-            // https://docs.oracle.com/javase/7/docs/api/java/util/List.html#hashCode()
-            int hashCode = 1;
-            foreach (T e in this._list)
-            {
-                hashCode = 31*hashCode + (e==null ? 0 : e.GetHashCode());
-            }
-            return hashCode;
-        }
-
-        public T get(int i)
+        public override T get(int i)
         {
             return _list[i];
         }
@@ -157,5 +141,6 @@ namespace java.util
         {
             _list.Reverse();
         }
-    }
+
+   }
 }

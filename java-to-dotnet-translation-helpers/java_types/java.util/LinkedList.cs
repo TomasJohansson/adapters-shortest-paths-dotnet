@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace java.util
 {
     // https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
-    public class LinkedList<T> : List<T> , IEnumerator<T> , IEnumerable<T>
+    public class LinkedList<T> : AbstractList<T> , List<T> , IEnumerator<T> , IEnumerable<T>
     {
         // IEnumerator/IEnumerable are needed to support "foreach" iteration
 
@@ -59,7 +59,7 @@ namespace java.util
             return size() == 0;
         }
 
-        public int size()
+        public override int size()
         {
             return _list.Count;
         }
@@ -96,7 +96,7 @@ namespace java.util
             return hashCode;
         }
 
-        public T get(int i)
+        public override T get(int i)
         {
             return _list[i];
         }

@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-adapters-shortest-pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-adapters-shortest-paths-impl-quickgraph", "dotnet-adapters-shortest-paths-impl-quickgraph\dotnet-adapters-shortest-paths-impl-quickgraph.csproj", "{BE189530-70B7-4F8E-9859-3B9FAF180DB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "java-to-dotnet-translation-helpers-test", "java-to-dotnet-translation-helpers-test\java-to-dotnet-translation-helpers-test.csproj", "{68DE9558-16E2-443C-91BD-DFF912AD5D3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{BE189530-70B7-4F8E-9859-3B9FAF180DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE189530-70B7-4F8E-9859-3B9FAF180DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE189530-70B7-4F8E-9859-3B9FAF180DB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
