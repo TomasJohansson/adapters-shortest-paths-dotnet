@@ -1,4 +1,3 @@
-using java.lang;
 using java.util;
 using System;
 
@@ -7,7 +6,22 @@ namespace edu.ufl.cise.bsmock.graph.util
     /**
      * Created by brandonsmock on 6/6/15.
      */
-    public class DijkstraNode : Node , Comparable<DijkstraNode> { // ,  {
+    public class DijkstraNode : Node 
+        //, Comparable<DijkstraNode> 
+    {
+    // Reason for using Comparable<Vertex> :
+    // Java code: Comparable<Vertex> is used because PriorityQueue is 
+    // used with natural ordering in class class DijkstraShortestPathAlg:
+    // private PriorityQueue<BaseVertex> vertexCandidateQueue = new PriorityQueue<BaseVertex>();
+    // https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue()
+    // It is the method compareTo below which determines 
+    // what should be returned from the priority queue.
+    // HOWEVER, this is currently not needed in the C# translation 
+    // of the project since a PriorityQueue is used which instead 
+    // takes the weight parameter in the add method,
+    // which was how the compareTo method was implemented before in this class 
+    // i.e. before the method Comparable.compareTo was removed
+
         private double dist = double.MaxValue;
         private int depth;
 
@@ -61,19 +75,20 @@ namespace edu.ufl.cise.bsmock.graph.util
             return base.neighbors.keySet().iterator().next();
         }
 
-        public int compareTo(DijkstraNode comparedNode) {
-            double distance1 = this.dist;
-            double distance2 = comparedNode.getDist();
-            if (distance1 == distance2)
-                return 0;
-            if (distance1 > distance2)
-                return 1;
-            return -1;
-        }
-        public int CompareTo(DijkstraNode other)
-        {
-            return compareTo(other);
-        }
+        // see comment at the top of the file regarding why the below Comparable<Vertex> methods has been removed
+        //public int compareTo(DijkstraNode comparedNode) {
+        //    double distance1 = this.dist;
+        //    double distance2 = comparedNode.getDist();
+        //    if (distance1 == distance2)
+        //        return 0;
+        //    if (distance1 > distance2)
+        //        return 1;
+        //    return -1;
+        //}
+        //public int CompareTo(DijkstraNode other)
+        //{
+        //    return compareTo(other);
+        //}
 
         public bool equals(DijkstraNode comparedNode) {
             return this.getLabel().Equals(comparedNode.getLabel());

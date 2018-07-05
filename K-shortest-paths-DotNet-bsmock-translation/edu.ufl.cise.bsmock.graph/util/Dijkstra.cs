@@ -26,7 +26,7 @@ namespace edu.ufl.cise.bsmock.graph.util
             DijkstraNode sourceNode = predecessorTree.getNodes().get(predecessorTree.getRoot());
             sourceNode.setDist(0);
             sourceNode.setDepth(0);
-            pq.add(sourceNode);
+            pq.add(sourceNode, sourceNode.getDist());
 
             int count = 0;
             while (!pq.isEmpty()) {
@@ -46,7 +46,7 @@ namespace edu.ufl.cise.bsmock.graph.util
                         neighbor.setDist(newDistance);
                         neighbor.setDepth(current.getDepth() + 1);
                         neighbor.setParent(currLabel);
-                        pq.add(neighbor);
+                        pq.add(neighbor, neighbor.getDist());
                     }
                 }
             }
@@ -70,7 +70,7 @@ namespace edu.ufl.cise.bsmock.graph.util
 
             sourceNode.setDist(0);
             sourceNode.setDepth(0);
-            pq.add(sourceNode);
+            pq.add(sourceNode, sourceNode.getDist());
 
             int count = 0;
             while (!pq.isEmpty()) {
@@ -100,7 +100,7 @@ namespace edu.ufl.cise.bsmock.graph.util
                         neighbor.setDist(newDistance);
                         neighbor.setDepth(current.getDepth() + 1);
                         neighbor.setParent(currLabel);
-                        pq.add(neighbor);
+                        pq.add(neighbor, neighbor.getDist());
                     }
                 }
             }

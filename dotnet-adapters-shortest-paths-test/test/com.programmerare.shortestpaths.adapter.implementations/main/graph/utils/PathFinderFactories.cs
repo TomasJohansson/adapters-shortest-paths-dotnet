@@ -19,9 +19,9 @@ namespace com.programmerare.shortestpaths.graph.utils
 	     */	
 	    public static IList<PathFinderFactory>  CreatePathFinderFactories() {
 		    IList<PathFinderFactory> list = new List<PathFinderFactory>();
+		    list.Add(new PathFinderFactoryYanQi());
 		    list.Add(new PathFinderFactoryBsmock());
-            // The other implementations below do not currently seem to work for all tests and therefore disabled
-		    list.Add(new PathFinderFactoryYanQi()); // Note that this YanQi implementations also currently fails for the test method "XmlDefinedTestCasesTest.TestXmlFile_test_50"
+		    // The other implementations below do not currently seem to work for all tests and therefore disabled
 		    //list.Add(new PathFinderFactoryQuickGraph());
 		    //list.Add(new PathFinderFactoryParrisha());
 		    return list;		

@@ -38,7 +38,11 @@ namespace edu.asu.emit.algorithm.graph.abstraction
  * 
  * @author yqi
  */
-public interface BaseVertex : Comparable<BaseVertex> {
+public interface BaseVertex 
+        //: Comparable<BaseVertex> 
+        // see comment in class Vertex
+        // regarding why Comparable is removed in this C# project
+{
 	
 	int getId();
 	double getWeight();

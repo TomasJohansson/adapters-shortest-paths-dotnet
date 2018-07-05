@@ -1,6 +1,9 @@
-﻿using Priority_Queue;
+﻿// ----------------------
+using Priority_Queue;
+// https://github.com/BlueRaja/High-Speed-Priority-Queue-for-C-Sharp
+// NuGet: <PackageReference Include="OptimizedPriorityQueue" Version="4.1.1" />
+// ----------------------
 using System;
-using System.Collections.Generic;
 
 namespace java.util
 {
@@ -14,18 +17,49 @@ namespace java.util
     // https://github.com/dotnet/corefxlab/pull/1850
 
     public class PriorityQueue<T>
-        where T : IComparable<T>
+        //where T : IComparable<T>
+    // Reason for using Comparable<Vertex> :
+    // Java code: Comparable<Vertex> is used because PriorityQueue is 
+    // used with natural ordering in class class DijkstraShortestPathAlg:
+    // private PriorityQueue<BaseVertex> vertexCandidateQueue = new PriorityQueue<BaseVertex>();
+    // https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue()
+    // It is the method compareTo below which determines 
+    // what should be returned from the priority queue.
+    // HOWEVER, this is currently not needed in the C# translation 
+    // of the project since a PriorityQueue is used which instead 
+    // takes the weight parameter in the add method,
+    // which was how the compareTo method was implemented before in this class 
+    // i.e. before the method Comparable.compareTo was removed
+
     {
-        SimplePriorityQueue<T,T> simplePriorityQueue = new SimplePriorityQueue<T,T>();
+        SimplePriorityQueue<T,double> simplePriorityQueue = new SimplePriorityQueue<T,double>();
 
         public void clear()
         {
             simplePriorityQueue.Clear();
         }
 
-        public void add(T t)
+        // add method in Java PriorityQueue:
+        //public void add(T t)
+        //{
+        //    simplePriorityQueue.Enqueue(t, 0);
+        //}
+        // Note the below deviation from above Java method in this method.
+        // In Java the add method only takes one parameter.
+        // Here the second parameter below is used instead 
+        // of using the Comparable interface as in Java.
+        // The reason is I wanted to reuse a priority queue 
+        // implementation for .NET but it (https://github.com/BlueRaja/High-Speed-Priority-Queue-for-C-Sharp) 
+        // does not seem to provide a similar API with a comparable
+        // interface comparing two items but since both
+        // YanQi and Bsmock implementations (Java) implemented 
+        // the Java compareTo method with the weights,
+        // it could be provided as a parameter instead,
+        // and now all the tests succeed for YanQi and Bsmock
+        // which both uses this PriorityQueue
+        public void add(T t, double weight)
         {
-            simplePriorityQueue.Enqueue(t, t);
+            simplePriorityQueue.Enqueue(t, weight);
         }
 
         public bool isEmpty()

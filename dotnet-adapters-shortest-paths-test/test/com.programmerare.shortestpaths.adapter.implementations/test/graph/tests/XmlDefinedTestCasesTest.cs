@@ -160,8 +160,8 @@ namespace com.programmerare.shortestpaths.graph.tests {
 	    [Test]
 	    public void TestXmlFile_test_50_2() {
 		    graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.ALL);
-		    pathFinderFactories.Add(new PathFinderFactoryBsmock());
-            pathFinderFactories.Add(new PathFinderFactoryYanQi());
+		    pathFinderFactories.Add(new PathFinderFactoryYanQi());
+            pathFinderFactories.Add(new PathFinderFactoryBsmock());
             pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
             //pathFinderFactories.Add(new PathFinderFactoryParrisha()); // fails
 		    runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, XML_FILE_BIG_TEST__50_2, pathFinderFactories);
@@ -172,8 +172,7 @@ namespace com.programmerare.shortestpaths.graph.tests {
 	    [Test]
 	    public void TestXmlFile_test_50() {
 		    graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.ALL);
-            // TODO: YanQi below fails!
-            //pathFinderFactories.Add(new PathFinderFactoryYanQi()); // fails
+            pathFinderFactories.Add(new PathFinderFactoryYanQi());
             pathFinderFactories.Add(new PathFinderFactoryBsmock());
             pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
             //pathFinderFactories.Add(new PathFinderFactoryParrisha());  // fails

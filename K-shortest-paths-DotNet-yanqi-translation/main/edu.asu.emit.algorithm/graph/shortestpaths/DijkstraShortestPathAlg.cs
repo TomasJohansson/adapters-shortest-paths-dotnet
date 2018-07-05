@@ -118,7 +118,7 @@ public class DijkstraShortestPathAlg
 		BaseVertex startVertex = isSource2sink ? sourceVertex : sinkVertex;
 		startVertexDistanceIndex.put(startVertex, 0d);
 		startVertex.setWeight(0d);
-		vertexCandidateQueue.add(startVertex);
+		vertexCandidateQueue.add(startVertex, startVertex.getWeight());
 
 		// 2. start searching for the shortest path
 		while (!vertexCandidateQueue.isEmpty()) {
@@ -165,7 +165,7 @@ public class DijkstraShortestPathAlg
 				predecessorIndex.put(curAdjacentVertex, vertex);
 				
 				curAdjacentVertex.setWeight(distance);
-				vertexCandidateQueue.add(curAdjacentVertex);
+				vertexCandidateQueue.add(curAdjacentVertex, curAdjacentVertex.getWeight());
 			}
 		}
 	}

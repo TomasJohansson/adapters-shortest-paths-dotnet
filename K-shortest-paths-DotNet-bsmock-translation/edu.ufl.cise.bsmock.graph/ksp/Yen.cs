@@ -105,7 +105,7 @@ namespace edu.ufl.cise.bsmock.graph.ksp
 
                             // If candidate path has not been generated previously, add it
                             if (!candidates.contains(totalPath))
-                                candidates.add(totalPath);
+                                candidates.add(totalPath, totalPath.getTotalCost());
                         }
 
                         // Restore all of the edges that were removed during this iteration
@@ -232,7 +232,7 @@ namespace edu.ufl.cise.bsmock.graph.ksp
 
                             // If candidate path has not been generated previously, add it
                             //if (!candidates.contains(totalPath))
-                            candidates.add(totalPath);
+                            candidates.add(totalPath, totalPath.getTotalCost());
                         }
 
                         // Restore removed edges
