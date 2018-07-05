@@ -46,7 +46,7 @@ namespace java.util
         {
             if(!containsKey(t))
             {
-                Console.WriteLine("map nyckel saknas: " + t);
+                //Console.WriteLine("map nyckel saknas: " + t);
                 //return null;//default(U);
                 return default(U);
             }

@@ -141,7 +141,6 @@ namespace edu.ufl.cise.bsmock.graph.ksp
             //}
 
             // Return the set of k shortest paths
-            Console.WriteLine("tomas ksp retur: " + ksp.size());
             return ksp;
         }
 
