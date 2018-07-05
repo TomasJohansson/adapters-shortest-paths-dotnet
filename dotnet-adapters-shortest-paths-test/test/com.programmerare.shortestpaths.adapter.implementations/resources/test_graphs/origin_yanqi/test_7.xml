@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphTestData>
+    <graphDefinition>
+		<!-- 
+		    The test data in this file is based at the data from the following "yan-qi" test file: 
+		    	https://github.com/yan-qi/k-shortest-paths-java-version/blob/master/data/test_7
+		    (i.e. test data from one of the libraries which have an adapter implementation)
+		    However, the weights have been modified below for the same reason mentioned in "network.xml"
+		 -->        
+	     <!-- For more comments, regarding the xml, look in "small_graph_1.xml" instead  -->
+			0 1 1
+			1 0 1
+			0 2 7
+			2 0 7 
+			1 2 1
+			2 1 1
+			1 3 3.01
+			3 1 3
+			1 4 2
+			4 1 2
+			2 4 4.02
+			4 2 4
+			3 5 6
+			5 3 6
+			3 4 1
+			4 3 1.03
+			4 5 2
+			5 4 2
+			3 6 100
+			6 3 100
+			6 1 1
+			1 6 1 
+    </graphDefinition>
+	<testCase>
+	    <input>
+		    <startVertex>0</startVertex>
+		    <endVertex>6</endVertex>
+		    <maxNumberOfPaths>50</maxNumberOfPaths>
+	    </input>
+	    <outputExpected>
+			<!--
+			The result below has been produced (at least within reasonable decimal tolerance, i.e. maybe not exactly as below) 
+			by three independent implementations (asserted against each other)
+			and therefore is trusted as the correct result. To create strings as below from path objects, 
+			there is a method 'PathParser.fromPathToString' 
+			-->	        
+				2 0 1 6
+				9 0 2 1 6
+				14.02 0 2 4 1 6
+				16.05 0 2 4 3 1 6
+				23.02 0 2 4 5 3 1 6
+				104.01 0 1 3 6
+				104.03 0 1 4 3 6
+				107.05 0 1 2 4 3 6
+				111 0 1 4 5 3 6
+				111.01 0 2 1 3 6
+				111.03 0 2 1 4 3 6
+				112.05 0 2 4 3 6
+				114.02 0 1 2 4 5 3 6
+				116.03 0 2 4 1 3 6
+				118 0 2 1 4 5 3 6
+				119.02 0 2 4 5 3 6
+	    </outputExpected>
+	</testCase>
+</graphTestData>

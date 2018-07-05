@@ -1,55 +1,45 @@
-package com.programmerare.shortestpaths.graph.utils;
+using System;
 
-import static com.programmerare.shortestpaths.core.impl.WeightImpl.SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.List;
-
-import org.junit.Test;
-
-import com.programmerare.shortestpaths.core.api.Edge;
-import com.programmerare.shortestpaths.core.api.Vertex;
-import com.programmerare.shortestpaths.core.api.Weight;
-import com.programmerare.shortestpaths.core.parsers.EdgeParser;
-
-/**
- * @author Tomas Johansson
- */
-public class FileReaderForGraphEdgesTest {
-
-	@Test
-	public void testReadEdgesFromFile() {
-		final String filePath = "directory_for_filereader_test/two_edges_A_B_7__X_Y_8.txt";
-		// /src/test/resources/directory_for_filereader_test/file_for_filereader_test.txt
-		// the above line has two rows like below:
-		//A B 7
-		//X Y 8
+namespace com.programmerare.shortestpaths.graph.utils {
+    /**
+     * @author Tomas Johansson
+     */
+    //[TestFixture]
+    [Obsolete] // use xml instead
+    public class FileReaderForGraphEdgesTest {
+	    //[Test]
+	    //public void TestReadEdgesFromFile() {
+		   // const string filePath = "directory_for_filereader_test/two_edges_A_B_7__X_Y_8.txt";
+		   // // /src/test/resources/directory_for_filereader_test/file_for_filereader_test.txt
+		   // // the above line has two rows like below:
+		   // //A B 7
+		   // //X Y 8
 		
-		final FileReaderForGraphEdges<Edge, Vertex, Weight> fileReaderForGraphTestData = FileReaderForGraphEdges.createFileReaderForGraphEdges(new EdgeParser.EdgeFactoryDefault());
-		final List<Edge> edges = fileReaderForGraphTestData.readEdgesFromFile(filePath);
-		assertNotNull(edges);
-		assertEquals(2, edges.size());
+		   // FileReaderForGraphEdges<Edge, Vertex, Weight> fileReaderForGraphTestData = FileReaderForGraphEdges<Edge, Vertex, Weight>.CreateFileReaderForGraphEdges(new EdgeFactoryDefault());
+		   // IList<Edge> edges = fileReaderForGraphTestData.ReadEdgesFromFile(filePath);
+		   // Assert.NotNull(edges);
+		   // Assert.AreEqual(2, edges.Count);
 		
-		final Edge edge1 = edges.get(0); // A B 7
-		final Edge edge2 = edges.get(1); // X Y 8
-		assertNonNulls(edge1);
-		assertNonNulls(edge2);
+		   // Edge edge1 = edges[0]; // A B 7
+		   // Edge edge2 = edges[1]; // X Y 8
+		   // assertNonNulls(edge1);
+		   // assertNonNulls(edge2);
 
-		assertEquals("A", edge1.getStartVertex().getVertexId());
-		assertEquals("B", edge1.getEndVertex().getVertexId());
-		assertEquals(7, edge1.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
+		   // Assert.AreEqual("A", edge1.StartVertex.VertexId);
+		   // Assert.AreEqual("B", edge1.EndVertex.VertexId);
+		   // Assert.AreEqual(7, edge1.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);
 		
-		assertEquals("X", edge2.getStartVertex().getVertexId());
-		assertEquals("Y", edge2.getEndVertex().getVertexId());
-		assertEquals(8, edge2.getEdgeWeight().getWeightValue(), SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);		
+		   // Assert.AreEqual("X", edge2.StartVertex.VertexId);
+		   // Assert.AreEqual("Y", edge2.EndVertex.VertexId);
+		   // Assert.AreEqual(8, edge2.EdgeWeight.WeightValue, SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS);		
 		
-	}
+	    //}
 
-	private void assertNonNulls(Edge edge) {
-		assertNotNull(edge);
-		assertNotNull(edge.getStartVertex());
-		assertNotNull(edge.getEndVertex());
-		assertNotNull(edge.getEdgeWeight());
-	}
+	    //private void assertNonNulls(Edge edge) {
+		   // Assert.NotNull(edge);
+		   // Assert.NotNull(edge.StartVertex);
+		   // Assert.NotNull(edge.EndVertex);
+		   // Assert.NotNull(edge.EdgeWeight);
+	    //}
+    }
 }

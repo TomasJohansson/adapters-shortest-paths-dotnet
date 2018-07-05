@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphTestData>
+    <graphDefinition>
+    
+    <!--
+    the test data is from 
+    /tomas-fork_bsmock_k-shortest-paths/edu/ufl/cise/bsmock/graph/ksp/test/tiny_graph_02.txt
+    -->
+     <!-- For more comments, regarding the xml, look in "small_graph_1.xml" instead  -->
+1 2 3
+2 3 4
+4 5 2
+5 6 6
+7 8 8
+8 9 1
+1 4 7
+2 5 2
+3 6 5
+4 7 3
+5 8 4
+6 9 9
+9 1 2    
+    </graphDefinition>
+
+	<testCase>
+	    <input>
+		    <startVertex>1</startVertex>
+		    <endVertex>9</endVertex>
+		    <maxNumberOfPaths>10</maxNumberOfPaths>
+	    </input>
+	    <outputExpected>
+			<!--
+			The result below has been produced by three independent implementations (asserted against each other)
+			and therefore is trusted as the correct result. To create strings as below from path objects, 
+			there is a method 'PathParser.fromPathToString' 
+			-->	    
+			10 1 2 5 8 9
+			14 1 4 5 8 9
+			19 1 4 7 8 9
+			20 1 2 5 6 9
+			21 1 2 3 6 9
+			24 1 4 5 6 9
+	    </outputExpected>
+	</testCase>
+	
+</graphTestData>

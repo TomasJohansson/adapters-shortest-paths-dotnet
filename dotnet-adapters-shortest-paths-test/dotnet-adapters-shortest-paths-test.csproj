@@ -114,5 +114,69 @@
       <Version>3.10.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_filereader_test\file_for_filereader_test.txt" />
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_filereader_test\two_edges_A_B_7__X_Y_8.txt" />
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\txtFile1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\txtFile2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\xmlFile1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\xmlFile2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_xmlfilereader_test\xmlFileReaderTest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_bsmock\small_road_network_01.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_bsmock\tiny_graph_01.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_bsmock\tiny_graph_02.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\network.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_5.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_50.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_50_2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_6.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_6_1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_6_2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_7.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_1.txt" />
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_2.txt" />
+    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

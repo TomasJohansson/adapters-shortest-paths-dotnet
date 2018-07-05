@@ -66,7 +66,7 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph.generics
 		    int maxNumberOfPaths
 	    ) {
             var target = new HoffmanPavleyRankedShortestPathAlgorithm<string, Edge<string>>(this.graphAdaptee, e => this.edgeWeightsForGraphAdaptee[e]);
-            target.ShortestPathCount = this.graphAdaptee.VertexCount;
+            target.ShortestPathCount = maxNumberOfPaths;
             target.Compute(startVertex.VertexId, endVertex.VertexId);
             var quickGraphPaths = target.ComputedShortestPaths.ToList();
 		    IList<P> paths = new List<P>();
@@ -82,6 +82,7 @@ namespace com.programmerare.shortestpaths.adapter.quickgraph.generics
                 }
                 W totalWeight = base.CreateInstanceWithTotalWeight(pathWeight, edges);
                 paths.Add(base.CreatePath(totalWeight, edges));
+                //if(paths.Count == maxNumberOfPaths) break; // TODO
             }
 		    return new ReadOnlyCollection<P>(paths);
 	    }

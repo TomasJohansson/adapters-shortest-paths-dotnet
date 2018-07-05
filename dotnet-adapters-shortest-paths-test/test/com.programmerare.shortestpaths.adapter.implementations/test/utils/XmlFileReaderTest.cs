@@ -1,79 +1,69 @@
-package com.programmerare.shortestpaths.utils;
+using System.Xml;
+using NUnit.Framework;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+namespace com.programmerare.shortestpaths.utils
+{
+    /**
+     * @author Tomas Johansson
+     */
+    public class XmlFileReaderTest {
 
-import org.junit.Before;
-import org.junit.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+	    private XmlFileReader xmlFileReader;
 
-/**
- * @author Tomas Johansson
- */
-public class XmlFileReaderTest {
+	    private string filePathForXmlTestFile;
+	    private string xPathExpressionForSubelements;
+	    private string textContentForFirstSubelement;
+	    private string textContentForSecondSubelement;
+	    private string nameOfXmlRootElement;
+	    private string nameOfXmlSubElement;
+	
+	    [SetUp]
+	    public void SetUp() {
+		    xmlFileReader = new XmlFileReader();
+            filePathForXmlTestFile = @"directory_for_xmlfilereader_test\xmlFileReaderTest.xml";
+		    // testing the content of the file "/.../resources/directory_for_xmlfilereader_test/xmlFileReaderTest.xml":
+    //		<myRoot>
+    //		    <mySubElement>abc</mySubElement>
+    //		    <mySubElement>def</mySubElement>
+    //		</myRoot>
+		    xPathExpressionForSubelements = "myRoot/mySubElement";
+		    nameOfXmlRootElement = "myRoot";
+		    nameOfXmlSubElement = "mySubElement";
+		
+		    textContentForFirstSubelement = "abc";
+		    textContentForSecondSubelement = "def";		
+	    }
 
-	private XmlFileReader xmlFileReader;
-	private String filePathForXmlTestFile;
-	private String xPathExpressionForSubelements;
-	private String textContentForFirstSubelement;
-	private String textContentForSecondSubelement;
+	    [Test]
+	    public void TestGetResourceFileAsXmlDocument() {
+		    XmlDocument xmlDocument = xmlFileReader.GetResourceFileAsXmlDocument(filePathForXmlTestFile);
+		    Assert.NotNull(xmlDocument);
+		    XmlElement documentElement = xmlDocument.DocumentElement;
+		    Assert.AreEqual(nameOfXmlRootElement, documentElement.Name);
+	    }
 	
-	private String nameOfXmlRootElement;
-	private String nameOfXmlSubElement;
+	    [Test]
+	    public void TestGetNodeListMatchingXPathExpression() {
+            XmlDocument xmlDocument = xmlFileReader.GetResourceFileAsXmlDocument(filePathForXmlTestFile);
+		    XmlNodeList nodeList = xmlFileReader.GetNodeListMatchingXPathExpression(xmlDocument, xPathExpressionForSubelements);
+		    Assert.NotNull(nodeList);
+		    Assert.AreEqual(2,  nodeList.Count);
+		
+		    XmlNode item1 = nodeList.Item(0);
+		    XmlNode item2 = nodeList[1];
+		    Assert.NotNull(item1);
+		    Assert.NotNull(item2);
+		    Assert.AreEqual(textContentForFirstSubelement, item1.InnerText);
+		    Assert.AreEqual(textContentForSecondSubelement, item2.InnerText);
+	    }
 	
-	@Before
-	public void setUp() throws Exception {
-		xmlFileReader = new XmlFileReader();
-		filePathForXmlTestFile = "directory_for_xmlfilereader_test/xmlFileReaderTest.xml";
-		// testing the content of the file "/src/test/resources/directory_for_xmlfilereader_test/xmlFileReaderTest.xml":
-//		<myRoot>
-//		    <mySubElement>abc</mySubElement>
-//		    <mySubElement>def</mySubElement>
-//		</myRoot>
-		xPathExpressionForSubelements = "myRoot/mySubElement";
-		nameOfXmlRootElement = "myRoot";
-		nameOfXmlSubElement = "mySubElement";
-		
-		textContentForFirstSubelement = "abc";
-		textContentForSecondSubelement = "def";		
-	}
-
-	@Test
-	public void testGetResourceFileAsXmlDocument() {
-		final Document document = xmlFileReader.getResourceFileAsXmlDocument(filePathForXmlTestFile);
-		assertNotNull(document);
-		final Element documentElement = document.getDocumentElement();
-		assertEquals(nameOfXmlRootElement, documentElement.getTagName());		
-	}
-	
-	@Test
-	public void testGetNodeListMatchingXPathExpression() {
-		final Document document = xmlFileReader.getResourceFileAsXmlDocument(filePathForXmlTestFile);
-		final NodeList nodeList = xmlFileReader.getNodeListMatchingXPathExpression(document, xPathExpressionForSubelements);
-		
-		assertNotNull(nodeList);
-		assertEquals(2,  nodeList.getLength());
-		
-		final Node item1 = nodeList.item(0);
-		final Node item2 = nodeList.item(1);
-		assertNotNull(item1);
-		assertNotNull(item2);
-		
-		assertEquals(textContentForFirstSubelement, item1.getTextContent());
-		assertEquals(textContentForSecondSubelement, item2.getTextContent());
-	}
-	
-	@Test
-	public void testGetTextContentNodeOfFirstSubNode() {
-		final Document document = xmlFileReader.getResourceFileAsXmlDocument(filePathForXmlTestFile);
-		final Node rootElement = document.getDocumentElement();
-		
-		final String result = xmlFileReader.getTextContentNodeOfFirstSubNode(rootElement , nameOfXmlSubElement);
-		assertNotNull(result);
-		assertEquals(textContentForFirstSubelement,  result);
-	}
-	
+	    [Test]
+	    public void TestGetTextContentNodeOfFirstSubNode() {
+		    XmlDocument xmlDocument = xmlFileReader.GetResourceFileAsXmlDocument(filePathForXmlTestFile);
+		    XmlElement rootElement = xmlDocument.DocumentElement;
+		    string result = xmlFileReader.GetTextContentNodeOfFirstSubNode(rootElement , nameOfXmlSubElement);
+		    Assert.NotNull(result);
+		    Assert.AreEqual(textContentForFirstSubelement,  result);
+	    }
+    }
 }

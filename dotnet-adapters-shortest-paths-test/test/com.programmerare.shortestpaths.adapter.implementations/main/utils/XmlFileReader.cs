@@ -1,96 +1,65 @@
-package com.programmerare.shortestpaths.utils;
+using System.Xml;
 
-import java.io.InputStream;
+namespace com.programmerare.shortestpaths.utils {
+    /**
+     * @author Tomas Johansson
+     */
+    public sealed class XmlFileReader {
+        
+        private ResourceReader resourceReader;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
+        public XmlFileReader() {
+            resourceReader = new ResourceReader();
+	    }
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
+        public XmlNodeList GetNodeListMatchingXPathExpression(XmlNode node, string xPathExpressionAsString) {
+            return node.SelectNodes(xPathExpressionAsString);
+        }
 
-/**
- * @author Tomas Johansson
- */
-public final class XmlFileReader {
+        // /**
+        //  * @param relativePathToXmlFile
+        //  *   The relative path beginning from the directory "...\resources\"
+        //  *   i.e. the method will find the "resources" directory 
+        //  *   and then append the relative path provided in the method parameter.
+        //  *   Example: if you want to retrieve the file:
+        //  *   "...\dotnet-adapters-shortest-paths-test\test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_xmlfilereader_test\xmlFileReaderTest.xml"
+        //  *   (which becomes copied to "bin\Debug" if you use "Copy to output directory" in Visual Studio) i.e. to this file:
+        //  *   "...\dotnet-adapters-shortest-paths-test\bin\Debug\test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_xmlfilereader_test\xmlFileReaderTest.xml"
+        //  * Then the parameter value should be "directory_for_xmlfilereader_test\xmlFileReaderTest.xml"
+        //  * @return
+        //  */
+        public XmlDocument GetResourceFileAsXmlDocument(string relativePathToXmlFile) {
+            var file = resourceReader.GetFileInResourcesFolder(relativePathToXmlFile);
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(file.FullName);
+            return xmlDocument;
+        }
 
-	private final DocumentBuilder documentBuilder;
-	private final XPath xPath;
-
-	public XmlFileReader() throws Exception {
-		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		final XPathFactory xPathfactory = XPathFactory.newInstance();
-		documentBuilder = factory.newDocumentBuilder();
-		xPath = xPathfactory.newXPath();
-	}
-
-	public NodeList getNodeListMatchingXPathExpression(final Node node, final String xPathExpressionAsString) {
-		try {
-			final XPathExpression xPathExpression = xPath.compile(xPathExpressionAsString);
-			final Object nodesFoundByXPathExpression = xPathExpression.evaluate(node, XPathConstants.NODESET);
-			return (NodeList) nodesFoundByXPathExpression;
-		} catch (XPathExpressionException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	/**
-	 * 
-	 * @param pathToResourceFile example: if you want to retrieve the file "testing the content of the file "/src/test/resources/directory_for_xmlfilereader_test/xmlFileReaderTest.xml"
-	 * then the parameter value should be "directory_for_xmlfilereader_test/xmlFileReaderTest.xml"
-	 * @return
-	 */
-	public Document getResourceFileAsXmlDocument(final String pathToResourceFile) {
-		final InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(pathToResourceFile);
-		final InputSource inputSource = new InputSource(inputStream);
-		return getInputSourceAsDocument(inputSource);
-	}
-
-	
-	private Document getInputSourceAsDocument(final InputSource xmlInputSource) {
-		try {
-			return documentBuilder.parse(xmlInputSource);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	/**
-	 * Typically, the method is supposed to be used when there only is one subnode.
-	 * The semantic "First" in the method name indicates the behaviour if there would be more than one subnodes.
-	 * (since an obvious alternative could have been to throw an exception rather than simply returning the first)
-	 * @param nodeParent
-	 * @param nameOfSubnode
-	 * @return the text content of the subnode if such subnode exists, otherwise null is returned 
-	 */
-	public String getTextContentNodeOfFirstSubNode(final Node nodeParent, final String nameOfSubnode) {
-		// Example: nodeParent is "input" below and nameOfSubnode is  startVertex. Then "A" should be returned 
-//	    <input> 
-//	    <startVertex>A</startVertex>
-		final NodeList childNodes = nodeParent.getChildNodes();
-		for (int i = 0; i < childNodes.getLength(); i++) {
-			final Node childNode = childNodes.item(i);
-			if(childNode.getNodeType() == Node.ELEMENT_NODE) {
-				if(nameOfSubnode.equals(childNode.getNodeName())) {
-					return childNode.getTextContent();
-				}
-			}
-		}
-		return null;
-	}
-//	private InputSource getXmlStringAsInputSource(final String xmlString) {
-//		final StringReader reader = new StringReader(xmlString);
-//		return new InputSource(reader);
-//	}
-	
-//	private NodeList getNodeListMatchingXPathExpression(String xml, String xPathExpression) {
-//		final Document document = getInputSourceAsDocument(getXmlStringAsInputSource(xml));
-//		return getNodeListMatchingXPathExpression(document, xPathExpression);
-//	}	
+        // /**
+        //  * Typically, the method is supposed to be used when there only is one subnode.
+        //  * The semantic "First" in the method name indicates the behaviour if there would be more than one subnodes.
+        //  * (since an obvious alternative could have been to throw an exception rather than simply returning the first)
+        //  * @param nodeParent
+        //  * @param nameOfSubnode
+        //  * @return the text content of the subnode if such subnode exists, otherwise null is returned 
+        //  */
+        public string GetTextContentNodeOfFirstSubNode(
+            XmlNode nodeParent, 
+            string nameOfSubnode
+        ) {
+            // Example: nodeParent is "input" below and nameOfSubnode is  startVertex. Then "A" should be returned 
+            //	    <input> 
+            //	    <startVertex>A</startVertex>
+            XmlNodeList childNodes = nodeParent.ChildNodes;
+            for (int i = 0; i < childNodes.Count; i++) {
+                XmlNode childNode = childNodes.Item(i);
+                if (childNode.NodeType == XmlNodeType.Element) {
+                    if (nameOfSubnode.Equals(childNode.Name)) {
+                        return childNode.InnerText;
+                    }
+                }
+            }
+            return null;
+        }
+    }
 }

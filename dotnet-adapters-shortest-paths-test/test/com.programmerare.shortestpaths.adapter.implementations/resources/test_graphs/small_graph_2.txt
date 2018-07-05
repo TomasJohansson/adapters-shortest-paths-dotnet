@@ -1,0 +1,9 @@
+F G 13
+F H 14
+F I 15
+F J 16
+G H 17
+G I 18
+G J 19
+H I 20
+H J 21

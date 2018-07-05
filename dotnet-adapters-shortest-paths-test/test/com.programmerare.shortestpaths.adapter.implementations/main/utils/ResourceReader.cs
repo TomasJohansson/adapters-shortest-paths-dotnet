@@ -1,56 +1,70 @@
-package com.programmerare.shortestpaths.utils;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-/**
- * @author Tomas Johansson
- */
-public final class ResourceReader {
-
+namespace com.programmerare.shortestpaths.utils
+{
     /**
-    * Return the filenames, sorted in alphabetical order.
-    *
-    * Assume files like this exist:
-    *      "...src\test\resources\directory_for_resourceeader_test\txtFile1.txt"
-    *      "...src\test\resources\directory_for_resourceeader_test\txtFile2.txt"
-    * Then the input and return examples below illustrates how the method should work.
-    * @param pathToResourceFolder e.g. "irectory_for_resourceeader_test"
-    * @return e.g. {  "txtFile1.txt"  ,  "txtFile2.txt" }  i.e. only the file names without any path,
-    *  and the returned names are sorted in alphabetical order.
-    */
-	public List<String> getNameOfFilesInResourcesFolder(final String pathToResourceFolder) {
-		// if Spring Framework in the future will become included as a dependency then consider using something like below
-		// (but currently it seems unnecessary to include Spring only because of this)
-		// PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		// resolver.getResources("classpath*:some/package/name/**/*.xml");
+     * @author Tomas Johansson
+     */
+    public sealed class ResourceReader {
 
-		final List<String> filenames = new ArrayList<String>();
-		try {
-			final InputStream inputStream = getResourceAsStream(pathToResourceFolder);
-			final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-			String resourceName;
-			while( (resourceName = bufferedReader.readLine()) != null ) {
-				filenames.add(resourceName);
-			}
-			Collections.sort(filenames);
-			return filenames;
-		}
-		catch(Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+        // TODO: adjust the documentation below (Java) for the new C#.NET project and its paths ...
+        // (see also the documentation at the method XmlFileReader.GetResourceFileAsXmlDocument)
+        /**
+        * Return the filenames, sorted in alphabetical order.
+        *
+        * Assume files like this exist:
+        *      "...src\test\resources\directory_for_resourceeader_test\txtFile1.txt"
+        *      "...src\test\resources\directory_for_resourceeader_test\txtFile2.txt"
+        * Then the input and return examples below illustrates how the method should work.
+        * @param pathToResourceFolder e.g. "irectory_for_resource_reader_test"
+        * @return e.g. {  "txtFile1.txt"  ,  "txtFile2.txt" }  i.e. only the file names without any path,
+        *  and the returned names are sorted in alphabetical order.
+        */
+	    public IList<string> GetNameOfFilesInResourcesFolder(string pathToSubFolderRelativeToResourceFolder) {
+            var files = GetFilesInResourcesFolder(pathToSubFolderRelativeToResourceFolder);
+            return files.Select(f => f.Name).ToList();
+	    }
 
-	private InputStream getResourceAsStream(final String resourcePath) {
-		final InputStream inputStream = getContextClassLoader().getResourceAsStream(resourcePath);
-		return inputStream == null ? getClass().getResourceAsStream(resourcePath) : inputStream;
-	}
+        public IList<FileInfo> GetFilesInResourcesFolder(string pathToSubFolderRelativeToResourceFolder) {
+            string absolutePathToResourceFolder = GetAbsolutePathToResourceFolder();
+            string absolutePathToSubFolderRelativeToResourceFolder  = System.IO.Path.Combine(absolutePathToResourceFolder, pathToSubFolderRelativeToResourceFolder);
+            var dir = new DirectoryInfo(absolutePathToSubFolderRelativeToResourceFolder);
+            if(!dir.Exists) throw new Exception("Directory could not be found: " + dir.FullName + " ||| when using the parameter pathToSubFolderRelativeToResourceFolder: " + pathToSubFolderRelativeToResourceFolder);
+            List<FileInfo> files = new List<FileInfo>(dir.GetFiles());
+            files.Sort( (f1,f2) => f1.Name.CompareTo(f2.Name));
+            return files;
+        }
 
-	private ClassLoader getContextClassLoader() {
-		return Thread.currentThread().getContextClassLoader();
-	}
+        public FileInfo GetFileInResourcesFolder(string pathToFileRelativeToResourceFolder) {
+            string absolutePathToResourceFolder = GetAbsolutePathToResourceFolder();
+            string absolutePathToFileWithinResourceFolder  = System.IO.Path.Combine(absolutePathToResourceFolder, pathToFileRelativeToResourceFolder);
+            var file = new FileInfo(absolutePathToFileWithinResourceFolder);
+            if(!file.Exists) throw new Exception("File does not exist: " + file.FullName);
+            return file;
+        }
+
+        private string GetAbsolutePathToResourceFolder() {
+            string basePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string relativePathToResourceFolder = @"test\com.programmerare.shortestpaths.adapter.implementations\resources\";
+            string absolutePathToResourceFolder = System.IO.Path.Combine(basePath, relativePathToResourceFolder);
+            return absolutePathToResourceFolder;
+        }
+
+        // Java code below:
+	    ////private InputStream getResourceAsStream(final String resourcePath) {
+     //   private object GetResourceAsStream(string resourcePath) {
+		   // //InputStream inputStream = getContextClassLoader().getResourceAsStream(resourcePath);
+		   // //return inputStream == null ? getClass().getResourceAsStream(resourcePath) : inputStream;
+     //       throw new Exception("TODO implement method");
+	    //}
+
+	    ////private ClassLoader getContextClassLoader() {
+     //   private object GetContextClassLoader() {
+     //       throw new Exception("TODO implement method");
+		   // //return Thread.currentThread().getContextClassLoader();
+	    //}
+    }
 }
