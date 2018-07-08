@@ -59,7 +59,7 @@ namespace com.programmerare.shortestpaths.adapter.bsmock.generics
 		    int maxNumberOfPaths
 	    ) {
             IList<P> paths = new System.Collections.Generic.List<P>();
-		    java.util.List<edu.ufl.cise.bsmock.graph.util.Path> pathList = yenAlgorithm.ksp(
+		    IList<edu.ufl.cise.bsmock.graph.util.Path> pathList = yenAlgorithm.ksp(
 			    graphAdaptee, 
 			    startVertex.VertexId,
 			    endVertex.VertexId,

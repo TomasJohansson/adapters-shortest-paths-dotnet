@@ -1,8 +1,6 @@
-using edu.ufl.cise.bsmock.graph;
 using edu.ufl.cise.bsmock.graph.util;
-//using edu.ufl.cise.bsmock.graph.util;
-using java.util;
 using System;
+using System.Collections.Generic;
 
 namespace edu.ufl.cise.bsmock.graph.ksp
 {
@@ -30,6 +28,6 @@ namespace edu.ufl.cise.bsmock.graph.ksp
     public interface KSPAlgorithm {
         bool isLoopless();
 
-        List<Path> ksp(Graph graph, String sourceLabel, String targetLabel, int K);
+        IList<Path> ksp(Graph graph, String sourceLabel, String targetLabel, int K);
     }
 }

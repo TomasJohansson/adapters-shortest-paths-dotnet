@@ -31,7 +31,7 @@
 namespace edu.asu.emit.algorithm.graph.shortestpaths
 {
 using System;
-using java.util;
+using java.util; // PriorityQueue
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.abstraction;
 /**

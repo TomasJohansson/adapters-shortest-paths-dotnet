@@ -1,6 +1,6 @@
 using System;
-using java.util;
-using java.lang;
+using System.Collections.Generic;
+using System.Text;
 
 namespace edu.ufl.cise.bsmock.graph.util
 {
@@ -9,21 +9,23 @@ namespace edu.ufl.cise.bsmock.graph.util
      *
      * Created by Brandon Smock on 6/18/15.
      */
-    public class Path : Comparable<Path> { // : Cloneable is used in the forked Java project but does not seem to use the method "Object.clone()"
-        private LinkedList<Edge> edges;
+    public class Path 
+      //  : Comparable<Path> 
+    { // : Cloneable is used in the forked Java project but does not seem to use the method "Object.clone()"
+        private java.util.LinkedList<Edge> edges;
         private double totalCost;
 
         public Path() {
-            edges = new LinkedList<Edge>();
+            edges = new java.util.LinkedList<Edge>();
             totalCost = 0;
         }
 
         public Path(double totalCost) {
-            edges = new LinkedList<Edge>();
+            edges = new java.util.LinkedList<Edge>();
             this.totalCost = totalCost;
         }
 
-        public Path(LinkedList<Edge> edges) {
+        public Path(java.util.LinkedList<Edge> edges) {
             this.edges = edges;
             totalCost = 0;
             foreach (Edge edge in edges) {
@@ -31,21 +33,21 @@ namespace edu.ufl.cise.bsmock.graph.util
             }
         }
 
-        public Path(LinkedList<Edge> edges, double totalCost) {
+        public Path(java.util.LinkedList<Edge> edges, double totalCost) {
             this.edges = edges;
             this.totalCost = totalCost;
         }
 
-        public LinkedList<Edge> getEdges() {
+        public java.util.LinkedList<Edge> getEdges() {
             return edges;
         }
 
-        public void setEdges(LinkedList<Edge> edges) {
+        public void setEdges(java.util.LinkedList<Edge> edges) {
             this.edges = edges;
         }
 
-        public List<String> getNodes() {
-            LinkedList<String> nodes = new LinkedList<String>();
+        public java.util.LinkedList<String> getNodes() {
+            java.util.LinkedList<String> nodes = new java.util.LinkedList<String>();
 
             foreach (Edge edge in edges) {
                 nodes.add(edge.getFromNode());
@@ -95,18 +97,18 @@ namespace edu.ufl.cise.bsmock.graph.util
         public override String ToString() {
             StringBuilder sb = new StringBuilder();
             int numEdges = edges.size();
-            sb.append(totalCost);
-            sb.append(": [");
+            sb.Append(totalCost);
+            sb.Append(": [");
             if (numEdges > 0) {
                 for (int i = 0; i < edges.size(); i++) {
-                    sb.append(edges.get(i).getFromNode().ToString());
-                    sb.append("-");
+                    sb.Append(edges.get(i).getFromNode().ToString());
+                    sb.Append("-");
                 }
 
-                sb.append(edges.getLast().getToNode().ToString());
+                sb.Append(edges.getLast().getToNode().ToString());
             }
-            sb.append("]");
-            return sb.toString();
+            sb.Append("]");
+            return sb.ToString();
         }
 
     /*    @Override
@@ -147,7 +149,7 @@ namespace edu.ufl.cise.bsmock.graph.util
             if (path2 == null)
                 return false;
 
-            LinkedList<Edge> edges2 = path2.getEdges();
+            java.util.LinkedList<Edge> edges2 = path2.getEdges();
 
             int numEdges1 = edges.size();
             int numEdges2 = edges2.size();
@@ -185,7 +187,7 @@ namespace edu.ufl.cise.bsmock.graph.util
         }
 
         public Path clone() {
-            LinkedList<Edge> edges = new LinkedList<Edge>();
+            java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
 
             foreach (Edge edge in this.edges) {
                 edges.add(edge.clone());
@@ -195,7 +197,7 @@ namespace edu.ufl.cise.bsmock.graph.util
         }
 
         public Path shallowClone() {
-            LinkedList<Edge> edges = new LinkedList<Edge>();
+            java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
 
             foreach (Edge edge in this.edges) {
                 edges.add(edge);
@@ -205,7 +207,7 @@ namespace edu.ufl.cise.bsmock.graph.util
         }
 
         public Path cloneTo(int i) {
-            LinkedList<Edge> edges = new LinkedList<Edge>();
+            java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
             int l = this.edges.size();
             if (i > l)
                 i = l;
@@ -219,7 +221,7 @@ namespace edu.ufl.cise.bsmock.graph.util
         }
 
         public Path cloneFrom(int i) {
-            LinkedList<Edge> edges = new LinkedList<Edge>();
+            java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
 
             foreach (Edge edge in this.edges.subList(i,this.edges.size())) {
                 edges.add(edge.clone());

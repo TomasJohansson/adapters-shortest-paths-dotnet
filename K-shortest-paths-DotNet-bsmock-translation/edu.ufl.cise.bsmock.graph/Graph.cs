@@ -1,8 +1,8 @@
-using java.lang;
-using java.io;
-using java.util;
+using System.Text.RegularExpressions;
 using System;
-using extensionClassesForJavaTypes;
+using System.Text;
+using System.Collections.Generic;
+using System.IO;
 
 namespace edu.ufl.cise.bsmock.graph
 {
@@ -12,64 +12,64 @@ namespace edu.ufl.cise.bsmock.graph
      * Created by brandonsmock on 6/1/15.
      */
     public class Graph {
-        private HashMap<String,Node> nodes;
+        private IDictionary<String,Node> nodes;
 
         public Graph() {
-            nodes = new HashMap<String,Node>();
+            nodes = new Dictionary<String,Node>();
         }
 
         public Graph(String filename): this() {
             readFromFile(filename);
         }
 
-        public Graph(HashMap<String,Node> nodes) {
+        public Graph(IDictionary<String,Node> nodes) {
             this.nodes = nodes;
         }
 
         public int numNodes() {
-            return nodes.size();
+            return nodes.Count;
         }
 
         public int numEdges() {
             int edgeCount = 0;
-            foreach (Node node in nodes.__valuesAsDotNetEnumerable()) {
+            foreach (Node node in nodes.Values) {
                 edgeCount += node.getEdges().size();
             }
             return edgeCount;
         }
 
         public void addNode(String label) {
-            if (!nodes.containsKey(label))
-                nodes.put(label,new Node(label));
+            if (!nodes.ContainsKey(label))
+                nodes.Add(label,new Node(label));
         }
 
         public void addNode(Node node) {
             String label = node.getLabel();
-            if (!nodes.containsKey(label))
-                nodes.put(label,node);
+            if (!nodes.ContainsKey(label))
+                nodes.Add(label,node);
         }
 
         public void addEdge(String label1, String label2, Double weight) {
-            if (!nodes.containsKey(label1))
+            if (!nodes.ContainsKey(label1))
                 addNode(label1);
-            if (!nodes.containsKey(label2))
+            if (!nodes.ContainsKey(label2))
                 addNode(label2);
-            nodes.get(label1).addEdge(label2,weight);
+            nodes[label1].addEdge(label2,weight);
         }
 
         public void addEdge(Edge edge) {
             addEdge(edge.getFromNode(),edge.getToNode(),edge.getWeight());
         }
 
-        public void addEdges(List<Edge> edges) {
+        public void addEdges(java.util.LinkedList<Edge> edges) {
             foreach (Edge edge in edges) {
                 addEdge(edge);
             }
         }
 
         public Edge removeEdge(String label1, String label2) {
-            if (nodes.containsKey(label1)) {
-                double weight = nodes.get(label1).removeEdge(label2);
+            if (nodes.ContainsKey(label1)) {
+                double weight = nodes[label1].removeEdge(label2);
                 if (weight != double.MaxValue) {
                     return new Edge(label1, label2, weight);
                 }
@@ -79,53 +79,53 @@ namespace edu.ufl.cise.bsmock.graph
         }
 
         public double getEdgeWeight(String label1, String label2) {
-            if (nodes.containsKey(label1)) {
-                Node node1 = nodes.get(label1);
-                if (node1.getNeighbors().containsKey(label2)) {
-                    return node1.getNeighbors().get(label2);
+            if (nodes.ContainsKey(label1)) {
+                Node node1 = nodes[label1];
+                if (node1.getNeighbors().ContainsKey(label2)) {
+                    return node1.getNeighbors()[label2];
                 }
             }
 
             return double.MaxValue;
         }
 
-        public HashMap<String,Node> getNodes() {
+        public IDictionary<String,Node> getNodes() {
             return nodes;
         }
 
-        public List<Edge> getEdgeList() {
-            List<Edge> edgeList = new LinkedList<Edge>();
+        public java.util.LinkedList<Edge> getEdgeList() {
+            java.util.LinkedList<Edge> edgeList = new java.util.LinkedList<Edge>();
 
-            foreach (Node node in nodes.__valuesAsDotNetEnumerable()) {
+            foreach (Node node in nodes.Values) {
                 edgeList.addAll(node.getEdges());
             }
 
             return edgeList;
         }
 
-        public Set<String> getNodeLabels() {
-            return nodes.keySet();
+        public ICollection<String> getNodeLabels() {
+            return nodes.Keys;
         }
 
         public Node getNode(String label) {
-            return nodes.get(label);
+            return nodes[label];
         }
 
-        public List<Edge> removeNode(String label) {
-            LinkedList<Edge> edges = new LinkedList<Edge>();
-            if (nodes.containsKey(label)) {
-                Node node = nodes.remove(label);
+        public java.util.LinkedList<Edge> removeNode(String label) {
+            java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
+            if (nodes.ContainsKey(label)) {
+                Node node = nodes[label];
+                nodes.Remove(label);
                 edges.addAll(node.getEdges());
                 edges.addAll(removeEdgesToNode(label));
             }
-
             return edges;
         }
 
-        public List<Edge> removeEdgesToNode(String label) {
-            List<Edge> edges = new LinkedList<Edge>();
-            foreach (Node node in nodes.__valuesAsDotNetEnumerable()) {
-                if (node.getAdjacencyList().contains(label)) {
+        public java.util.LinkedList<Edge> removeEdgesToNode(String label) {
+            java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
+            foreach (Node node in nodes.Values) {
+                if (node.getAdjacencyList().Contains(label)) { // TODO: perfomance ... Contains in collection ...
                     double weight = node.removeEdge(label);
                     edges.add(new Edge(node.getLabel(),label,weight));
                 }
@@ -136,24 +136,24 @@ namespace edu.ufl.cise.bsmock.graph
 
 
         public Graph transpose() {
-            HashMap<String,Node> newNodes = new HashMap<String, Node>();
+            IDictionary<String,Node> newNodes = new Dictionary<String, Node>();
 
-            Iterator<String> it = nodes.keySet().iterator();
-            while (it.hasNext()) {
-                String nodeLabel = it.next();
-                newNodes.put(nodeLabel,new Node(nodeLabel));
+            var it = nodes.Keys.GetEnumerator();
+            while (it.MoveNext()) {
+                String nodeLabel = it.Current;
+                newNodes.Add(nodeLabel,new Node(nodeLabel));
             }
 
-            it = nodes.keySet().iterator();
-            while (it.hasNext()) {
-                String nodeLabel = it.next();
-                Node node = nodes.get(nodeLabel);
-                Set<String> adjacencyList = node.getAdjacencyList();
-                Iterator<String> alIt = adjacencyList.iterator();
-                HashMapN<String, Double> neighbors = node.getNeighbors();
-                while (alIt.hasNext()) {
-                    String neighborLabel = alIt.next();
-                    newNodes.get(neighborLabel).addEdge(nodeLabel,neighbors.get(neighborLabel));
+            it = nodes.Keys.GetEnumerator();
+            while (it.MoveNext()) {
+                String nodeLabel = it.Current;
+                Node node = nodes[nodeLabel];
+                ICollection<String> adjacencyList = node.getAdjacencyList();
+                var alIt = adjacencyList.GetEnumerator();
+                IDictionary<String, Double> neighbors = node.getNeighbors();
+                while (alIt.MoveNext()) {
+                    String neighborLabel = alIt.Current;
+                    newNodes[neighborLabel].addEdge(nodeLabel,neighbors[neighborLabel]);
                 }
             }
 
@@ -161,22 +161,22 @@ namespace edu.ufl.cise.bsmock.graph
         }
 
         public void clear() {
-            nodes = new HashMap<String,Node>();
+            nodes = new Dictionary<String,Node>();
         }
 
         public void readFromFile(String fileName) {
             //try {
-                BufferedReader br = new BufferedReader(new FileReader(fileName));
+                StreamReader br = new StreamReader(fileName);
 
-                String line = br.readLine();
+                String line = br.ReadLine();
 
                 while (line != null) {
-                    String[] edgeDescription = line.split("\\s");
+                    String[] edgeDescription = Regex.Split(line, "\\s");
                     if (edgeDescription.Length == 3) {
-                        addEdge(edgeDescription[0],edgeDescription[1],DoubleJ.parseDouble(edgeDescription[2]));
+                        addEdge(edgeDescription[0],edgeDescription[1], double.Parse(edgeDescription[2]));
                         //addEdge(edgeDescription[1],edgeDescription[0],Double.parseDouble(edgeDescription[2]));
                     }
-                    line = br.readLine();
+                    line = br.ReadLine();
                 }
             //} catch (Exception e) {
             //    e.printStackTrace();
@@ -185,65 +185,68 @@ namespace edu.ufl.cise.bsmock.graph
 
         public String toString() {
             StringBuilder graphStringB = new StringBuilder();
-            Iterator<String> it = nodes.keySet().iterator();
-            while (it.hasNext()) {
-                String nodeLabel = it.next();
-                graphStringB.append(nodeLabel.ToString());
-                graphStringB.append(": {");
-                Node node = nodes.get(nodeLabel);
-                Set<String> adjacencyList = node.getAdjacencyList();
-                Iterator<String> alIt = adjacencyList.iterator();
-                HashMapN<String, Double> neighbors = node.getNeighbors();
-                while (alIt.hasNext()) {
-                    String neighborLabel = alIt.next();
-                    graphStringB.append(neighborLabel.ToString());
-                    graphStringB.append(": ");
-                    graphStringB.append(neighbors.get(neighborLabel));
-                    if (alIt.hasNext())
-                        graphStringB.append(", ");
+            var it = nodes.Keys.GetEnumerator();
+            while (it.MoveNext()) {
+                String nodeLabel = it.Current;
+                graphStringB.Append(nodeLabel.ToString());
+                graphStringB.Append(": {");
+                Node node = nodes[nodeLabel];
+                ICollection<String> adjacencyList = node.getAdjacencyList();
+                var alIt = adjacencyList.GetEnumerator();
+                IDictionary<String, Double> neighbors = node.getNeighbors();
+                bool isFirst = true;
+                while (alIt.MoveNext()) {
+                    if(!isFirst) {
+                        graphStringB.Append(", ");
+                    }
+                    String neighborLabel = alIt.Current;
+                    graphStringB.Append(neighborLabel.ToString());
+                    graphStringB.Append(": ");
+                    graphStringB.Append(neighbors[neighborLabel]);
+                    isFirst = false;
                 }
-                graphStringB.append("}");
-                graphStringB.append("\n");
+                graphStringB.Append("}");
+                graphStringB.Append("\n");
             }
-
-            return graphStringB.toString();
+            return graphStringB.ToString();
         }
 
         public void graphToFile(String filename) {
-            BufferedWriter writer = null;
-            //try {
-                File subgraphFile = new File(filename);
+            throw new NotImplementedException();
+            //BufferedWriter writer = null;
+            ////try {
+            //    File subgraphFile = new File(filename);
 
-                // This will output the full path where the file will be written to...
-                SystemOut.println(subgraphFile.getCanonicalPath());
+            //    // This will output the full path where the file will be written to...
+            //    Console.WriteLine(subgraphFile.getCanonicalPath());
 
-                writer = new BufferedWriter(new FileWriter(subgraphFile));
-                writer.write(nodes.size() + "\n\n");
+            //    writer = new BufferedWriter(new FileWriter(subgraphFile));
+            //    writer.write(nodes.Count + "\n\n");
 
-                Iterator<Node> it = nodes.values().iterator();
-                while (it.hasNext()) {
-                    Node node = it.next();
-                    String nodeLabel = node.getLabel();
-                    if (nodes.containsKey(nodeLabel)) {
-                        HashMapN<String,Double> neighbors = node.getNeighbors();
-                        Iterator<String> it2 = neighbors.keySet().iterator();
-                        while (it2.hasNext()) {
-                            String nodeLabel2 = it2.next();
-                            if (nodes.containsKey(nodeLabel2)) {
-                                writer.write(nodeLabel + " " + nodeLabel2 + " " + neighbors.get(nodeLabel2) + "\n");
-                            }
-                        }
-                    }
-                }
-            //} catch (Exception e) {
-            //    e.printStackTrace();
-            //} finally {
-            //    try {
-            //        // Close the writer regardless of what happens...
-            //        writer.close();
-            //    } catch (Exception e) {
+            //    var it = nodes.Values.GetEnumerator();
+            //    while (it.MoveNext()) {
+            //        Node node = it.Current;
+            //        String nodeLabel = node.getLabel();
+            //        if (nodes.ContainsKey(nodeLabel)) {
+            //            IDictionary<String,Double> neighbors = node.getNeighbors();
+            //            var it2 = neighbors.Keys.GetEnumerator();
+            //            while (it2.MoveNext()) {
+            //                String nodeLabel2 = it2.Current;
+            //                if (nodes.ContainsKey(nodeLabel2)) {
+            //                    writer.write(nodeLabel + " " + nodeLabel2 + " " + neighbors[nodeLabel2] + "\n");
+            //                }
+            //            }
+            //        }
             //    }
-            //}
+            ////} catch (Exception e) {
+            ////    e.printStackTrace();
+            ////} finally {
+            ////    try {
+            ////        // Close the writer regardless of what happens...
+            ////        writer.close();
+            ////    } catch (Exception e) {
+            ////    }
+            ////}
         }
     }
 }

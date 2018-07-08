@@ -1,5 +1,5 @@
-using java.util;
 using System;
+using System.Collections.Generic;
 
 namespace edu.ufl.cise.bsmock.graph.util
 {
@@ -60,19 +60,21 @@ namespace edu.ufl.cise.bsmock.graph.util
         }
 
         public void setParent(String parent) {
-            base.neighbors = new HashMapN<String, Double>();
-            base.neighbors.put(parent,0.0);
+            base.neighbors = new Dictionary<String, Double>();
+            base.neighbors.Add(parent,0.0);
         }
 
         public String getParent() {
-            Set<String> neighborLabels = base.neighbors.keySet();
-            if (neighborLabels.size() > 1) {
+            var neighborLabels = base.neighbors.Keys;
+            if (neighborLabels.Count > 1) {
                 return null;
             }
-            if (neighborLabels.size() < 1) {
+            if (neighborLabels.Count < 1) {
                 return null;
             }
-            return base.neighbors.keySet().iterator().next();
+            var enumerator = neighborLabels.GetEnumerator();
+            enumerator.MoveNext();
+            return enumerator.Current;
         }
 
         // see comment at the top of the file regarding why the below Comparable<Vertex> methods has been removed
@@ -93,7 +95,5 @@ namespace edu.ufl.cise.bsmock.graph.util
         public bool equals(DijkstraNode comparedNode) {
             return this.getLabel().Equals(comparedNode.getLabel());
         }
-
-
     }
 }

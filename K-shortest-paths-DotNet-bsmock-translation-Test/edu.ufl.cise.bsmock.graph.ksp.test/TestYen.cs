@@ -1,34 +1,31 @@
 using System;
-using java.util;
 using edu.ufl.cise.bsmock.graph;
 using edu.ufl.cise.bsmock.graph.ksp;
 using edu.ufl.cise.bsmock.graph.util;
-using edu.ufl.cise.bsmock.graph.ksp;
-using java.lang;
-using extensionClassesForJavaTypes;
 using NUnit.Framework;
 using com.programmerare.edu.ufl.cise.bsmock.graph.ksp;
+using System.Collections.Generic;
 /**
- * Test of Yen's algorithm for computing the K shortest loopless paths between two nodes in a graph.
- *
- * Copyright (C) 2015  Brandon Smock (dr.brandon.smock@gmail.com, GitHub: bsmock)
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Created by Brandon Smock on September 23, 2015.
- * Last updated by Brandon Smock on December 24, 2015.
- */
+* Test of Yen's algorithm for computing the K shortest loopless paths between two nodes in a graph.
+*
+* Copyright (C) 2015  Brandon Smock (dr.brandon.smock@gmail.com, GitHub: bsmock)
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*
+* Created by Brandon Smock on September 23, 2015.
+* Last updated by Brandon Smock on December 24, 2015.
+*/
 [TestFixture]
 public class TestYen {
 
@@ -61,44 +58,44 @@ public class TestYen {
 
     public static void usageExample1(String graphFilename, String source, String target, int k) {
         /* Read graph from file */
-        SystemOut.println("Reading data from file... ");
+        Console.WriteLine("Reading data from file... ");
         Graph graph = new Graph(graphFilename);
 
-        SystemOut.println("complete.");
+        Console.WriteLine("complete.");
         printGraph(graph);
         /* Compute the K shortest paths and record the completion time */
-        SystemOut.println("Computing the " + k + " shortest paths from [" + source + "] to [" + target + "] ");
-        SystemOut.println("using Yen's algorithm... ");
-        List<Path> ksp;
-        long timeStart = SystemJ.currentTimeMillis();
+        Console.WriteLine("Computing the " + k + " shortest paths from [" + source + "] to [" + target + "] ");
+        Console.WriteLine("using Yen's algorithm... ");
+        IList<Path> ksp;
+        long timeStart = 0;// TODO System.currentTimeMillis();
         Yen yenAlgorithm = new Yen();
         ksp = yenAlgorithm.ksp(graph, source, target, k);
-        long timeFinish = SystemJ.currentTimeMillis();
-        SystemOut.println("complete.");
-        SystemOut.println("Operation took " + (timeFinish - timeStart) / 1000.0 + " seconds.");
+        long timeFinish = 0;// TODO SystemJ.currentTimeMillis();
+        Console.WriteLine("complete.");
+        Console.WriteLine("Operation took " + (timeFinish - timeStart) / 1000.0 + " seconds.");
         /* Output the K shortest paths */
-        SystemOut.println("k) cost: [path]");
+        Console.WriteLine("k) cost: [path]");
         int n = 0;
         foreach (Path p in ksp) {
-            SystemOut.println(++n + ") " + p);
+            Console.WriteLine(++n + ") " + p);
         }
     }
 
     private static void printGraph(Graph graph)
     {
-        SystemOut.println("graph looping starts");
+        Console.WriteLine("graph looping starts");
         var nodes = graph.getNodes();
-        var keys = nodes.keySet();
+        var keys = nodes.Keys;
         foreach(var k in keys)
         {
-            SystemOut.println("node key " + k);
+            Console.WriteLine("node key " + k);
         }
 
         var edges = graph.getEdgeList();
         foreach(Edge e in edges) {
-            SystemOut.println("edge weight " + e.getWeight());
+            Console.WriteLine("edge weight " + e.getWeight());
         }
-        SystemOut.println("graph looping ends");
+        Console.WriteLine("graph looping ends");
 
         
     }
@@ -141,29 +138,29 @@ public class TestYen {
         graph.addEdge("C", "D", 9);
 
         Yen yenAlgorithm = new Yen();
-        List<Path> paths = yenAlgorithm.ksp(graph, "A", "D", 5);
-        Assert.AreEqual(3, paths.size());
+        IList<Path> paths = yenAlgorithm.ksp(graph, "A", "D", 5);
+        Assert.AreEqual(3, paths.Count);
 
-        Path path1 = paths.get(0);
-        Path path2 = paths.get(1);
-        Path path3 = paths.get(2);
+        Path path1 = paths[0];
+        Path path2 = paths[1];
+        Path path3 = paths[2];
         Assert.AreEqual(13, path1.getTotalCost(), deltaValue);
         Assert.AreEqual(15, path2.getTotalCost(), deltaValue);
         Assert.AreEqual(21, path3.getTotalCost(), deltaValue);
 
-        List<String> nodes1 = path1.getNodes();
+        java.util.LinkedList<String> nodes1 = path1.getNodes();
         Assert.AreEqual(3, nodes1.size());
         Assert.AreEqual("A", nodes1.get(0));
         Assert.AreEqual("B", nodes1.get(1));
         Assert.AreEqual("D", nodes1.get(2));
         
-        List<String> nodes2 = path2.getNodes();
+        java.util.LinkedList<String> nodes2 = path2.getNodes();
         Assert.AreEqual(3, nodes2.size());
         Assert.AreEqual("A", nodes2.get(0));
         Assert.AreEqual("C", nodes2.get(1));
         Assert.AreEqual("D", nodes2.get(2));
 
-        List<String> nodes3 = path3.getNodes();
+        java.util.LinkedList<String> nodes3 = path3.getNodes();
         Assert.AreEqual(4, nodes3.size());
         Assert.AreEqual("A", nodes3.get(0));
         Assert.AreEqual("B", nodes3.get(1));

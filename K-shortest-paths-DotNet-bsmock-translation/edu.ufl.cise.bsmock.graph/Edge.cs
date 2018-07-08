@@ -1,5 +1,5 @@
-using java.lang;
 using System;
+using System.Text;
 
 namespace edu.ufl.cise.bsmock.graph
 {
@@ -54,16 +54,16 @@ namespace edu.ufl.cise.bsmock.graph
         }
 
         public String toString() {
-            StringBuffer sb = new StringBuffer();
-            sb.append("(");
-            sb.append(fromNode);
-            sb.append(",");
-            sb.append(toNode);
-            sb.append("){");
-            sb.append(weight);
-            sb.append("}");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("(");
+            sb.Append(fromNode);
+            sb.Append(",");
+            sb.Append(toNode);
+            sb.Append("){");
+            sb.Append(weight);
+            sb.Append("}");
 
-            return sb.toString();
+            return sb.ToString();
         }
 
         public bool equals(Edge edge2) {

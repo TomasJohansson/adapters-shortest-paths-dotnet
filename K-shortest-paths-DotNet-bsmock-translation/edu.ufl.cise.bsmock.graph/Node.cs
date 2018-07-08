@@ -1,6 +1,6 @@
-using java.util;
-using java.lang;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace edu.ufl.cise.bsmock.graph
 {
@@ -12,15 +12,15 @@ namespace edu.ufl.cise.bsmock.graph
      */
     public class Node {
         protected String label;
-        protected HashMapN<String,Double> neighbors; // adjacency list, with HashMap for each edge weight
+        protected IDictionary<String,Double> neighbors; // adjacency list, with HashMap for each edge weight
 
         public Node() {
-            neighbors = new HashMapN<String,Double>();
+            neighbors = new Dictionary<String,Double>();
         }
 
         public Node(String label) {
             this.label = label;
-            neighbors = new HashMapN<String,Double>();
+            neighbors = new Dictionary<String,Double>();
         }
 
         public String getLabel() {
@@ -32,36 +32,45 @@ namespace edu.ufl.cise.bsmock.graph
         }
 
 
-        public new HashMapN<String,Double> getNeighbors() {
+        public new IDictionary<String,Double> getNeighbors() {
             return neighbors;
         }
 
-        public void setNeighbors(HashMapN<String,Double> neighbors) {
+        public void setNeighbors(IDictionary<String,Double> neighbors) {
             this.neighbors = neighbors;
         }
 
         public void addEdge(String toNodeLabel,Double weight) {
-            neighbors.put(toNodeLabel, weight);
+            // todo: different java vs C# ?
+            // java replaces existing while C# throws 
+            // exceotion so therefore added code below for C# ...
+            // but verify the difference ... i.e check with the API 
+            // or do testings...
+            if(neighbors.ContainsKey(toNodeLabel))
+            {
+                neighbors.Remove(toNodeLabel);
+            }
+            neighbors.Add(toNodeLabel, weight);
         }
 
         public double removeEdge(String toNodeLabel) {
-            if (neighbors.containsKey(toNodeLabel)) {
-                double weight = neighbors.get(toNodeLabel);
-                neighbors.remove(toNodeLabel);
+            if (neighbors.ContainsKey(toNodeLabel)) {
+                double weight = neighbors[toNodeLabel];
+                neighbors.Remove(toNodeLabel);
                 return weight;
             }
 
             return double.MaxValue;
         }
 
-        public Set<String> getAdjacencyList() {
-            return neighbors.keySet();
+        public ICollection<String> getAdjacencyList() {
+            return neighbors.Keys;
         }
 
-        public LinkedList<Edge> getEdges() {
-            LinkedList<Edge> edges = new LinkedList<Edge>();
-            foreach (String toNodeLabel in neighbors.keySet()) {
-                edges.add(new Edge(label,toNodeLabel,neighbors.get(toNodeLabel)));
+        public java.util.LinkedList<Edge> getEdges() {
+            java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
+            foreach (String toNodeLabel in neighbors.Keys) {
+                edges.add(new Edge(label,toNodeLabel,neighbors[toNodeLabel]));
             }
 
             return edges;
@@ -69,23 +78,26 @@ namespace edu.ufl.cise.bsmock.graph
     
         public String toString() {
             StringBuilder nodeStringB = new StringBuilder();
-            nodeStringB.append(label);
-            nodeStringB.append(": {");
-            Set<String> adjacencyList = this.getAdjacencyList();
-            Iterator<String> alIt = adjacencyList.iterator();
-            HashMapN<String, Double> neighbors = this.getNeighbors();
-            while (alIt.hasNext()) {
-                String neighborLabel = alIt.next();
-                nodeStringB.append(neighborLabel.ToString());
-                nodeStringB.append(": ");
-                nodeStringB.append(neighbors.get(neighborLabel));
-                if (alIt.hasNext())
-                    nodeStringB.append(", ");
+            nodeStringB.Append(label);
+            nodeStringB.Append(": {");
+            ICollection<String> adjacencyList = this.getAdjacencyList();
+            var alIt = adjacencyList.GetEnumerator();
+            IDictionary<String, Double> neighbors = this.getNeighbors();
+            bool isFirst = true;
+            while (alIt.MoveNext()) {
+                    if(!isFirst) {
+                        nodeStringB.Append(", ");    
+                    }
+                String neighborLabel = alIt.Current;
+                nodeStringB.Append(neighborLabel.ToString());
+                nodeStringB.Append(": ");
+                nodeStringB.Append(neighbors[neighborLabel]);
+                isFirst = false;
             }
-            nodeStringB.append("}");
-            nodeStringB.append("\n");
+            nodeStringB.Append("}");
+            nodeStringB.Append("\n");
 
-            return nodeStringB.toString();
+            return nodeStringB.ToString();
         }
     }
 }
