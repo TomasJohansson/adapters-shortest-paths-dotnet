@@ -1,8 +1,7 @@
 using System;
 using System.Text;
 
-namespace edu.ufl.cise.bsmock.graph
-{
+namespace edu.ufl.cise.bsmock.graph {
     /**
      * The Edge class implements standard properties and methods for a weighted edge in a directed graph.
      *
@@ -25,35 +24,35 @@ namespace edu.ufl.cise.bsmock.graph
             this.weight = weight;
         }
 
-        public String getFromNode() {
+        public String GetFromNode() {
             return fromNode;
         }
 
-        public void setFromNode(String fromNode) {
+        public void SetFromNode(String fromNode) {
             this.fromNode = fromNode;
         }
 
-        public String getToNode() {
+        public String GetToNode() {
             return toNode;
         }
 
-        public void setToNode(String toNode) {
+        public void SetToNode(String toNode) {
             this.toNode = toNode;
         }
 
-        public double getWeight() {
+        public double GetWeight() {
             return weight;
         }
 
-        public void setWeight(double weight) {
+        public void SetWeight(double weight) {
             this.weight = weight;
         }
 
-        public Edge clone() {
+        public Edge Clone() {
             return new Edge(fromNode, toNode, weight);
         }
 
-        public String toString() {
+        public override String ToString() {
             StringBuilder sb = new StringBuilder();
             sb.Append("(");
             sb.Append(fromNode);
@@ -66,15 +65,15 @@ namespace edu.ufl.cise.bsmock.graph
             return sb.ToString();
         }
 
-        public bool equals(Edge edge2) {
-            if (hasSameEndpoints(edge2) && weight == edge2.getWeight())
+        public bool Equals(Edge edge2) {
+            if (HasSameEndpoints(edge2) && weight == edge2.GetWeight())
                 return true;
 
             return false;
         }
 
-        public bool hasSameEndpoints(Edge edge2) {
-            if (fromNode.Equals(edge2.getFromNode()) && toNode.Equals(edge2.getToNode()))
+        public bool HasSameEndpoints(Edge edge2) {
+            if (fromNode.Equals(edge2.GetFromNode()) && toNode.Equals(edge2.GetToNode()))
                 return true;
 
             return false;

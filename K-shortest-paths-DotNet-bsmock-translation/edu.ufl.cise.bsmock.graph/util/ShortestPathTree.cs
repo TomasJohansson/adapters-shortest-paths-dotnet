@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace edu.ufl.cise.bsmock.graph.util
-{
+namespace edu.ufl.cise.bsmock.graph.util {
     /**
      * Created by brandonsmock on 6/8/15.
      */
@@ -20,36 +19,36 @@ namespace edu.ufl.cise.bsmock.graph.util
             this.root = root;
         }
 
-        public IDictionary<String, DijkstraNode> getNodes() {
+        public IDictionary<String, DijkstraNode> GetNodes() {
             return nodes;
         }
 
-        public void setNodes(IDictionary<String, DijkstraNode> nodes) {
+        public void SetNodes(IDictionary<String, DijkstraNode> nodes) {
             this.nodes = nodes;
         }
 
-        public String getRoot() {
+        public String GetRoot() {
             return root;
         }
 
-        public void add(DijkstraNode newNode) {
-            nodes.Add(newNode.getLabel(),newNode);
+        public void Add(DijkstraNode newNode) {
+            nodes.Add(newNode.GetLabel(),newNode);
         }
 
-        public void setParentOf(String node, String parent) {
+        public void SetParentOf(String node, String parent) {
     //        if (parent != null && !nodes.containsKey(parent)) {
     //            System.out.println("Warning: parent node not present in tree.");
     //        }
             if (!nodes.ContainsKey(node))
                 nodes.Add(node,new DijkstraNode(node));
 
-            nodes[node].setParent(parent);
+            nodes[node].SetParent(parent);
 
         }
 
-        public String getParentOf(String node) {
+        public String GetParentOf(String node) {
             if (nodes.ContainsKey(node))
-                return nodes[node].getParent();
+                return nodes[node].GetParent();
             else
                 return null;
         }

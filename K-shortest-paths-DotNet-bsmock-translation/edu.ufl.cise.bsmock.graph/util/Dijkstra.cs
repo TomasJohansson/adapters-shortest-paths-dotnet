@@ -4,14 +4,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace edu.ufl.cise.bsmock.graph.util
-{
+namespace edu.ufl.cise.bsmock.graph.util {
     public sealed class Dijkstra {
 
         private Dijkstra() {}
 
-        public static ShortestPathTree shortestPathTree(Graph graph, String sourceLabel) {
-            IDictionary<String,Node> nodes = graph.getNodes();
+        public static ShortestPathTree ShortestPathTree(Graph graph, String sourceLabel) {
+            IDictionary<String,Node> nodes = graph.GetNodes();
             if (!nodes.ContainsKey(sourceLabel))
                 throw new Exception("Source node not found in graph.");
             ShortestPathTree predecessorTree = new ShortestPathTree(sourceLabel);
@@ -19,34 +18,34 @@ namespace edu.ufl.cise.bsmock.graph.util
             java.util.PriorityQueue<DijkstraNode> pq = new java.util.PriorityQueue<DijkstraNode>();
             foreach (String nodeLabel in nodes.Keys) {
                 DijkstraNode newNode = new DijkstraNode(nodeLabel);
-                newNode.setDist(double.MaxValue);
-                newNode.setDepth(int.MaxValue);
-                predecessorTree.add(newNode);
+                newNode.SetDist(double.MaxValue);
+                newNode.SetDepth(int.MaxValue);
+                predecessorTree.Add(newNode);
             }
-            DijkstraNode sourceNode = predecessorTree.getNodes()[predecessorTree.getRoot()];
-            sourceNode.setDist(0);
-            sourceNode.setDepth(0);
-            pq.add(sourceNode, sourceNode.getDist());
+            DijkstraNode sourceNode = predecessorTree.GetNodes()[predecessorTree.GetRoot()];
+            sourceNode.SetDist(0);
+            sourceNode.SetDepth(0);
+            pq.add(sourceNode, sourceNode.GetDist());
 
             int count = 0;
             while (!pq.isEmpty()) {
                 DijkstraNode current = pq.poll();
-                String currLabel = current.getLabel();
+                String currLabel = current.GetLabel();
                 visited.Add(current);
                 count++;
-                IDictionary<String, Double> neighbors = nodes[currLabel].getNeighbors();
+                IDictionary<String, Double> neighbors = nodes[currLabel].GetNeighbors();
                 foreach (String currNeighborLabel in neighbors.Keys) {
-                    DijkstraNode neighborNode = predecessorTree.getNodes()[currNeighborLabel];
-                    Double currDistance = neighborNode.getDist();
-                    Double newDistance = current.getDist() + nodes[currLabel].getNeighbors()[currNeighborLabel];
+                    DijkstraNode neighborNode = predecessorTree.GetNodes()[currNeighborLabel];
+                    Double currDistance = neighborNode.GetDist();
+                    Double newDistance = current.GetDist() + nodes[currLabel].GetNeighbors()[currNeighborLabel];
                     if (newDistance < currDistance) {
-                        DijkstraNode neighbor = predecessorTree.getNodes()[currNeighborLabel];
+                        DijkstraNode neighbor = predecessorTree.GetNodes()[currNeighborLabel];
 
                         pq.remove(neighbor);
-                        neighbor.setDist(newDistance);
-                        neighbor.setDepth(current.getDepth() + 1);
-                        neighbor.setParent(currLabel);
-                        pq.add(neighbor, neighbor.getDist());
+                        neighbor.SetDist(newDistance);
+                        neighbor.SetDepth(current.GetDepth() + 1);
+                        neighbor.SetParent(currLabel);
+                        pq.add(neighbor, neighbor.GetDist());
                     }
                 }
             }
@@ -54,53 +53,53 @@ namespace edu.ufl.cise.bsmock.graph.util
             return predecessorTree;
         }
 
-        public static Path shortestPath(Graph graph, String sourceLabel, String targetLabel) {
+        public static Path ShortestPath(Graph graph, String sourceLabel, String targetLabel) {
             //if (!nodes.containsKey(sourceLabel))
             //    throw new Exception("Source node not found in graph.");
-            IDictionary<String,Node> nodes = graph.getNodes();
+            IDictionary<String,Node> nodes = graph.GetNodes();
             ShortestPathTree predecessorTree = new ShortestPathTree(sourceLabel);
             java.util.PriorityQueue<DijkstraNode> pq = new java.util.PriorityQueue<DijkstraNode>();
             foreach (String nodeLabel in nodes.Keys) {
                 DijkstraNode newNode = new DijkstraNode(nodeLabel);
-                newNode.setDist(double.MaxValue);
-                newNode.setDepth(int.MaxValue);
-                predecessorTree.add(newNode);
+                newNode.SetDist(double.MaxValue);
+                newNode.SetDepth(int.MaxValue);
+                predecessorTree.Add(newNode);
             }
-            DijkstraNode sourceNode = predecessorTree.getNodes()[predecessorTree.getRoot()];
+            DijkstraNode sourceNode = predecessorTree.GetNodes()[predecessorTree.GetRoot()];
 
-            sourceNode.setDist(0);
-            sourceNode.setDepth(0);
-            pq.add(sourceNode, sourceNode.getDist());
+            sourceNode.SetDist(0);
+            sourceNode.SetDepth(0);
+            pq.add(sourceNode, sourceNode.GetDist());
 
             int count = 0;
             while (!pq.isEmpty()) {
                 DijkstraNode current = pq.poll();
-                String currLabel = current.getLabel();
+                String currLabel = current.GetLabel();
                 if (currLabel.Equals(targetLabel)) {
                     Path shortestPath = new Path();
                     String currentN = targetLabel;
-                    String parentN = predecessorTree.getParentOf(currentN);
+                    String parentN = predecessorTree.GetParentOf(currentN);
                     while (parentN != null) {
-                        shortestPath.addFirst(new Edge(parentN,currentN,nodes[parentN].getNeighbors()[currentN]));
+                        shortestPath.AddFirst(new Edge(parentN,currentN,nodes[parentN].GetNeighbors()[currentN]));
                         currentN = parentN;
-                        parentN = predecessorTree.getParentOf(currentN);
+                        parentN = predecessorTree.GetParentOf(currentN);
                     }
                     return shortestPath;
                 }
                 count++;
-                IDictionary<String, Double> neighbors = nodes[currLabel].getNeighbors();
+                IDictionary<String, Double> neighbors = nodes[currLabel].GetNeighbors();
                 foreach (String currNeighborLabel in neighbors.Keys) {
-                    DijkstraNode neighborNode = predecessorTree.getNodes()[currNeighborLabel];
-                    Double currDistance = neighborNode.getDist();
-                    Double newDistance = current.getDist() + nodes[currLabel].getNeighbors()[currNeighborLabel];
+                    DijkstraNode neighborNode = predecessorTree.GetNodes()[currNeighborLabel];
+                    Double currDistance = neighborNode.GetDist();
+                    Double newDistance = current.GetDist() + nodes[currLabel].GetNeighbors()[currNeighborLabel];
                     if (newDistance < currDistance) {
-                        DijkstraNode neighbor = predecessorTree.getNodes()[currNeighborLabel];
+                        DijkstraNode neighbor = predecessorTree.GetNodes()[currNeighborLabel];
 
                         pq.remove(neighbor);
-                        neighbor.setDist(newDistance);
-                        neighbor.setDepth(current.getDepth() + 1);
-                        neighbor.setParent(currLabel);
-                        pq.add(neighbor, neighbor.getDist());
+                        neighbor.SetDist(newDistance);
+                        neighbor.SetDepth(current.GetDepth() + 1);
+                        neighbor.SetParent(currLabel);
+                        pq.add(neighbor, neighbor.GetDist());
                     }
                 }
             }

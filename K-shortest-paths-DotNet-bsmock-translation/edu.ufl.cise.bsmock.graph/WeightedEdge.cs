@@ -1,7 +1,6 @@
 using System;
 
-namespace edu.ufl.cise.bsmock.graph
-{
+namespace edu.ufl.cise.bsmock.graph {
     /**
      * The WeightedEdge class implements standard properties and methods for a weighted edge in a directed graph.
      *
@@ -23,33 +22,33 @@ namespace edu.ufl.cise.bsmock.graph
             this.edgeWeight = edgeWeight;
         }
 
-        public String getSourceLabel() {
+        public String GetSourceLabel() {
             return sourceLabel;
         }
 
-        public void setSourceLabel(String sourceLabel) {
+        public void SetSourceLabel(String sourceLabel) {
             this.sourceLabel = sourceLabel;
         }
 
-        public String getTargetLabel() {
+        public String GetTargetLabel() {
             return targetLabel;
         }
 
-        public void setTargetLabel(String targetLabel) {
+        public void SetTargetLabel(String targetLabel) {
             this.targetLabel = targetLabel;
         }
 
-        public double getEdgeWeight() {
+        public double GetEdgeWeight() {
             return edgeWeight;
         }
 
-        public void setEdgeWeight(double edgeWeight) {
+        public void SetEdgeWeight(double edgeWeight) {
             this.edgeWeight = edgeWeight;
         }
 
-        public int compareTo(WeightedEdge comparedObject) {
-            double weight1 = this.getEdgeWeight();
-            double weight2 = comparedObject.getEdgeWeight();
+        public int CompareTo(WeightedEdge comparedObject) {
+            double weight1 = this.GetEdgeWeight();
+            double weight2 = comparedObject.GetEdgeWeight();
 
             if (weight1 == weight2)
                 return 0;

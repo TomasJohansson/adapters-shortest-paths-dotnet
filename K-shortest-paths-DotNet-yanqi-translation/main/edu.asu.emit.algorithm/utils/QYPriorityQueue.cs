@@ -68,25 +68,25 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 * @param weight
 	 * @return the position of the new element
 	 */
-	private int binLocatePos(double weight, bool isIncremental)	{
+	private int BinLocatePos(double weight, bool isIncremental)	{
 		int mid = 0;
 		int low = 0;
 		int high = elementWeightPairList.size() - 1;
 		//
 		while (low <= high) {
 			mid = (low + high) / 2;
-			if (elementWeightPairList.get(mid).getWeight() == weight) {
+			if (elementWeightPairList.get(mid).GetWeight() == weight) {
 				return mid + 1;
 			}
 							
 			if (isIncremental) {
-				if (elementWeightPairList.get(mid).getWeight() < weight) {
+				if (elementWeightPairList.get(mid).GetWeight() < weight) {
 					high = mid - 1;
 				} else {
 					low = mid + 1;
 				}	
 			} else {
-				if (elementWeightPairList.get(mid).getWeight() > weight) {
+				if (elementWeightPairList.get(mid).GetWeight() > weight) {
 					high = mid - 1;
 				} else {
 					low = mid + 1;
@@ -100,8 +100,8 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 * Add a new element in the queue. 
 	 * @param element
 	 */
-	public void add(E element) {
-		elementWeightPairList.add(binLocatePos(element.getWeight(), isIncremental), element);
+	public void Add(E element) {
+		elementWeightPairList.add(BinLocatePos(element.GetWeight(), isIncremental), element);
 		
 		if (limitSize > 0 && elementWeightPairList.size() > limitSize) {
 			int sizeOfResults = elementWeightPairList.size();
@@ -113,7 +113,7 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 * It only reflects the size of the current results.
 	 * @return
 	 */
-	public int size() {
+	public int Size() {
 		return elementWeightPairList.size();
 	}
 	
@@ -122,7 +122,7 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 * @param i
 	 * @return
 	 */
-	public E get(int i) {
+	public E Get(int i) {
 		if (i >= elementWeightPairList.size()) {
 			Console.WriteLine("The result :" + i + " doesn't exist!!!");
 		}
@@ -133,7 +133,7 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 * Get the first element, and then remove it from the queue. 
 	 * @return
 	 */
-	public E poll() {
+	public E Poll() {
 		E ret = elementWeightPairList.get(0);
 		elementWeightPairList.remove(0);
 		return ret;
@@ -143,7 +143,7 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 * Check if it's empty.
 	 * @return
 	 */
-	public bool isEmpty() {
+	public bool IsEmpty() {
 		return elementWeightPairList.isEmpty();
 	}
 	

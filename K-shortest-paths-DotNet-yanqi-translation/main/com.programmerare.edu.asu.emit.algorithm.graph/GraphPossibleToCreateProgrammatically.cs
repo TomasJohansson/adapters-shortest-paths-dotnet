@@ -36,10 +36,10 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 	     * 		the id for the start and end vertex for the edge, and the weight for the edge 
 	     */
 	    public GraphPossibleToCreateProgrammatically(int numberOfVertices, IList<EdgeYanQi> edges) {
-		    clear();
-		    setNumberOfVertices(numberOfVertices);
+		    Clear();
+		    SetNumberOfVertices(numberOfVertices);
 		    foreach (EdgeYanQi edge in edges) {
-			    addEdge(edge.getStartVertexId(), edge.getEndVertexId(), edge.getWeight());
+			    AddEdge(edge.GetStartVertexId(), edge.GetEndVertexId(), edge.GetWeight());
 		    }		
 	    }	
     }

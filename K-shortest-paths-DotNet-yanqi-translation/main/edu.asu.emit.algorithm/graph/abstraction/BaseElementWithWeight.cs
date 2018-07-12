@@ -28,17 +28,14 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-namespace edu.asu.emit.algorithm.graph.abstraction
-{
-/**
- * The interface defines a weighted element in graph. It could be for
- * a vertex or an edge. 
- *  
- * @author yqi
- */
-public interface BaseElementWithWeight {
-	
-	double getWeight();
-	
-}
+namespace edu.asu.emit.algorithm.graph.abstraction {
+    /**
+     * The interface defines a weighted element in graph. It could be for
+     * a vertex or an edge. 
+     *  
+     * @author yqi
+     */
+    public interface BaseElementWithWeight {
+	    double GetWeight();
+    }
 }

@@ -77,11 +77,11 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 		    IList<P> paths = new List<P>();
 		    int startVertexId = idMapper.CreateOrRetrieveIntegerId(startVertex.VertexId);
 		    int endVertexId = idMapper.CreateOrRetrieveIntegerId(endVertex.VertexId);
-		    YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graphAdaptee, graphAdaptee.getVertex(startVertexId), graphAdaptee.getVertex(endVertexId));
-		    while(yenAlg.hasNext()) {
-			    global::edu.asu.emit.algorithm.graph.Path path = yenAlg.next();
+		    YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graphAdaptee, graphAdaptee.GetVertex(startVertexId), graphAdaptee.GetVertex(endVertexId));
+		    while(yenAlg.HasNext()) {
+			    global::edu.asu.emit.algorithm.graph.Path path = yenAlg.Next();
 			    IList<E> edges = new List<E>();
-			    java.util.List<BaseVertex> vertexList = path.getVertexList();
+			    java.util.List<BaseVertex> vertexList = path.GetVertexList();
 			    for (int i = 1; i < vertexList.size(); i++) {
 				    BaseVertex startVertexForEdge = vertexList.get(i-1);
 				    BaseVertex endVertexForEdge = vertexList.get(i);
@@ -90,7 +90,7 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 					    edge
 				    );				
 			    }
-			    W totalWeight = base.CreateInstanceWithTotalWeight(path.getWeight(), edges);
+			    W totalWeight = base.CreateInstanceWithTotalWeight(path.GetWeight(), edges);
 			    paths.Add(base.CreatePath(totalWeight, edges));
 			    if(maxNumberOfPaths == paths.Count) {
 				    break;
@@ -100,8 +100,8 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 	    }
 
 	    private E GetOriginalEdgeInstance(BaseVertex startVertexForEdge, BaseVertex endVertexForEdge) {
-		    string startVertexId = idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(startVertexForEdge.getId());
-		    string endVertexId = idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(endVertexForEdge.getId());		
+		    string startVertexId = idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(startVertexForEdge.GetId());
+		    string endVertexId = idMapper.GetBackThePreviouslyStoredGeneralStringIdForInteger(endVertexForEdge.GetId());		
 		    return base.GetOriginalEdgeInstance(startVertexId, endVertexId);
 	    }
     }

@@ -28,10 +28,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-namespace edu.asu.emit.algorithm.graph
-{
 using edu.asu.emit.algorithm.graph.abstraction;
 using System;
+
+namespace edu.asu.emit.algorithm.graph {
 
     /**
      * The class defines a path in graph.
@@ -40,43 +40,43 @@ using System;
      */
     public class Path : BaseElementWithWeight {
 	
-	private java.util.LinkedList<BaseVertex> vertexList = new java.util.LinkedList<BaseVertex>();
-	private double weight = -1;
+	    private java.util.LinkedList<BaseVertex> vertexList = new java.util.LinkedList<BaseVertex>();
+	    private double weight = -1;
 	
-	public Path() { }
+	    public Path() { }
 	
-	public Path(java.util.LinkedList<BaseVertex> vertexList, double weight) {
-		this.vertexList = vertexList;
-		this.weight = weight;
-	}
+	    public Path(java.util.LinkedList<BaseVertex> vertexList, double weight) {
+		    this.vertexList = vertexList;
+		    this.weight = weight;
+	    }
 
-	public double getWeight() {
-		return weight;
-	}
+	    public double GetWeight() {
+		    return weight;
+	    }
 	
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
+	    public void SetWeight(double weight) {
+		    this.weight = weight;
+	    }
 	
-	public java.util.LinkedList<BaseVertex> getVertexList() {
-		return vertexList;
-	}
+	    public java.util.LinkedList<BaseVertex> GetVertexList() {
+		    return vertexList;
+	    }
 	
-	public override bool Equals(object right) {
+	    public override bool Equals(object right) {
 		
-		if (right is Path) {
-			Path rPath = (Path) right;
-			return vertexList.Equals(rPath.vertexList);
-		}
-		return false;
-	}
+		    if (right is Path) {
+			    Path rPath = (Path) right;
+			    return vertexList.Equals(rPath.vertexList);
+		    }
+		    return false;
+	    }
 
-	public override int GetHashCode() {
-		return vertexList.GetHashCode();
-	}
+	    public override int GetHashCode() {
+		    return vertexList.GetHashCode();
+	    }
 	
-	public override String ToString() {
-		return vertexList.ToString() + ":" + weight;
-	}
-}
+	    public override String ToString() {
+		    return vertexList.ToString() + ":" + weight;
+	    }
+    }
 }

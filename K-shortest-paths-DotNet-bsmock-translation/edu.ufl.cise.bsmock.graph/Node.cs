@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace edu.ufl.cise.bsmock.graph
-{
+namespace edu.ufl.cise.bsmock.graph {
     /**
      * The Node class implements a node in a directed graph keyed on a label of type String, with adjacency lists for
      * representing edges.
@@ -23,24 +22,24 @@ namespace edu.ufl.cise.bsmock.graph
             neighbors = new Dictionary<String,Double>();
         }
 
-        public String getLabel() {
+        public String GetLabel() {
             return label;
         }
 
-        public void setLabel(String label) {
+        public void SetLabel(String label) {
             this.label = label;
         }
 
 
-        public new IDictionary<String,Double> getNeighbors() {
+        public new IDictionary<String,Double> GetNeighbors() {
             return neighbors;
         }
 
-        public void setNeighbors(IDictionary<String,Double> neighbors) {
+        public void SetNeighbors(IDictionary<String,Double> neighbors) {
             this.neighbors = neighbors;
         }
 
-        public void addEdge(String toNodeLabel,Double weight) {
+        public void AddEdge(String toNodeLabel,Double weight) {
             // todo: different java vs C# ?
             // java replaces existing while C# throws 
             // exceotion so therefore added code below for C# ...
@@ -53,7 +52,7 @@ namespace edu.ufl.cise.bsmock.graph
             neighbors.Add(toNodeLabel, weight);
         }
 
-        public double removeEdge(String toNodeLabel) {
+        public double RemoveEdge(String toNodeLabel) {
             if (neighbors.ContainsKey(toNodeLabel)) {
                 double weight = neighbors[toNodeLabel];
                 neighbors.Remove(toNodeLabel);
@@ -63,11 +62,11 @@ namespace edu.ufl.cise.bsmock.graph
             return double.MaxValue;
         }
 
-        public ICollection<String> getAdjacencyList() {
+        public ICollection<String> GetAdjacencyList() {
             return neighbors.Keys;
         }
 
-        public java.util.LinkedList<Edge> getEdges() {
+        public java.util.LinkedList<Edge> GetEdges() {
             java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
             foreach (String toNodeLabel in neighbors.Keys) {
                 edges.add(new Edge(label,toNodeLabel,neighbors[toNodeLabel]));
@@ -76,13 +75,13 @@ namespace edu.ufl.cise.bsmock.graph
             return edges;
         }
     
-        public String toString() {
+        public override String ToString() {
             StringBuilder nodeStringB = new StringBuilder();
             nodeStringB.Append(label);
             nodeStringB.Append(": {");
-            ICollection<String> adjacencyList = this.getAdjacencyList();
+            ICollection<String> adjacencyList = this.GetAdjacencyList();
             var alIt = adjacencyList.GetEnumerator();
-            IDictionary<String, Double> neighbors = this.getNeighbors();
+            IDictionary<String, Double> neighbors = this.GetNeighbors();
             bool isFirst = true;
             while (alIt.MoveNext()) {
                     if(!isFirst) {

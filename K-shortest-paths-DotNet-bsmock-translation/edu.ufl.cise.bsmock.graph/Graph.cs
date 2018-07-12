@@ -4,8 +4,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.IO;
 
-namespace edu.ufl.cise.bsmock.graph
-{
+namespace edu.ufl.cise.bsmock.graph {
     /**
      * The Graph class implements a weighted, directed graph using an adjacency list representation.
      *
@@ -19,57 +18,57 @@ namespace edu.ufl.cise.bsmock.graph
         }
 
         public Graph(String filename): this() {
-            readFromFile(filename);
+            ReadFromFile(filename);
         }
 
         public Graph(IDictionary<String,Node> nodes) {
             this.nodes = nodes;
         }
 
-        public int numNodes() {
+        public int NumNodes() {
             return nodes.Count;
         }
 
-        public int numEdges() {
+        public int NumEdges() {
             int edgeCount = 0;
             foreach (Node node in nodes.Values) {
-                edgeCount += node.getEdges().size();
+                edgeCount += node.GetEdges().size();
             }
             return edgeCount;
         }
 
-        public void addNode(String label) {
+        public void AddNode(String label) {
             if (!nodes.ContainsKey(label))
                 nodes.Add(label,new Node(label));
         }
 
-        public void addNode(Node node) {
-            String label = node.getLabel();
+        public void AddNode(Node node) {
+            String label = node.GetLabel();
             if (!nodes.ContainsKey(label))
                 nodes.Add(label,node);
         }
 
-        public void addEdge(String label1, String label2, Double weight) {
+        public void AddEdge(String label1, String label2, Double weight) {
             if (!nodes.ContainsKey(label1))
-                addNode(label1);
+                AddNode(label1);
             if (!nodes.ContainsKey(label2))
-                addNode(label2);
-            nodes[label1].addEdge(label2,weight);
+                AddNode(label2);
+            nodes[label1].AddEdge(label2,weight);
         }
 
-        public void addEdge(Edge edge) {
-            addEdge(edge.getFromNode(),edge.getToNode(),edge.getWeight());
+        public void AddEdge(Edge edge) {
+            AddEdge(edge.GetFromNode(),edge.GetToNode(),edge.GetWeight());
         }
 
-        public void addEdges(java.util.LinkedList<Edge> edges) {
+        public void AddEdges(java.util.LinkedList<Edge> edges) {
             foreach (Edge edge in edges) {
-                addEdge(edge);
+                AddEdge(edge);
             }
         }
 
-        public Edge removeEdge(String label1, String label2) {
+        public Edge RemoveEdge(String label1, String label2) {
             if (nodes.ContainsKey(label1)) {
-                double weight = nodes[label1].removeEdge(label2);
+                double weight = nodes[label1].RemoveEdge(label2);
                 if (weight != double.MaxValue) {
                     return new Edge(label1, label2, weight);
                 }
@@ -78,56 +77,56 @@ namespace edu.ufl.cise.bsmock.graph
             return null;
         }
 
-        public double getEdgeWeight(String label1, String label2) {
+        public double GetEdgeWeight(String label1, String label2) {
             if (nodes.ContainsKey(label1)) {
                 Node node1 = nodes[label1];
-                if (node1.getNeighbors().ContainsKey(label2)) {
-                    return node1.getNeighbors()[label2];
+                if (node1.GetNeighbors().ContainsKey(label2)) {
+                    return node1.GetNeighbors()[label2];
                 }
             }
 
             return double.MaxValue;
         }
 
-        public IDictionary<String,Node> getNodes() {
+        public IDictionary<String,Node> GetNodes() {
             return nodes;
         }
 
-        public java.util.LinkedList<Edge> getEdgeList() {
+        public java.util.LinkedList<Edge> GetEdgeList() {
             java.util.LinkedList<Edge> edgeList = new java.util.LinkedList<Edge>();
 
             foreach (Node node in nodes.Values) {
-                edgeList.addAll(node.getEdges());
+                edgeList.addAll(node.GetEdges());
             }
 
             return edgeList;
         }
 
-        public ICollection<String> getNodeLabels() {
+        public ICollection<String> GetNodeLabels() {
             return nodes.Keys;
         }
 
-        public Node getNode(String label) {
+        public Node GetNode(String label) {
             return nodes[label];
         }
 
-        public java.util.LinkedList<Edge> removeNode(String label) {
+        public java.util.LinkedList<Edge> RemoveNode(String label) {
             java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
             if (nodes.ContainsKey(label)) {
                 Node node = nodes[label];
                 nodes.Remove(label);
-                edges.addAll(node.getEdges());
-                edges.addAll(removeEdgesToNode(label));
+                edges.addAll(node.GetEdges());
+                edges.addAll(RemoveEdgesToNode(label));
             }
             return edges;
         }
 
-        public java.util.LinkedList<Edge> removeEdgesToNode(String label) {
+        public java.util.LinkedList<Edge> RemoveEdgesToNode(String label) {
             java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
             foreach (Node node in nodes.Values) {
-                if (node.getAdjacencyList().Contains(label)) { // TODO: perfomance ... Contains in collection ...
-                    double weight = node.removeEdge(label);
-                    edges.add(new Edge(node.getLabel(),label,weight));
+                if (node.GetAdjacencyList().Contains(label)) { // TODO: perfomance ... Contains in collection ...
+                    double weight = node.RemoveEdge(label);
+                    edges.add(new Edge(node.GetLabel(),label,weight));
                 }
             }
             return edges;
@@ -135,7 +134,7 @@ namespace edu.ufl.cise.bsmock.graph
 
 
 
-        public Graph transpose() {
+        public Graph Transpose() {
             IDictionary<String,Node> newNodes = new Dictionary<String, Node>();
 
             var it = nodes.Keys.GetEnumerator();
@@ -148,23 +147,23 @@ namespace edu.ufl.cise.bsmock.graph
             while (it.MoveNext()) {
                 String nodeLabel = it.Current;
                 Node node = nodes[nodeLabel];
-                ICollection<String> adjacencyList = node.getAdjacencyList();
+                ICollection<String> adjacencyList = node.GetAdjacencyList();
                 var alIt = adjacencyList.GetEnumerator();
-                IDictionary<String, Double> neighbors = node.getNeighbors();
+                IDictionary<String, Double> neighbors = node.GetNeighbors();
                 while (alIt.MoveNext()) {
                     String neighborLabel = alIt.Current;
-                    newNodes[neighborLabel].addEdge(nodeLabel,neighbors[neighborLabel]);
+                    newNodes[neighborLabel].AddEdge(nodeLabel,neighbors[neighborLabel]);
                 }
             }
 
             return new Graph(newNodes);
         }
 
-        public void clear() {
+        public void Clear() {
             nodes = new Dictionary<String,Node>();
         }
 
-        public void readFromFile(String fileName) {
+        public void ReadFromFile(String fileName) {
             //try {
                 StreamReader br = new StreamReader(fileName);
 
@@ -173,7 +172,7 @@ namespace edu.ufl.cise.bsmock.graph
                 while (line != null) {
                     String[] edgeDescription = Regex.Split(line, "\\s");
                     if (edgeDescription.Length == 3) {
-                        addEdge(edgeDescription[0],edgeDescription[1], double.Parse(edgeDescription[2]));
+                        AddEdge(edgeDescription[0],edgeDescription[1], double.Parse(edgeDescription[2]));
                         //addEdge(edgeDescription[1],edgeDescription[0],Double.parseDouble(edgeDescription[2]));
                     }
                     line = br.ReadLine();
@@ -183,7 +182,7 @@ namespace edu.ufl.cise.bsmock.graph
             //}
         }
 
-        public String toString() {
+        public override String ToString() {
             StringBuilder graphStringB = new StringBuilder();
             var it = nodes.Keys.GetEnumerator();
             while (it.MoveNext()) {
@@ -191,9 +190,9 @@ namespace edu.ufl.cise.bsmock.graph
                 graphStringB.Append(nodeLabel.ToString());
                 graphStringB.Append(": {");
                 Node node = nodes[nodeLabel];
-                ICollection<String> adjacencyList = node.getAdjacencyList();
+                ICollection<String> adjacencyList = node.GetAdjacencyList();
                 var alIt = adjacencyList.GetEnumerator();
-                IDictionary<String, Double> neighbors = node.getNeighbors();
+                IDictionary<String, Double> neighbors = node.GetNeighbors();
                 bool isFirst = true;
                 while (alIt.MoveNext()) {
                     if(!isFirst) {
@@ -211,7 +210,7 @@ namespace edu.ufl.cise.bsmock.graph
             return graphStringB.ToString();
         }
 
-        public void graphToFile(String filename) {
+        public void GraphToFile(String filename) {
             throw new NotImplementedException();
             //BufferedWriter writer = null;
             ////try {

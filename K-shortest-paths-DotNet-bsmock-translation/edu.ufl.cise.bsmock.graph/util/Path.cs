@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 
-namespace edu.ufl.cise.bsmock.graph.util
-{
+namespace edu.ufl.cise.bsmock.graph.util {
     /**
      * The Path class implements a path in a weighted, directed graph as a sequence of Edges.
      *
@@ -29,7 +27,7 @@ namespace edu.ufl.cise.bsmock.graph.util
             this.edges = edges;
             totalCost = 0;
             foreach (Edge edge in edges) {
-                totalCost += edge.getWeight();
+                totalCost += edge.GetWeight();
             }
         }
 
@@ -38,50 +36,50 @@ namespace edu.ufl.cise.bsmock.graph.util
             this.totalCost = totalCost;
         }
 
-        public java.util.LinkedList<Edge> getEdges() {
+        public java.util.LinkedList<Edge> GetEdges() {
             return edges;
         }
 
-        public void setEdges(java.util.LinkedList<Edge> edges) {
+        public void SetEdges(java.util.LinkedList<Edge> edges) {
             this.edges = edges;
         }
 
-        public java.util.LinkedList<String> getNodes() {
+        public java.util.LinkedList<String> GetNodes() {
             java.util.LinkedList<String> nodes = new java.util.LinkedList<String>();
 
             foreach (Edge edge in edges) {
-                nodes.add(edge.getFromNode());
+                nodes.add(edge.GetFromNode());
             }
 
             Edge lastEdge = edges.getLast();
             if (lastEdge != null) {
-                nodes.add(lastEdge.getToNode());
+                nodes.add(lastEdge.GetToNode());
             }
 
             return nodes;
         }
 
-        public double getTotalCost() {
+        public double GetTotalCost() {
             return totalCost;
         }
 
-        public void setTotalCost(double totalCost) {
+        public void SetTotalCost(double totalCost) {
             this.totalCost = totalCost;
         }
 
-        public void addFirstNode(String nodeLabel) {
-            String firstNode = edges.getFirst().getFromNode();
+        public void AddFirstNode(String nodeLabel) {
+            String firstNode = edges.getFirst().GetFromNode();
             edges.addFirst(new Edge(nodeLabel, firstNode,0));
         }
 
-        public void addFirst(Edge edge) {
+        public void AddFirst(Edge edge) {
             edges.addFirst(edge);
-            totalCost += edge.getWeight();
+            totalCost += edge.GetWeight();
         }
 
-        public void add(Edge edge) {
+        public void Add(Edge edge) {
             edges.add(edge);
-            totalCost += edge.getWeight();
+            totalCost += edge.GetWeight();
         }
 
         // Disabled method because never used
@@ -90,7 +88,7 @@ namespace edu.ufl.cise.bsmock.graph.util
         //    edges.addLast(new Edge(lastNode, nodeLabel,0));
         //}
 
-        public int size() {
+        public int Size() {
             return edges.size();
         }
 
@@ -101,11 +99,11 @@ namespace edu.ufl.cise.bsmock.graph.util
             sb.Append(": [");
             if (numEdges > 0) {
                 for (int i = 0; i < edges.size(); i++) {
-                    sb.Append(edges.get(i).getFromNode().ToString());
+                    sb.Append(edges.get(i).GetFromNode().ToString());
                     sb.Append("-");
                 }
 
-                sb.Append(edges.getLast().getToNode().ToString());
+                sb.Append(edges.getLast().GetToNode().ToString());
             }
             sb.Append("]");
             return sb.ToString();
@@ -138,18 +136,18 @@ namespace edu.ufl.cise.bsmock.graph.util
         public override bool Equals(object path2)
         {
             var path = path2 as Path;
-            return this.equals(path);
+            return this.Equals(path);
         }
         public override int GetHashCode()
         {
             return (int)BitConverter.DoubleToInt64Bits(totalCost);
         }
 
-        public bool equals(Path path2) {
+        public bool Equals(Path path2) {
             if (path2 == null)
                 return false;
 
-            java.util.LinkedList<Edge> edges2 = path2.getEdges();
+            java.util.LinkedList<Edge> edges2 = path2.GetEdges();
 
             int numEdges1 = edges.size();
             int numEdges2 = edges2.size();
@@ -161,9 +159,9 @@ namespace edu.ufl.cise.bsmock.graph.util
             for (int i = 0; i < numEdges1; i++) {
                 Edge edge1 = edges.get(i);
                 Edge edge2 = edges2.get(i);
-                if (!edge1.getFromNode().Equals(edge2.getFromNode()))
+                if (!edge1.GetFromNode().Equals(edge2.GetFromNode()))
                     return false;
-                if (!edge1.getToNode().Equals(edge2.getToNode()))
+                if (!edge1.GetToNode().Equals(edge2.GetToNode()))
                     return false;
             }
 
@@ -172,7 +170,7 @@ namespace edu.ufl.cise.bsmock.graph.util
 
         // Java Comparable interface
         public int compareTo(Path path2) {
-            double path2Cost = path2.getTotalCost();
+            double path2Cost = path2.GetTotalCost();
             if (totalCost == path2Cost)
                 return 0;
             if (totalCost > path2Cost)
@@ -181,22 +179,21 @@ namespace edu.ufl.cise.bsmock.graph.util
         }
 
         // .NET IComparable interface
-        public int CompareTo(Path other)
-        {
+        public int CompareTo(Path other) {
             return compareTo(other);
         }
 
-        public Path clone() {
+        public Path Clone() {
             java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
 
             foreach (Edge edge in this.edges) {
-                edges.add(edge.clone());
+                edges.add(edge.Clone());
             }
 
             return new Path(edges);
         }
 
-        public Path shallowClone() {
+        public Path ShallowClone() {
             java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
 
             foreach (Edge edge in this.edges) {
@@ -206,7 +203,7 @@ namespace edu.ufl.cise.bsmock.graph.util
             return new Path(edges,this.totalCost);
         }
 
-        public Path cloneTo(int i) {
+        public Path CloneTo(int i) {
             java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
             int l = this.edges.size();
             if (i > l)
@@ -214,27 +211,27 @@ namespace edu.ufl.cise.bsmock.graph.util
 
             //for (Edge edge : this.edges.subList(0,i)) {
             for (int j = 0; j < i; j++) {
-                edges.add(this.edges.get(j).clone());
+                edges.add(this.edges.get(j).Clone());
             }
 
             return new Path(edges);
         }
 
-        public Path cloneFrom(int i) {
+        public Path CloneFrom(int i) {
             java.util.LinkedList<Edge> edges = new java.util.LinkedList<Edge>();
 
             foreach (Edge edge in this.edges.subList(i,this.edges.size())) {
-                edges.add(edge.clone());
+                edges.add(edge.Clone());
             }
 
             return new Path(edges);
         }
 
-        public void addPath(Path p2) {
+        public void AddPath(Path p2) {
             // ADD CHECK TO SEE THAT PATH P2'S FIRST NODE IS SAME AS THIS PATH'S LAST NODE
 
-            this.edges.addAll(p2.getEdges());
-            this.totalCost += p2.getTotalCost();
+            this.edges.addAll(p2.GetEdges());
+            this.totalCost += p2.GetTotalCost();
         }
     }
 }

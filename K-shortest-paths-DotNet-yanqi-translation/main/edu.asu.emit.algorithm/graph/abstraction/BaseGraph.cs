@@ -31,20 +31,17 @@
 
 using System.Collections.Generic;
 
-namespace edu.asu.emit.algorithm.graph.abstraction
-{
-/**
- * The interface defines a graph.
- * 
- * @author yqi
- */
-public interface BaseGraph {
+namespace edu.asu.emit.algorithm.graph.abstraction {
+    /**
+     * The interface defines a graph.
+     * 
+     * @author yqi
+     */
+    public interface BaseGraph {
 	
-	IList<BaseVertex> getVertexList();
-	
-	double getEdgeWeight(BaseVertex source, BaseVertex sink);
-	ISet<BaseVertex> getAdjacentVertices(BaseVertex vertex);
-	ISet<BaseVertex> getPrecedentVertices(BaseVertex vertex);
-	
-}
+	    IList<BaseVertex> GetVertexList();
+	    double GetEdgeWeight(BaseVertex source, BaseVertex sink);
+	    ISet<BaseVertex> GetAdjacentVertices(BaseVertex vertex);
+	    ISet<BaseVertex> GetPrecedentVertices(BaseVertex vertex);
+    }
 }

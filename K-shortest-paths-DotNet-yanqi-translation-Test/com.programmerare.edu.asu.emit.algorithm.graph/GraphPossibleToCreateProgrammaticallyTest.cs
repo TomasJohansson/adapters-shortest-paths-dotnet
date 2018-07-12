@@ -42,7 +42,7 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 			    edges
 		    );
 		
-		    YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph, graph.getVertex(4), graph.getVertex(5));
+		    YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph, graph.GetVertex(4), graph.GetVertex(5));
 		    // The output below is copied from the output window after running the algorithm for graph with data in file "data/test_6_2"
 		    // with the test method "testYenShortestPathsAlg4MultipleGraphs" in test file "edu.asu.emit.qyan.test.YenTopKShortestPathsAlgTest"
 		    //	Path 0 : [4, 1, 5]:0.0
@@ -55,21 +55,21 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 		    //	Result # :7
 
 		    // The assertions below are based on the output above
-		    assertExpectedPath(yenAlg.next(), 0.1, 4,3,5);
-		    assertExpectedPath(yenAlg.next(), 0.2, 4,1,5);		
-		    assertExpectedPath(yenAlg.next(), 1.0, 4,1,2,5);
-		    assertExpectedPath(yenAlg.next(), 1.1, 4,1,3,5);
-		    assertExpectedPath(yenAlg.next(), 1.2, 4,0,1,5);		
-		    assertExpectedPath(yenAlg.next(), 2.0, 4,0,1,2,5);
-		    assertExpectedPath(yenAlg.next(), 2.1, 4,0,1,3,5);
-		    IsFalse(yenAlg.hasNext());
+		    assertExpectedPath(yenAlg.Next(), 0.1, 4,3,5);
+		    assertExpectedPath(yenAlg.Next(), 0.2, 4,1,5);		
+		    assertExpectedPath(yenAlg.Next(), 1.0, 4,1,2,5);
+		    assertExpectedPath(yenAlg.Next(), 1.1, 4,1,3,5);
+		    assertExpectedPath(yenAlg.Next(), 1.2, 4,0,1,5);		
+		    assertExpectedPath(yenAlg.Next(), 2.0, 4,0,1,2,5);
+		    assertExpectedPath(yenAlg.Next(), 2.1, 4,0,1,3,5);
+		    IsFalse(yenAlg.HasNext());
 	    }
 
 	    private void assertExpectedPath(Path path, double expectedTotalCost, params int[] nodenames) {
-		    AreEqual(path.getWeight(), expectedTotalCost, SMALL_DELTA_VALUE_FOR_DOUBLE_CMOPARISONS);
-		    var vertices = path.getVertexList();
+		    AreEqual(path.GetWeight(), expectedTotalCost, SMALL_DELTA_VALUE_FOR_DOUBLE_CMOPARISONS);
+		    var vertices = path.GetVertexList();
 		    for (int i = 0; i < nodenames.Length; i++) {
-			    AreEqual(vertices.get(i).getId(), nodenames[i]);
+			    AreEqual(vertices.get(i).GetId(), nodenames[i]);
 		    }
 	    }
 

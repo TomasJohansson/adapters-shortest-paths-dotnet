@@ -58,7 +58,7 @@ public class ShortestPathAlgTest {
 	public void testShorstPathAlg()	{
 		SystemOut.println("Testing Dijkstra Algorithm.");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		SystemOut.println(alg.getShortestPath(graph.getVertex(0), graph.getVertex(38)));
+		SystemOut.println(alg.GetShortestPath(graph.GetVertex(0), graph.GetVertex(38)));
 	}
 }
 }

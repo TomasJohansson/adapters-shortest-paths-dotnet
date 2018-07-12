@@ -1,5 +1,4 @@
-namespace com.programmerare.edu.asu.emit.algorithm.graph
-{
+namespace com.programmerare.edu.asu.emit.algorithm.graph {
     /**
      * The purpose of the class suffix "YanQi" is just to very clearly indicate (without having to look at the full name including the package name) 
      * that it originates from the project https://github.com/yan-qi/k-shortest-paths-java-version
@@ -17,15 +16,15 @@ namespace com.programmerare.edu.asu.emit.algorithm.graph
 		    this.weight = weight;
 	    }
 
-	    public int getStartVertexId() {
+	    public int GetStartVertexId() {
 		    return startVertexId;
 	    }
 
-	    public int getEndVertexId() {
+	    public int GetEndVertexId() {
 		    return endVertexId;
 	    }
 
-	    public double getWeight() {
+	    public double GetWeight() {
 		    return weight;
 	    }
     }

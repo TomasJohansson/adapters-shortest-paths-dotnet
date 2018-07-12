@@ -19,13 +19,13 @@ namespace programmerare
             // Small Graph with three possible paths from vertex 0 to vertex 3. https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-test/src/test/resources/test_graphs/small_graph_1.xml
             var yenAlg = new YenTopKShortestPathsAlg(
                 graph, 
-                graph.getVertex(0), // from vertex
-                graph.getVertex(3)  // to vertex
+                graph.GetVertex(0), // from vertex
+                graph.GetVertex(3)  // to vertex
             );
-            var first = yenAlg.next();
-            var second = yenAlg.next();
-            var third = yenAlg.next();
-            Assert.IsFalse(yenAlg.hasNext());
+            var first = yenAlg.Next();
+            var second = yenAlg.Next();
+            var third = yenAlg.Next();
+            Assert.IsFalse(yenAlg.HasNext());
             string expectedResult = @"
 			    13 0 1 3
 			    15 0 2 3
@@ -72,14 +72,14 @@ namespace programmerare
 			    21.9 1 7 8 5 2 6 10
             ";
             var listWithExpectedWeightsAndNodes = GetExpectedWeightAndNodes(expectedResult);
-            var yenAlg = new YenTopKShortestPathsAlg(graph, graph.getVertex(1), graph.getVertex(10));
+            var yenAlg = new YenTopKShortestPathsAlg(graph, graph.GetVertex(1), graph.GetVertex(10));
             int counter = 0;
             const int numberOfExpectedPathsDefined = 25;
-            while(yenAlg.hasNext() && counter < numberOfExpectedPathsDefined)
+            while(yenAlg.HasNext() && counter < numberOfExpectedPathsDefined)
             {
                 assertExpectedPath(
                     listWithExpectedWeightsAndNodes[counter], 
-                    yenAlg.next()
+                    yenAlg.Next()
                 );
                 counter++;
             }
@@ -110,8 +110,8 @@ namespace programmerare
 
         private void assertExpectedPath(WeightAndNodes expectedPath, Path actualPath)
         {
-            Assert.AreEqual(expectedPath.Weight, actualPath.getWeight(), SMALL_DELTA_VALUE_FOR_ASSERTIONS);
-            assertVertexList(expectedPath.Nodes, actualPath.getVertexList());
+            Assert.AreEqual(expectedPath.Weight, actualPath.GetWeight(), SMALL_DELTA_VALUE_FOR_ASSERTIONS);
+            assertVertexList(expectedPath.Nodes, actualPath.GetVertexList());
         }
 
         private void assertVertexList(IList<int> expectedVertices, java.util.List<BaseVertex> actualVertices)
@@ -120,7 +120,7 @@ namespace programmerare
             int count = expectedVertices.Count;
             for(int i=0; i<count; i++)
             {
-                Assert.AreEqual(expectedVertices[i], actualVertices.get(i).getId());
+                Assert.AreEqual(expectedVertices[i], actualVertices.get(i).GetId());
             }
         }
 

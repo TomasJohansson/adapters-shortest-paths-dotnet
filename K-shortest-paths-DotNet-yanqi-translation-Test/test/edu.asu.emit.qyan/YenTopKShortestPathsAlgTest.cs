@@ -54,7 +54,7 @@ public class YenTopKShortestPathsAlgTest {
 	{
 		Console.WriteLine("Testing Dijkstra Shortest Path Algorithm!");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		Console.WriteLine(alg.getShortestPath(graph.getVertex(4), graph.getVertex(5)));
+		Console.WriteLine(alg.GetShortestPath(graph.GetVertex(4), graph.GetVertex(5)));
 	}
 	
     [Test]
@@ -62,10 +62,10 @@ public class YenTopKShortestPathsAlgTest {
 	{		
 		Console.WriteLine("Testing batch processing of top-k shortest paths!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph);
-		IList<Path> shortest_paths_list = yenAlg.getShortestPaths(
-                graph.getVertex(4), graph.getVertex(5), 100);
+		IList<Path> shortest_paths_list = yenAlg.GetShortestPaths(
+                graph.GetVertex(4), graph.GetVertex(5), 100);
 		Console.WriteLine(":"+shortest_paths_list);
-		Console.WriteLine(yenAlg.getResultList().Count);
+		Console.WriteLine(yenAlg.GetResultList().Count);
 	}
 	
     [Test]
@@ -73,16 +73,16 @@ public class YenTopKShortestPathsAlgTest {
 	{
 		Console.WriteLine("Obtain all paths in increasing order! - updated!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
-				graph, graph.getVertex(4), graph.getVertex(5));
+				graph, graph.GetVertex(4), graph.GetVertex(5));
 		int i=0;
-		while(yenAlg.hasNext())
+		while(yenAlg.HasNext())
 		{
-			Console.WriteLine("Path "+i+++" : "+yenAlg.next());
+			Console.WriteLine("Path "+i+++" : "+yenAlg.Next());
 		}
 		
 		Console.WriteLine("Result # :"+i);
-		Console.WriteLine("Candidate # :"+yenAlg.getCadidateSize());
-		Console.WriteLine("All generated : "+yenAlg.getGeneratedPathSize());
+		Console.WriteLine("Candidate # :"+yenAlg.GetCadidateSize());
+		Console.WriteLine("All generated : "+yenAlg.GetGeneratedPathSize());
 	}
 	
 	[Test]
@@ -90,25 +90,25 @@ public class YenTopKShortestPathsAlgTest {
 	{
 		Console.WriteLine("Graph 1 - ");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
-				graph, graph.getVertex(4), graph.getVertex(5));
+				graph, graph.GetVertex(4), graph.GetVertex(5));
 		int i=0;
-		while(yenAlg.hasNext())
+		while(yenAlg.HasNext())
 		{
-			Console.WriteLine("Path "+i+++" : "+yenAlg.next());
+			Console.WriteLine("Path "+i+++" : "+yenAlg.Next());
 		}
 		
 		Console.WriteLine("Result # :"+i);
-		Console.WriteLine("Candidate # :"+yenAlg.getCadidateSize());
-		Console.WriteLine("All generated : "+yenAlg.getGeneratedPathSize());
+		Console.WriteLine("Candidate # :"+yenAlg.GetCadidateSize());
+		Console.WriteLine("All generated : "+yenAlg.GetGeneratedPathSize());
 		
 		///
 		Console.WriteLine("Graph 2 - ");
 		graph = GraphFactory.createVariableGraph("data/test_6_1");
 		YenTopKShortestPathsAlg yenAlg1 = new YenTopKShortestPathsAlg(graph);
-		IList<Path> shortest_paths_list = yenAlg1.getShortestPaths(
-                graph.getVertex(4), graph.getVertex(5), 100);
+		IList<Path> shortest_paths_list = yenAlg1.GetShortestPaths(
+                graph.GetVertex(4), graph.GetVertex(5), 100);
 		Console.WriteLine(":"+shortest_paths_list);
-		Console.WriteLine(yenAlg1.getResultList().Count);
+		Console.WriteLine(yenAlg1.GetResultList().Count);
 	}
 }
 }

@@ -28,23 +28,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-
-namespace edu.asu.emit.algorithm.graph.abstraction
-{
-/**
- * The interface defines a vertex in graph
- * 
- * @author yqi
- */
-public interface BaseVertex 
-        //: Comparable<BaseVertex> 
-        // see comment in class Vertex
-        // regarding why Comparable is removed in this C# project
-{
-	
-	int getId();
-	double getWeight();
-	void setWeight(double weight);
-	
-}
+namespace edu.asu.emit.algorithm.graph.abstraction {
+    /**
+     * The interface defines a vertex in graph
+     * 
+     * @author yqi
+     */
+    public interface BaseVertex 
+            //: Comparable<BaseVertex> 
+            // see comment in class Vertex
+            // regarding why Comparable is removed in this C# project
+    {
+	    int GetId();
+	    double GetWeight();
+	    void SetWeight(double weight);
+    }
 }

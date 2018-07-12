@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace edu.ufl.cise.bsmock.graph.util
-{
+namespace edu.ufl.cise.bsmock.graph.util {
     /**
      * Created by brandonsmock on 6/6/15.
      */
@@ -40,31 +39,31 @@ namespace edu.ufl.cise.bsmock.graph.util
         public DijkstraNode(String label, double dist, int depth, String parent): base(label) {
             this.dist = dist;
             this.depth = depth;
-            base.addEdge(parent,0.0);
+            base.AddEdge(parent,0.0);
         }
 
-        public double getDist() {
+        public double GetDist() {
             return dist;
         }
 
-        public void setDist(double dist) {
+        public void SetDist(double dist) {
             this.dist = dist;
         }
 
-        public int getDepth() {
+        public int GetDepth() {
             return depth;
         }
 
-        public void setDepth(int depth) {
+        public void SetDepth(int depth) {
             this.depth = depth;
         }
 
-        public void setParent(String parent) {
+        public void SetParent(String parent) {
             base.neighbors = new Dictionary<String, Double>();
             base.neighbors.Add(parent,0.0);
         }
 
-        public String getParent() {
+        public String GetParent() {
             var neighborLabels = base.neighbors.Keys;
             if (neighborLabels.Count > 1) {
                 return null;
@@ -92,8 +91,8 @@ namespace edu.ufl.cise.bsmock.graph.util
         //    return compareTo(other);
         //}
 
-        public bool equals(DijkstraNode comparedNode) {
-            return this.getLabel().Equals(comparedNode.getLabel());
+        public bool Equals(DijkstraNode comparedNode) {
+            return this.GetLabel().Equals(comparedNode.GetLabel());
         }
     }
 }

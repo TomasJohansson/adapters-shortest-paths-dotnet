@@ -2,8 +2,7 @@ using edu.ufl.cise.bsmock.graph.util;
 using System;
 using System.Collections.Generic;
 
-namespace edu.ufl.cise.bsmock.graph.ksp
-{
+namespace edu.ufl.cise.bsmock.graph.ksp {
     /**
      * Interface class for K-shortest path algorithms.
      *
@@ -26,8 +25,8 @@ namespace edu.ufl.cise.bsmock.graph.ksp
      * Last updated by Brandon Smock on December 24, 2015.
      */
     public interface KSPAlgorithm {
-        bool isLoopless();
+        bool IsLoopless();
 
-        IList<Path> ksp(Graph graph, String sourceLabel, String targetLabel, int K);
+        IList<Path> Ksp(Graph graph, String sourceLabel, String targetLabel, int K);
     }
 }
