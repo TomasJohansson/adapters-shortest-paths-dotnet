@@ -4,7 +4,6 @@
 
 using NUnit.Framework;
 using QuickGraph;
-using QuickGraph.Algorithms.ShortestPath.Yen;
 using System;
 using System.Collections.Generic;
 using System.Linq;

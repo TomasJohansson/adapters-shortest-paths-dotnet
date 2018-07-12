@@ -74,7 +74,6 @@
     <Compile Include="test\com.programmerare.shortestpaths\utils\EdgeUtilityTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\utils\MapperForIntegerIdsAndGeneralStringIdsTest.cs" />
     <Compile Include="test\com.programmerare.shortestpaths\utils\StringUtilityTest.cs" />
-    <Compile Include="test\QuickGraphTest_3_6_6\QuickGraph_3_6_6_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -95,7 +94,7 @@
       <Name>dotnet-adapters-shortest-paths-impl-parrisha</Name>
     </ProjectReference>
     <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-quickgraph\dotnet-adapters-shortest-paths-impl-quickgraph.csproj">
-      <Project>{f229a327-aaca-4c63-a3b8-02c51dcbcd66}</Project>
+      <Project>{be189530-70b7-4f8e-9859-3b9faf180db2}</Project>
       <Name>dotnet-adapters-shortest-paths-impl-quickgraph</Name>
     </ProjectReference>
     <ProjectReference Include="..\dotnet-adapters-shortest-paths-impl-yanqi\dotnet-adapters-shortest-paths-impl-yanqi.csproj">
@@ -103,9 +102,7 @@
       <Name>dotnet-adapters-shortest-paths-impl-yanqi</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="test\QuickGraphTest_3_7_3\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="NUnit">
       <Version>3.10.1</Version>

@@ -3,7 +3,7 @@ using System.Linq;
 using dotnet_adapters_shortest_paths_test.test.QuickGraphTest;
 using NUnit.Framework;
 using QuickGraph;
-using QuickGraph.Algorithms.ShortestPath.Yen;
+using QuickGraph.Algorithms.ShortestPath.Yen;
 
 // Test classes for QuickGraph:
 // PathFinderYanQiTest (using the adapters API)
