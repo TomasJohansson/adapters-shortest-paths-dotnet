@@ -31,21 +31,21 @@
 
 namespace edu.asu.emit.algorithm.graph
 {
-using java.util;
 using System;
+using System.Collections.Generic;
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using edu.asu.emit.algorithm.utils;
-using java.lang;
+using java_to_dotnet_translation_helpers.dot_net_types;
 
-/**
- * The class defines a graph which can be changed constantly.
- *  
- * @author yqi
- */
-public class VariableGraph : Graph {
-	private Set<int> remVertexIdSet = new HashSet<int>();
-	private Set<Pair<int, int>> remEdgeSet = new HashSet<Pair<int, int>>();
+    /**
+     * The class defines a graph which can be changed constantly.
+     *  
+     * @author yqi
+     */
+    public class VariableGraph : Graph {
+	private ISet<int> remVertexIdSet = new HashSet<int>();
+	private ISet<Pair<int, int>> remEdgeSet = new HashSet<Pair<int, int>>();
 
 	/**
 	 * Default constructor
@@ -73,8 +73,8 @@ public class VariableGraph : Graph {
 	 * 
 	 * @param remVertexList
 	 */
-	public void setDelVertexIdList(Collection<int> remVertexList) {
-		this.remVertexIdSet.addAll(remVertexList);
+	public void setDelVertexIdList(IList<int> remVertexList) {
+		this.remVertexIdSet.AddAll(remVertexList);
 	}
 
 	/**
@@ -82,8 +82,8 @@ public class VariableGraph : Graph {
 	 * 
 	 * @param _rem_edge_hashcode_set
 	 */
-	public void setDelEdgeHashcodeSet(Collection<Pair<int, int>> remEdgeCollection) {
-		remEdgeSet.addAll(remEdgeCollection);
+	public void setDelEdgeHashcodeSet(IList<Pair<int, int>> remEdgeCollection) {
+		remEdgeSet.AddAll(remEdgeCollection);
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class VariableGraph : Graph {
 	 * @param edge
 	 */
 	public void deleteEdge(Pair<int, int> edge) {
-		remEdgeSet.add(edge);
+		remEdgeSet.Add(edge);
 	}
 	
 	/**
@@ -101,23 +101,23 @@ public class VariableGraph : Graph {
 	 * @param vertexId
 	 */
 	public void deleteVertex(int vertexId) {
-		remVertexIdSet.add(vertexId);
+		remVertexIdSet.Add(vertexId);
 	}
 	
 	public void recoverDeletedEdges() {
-		remEdgeSet.clear();
+		remEdgeSet.Clear();
 	}
 
 	public void recoverDeletedEdge(Pair<int, int> edge)	{
-		remEdgeSet.remove(edge);
+		remEdgeSet.Remove(edge);
 	}
 	
 	public void recoverDeletedVertices() {
-		remVertexIdSet.clear();
+		remVertexIdSet.Clear();
 	}
 	
 	public void recoverDeletedVertex(int vertexId) {
-		remVertexIdSet.remove(vertexId);
+		remVertexIdSet.Remove(vertexId);
 	}
 	
 	/**
@@ -131,8 +131,8 @@ public class VariableGraph : Graph {
 		int sourceId = source.getId();
 		int sinkId = sink.getId();
 		
-		if (remVertexIdSet.contains(sourceId) || remVertexIdSet.contains(sinkId) ||
-		   remEdgeSet.contains(new Pair<int, int>(sourceId, sinkId))) {
+		if (remVertexIdSet.Contains(sourceId) || remVertexIdSet.Contains(sinkId) ||
+		   remEdgeSet.Contains(new Pair<int, int>(sourceId, sinkId))) {
 			return Graph.DISCONNECTED;
 		}
 		return base.getEdgeWeight(source, sink);
@@ -155,19 +155,19 @@ public class VariableGraph : Graph {
 	 * @param vertex
 	 * @return
 	 */
-	public override Set<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
-		Set<BaseVertex> retSet = new HashSet<BaseVertex>();
+	public override ISet<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
+		ISet<BaseVertex> retSet = new HashSet<BaseVertex>();
 		int startingVertexId = vertex.getId();
-		if (!remVertexIdSet.contains(startingVertexId))	{
-			Set<BaseVertex> adjVertexSet = base.getAdjacentVertices(vertex);
+		if (!remVertexIdSet.Contains(startingVertexId))	{
+			ISet<BaseVertex> adjVertexSet = base.getAdjacentVertices(vertex);
 			foreach (BaseVertex curVertex in adjVertexSet) {
 				int endingVertexId = curVertex.getId();
-				if (remVertexIdSet.contains(endingVertexId) ||
-					remEdgeSet.contains(new Pair<int, int>(startingVertexId, endingVertexId))) {
+				if (remVertexIdSet.Contains(endingVertexId) ||
+					remEdgeSet.Contains(new Pair<int, int>(startingVertexId, endingVertexId))) {
 					continue;
 				}
 				// 
-				retSet.add(curVertex);
+				retSet.Add(curVertex);
 			}
 		}
 		return retSet;
@@ -179,19 +179,19 @@ public class VariableGraph : Graph {
 	 * @param vertex
 	 * @return
 	 */
-	public override Set<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
-		Set<BaseVertex> retSet = new HashSet<BaseVertex>();
-		if (!remVertexIdSet.contains(vertex.getId())) {
+	public override ISet<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
+		ISet<BaseVertex> retSet = new HashSet<BaseVertex>();
+		if (!remVertexIdSet.Contains(vertex.getId())) {
 			int endingVertexId = vertex.getId();
-			Set<BaseVertex> preVertexSet = base.getPrecedentVertices(vertex);
+			ISet<BaseVertex> preVertexSet = base.getPrecedentVertices(vertex);
 			foreach (BaseVertex curVertex in preVertexSet) {
 				int startingVertexId = curVertex.getId();
-				if (remVertexIdSet.contains(startingVertexId) ||
-					remEdgeSet.contains(new Pair<int, int>(startingVertexId, endingVertexId))) {
+				if (remVertexIdSet.Contains(startingVertexId) ||
+					remEdgeSet.Contains(new Pair<int, int>(startingVertexId, endingVertexId))) {
 					continue;
 				}
 				//
-				retSet.add(curVertex);
+				retSet.Add(curVertex);
 			}
 		}
 		return retSet;
@@ -201,13 +201,13 @@ public class VariableGraph : Graph {
 	 * Get the list of vertices in the graph, except those removed.
 	 * @return
 	 */
-	public override List<BaseVertex> getVertexList() {
-		List<BaseVertex> retList = new Vector<BaseVertex>();
+	public override IList<BaseVertex> getVertexList() {
+		IList<BaseVertex> retList = new List<BaseVertex>();
 		foreach (BaseVertex curVertex in base.getVertexList()) {
-			if (remVertexIdSet.contains(curVertex.getId())) {
+			if (remVertexIdSet.Contains(curVertex.getId())) {
 				continue;
 			}
-			retList.add(curVertex);
+			retList.Add(curVertex);
 		}
 		return retList;
 	}
@@ -219,7 +219,7 @@ public class VariableGraph : Graph {
 	 * @return
 	 */
 	public override BaseVertex getVertex(int id)	{
-		if (remVertexIdSet.contains(id)) {
+		if (remVertexIdSet.Contains(id)) {
 			return null;
 		} else {
 			return base.getVertex(id);
@@ -230,7 +230,7 @@ public class VariableGraph : Graph {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SystemOut.println("Welcome to the class VariableGraph!");
+		Console.WriteLine("Welcome to the class VariableGraph!");
 		
 		VariableGraph graph = new VariableGraph("data/test_50");
 		graph.deleteVertex(13);
@@ -242,7 +242,7 @@ public class VariableGraph : Graph {
 		graph.deleteVertex(3);
 		graph.deleteEdge(new Pair<int, int>(26, 41));
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		SystemOut.println(alg.getShortestPath(graph.getVertex(0), graph.getVertex(20)));
+		Console.WriteLine(alg.getShortestPath(graph.getVertex(0), graph.getVertex(20)));
 	}
 }
 }

@@ -30,24 +30,22 @@
  */
 namespace edu.asu.emit.algorithm.graph
 {
-using java.util;
-
 using edu.asu.emit.algorithm.graph.abstraction;
 using System;
 
-/**
- * The class defines a path in graph.
- * 
- * @author yqi
- */
-public class Path : BaseElementWithWeight {
+    /**
+     * The class defines a path in graph.
+     * 
+     * @author yqi
+     */
+    public class Path : BaseElementWithWeight {
 	
-	private List<BaseVertex> vertexList = new Vector<BaseVertex>();
+	private java.util.LinkedList<BaseVertex> vertexList = new java.util.LinkedList<BaseVertex>();
 	private double weight = -1;
 	
 	public Path() { }
 	
-	public Path(List<BaseVertex> vertexList, double weight) {
+	public Path(java.util.LinkedList<BaseVertex> vertexList, double weight) {
 		this.vertexList = vertexList;
 		this.weight = weight;
 	}
@@ -60,7 +58,7 @@ public class Path : BaseElementWithWeight {
 		this.weight = weight;
 	}
 	
-	public List<BaseVertex> getVertexList() {
+	public java.util.LinkedList<BaseVertex> getVertexList() {
 		return vertexList;
 	}
 	
