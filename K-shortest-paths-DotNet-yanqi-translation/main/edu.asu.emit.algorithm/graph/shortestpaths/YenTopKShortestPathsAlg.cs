@@ -31,23 +31,24 @@
 
 namespace edu.asu.emit.algorithm.graph.shortestpaths
 {
-using java.lang;
-using java.util;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.utils;
-/**
- * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
- * @version $Revision: 783 $
- * @latest $Id: YenTopKShortestPathsAlg.java 783 2009-06-19 19:19:27Z qyan $
- */
-public class YenTopKShortestPathsAlg
+using java_to_dotnet_translation_helpers.dot_net_types;
+using System.Collections.Generic;
+
+    /**
+* @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
+* @version $Revision: 783 $
+* @latest $Id: YenTopKShortestPathsAlg.java 783 2009-06-19 19:19:27Z qyan $
+*/
+    public class YenTopKShortestPathsAlg
 {
 	private VariableGraph graph = null;
 
 	// intermediate variables
-	private List<Path> resultList = new Vector<Path>();
-	private Map<Path, BaseVertex> pathDerivationVertexIndex = new HashMap<Path, BaseVertex>();
+	private IList<Path> resultList = new List<Path>();
+	private IDictionary<Path, BaseVertex> pathDerivationVertexIndex = new Dictionary<Path, BaseVertex>();
 	private QYPriorityQueue<Path> pathCandidates = new QYPriorityQueue<Path>();
 	
 	// the ending vertices of the paths
@@ -76,7 +77,7 @@ public class YenTopKShortestPathsAlg
 	public YenTopKShortestPathsAlg(BaseGraph graph, 
 			BaseVertex sourceVertex, BaseVertex targetVertex)	{
 		if (graph == null) {
-			throw new IllegalArgumentException("A NULL graph object occurs!");
+			throw new System.ArgumentException("A NULL graph object occurs!");
 		}
 		this.graph = new VariableGraph((Graph)graph);
 		this.sourceVertex = sourceVertex;
@@ -92,9 +93,9 @@ public class YenTopKShortestPathsAlg
 		// get the shortest path by default if both source and target exist
 		if (sourceVertex != null && targetVertex != null) {
 			Path shortestPath = getShortestPath(sourceVertex, targetVertex);
-			if (!shortestPath.getVertexList().isEmpty()) {
+			if (shortestPath.getVertexList().size() > 0) {
 				pathCandidates.add(shortestPath);
-				pathDerivationVertexIndex.put(shortestPath, sourceVertex);
+				pathDerivationVertexIndex.Add(shortestPath, sourceVertex);
 			}
 		}
 	}
@@ -104,8 +105,8 @@ public class YenTopKShortestPathsAlg
 	 */
 	public void clear()	{
 		pathCandidates = new QYPriorityQueue<Path>();
-		pathDerivationVertexIndex.clear();
-		resultList.clear();
+		pathDerivationVertexIndex.Clear();
+		resultList.Clear();
 		generatedPathNum = 0;
 	}
 	
@@ -139,17 +140,17 @@ public class YenTopKShortestPathsAlg
 	public Path next() {
 		//3.1 prepare for removing vertices and arcs
 		Path curPath = pathCandidates.poll();
-		resultList.add(curPath);
+		resultList.Add(curPath);
 
-		BaseVertex curDerivation = pathDerivationVertexIndex.get(curPath);
+		BaseVertex curDerivation = pathDerivationVertexIndex[curPath];
 		int curPathHash =
 			curPath.getVertexList().subList(0, curPath.getVertexList().indexOf(curDerivation)).GetHashCode();
 		
-		int count = resultList.size();
+		int count = resultList.Count;
 		
 		//3.2 remove the vertices and arcs in the graph
 		for (int i = 0; i < count-1; ++i) {
-			Path curResultPath = resultList.get(i);
+			Path curResultPath = resultList[i];
 							
 			int curDevVertexId =
 				curResultPath.getVertexList().indexOf(curDerivation);
@@ -173,7 +174,7 @@ public class YenTopKShortestPathsAlg
 		}
 		
 		int pathLength = curPath.getVertexList().size();
-		List<BaseVertex> curPathVertexList = curPath.getVertexList();
+		java.util.LinkedList<BaseVertex> curPathVertexList = curPath.getVertexList();
 		for (int i = 0; i < pathLength-1; ++i) {
 			graph.deleteVertex(curPathVertexList.get(i).getId());
 			graph.deleteEdge(new Pair<int, int>(
@@ -206,7 +207,7 @@ public class YenTopKShortestPathsAlg
 				
 				//3.4.4.1 get the prefix from the concerned path
 				double cost = 0; 
-				List<BaseVertex> prePathList = new Vector<BaseVertex>();
+				IList<BaseVertex> prePathList = new List<BaseVertex>();
 				reverseTree.correctCostBackward(curRecoverVertex);
 				
 				for (int j=0; j<pathLength; ++j) {
@@ -216,10 +217,10 @@ public class YenTopKShortestPathsAlg
 					} else {
 						cost += graph.getEdgeWeightOfGraph(curPathVertexList.get(j),
 								curPathVertexList.get(j+1));
-						prePathList.add(curVertex);
+						prePathList.Add(curVertex);
 					}
 				}
-				prePathList.addAll(subPath.getVertexList());
+				prePathList.AddAll(subPath.getVertexList());
 
 				//3.4.4.2 compose a candidate
 				subPath.setWeight(cost + subPath.getWeight());
@@ -227,9 +228,9 @@ public class YenTopKShortestPathsAlg
 				subPath.getVertexList().addAll(prePathList);
 				
 				//3.4.4.3 put it in the candidate pool if new
-				if (!pathDerivationVertexIndex.containsKey(subPath)) {
+				if (!pathDerivationVertexIndex.ContainsKey(subPath)) {
 					pathCandidates.add(subPath);
-					pathDerivationVertexIndex.put(subPath, curRecoverVertex);
+					pathDerivationVertexIndex.Add(subPath, curRecoverVertex);
 				}
 			}
 			
@@ -240,11 +241,11 @@ public class YenTopKShortestPathsAlg
 			
 			//3.4.6 update cost if necessary
 			double cost1 = graph.getEdgeWeight(curRecoverVertex, succVertex)
-				+ reverseTree.getStartVertexDistanceIndex().get(succVertex);
+				+ reverseTree.getStartVertexDistanceIndex()[succVertex];
 			
-			if (reverseTree.getStartVertexDistanceIndex().get(curRecoverVertex) >  cost1) {
-				reverseTree.getStartVertexDistanceIndex().put(curRecoverVertex, cost1);
-				reverseTree.getPredecessorIndex().put(curRecoverVertex, succVertex);
+			if (reverseTree.getStartVertexDistanceIndex()[curRecoverVertex] >  cost1) {
+				reverseTree.getStartVertexDistanceIndex().AddOrReplace(curRecoverVertex, cost1);
+				reverseTree.getPredecessorIndex().AddOrReplace(curRecoverVertex, succVertex);
 				reverseTree.correctCostBackward(curRecoverVertex);
 			}
 		}
@@ -265,7 +266,7 @@ public class YenTopKShortestPathsAlg
 	 * @param k
 	 * @return
 	 */
-	public List<Path> getShortestPaths(BaseVertex source,
+	public IList<Path> getShortestPaths(BaseVertex source,
                                        BaseVertex target, int k) {
 		sourceVertex = source;
 		targetVertex = target;
@@ -285,7 +286,7 @@ public class YenTopKShortestPathsAlg
 	 * (Note that some of them are duplicates)
 	 * @return
 	 */
-	public List<Path> getResultList() {
+	public IList<Path> getResultList() {
         return resultList;
 	}
 
@@ -294,7 +295,7 @@ public class YenTopKShortestPathsAlg
 	 * @return
 	 */
 	public int getCadidateSize() {
-		return pathDerivationVertexIndex.size();
+		return pathDerivationVertexIndex.Count;
 	}
 
 	public int getGeneratedPathSize() {

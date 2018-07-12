@@ -29,9 +29,10 @@
  *
  */
 
+using System.Collections.Generic;
+
 namespace edu.asu.emit.algorithm.graph.abstraction
 {
-using java.util;
 /**
  * The interface defines a graph.
  * 
@@ -39,11 +40,11 @@ using java.util;
  */
 public interface BaseGraph {
 	
-	List<BaseVertex> getVertexList();
+	IList<BaseVertex> getVertexList();
 	
 	double getEdgeWeight(BaseVertex source, BaseVertex sink);
-	Set<BaseVertex> getAdjacentVertices(BaseVertex vertex);
-	Set<BaseVertex> getPrecedentVertices(BaseVertex vertex);
+	ISet<BaseVertex> getAdjacentVertices(BaseVertex vertex);
+	ISet<BaseVertex> getPrecedentVertices(BaseVertex vertex);
 	
 }
 }

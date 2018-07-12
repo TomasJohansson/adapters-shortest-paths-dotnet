@@ -31,45 +31,46 @@
 
 namespace edu.asu.emit.algorithm.graph
 {
-using java.io;
-using java.lang;
-using java.util;
 using System;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.utils;
-using extensionClassesForJavaTypes;
+using java_to_dotnet_translation_helpers.dot_net_types;
 
-/**
- * The class defines a directed graph.
- * 
- * @author yqi
- * 
- * @author Tomas Johansson, implemented (in a fork) a refactoring which extracted code from method 'importFromFile' to 
- * two methods: 'setNumberOfVertices' and 'addEdgeFromStringWithEdgeNamesAndWeight'.
- * For more information about what has changed in the forked version, see the file "NOTICE.txt".
- */
-public class Graph : BaseGraph {
+    /**
+     * The class defines a directed graph.
+     * 
+     * @author yqi
+     * 
+     * @author Tomas Johansson, implemented (in a fork) a refactoring which extracted code from method 'importFromFile' to 
+     * two methods: 'setNumberOfVertices' and 'addEdgeFromStringWithEdgeNamesAndWeight'.
+     * For more information about what has changed in the forked version, see the file "NOTICE.txt".
+     */
+    public class Graph : BaseGraph {
 	
 	public static readonly double DISCONNECTED = double.MaxValue;
 	
 	// index of fan-outs of one vertex
-	protected Map<int, Set<BaseVertex>> fanoutVerticesIndex =
-		new HashMap<int, Set<BaseVertex>>();
+	protected IDictionary<int, ISet<BaseVertex>> fanoutVerticesIndex =
+		new Dictionary<int, ISet<BaseVertex>>();
 	
 	// index for fan-ins of one vertex
-	protected Map<int, Set<BaseVertex>> faninVerticesIndex =
-		new HashMap<int, Set<BaseVertex>>();
+	protected IDictionary<int, ISet<BaseVertex>> faninVerticesIndex =
+		new Dictionary<int, ISet<BaseVertex>>();
 	
 	// index for edge weights in the graph
-	protected MapN<Pair<int, int>, Double> vertexPairWeightIndex = 
-		new HashMapN<Pair<int, int>, Double>();
+	protected IDictionary<Pair<int, int>, Double> vertexPairWeightIndex = 
+		new Dictionary<Pair<int, int>, Double>();
 	
 	// index for vertices in the graph
-	protected Map<int, BaseVertex> idVertexIndex = 
-		new HashMap<int, BaseVertex>();
+	protected IDictionary<int, BaseVertex> idVertexIndex = 
+		new Dictionary<int, BaseVertex>();
 	
 	// list of vertices in the graph 
-	protected List<BaseVertex> vertexList = new Vector<BaseVertex>();
+	protected IList<BaseVertex> vertexList = new System.Collections.Generic.List<BaseVertex>();
 	
 	// the number of vertices in the graph
 	protected int vertexNum = 0;
@@ -93,11 +94,11 @@ public class Graph : BaseGraph {
 	public Graph(Graph graph) {
 		vertexNum = graph.vertexNum;
 		edgeNum = graph.edgeNum;
-		vertexList.addAll(graph.vertexList);
-		idVertexIndex.putAll(graph.idVertexIndex);
-		faninVerticesIndex.putAll(graph.faninVerticesIndex);
-		fanoutVerticesIndex.putAll(graph.fanoutVerticesIndex);
-		vertexPairWeightIndex.putAll(graph.vertexPairWeightIndex);
+		vertexList.AddAll(graph.vertexList);
+		idVertexIndex.PutAll(graph.idVertexIndex);
+		faninVerticesIndex.PutAll(graph.faninVerticesIndex);
+		fanoutVerticesIndex.PutAll(graph.fanoutVerticesIndex);
+		vertexPairWeightIndex.PutAll(graph.vertexPairWeightIndex);
 	}
 	
 	/**
@@ -112,11 +113,11 @@ public class Graph : BaseGraph {
 		Vertex.reset();
 		vertexNum = 0;
 		edgeNum = 0; 
-		vertexList.clear();
-		idVertexIndex.clear();
-		faninVerticesIndex.clear();
-		fanoutVerticesIndex.clear();
-		vertexPairWeightIndex.clear();
+		vertexList.Clear();
+		idVertexIndex.Clear();
+		faninVerticesIndex.Clear();
+		fanoutVerticesIndex.Clear();
+		vertexPairWeightIndex.Clear();
 	}
 	
 	/**
@@ -131,18 +132,18 @@ public class Graph : BaseGraph {
 		
 		try	{
 			// 1. read the file and put the content in the buffer
-			FileReader input = new FileReader(dataFileName);
-			BufferedReader bufRead = new BufferedReader(input);
+            var bufRead = new StreamReader(dataFileName);
+
 
 			bool isFirstLine = true;
 			String line; 	// String that holds current file line
 			String ss = "";
 			// 2. Read first line
-			line = bufRead.readLine();
+			line = bufRead.ReadLine();
 			while (line != null) {
 				// 2.1 skip the empty line
-				if (line.trim().Equals("")) {
-					line = bufRead.readLine();
+				if (line.Trim().Equals("")) {
+					line = bufRead.ReadLine();
 					continue;
 				}
 				
@@ -150,19 +151,19 @@ public class Graph : BaseGraph {
 				if (isFirstLine) {
 					//2.2.1 obtain the number of nodes in the graph 
 					isFirstLine = false;
-					setNumberOfVertices(Integer.parseInt(line.trim()));
+					setNumberOfVertices(int.Parse(line.Trim()));
 				} else {
 					//2.2.2 find a new edge and put it in the graph  
 					addEdgeFromStringWithEdgeNamesAndWeight(line);
 				}
 				//
-				line = bufRead.readLine();
+				line = bufRead.ReadLine();
 			}
-			bufRead.close();
+			bufRead.Close();
 
 		} catch (IOException e) {
 			// If another exception is generated, print a stack trace
-			e.printStackTrace();
+            Console.WriteLine(e.StackTrace);
 		}
 	}
 
@@ -176,29 +177,29 @@ public class Graph : BaseGraph {
 	 */
 	protected void addEdge(int startVertexId, int endVertexId, double weight) {
 		// actually, we should make sure all vertices ids must be correct. 
-		if (!idVertexIndex.containsKey(startVertexId) || 
-			!idVertexIndex.containsKey(endVertexId) || 
+		if (!idVertexIndex.ContainsKey(startVertexId) || 
+			!idVertexIndex.ContainsKey(endVertexId) || 
 			startVertexId == endVertexId) {
-			throw new IllegalArgumentException("The edge from " + startVertexId +
+			throw new ArgumentException("The edge from " + startVertexId +
 					" to " + endVertexId + " does not exist in the graph.");
 		}
 		
 		// update the adjacent-list of the graph
-		Set<BaseVertex> fanoutVertexSet = new HashSet<BaseVertex>();
-		if (fanoutVerticesIndex.containsKey(startVertexId)) {
-			fanoutVertexSet = fanoutVerticesIndex.get(startVertexId);
+		ISet<BaseVertex> fanoutVertexSet = new System.Collections.Generic.HashSet<BaseVertex>();
+		if (fanoutVerticesIndex.ContainsKey(startVertexId)) {
+			fanoutVertexSet = fanoutVerticesIndex[startVertexId];
 		}
-		fanoutVertexSet.add(idVertexIndex.get(endVertexId));
-		fanoutVerticesIndex.put(startVertexId, fanoutVertexSet);
+		fanoutVertexSet.Add(idVertexIndex[endVertexId]);
+		fanoutVerticesIndex.AddOrReplace(startVertexId, fanoutVertexSet);
 		//
-		Set<BaseVertex> faninVertexSet = new HashSet<BaseVertex>();
-		if (faninVerticesIndex.containsKey(endVertexId)) {
-			faninVertexSet = faninVerticesIndex.get(endVertexId);
+		ISet<BaseVertex> faninVertexSet = new System.Collections.Generic.HashSet<BaseVertex>();
+		if (faninVerticesIndex.ContainsKey(endVertexId)) {
+			faninVertexSet = faninVerticesIndex[endVertexId];
 		}
-		faninVertexSet.add(idVertexIndex.get(startVertexId));
-		faninVerticesIndex.put(endVertexId, faninVertexSet);
+		faninVertexSet.Add(idVertexIndex[startVertexId]);
+		faninVerticesIndex.AddOrReplace(endVertexId, faninVertexSet);
 		// store the new edge 
-		vertexPairWeightIndex.put(
+		vertexPairWeightIndex.Add(
 				new Pair<int, int>(startVertexId, endVertexId), 
 				weight);
 		++edgeNum;
@@ -211,53 +212,57 @@ public class Graph : BaseGraph {
 	 */
 	public void exportToFile(String fileName) {
 		//1. prepare the text to export
-		StringBuffer sb = new StringBuffer();
-		sb.append(vertexNum + "\n\n");
-		foreach (Pair<int, int> curEdgePair in vertexPairWeightIndex.keySet()) {
+		StringBuilder sb = new StringBuilder();
+		sb.Append(vertexNum + "\n\n");
+		foreach (Pair<int, int> curEdgePair in vertexPairWeightIndex.Keys) {
 			int startingPtId = curEdgePair.first();
 			int endingPtId = curEdgePair.second();
-			double weight = vertexPairWeightIndex.get(curEdgePair);
-			sb.append(startingPtId + "	" + endingPtId + "	" + weight + "\n");
+			double weight = vertexPairWeightIndex[curEdgePair];
+			sb.Append(startingPtId + "	" + endingPtId + "	" + weight + "\n");
 		}
+
+        throw new NotImplementedException();
+        // Java code below not yet translated to .NET
+
 		//2. open the file and put the data into the file. 
-		Writer output = null;
-		try {
-			// FileWriter always assumes default encoding is OK!
-			output = new BufferedWriter(new FileWriter(new File(fileName)));
-			output.write(sb.ToString());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			// flush and close both "output" and its underlying FileWriter
-			try {
-				if (output != null) {
-					output.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		//Writer output = null;
+		//try {
+		//	// FileWriter always assumes default encoding is OK!
+		//	output = new BufferedWriter(new FileWriter(new File(fileName)));
+		//	output.write(sb.ToString());
+		//} catch (FileNotFoundException e) {
+		//	e.printStackTrace();
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//} finally {
+		//	// flush and close both "output" and its underlying FileWriter
+		//	try {
+		//		if (output != null) {
+		//			output.close();
+		//		}
+		//	} catch (IOException e) {
+		//		e.printStackTrace();
+		//	}
+		//}
 	}
 	
-	public virtual Set<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
-		return fanoutVerticesIndex.containsKey(vertex.getId()) 
-				? fanoutVerticesIndex.get(vertex.getId()) 
-				: new HashSet<BaseVertex>();
+	public virtual ISet<BaseVertex> getAdjacentVertices(BaseVertex vertex) {
+		return fanoutVerticesIndex.ContainsKey(vertex.getId()) 
+				? fanoutVerticesIndex[vertex.getId()] 
+				: new System.Collections.Generic.HashSet<BaseVertex>();
 	}
 
-	public virtual Set<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
-		return faninVerticesIndex.containsKey(vertex.getId()) 
-				? faninVerticesIndex.get(vertex.getId()) 
-				: new HashSet<BaseVertex>();
+	public virtual ISet<BaseVertex> getPrecedentVertices(BaseVertex vertex) {
+		return faninVerticesIndex.ContainsKey(vertex.getId()) 
+				? faninVerticesIndex[vertex.getId()] 
+				: new System.Collections.Generic.HashSet<BaseVertex>();
 	}
 	
 	public virtual double getEdgeWeight(BaseVertex source, BaseVertex sink)	{
-		return vertexPairWeightIndex.containsKey(
+		return vertexPairWeightIndex.ContainsKey(
 					new Pair<int, int>(source.getId(), sink.getId()))? 
-							vertexPairWeightIndex.get(
-									new Pair<int, int>(source.getId(), sink.getId()))
+							vertexPairWeightIndex[
+									new Pair<int, int>(source.getId(), sink.getId())]
 						  : DISCONNECTED;
 	}
 
@@ -272,7 +277,7 @@ public class Graph : BaseGraph {
 	/**
 	 * Return the vertex list in the graph.
 	 */
-	public virtual List<BaseVertex> getVertexList() {
+	public virtual IList<BaseVertex> getVertexList() {
 		return vertexList;
 	}
 	
@@ -283,7 +288,7 @@ public class Graph : BaseGraph {
 	 * @return
 	 */
 	public virtual BaseVertex getVertex(int id) {
-		return idVertexIndex.get(id);
+		return idVertexIndex[id];
 	}
 
 	/**
@@ -291,9 +296,9 @@ public class Graph : BaseGraph {
 	* Fork: https://github.com/TomasJohansson/k-shortest-paths-java-version
 	*/	
 	protected void addEdgeFromStringWithEdgeNamesAndWeight(String line) {
-		String[] strList = line.trim().split("\\s");
-		int startVertexId = Integer.parseInt(strList[0]);
-		int endVertexId = Integer.parseInt(strList[1]);
+        String[] strList = Regex.Split(line.Trim(), @"\s");
+		int startVertexId = int.Parse(strList[0]);
+		int endVertexId = int.Parse(strList[1]);
 		double weight = double.Parse(strList[2]);
 		addEdge(startVertexId, endVertexId, weight);
 	}
@@ -306,8 +311,8 @@ public class Graph : BaseGraph {
 		vertexNum = numberOfVertices;
 		for (int i=0; i<vertexNum; ++i) {
 			BaseVertex vertex = new Vertex();
-			vertexList.add(vertex);
-			idVertexIndex.put(vertex.getId(), vertex);
+			vertexList.Add(vertex);
+			idVertexIndex.Add(vertex.getId(), vertex);
 		}
 	}	
 }

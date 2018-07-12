@@ -32,18 +32,18 @@
 namespace edu.asu.emit.qyan.test
 {
 using NUnit.Framework;
-using java.util;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
-using java.lang;
 using programmerare; // GraphFactory
-/**
- * TODO Need to redo!
- * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
- * @version $Revision: 784 $
- * @latest $Id: YenTopKShortestPathsAlgTest.java 46 2010-06-05 07:54:27Z yan.qi.asu $
- */
-[TestFixture]
+using System.Collections.Generic;
+using System;
+    /**
+* TODO Need to redo!
+* @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
+* @version $Revision: 784 $
+* @latest $Id: YenTopKShortestPathsAlgTest.java 46 2010-06-05 07:54:27Z yan.qi.asu $
+*/
+    [TestFixture]
 public class YenTopKShortestPathsAlgTest {
 	// The graph should be initiated only once to guarantee the correspondence 
 	// between vertex id and node id in input text file. 
@@ -52,63 +52,63 @@ public class YenTopKShortestPathsAlgTest {
     [Test]
 	public void testDijkstraShortestPathAlg()
 	{
-		SystemOut.println("Testing Dijkstra Shortest Path Algorithm!");
+		Console.WriteLine("Testing Dijkstra Shortest Path Algorithm!");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		SystemOut.println(alg.getShortestPath(graph.getVertex(4), graph.getVertex(5)));
+		Console.WriteLine(alg.getShortestPath(graph.getVertex(4), graph.getVertex(5)));
 	}
 	
     [Test]
 	public void testYenShortestPathsAlg()
 	{		
-		SystemOut.println("Testing batch processing of top-k shortest paths!");
+		Console.WriteLine("Testing batch processing of top-k shortest paths!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph);
-		List<Path> shortest_paths_list = yenAlg.getShortestPaths(
+		IList<Path> shortest_paths_list = yenAlg.getShortestPaths(
                 graph.getVertex(4), graph.getVertex(5), 100);
-		SystemOut.println(":"+shortest_paths_list);
-		SystemOut.println(yenAlg.getResultList().size());
+		Console.WriteLine(":"+shortest_paths_list);
+		Console.WriteLine(yenAlg.getResultList().Count);
 	}
 	
     [Test]
 	public void testYenShortestPathsAlg2()
 	{
-		SystemOut.println("Obtain all paths in increasing order! - updated!");
+		Console.WriteLine("Obtain all paths in increasing order! - updated!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
 				graph, graph.getVertex(4), graph.getVertex(5));
 		int i=0;
 		while(yenAlg.hasNext())
 		{
-			SystemOut.println("Path "+i+++" : "+yenAlg.next());
+			Console.WriteLine("Path "+i+++" : "+yenAlg.next());
 		}
 		
-		SystemOut.println("Result # :"+i);
-		SystemOut.println("Candidate # :"+yenAlg.getCadidateSize());
-		SystemOut.println("All generated : "+yenAlg.getGeneratedPathSize());
+		Console.WriteLine("Result # :"+i);
+		Console.WriteLine("Candidate # :"+yenAlg.getCadidateSize());
+		Console.WriteLine("All generated : "+yenAlg.getGeneratedPathSize());
 	}
 	
 	[Test]
 	public void testYenShortestPathsAlg4MultipleGraphs()
 	{
-		SystemOut.println("Graph 1 - ");
+		Console.WriteLine("Graph 1 - ");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
 				graph, graph.getVertex(4), graph.getVertex(5));
 		int i=0;
 		while(yenAlg.hasNext())
 		{
-			SystemOut.println("Path "+i+++" : "+yenAlg.next());
+			Console.WriteLine("Path "+i+++" : "+yenAlg.next());
 		}
 		
-		SystemOut.println("Result # :"+i);
-		SystemOut.println("Candidate # :"+yenAlg.getCadidateSize());
-		SystemOut.println("All generated : "+yenAlg.getGeneratedPathSize());
+		Console.WriteLine("Result # :"+i);
+		Console.WriteLine("Candidate # :"+yenAlg.getCadidateSize());
+		Console.WriteLine("All generated : "+yenAlg.getGeneratedPathSize());
 		
 		///
-		SystemOut.println("Graph 2 - ");
+		Console.WriteLine("Graph 2 - ");
 		graph = GraphFactory.createVariableGraph("data/test_6_1");
 		YenTopKShortestPathsAlg yenAlg1 = new YenTopKShortestPathsAlg(graph);
-		List<Path> shortest_paths_list = yenAlg1.getShortestPaths(
+		IList<Path> shortest_paths_list = yenAlg1.getShortestPaths(
                 graph.getVertex(4), graph.getVertex(5), 100);
-		SystemOut.println(":"+shortest_paths_list);
-		SystemOut.println(yenAlg1.getResultList().size());
+		Console.WriteLine(":"+shortest_paths_list);
+		Console.WriteLine(yenAlg1.getResultList().Count);
 	}
 }
 }

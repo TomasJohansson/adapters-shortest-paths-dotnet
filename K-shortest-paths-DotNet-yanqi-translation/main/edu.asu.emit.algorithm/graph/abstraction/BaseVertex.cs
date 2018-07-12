@@ -29,8 +29,6 @@
  *
  */
 
-using java.lang;
-
 namespace edu.asu.emit.algorithm.graph.abstraction
 {
 /**

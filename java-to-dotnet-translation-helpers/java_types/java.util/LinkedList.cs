@@ -44,6 +44,15 @@ namespace java.util
             }
         }
 
+        // this overloaded method's parameter is NOT a "java type"... beause of the .NET parameter IList
+        public void addAll(IList<T> list)
+        {
+            for(int i=0; i<list.Count; i++)
+            {
+                this.add(list[i]);
+            }
+        }
+
         public void clear()
         {
             _list.Clear();
@@ -170,6 +179,11 @@ namespace java.util
         public void __Reverse()
         {
             _list.Reverse();
+        }
+
+        public void reverse()
+        {
+            __Reverse();
         }
         //public IEnumerator<T> GetEnumerator()
         //{

@@ -30,8 +30,6 @@
  */
 namespace edu.asu.emit.algorithm.utils
 {
-using java.lang;
-using java.util;
 using System;
 using edu.asu.emit.algorithm.graph.abstraction;
 /**
@@ -41,7 +39,7 @@ using edu.asu.emit.algorithm.graph.abstraction;
  * @param <E> the type of the element in the queue
  */
 public class QYPriorityQueue<E> where E : BaseElementWithWeight {
-	private List<E> elementWeightPairList = new LinkedList<E>();
+	private java.util.LinkedList<E> elementWeightPairList = new java.util.LinkedList<E>();
 	private int limitSize = -1;
 	private bool isIncremental = false; 
 	
@@ -126,7 +124,7 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 */
 	public E get(int i) {
 		if (i >= elementWeightPairList.size()) {
-			SystemErr.println("The result :" + i + " doesn't exist!!!");
+			Console.WriteLine("The result :" + i + " doesn't exist!!!");
 		}
 		return elementWeightPairList.get(i);
 	}
