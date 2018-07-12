@@ -1,7 +1,5 @@
 using com.programmerare.shortestpaths.adapter.bsmock;
 using com.programmerare.shortestpaths.adapter.yanqi;
-using com.programmerare.shortestpaths.adapter.quickgraph;
-using com.programmerare.shortestpaths.adapter.parrisha;
 using com.programmerare.shortestpaths.core.api;
 using System.Collections.Generic;
 

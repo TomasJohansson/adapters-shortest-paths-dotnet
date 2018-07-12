@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using com.programmerare.shortestpaths.core.validation;
 using com.programmerare.shortestpaths.adapter.yanqi;
 using com.programmerare.shortestpaths.adapter.bsmock;
-using com.programmerare.shortestpaths.adapter.quickgraph;
+//using com.programmerare.shortestpaths.adapter.quickgraph;
 
 namespace com.programmerare.shortestpaths.graph.tests {
     /**
@@ -60,15 +60,15 @@ namespace com.programmerare.shortestpaths.graph.tests {
             );
 	    }	
 
-        [Test]
-	    public void incorrect_startVertex_shouldThrowException_QuickGraph() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryQuickGraph(), 
-                vertexX_notPartOfGraph, 
-                vertexC, 
-                isExceptionExpected : true
-            );
-	    }
+     //   [Test]
+	    //public void incorrect_startVertex_shouldThrowException_QuickGraph() {
+		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+     //           new PathFinderFactoryQuickGraph(), 
+     //           vertexX_notPartOfGraph, 
+     //           vertexC, 
+     //           isExceptionExpected : true
+     //       );
+	    //}
 	
 	    // -------------------------------------------------------------
 	    // Three tests (for three implementations) with end vertex not part of the graph 
@@ -92,15 +92,15 @@ namespace com.programmerare.shortestpaths.graph.tests {
             );
 	    }	
 
-        [Test]
-	    public void incorrect_endVertex_shouldThrowException_QuickGraph() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryQuickGraph(), 
-                vertexA, 
-                vertexX_notPartOfGraph, 
-                isExceptionExpected : true
-            );
-	    }
+     //   [Test]
+	    //public void incorrect_endVertex_shouldThrowException_QuickGraph() {
+		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+     //           new PathFinderFactoryQuickGraph(), 
+     //           vertexA, 
+     //           vertexX_notPartOfGraph, 
+     //           isExceptionExpected : true
+     //       );
+	    //}
 	
 	    // -------------------------------------------------------------
 	    // Three tests (for three implementations) with start and vertex both part of the graph
@@ -124,15 +124,15 @@ namespace com.programmerare.shortestpaths.graph.tests {
                 isExceptionExpected : false
             );
 	    }	
-	    [Test]
-	    public void correct_startAndEndVertex_should_NOT_ThrowException_QuickGraph() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryQuickGraph(), 
-                vertexA, 
-                vertexC, 
-                isExceptionExpected : false
-            );
-	    }
+	    //[Test]
+	    //public void correct_startAndEndVertex_should_NOT_ThrowException_QuickGraph() {
+		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+     //           new PathFinderFactoryQuickGraph(), 
+     //           vertexA, 
+     //           vertexC, 
+     //           isExceptionExpected : false
+     //       );
+	    //}
 
 	    // -------------------------------------------------------------
 	    private void FindShortestPaths(

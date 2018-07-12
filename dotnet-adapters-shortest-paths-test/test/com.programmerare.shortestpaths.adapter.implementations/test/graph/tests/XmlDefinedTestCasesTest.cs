@@ -3,7 +3,6 @@ using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVert
 using NUnit.Framework;
 using com.programmerare.shortestpaths.adapter.bsmock;
 using com.programmerare.shortestpaths.adapter.yanqi;
-using com.programmerare.shortestpaths.adapter.quickgraph;
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.parsers;
 using com.programmerare.shortestpaths.graph.utils;
@@ -12,7 +11,6 @@ using System.Collections.Generic;
 using static com.programmerare.shortestpaths.graph.utils.GraphShortestPathAssertionHelper;
 using System;
 using com.programmerare.shortestpaths.core.validation;
-using com.programmerare.shortestpaths.adapter.parrisha;
 
 namespace com.programmerare.shortestpaths.graph.tests {
     /**
@@ -162,7 +160,7 @@ namespace com.programmerare.shortestpaths.graph.tests {
 		    graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.ALL);
 		    pathFinderFactories.Add(new PathFinderFactoryYanQi());
             pathFinderFactories.Add(new PathFinderFactoryBsmock());
-            pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
+            //pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
             //pathFinderFactories.Add(new PathFinderFactoryParrisha()); // fails
 		    runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, XML_FILE_BIG_TEST__50_2, pathFinderFactories);
 	    }
@@ -174,7 +172,7 @@ namespace com.programmerare.shortestpaths.graph.tests {
 		    graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.ALL);
             pathFinderFactories.Add(new PathFinderFactoryYanQi());
             pathFinderFactories.Add(new PathFinderFactoryBsmock());
-            pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
+            //pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
             //pathFinderFactories.Add(new PathFinderFactoryParrisha());  // fails
             runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, XML_FILE_BIG_TEST__50, pathFinderFactories);
 	    }

@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using com.programmerare.shortestpaths.adapter.yanqi;
 using com.programmerare.shortestpaths.adapter.bsmock;
-using com.programmerare.shortestpaths.adapter.quickgraph;
-using com.programmerare.shortestpaths.adapter.parrisha;
 using static NUnit.Framework.Assert;
 using com.programmerare.shortestpaths.core.validation;
 using System.Collections.Generic;
@@ -49,11 +47,10 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
             PathFinderTest(new PathFinderFactoryYanQi());
         }
 
-        [Test]
-        public void PathFinderTestParrisha()
-        {
-            PathFinderTest(new PathFinderFactoryParrisha());
-        }
+        //[Test]
+        //public void PathFinderTestParrisha() {
+        //    PathFinderTest(new PathFinderFactoryParrisha());
+        //}
 
         [Test]
         public void PathFinderTestBSmock()
@@ -61,11 +58,10 @@ namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpat
             PathFinderTest(new PathFinderFactoryBsmock());
         }
 
-        [Test]
-        public void PathFinderTestQuickGraph()
-        {
-            PathFinderTest(new PathFinderFactoryQuickGraph());
-        }
+        //[Test]
+        //public void PathFinderTestQuickGraph() {
+        //    PathFinderTest(new PathFinderFactoryQuickGraph());
+        //}
 		
         private void PathFinderTest(PathFinderFactory pathFinderFactory)
         {

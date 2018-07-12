@@ -4,8 +4,6 @@ using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.validation;
 using com.programmerare.shortestpaths.adapter.bsmock;
 using com.programmerare.shortestpaths.adapter.yanqi;
-using com.programmerare.shortestpaths.adapter.quickgraph;
-using com.programmerare.shortestpaths.adapter.parrisha;
 using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
 using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
@@ -33,12 +31,12 @@ namespace com.programmerare.shortestpaths.graph.tests
 		    );		
 	    }	
 	
-	    [Test]
-	    public void TestFindShortestPaths_QuickGraph() {
-		    TestFindShortestPaths(
-			    new PathFinderFactoryQuickGraph()
-		    );		
-	    }
+	    //[Test]
+	    //public void TestFindShortestPaths_QuickGraph() {
+		   // TestFindShortestPaths(
+			  //  new PathFinderFactoryQuickGraph()
+		   // );		
+	    //}
 	
 	    [Test]
 	    public void testFindShortestPaths_YanQi() {
@@ -47,12 +45,12 @@ namespace com.programmerare.shortestpaths.graph.tests
 		    );
 	    }
 
-	    [Test]
-	    public void TestFindShortestPaths_Parrisha() {
-		    TestFindShortestPaths(
-			    new PathFinderFactoryParrisha()
-		    );		
-	    }
+	    //[Test]
+	    //public void TestFindShortestPaths_Parrisha() {
+		   // TestFindShortestPaths(
+			  //  new PathFinderFactoryParrisha()
+		   // );		
+	    //}
         
 	    public void TestFindShortestPaths(
 			    PathFinderFactory pathFinderFactory
