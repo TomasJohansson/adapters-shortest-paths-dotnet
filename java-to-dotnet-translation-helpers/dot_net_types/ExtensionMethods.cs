@@ -48,14 +48,23 @@ namespace java_to_dotnet_translation_helpers.dot_net_types {
             }
         }
 
-        // https://docs.oracle.com/javase/8/docs/api/java/util/Map.html#put-K-V-
-        // "If the map previously contained a mapping for the key, the old value is replaced by the specified value"
-
         public static void AddOrReplace<T,U>(
             this IDictionary<T,U> dict, 
             T t, 
             U u
         ) {
+            // When translating code from Java (Map) to C#.NET (IDictionary)
+            // the behaviour is different regarding when the key already exists.
+            // The purpose of this method is to handle that difference
+            // i.e. use this method when translating code from Java to C#.NET.
+            
+            // Java Map:
+            // https://docs.oracle.com/javase/8/docs/api/java/util/Map.html#put-K-V-
+            // > "If the map previously contained a mapping for the key, the old value is replaced by the specified value"
+            
+            // C#.NET IDictionary:
+            // https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2.add?view=netframework-4.7.1
+            // > "the Add method throws an ArgumentException when attempting to add a duplicate key."
             if(dict.ContainsKey(t)) {
                 dict.Remove(t);
             }
