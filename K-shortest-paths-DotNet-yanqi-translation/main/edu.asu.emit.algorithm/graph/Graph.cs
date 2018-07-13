@@ -94,10 +94,10 @@ namespace edu.asu.emit.algorithm.graph {
 		    vertexNum = graph.vertexNum;
 		    edgeNum = graph.edgeNum;
 		    vertexList.AddAll(graph.vertexList);
-		    idVertexIndex.PutAll(graph.idVertexIndex);
-		    faninVerticesIndex.PutAll(graph.faninVerticesIndex);
-		    fanoutVerticesIndex.PutAll(graph.fanoutVerticesIndex);
-		    vertexPairWeightIndex.PutAll(graph.vertexPairWeightIndex);
+		    idVertexIndex.AddAll(graph.idVertexIndex);
+		    faninVerticesIndex.AddAll(graph.faninVerticesIndex);
+		    fanoutVerticesIndex.AddAll(graph.fanoutVerticesIndex);
+		    vertexPairWeightIndex.AddAll(graph.vertexPairWeightIndex);
 	    }
 	
 	    /**
