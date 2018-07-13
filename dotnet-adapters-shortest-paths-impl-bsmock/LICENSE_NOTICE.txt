@@ -3,9 +3,8 @@ This adapter library is licensed in the same way as the adaptee library itself.
 This means that the license is Apache License Version 2.0.
 
 The original library: (which has been forked, see further below)
-https://github.com/yan-qi/k-shortest-paths-java-version/blob/master/License.txt
+https://github.com/bsmock/k-shortest-paths/blob/master/LICENSE
 
 The adaptee being used is the following library (which is a fork of the above Java library which has been "translated" to C#):
 TODO url
-K-shortest-paths-DotNet-yanqi-translation
-
+K-shortest-paths-DotNet-bsmock-translation

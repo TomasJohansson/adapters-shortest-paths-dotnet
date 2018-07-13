@@ -1,5 +1,6 @@
-This project is a fork. The source code is located here:
-https://github.com/TomasJohansson/k-shortest-paths
+This project is a fork of a Java library which also has been translated to C#.
+The source code is located here:
+TODO URL K-shortest-paths-DotNet-bsmock-translation
 
 The location of the original project:
 https://github.com/bsmock/k-shortest-paths
@@ -7,10 +8,11 @@ https://github.com/bsmock/k-shortest-paths
 The license of the fork is the same as the original project i.e. Apache License 2.0 
 https://github.com/bsmock/k-shortest-paths/blob/master/LICENSE
 
+The forked version has tried to NOT modify the implementation of the algorithm.
+The purpose of the fork was to make it into a C# project and also available with NuGet.
 
-The forked version has NOT modified the implementation of the algorithm.
-The purpose of the fork was to make it into a Maven project to simplify reusage of it.
-
+TODO: some comments about the changes ...
+(i.e. replace the below comments from the forked Java project...)
 The location of the existing java packages was moved from the project root to the directory "src/main/java"
 (i.e. as in the Maven standard directory structure).
 Git commit: https://github.com/TomasJohansson/k-shortest-paths/commit/ce0dedf8e2786c3f558946b7218d370d0e75ecfd   
