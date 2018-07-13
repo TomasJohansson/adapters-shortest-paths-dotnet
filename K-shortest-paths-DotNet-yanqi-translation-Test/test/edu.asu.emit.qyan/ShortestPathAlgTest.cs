@@ -33,15 +33,16 @@ namespace edu.asu.emit.qyan.test
 using NUnit.Framework;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
-using java.lang;
 using programmerare; // GraphFactory
-/**
- * TODO Need to redo!
- * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
- * @version $Revision: 784 $
- * @latest $Id: ShortestPathAlgTest.java 784 2009-06-19 20:08:40Z qyan $
- */
-[TestFixture]
+    using System;
+
+    /**
+* TODO Need to redo!
+* @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
+* @version $Revision: 784 $
+* @latest $Id: ShortestPathAlgTest.java 784 2009-06-19 20:08:40Z qyan $
+*/
+    [TestFixture]
 public class ShortestPathAlgTest {
 	private Graph graph = null;
 	
@@ -56,9 +57,9 @@ public class ShortestPathAlgTest {
 
 	[Test]
 	public void testShorstPathAlg()	{
-		SystemOut.println("Testing Dijkstra Algorithm.");
+		Console.WriteLine("Testing Dijkstra Algorithm.");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		SystemOut.println(alg.GetShortestPath(graph.GetVertex(0), graph.GetVertex(38)));
+		Console.WriteLine(alg.GetShortestPath(graph.GetVertex(0), graph.GetVertex(38)));
 	}
 }
 }

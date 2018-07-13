@@ -5,21 +5,21 @@ namespace java.util
     [TestFixture]
     public class ListTest
     {
-        [Test]
-        public void EqualsTestVector()
-        {
-            List<ListItemForTest> list_1 = new Vector<ListItemForTest>();
-            List<ListItemForTest> list_2 = new Vector<ListItemForTest>();
-            EqualsTestHelper(list_1, list_2);
-        }
+        //[Test]
+        //public void EqualsTestVector()
+        //{
+        //    List<ListItemForTest> list_1 = new Vector<ListItemForTest>();
+        //    List<ListItemForTest> list_2 = new Vector<ListItemForTest>();
+        //    EqualsTestHelper(list_1, list_2);
+        //}
         
-        [Test]
-        public void EqualsTestArrayList()
-        {
-            List<ListItemForTest> list_1 = new ArrayList<ListItemForTest>();
-            List<ListItemForTest> list_2 = new ArrayList<ListItemForTest>();
-            EqualsTestHelper(list_1, list_2);
-        }
+        //[Test]
+        //public void EqualsTestArrayList()
+        //{
+        //    List<ListItemForTest> list_1 = new ArrayList<ListItemForTest>();
+        //    List<ListItemForTest> list_2 = new ArrayList<ListItemForTest>();
+        //    EqualsTestHelper(list_1, list_2);
+        //}
 
         [Test]
         public void EqualsTestLinkedList()
