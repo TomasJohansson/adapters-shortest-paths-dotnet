@@ -7,8 +7,8 @@
     <ProjectGuid>{68DE9558-16E2-443C-91BD-DFF912AD5D3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>java_to_dotnet_translation_helpers_test</RootNamespace>
-    <AssemblyName>java-to-dotnet-translation-helpers-test</AssemblyName>
+    <RootNamespace>K-shortest-paths-DotNet-helpers-test</RootNamespace>
+    <AssemblyName>K-shortest-paths-DotNet-helpers-test</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,9 +52,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\java-to-dotnet-translation-helpers\java-to-dotnet-translation-helpers.csproj">
-      <Project>{7d1415eb-0d86-4be8-a8e9-f19e66d4bd6e}</Project>
-      <Name>java-to-dotnet-translation-helpers</Name>
+    <ProjectReference Include="..\K-shortest-paths-DotNet-helpers\K-shortest-paths-DotNet-helpers.csproj">
+      <Project>{e345e0be-3a15-4d06-bcaa-4951ef27de15}</Project>
+      <Name>K-shortest-paths-DotNet-helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

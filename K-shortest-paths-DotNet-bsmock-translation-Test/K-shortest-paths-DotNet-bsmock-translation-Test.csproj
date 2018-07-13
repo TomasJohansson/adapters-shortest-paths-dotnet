@@ -50,13 +50,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\java-to-dotnet-translation-helpers\java-to-dotnet-translation-helpers.csproj">
-      <Project>{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}</Project>
-      <Name>java-to-dotnet-translation-helpers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\K-shortest-paths-DotNet-bsmock-translation\K-shortest-paths-DotNet-bsmock-translation.csproj">
       <Project>{60C54CB0-C8BF-4A39-9F8B-B18D0F76A89D}</Project>
       <Name>K-shortest-paths-DotNet-bsmock-translation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\K-shortest-paths-DotNet-helpers\K-shortest-paths-DotNet-helpers.csproj">
+      <Project>{e345e0be-3a15-4d06-bcaa-4951ef27de15}</Project>
+      <Name>K-shortest-paths-DotNet-helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

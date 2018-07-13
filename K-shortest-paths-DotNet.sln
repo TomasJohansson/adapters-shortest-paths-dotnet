@@ -13,15 +13,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-yan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-adapters-shortest-paths-impl-yanqi", "dotnet-adapters-shortest-paths-impl-yanqi\dotnet-adapters-shortest-paths-impl-yanqi.csproj", "{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "java-to-dotnet-translation-helpers", "java-to-dotnet-translation-helpers\java-to-dotnet-translation-helpers.csproj", "{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-adapters-shortest-paths-impl-bsmock", "dotnet-adapters-shortest-paths-impl-bsmock\dotnet-adapters-shortest-paths-impl-bsmock.csproj", "{B15EDC9E-B0BD-4CF0-AE98-31649DF63D84}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet-bsmock-translation", "K-shortest-paths-DotNet-bsmock-translation\K-shortest-paths-DotNet-bsmock-translation.csproj", "{60C54CB0-C8BF-4A39-9F8B-B18D0F76A89D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E345E0BE-3A15-4D06-BCAA-4951EF27DE15} = {E345E0BE-3A15-4D06-BCAA-4951EF27DE15}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-bsmock-translation-Test", "K-shortest-paths-DotNet-bsmock-translation-Test\K-shortest-paths-DotNet-bsmock-translation-Test.csproj", "{BDDF6667-CF76-429E-8B19-5E9FD9BDA947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "java-to-dotnet-translation-helpers-test", "java-to-dotnet-translation-helpers-test\java-to-dotnet-translation-helpers-test.csproj", "{68DE9558-16E2-443C-91BD-DFF912AD5D3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet-helpers", "K-shortest-paths-DotNet-helpers\K-shortest-paths-DotNet-helpers.csproj", "{E345E0BE-3A15-4D06-BCAA-4951EF27DE15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-helpers-test", "K-shortest-paths-DotNet-helpers-test\K-shortest-paths-DotNet-helpers-test.csproj", "{68DE9558-16E2-443C-91BD-DFF912AD5D3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +52,6 @@ Global
 		{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5F801D6-0430-4E40-8DEB-94EF6DEF2F8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D1415EB-0D86-4BE8-A8E9-F19E66D4BD6E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B15EDC9E-B0BD-4CF0-AE98-31649DF63D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B15EDC9E-B0BD-4CF0-AE98-31649DF63D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B15EDC9E-B0BD-4CF0-AE98-31649DF63D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,6 +64,10 @@ Global
 		{BDDF6667-CF76-429E-8B19-5E9FD9BDA947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDDF6667-CF76-429E-8B19-5E9FD9BDA947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDDF6667-CF76-429E-8B19-5E9FD9BDA947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E345E0BE-3A15-4D06-BCAA-4951EF27DE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E345E0BE-3A15-4D06-BCAA-4951EF27DE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E345E0BE-3A15-4D06-BCAA-4951EF27DE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E345E0BE-3A15-4D06-BCAA-4951EF27DE15}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -88,9 +88,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\java-to-dotnet-translation-helpers\java-to-dotnet-translation-helpers.csproj">
-      <Project>{7d1415eb-0d86-4be8-a8e9-f19e66d4bd6e}</Project>
-      <Name>java-to-dotnet-translation-helpers</Name>
+    <ProjectReference Include="..\K-shortest-paths-DotNet-helpers\K-shortest-paths-DotNet-helpers.csproj">
+      <Project>{e345e0be-3a15-4d06-bcaa-4951ef27de15}</Project>
+      <Name>K-shortest-paths-DotNet-helpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\K-shortest-paths-DotNet-yanqi-translation\K-shortest-paths-DotNet-yanqi-translation.csproj">
       <Project>{b3a75f90-e892-48af-ad32-563514c9d72a}</Project>

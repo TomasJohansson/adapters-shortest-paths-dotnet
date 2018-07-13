@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>java_to_dotnet_translation_helpers</RootNamespace>
+    <RootNamespace>K-shortest-paths-DotNet-helpers</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
