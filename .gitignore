@@ -336,3 +336,5 @@ ASALocalRun/
 
 # Notepad++ backup files have the extension .bak
 *.bak
+
+*.sqlite
