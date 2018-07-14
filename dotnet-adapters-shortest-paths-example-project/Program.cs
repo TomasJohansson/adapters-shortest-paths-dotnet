@@ -1,4 +1,5 @@
-﻿using System;
+﻿using roadrouting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace dotnet_adapters_shortest_paths_example_project
         static void Main(string[] args)
         {
             Console.WriteLine("My Console App");
+            RoadRoutingMain.MainMethod(args);
             Console.ReadLine();
         }
     }

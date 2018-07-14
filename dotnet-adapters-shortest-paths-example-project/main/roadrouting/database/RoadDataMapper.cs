@@ -1,43 +1,39 @@
-package roadrouting.database;
+using NHibernate;
+using roadrouting;
+using System.Collections.Generic;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
-import roadrouting.City;
-import roadrouting.Road;
-
-/**
- * @author Tomas Johansson
- */
-public final class RoadDataMapper extends BaseDataMapper<Road, Integer> {
+namespace roadrouting.database {
+    /**
+     * @author Tomas Johansson
+     */
+    public sealed class RoadDataMapper : BaseDataMapper<Road, int> {
 	
-	private final CityDataMapper cityDataMapper; //  TODO: real ORM (Object-Relational Mapping) without usage of this class from here  
+	    private readonly CityDataMapper cityDataMapper; //  TODO: real ORM (Object-Relational Mapping) without usage of this class from here  
 	
-	public RoadDataMapper(final EntityManager em) {
-		super(em, Road.class);
-		cityDataMapper = new CityDataMapper(em);
-	}
+	    public RoadDataMapper(ISessionFactory sf): base(sf) {
+		    cityDataMapper = new CityDataMapper(sf);
+	    }
 
-	public List<Road> getAll() {
-		final List<Road> roads= super.getAll();
-		for (Road road : roads) {
-			populateWithCities(road); //  TODO: real ORM instead
-		}
-		return roads;
-	}
+	    public override IList<Road> GetAll() {
+		    IList<Road> roads= base.GetAll();
+		    foreach (Road road in roads) {
+			    PopulateWithCities(road); //  TODO: real ORM instead
+		    }
+		    return roads;
+	    }
 	
-	public Road getByPrimaryKey(final int primaryKey) {
-		final Road road = super.getByPrimaryKey(primaryKey);
-		populateWithCities(road); //  TODO: real ORM instead
-		return road;
-	}
+	    public override Road GetByPrimaryKey(int primaryKey) {
+		    Road road = base.GetByPrimaryKey(primaryKey);
+		    PopulateWithCities(road); //  TODO: real ORM instead
+		    return road;
+	    }
 
-	//  TODO: real ORM instead of this method
-	private void populateWithCities(Road road) {
-		final City cityFrom = cityDataMapper.getByPrimaryKey(road.getCityFromId());
-		final City cityTo = cityDataMapper.getByPrimaryKey(road.getCityToId());
-		road.setCityFrom(cityFrom);
-		road.setCityTo(cityTo);
-	}	
+	    //  TODO: real ORM instead of this method
+	    private void PopulateWithCities(Road road) {
+		    City cityFrom = cityDataMapper.GetByPrimaryKey(road.CityFromId);
+		    City cityTo = cityDataMapper.GetByPrimaryKey(road.CityToId);
+		    road.SetCityFrom(cityFrom);
+		    road.SetCityTo(cityTo);
+	    }	
+    }
 }

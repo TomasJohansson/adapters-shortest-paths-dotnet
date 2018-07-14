@@ -1,52 +1,34 @@
-package roadrouting;
- 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+using com.programmerare.shortestpaths.core.api;
+namespace roadrouting {
+    /**
+     * @author Tomas Johansson
+     */
+    public class City : Vertex {
 
-import com.programmerare.shortestpaths.core.api.Vertex;
+	    public virtual int CityKey { get; protected set; }
+        public virtual string CityName { get; protected set; }
 
-/**
- * @author Tomas Johansson
- */
-@Entity
-public class City implements Vertex {
+        protected City()  {	}
 
-	@Id
-	private int cityKey;
+        public City(int cityKey, string cityName) {
+		    CityKey = cityKey;
+		    CityName = cityName;
+	    }
 
-	private String cityName;
-	
-	protected City() { } // Requirements for Entity Classes: The class must have a public or protected, no-argument constructor. The class may have other constructors. , https://docs.oracle.com/javaee/6/tutorial/doc/bnbqa.html
-	
-	public City(final int cityKey, final String cityName) {
-		this.cityKey = cityKey;
-		this.cityName = cityName;
-	}
+	    public override string ToString() {
+		    return "City [cityKey=" + CityKey + ", cityName=" + CityName + "]";
+	    }
 
-	public int getCityKey() {  
-		return cityKey;
-	}	
-	
-	public String getCityName() {
-		return cityName;
-	}
+	    // ------------------------------------------------------------ 
+	    /**
+	     *  The property from the interface com.programmerare.shortestpaths.core.api.Vertex
+	     */
+        public virtual string VertexId => CityKey.ToString();
+	    // ------------------------------------------------------------
 
-	@Override
-	public String toString() {
-		return "City [cityKey=" + cityKey + ", cityName=" + cityName + "]";
-	}
-
-
-	// ------------------------------------------------------------ 
-	/**
-	 *  The method from the interface com.programmerare.shortestpaths.adapter.Vertex
-	 */
-	public String getVertexId() {
-		return Integer.toString(cityKey);
-	}
-	// ------------------------------------------------------------
-
-	public String renderToString() {
-		return toString();
-	}
-} 
+        // Method from interface StringRenderable (subinterface to Vertex)
+        public virtual string RenderToString() {
+            return ToString();
+        }
+    } 
+}

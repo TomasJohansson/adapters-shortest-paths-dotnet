@@ -1,36 +1,35 @@
-package roadrouting;
+using NUnit.Framework;
+namespace roadrouting {
+    // TODO: fix old Java doumentation below ...
+    /**
+     * This is not a real test class which is doing any assertions, but it is a convenient 
+     * way of running the code to write "mvn test" instead of writing (finding and pasting) 
+     * the following command:
+     * mvn exec:java -Dexec.mainClass="roadrouting.RoadRoutingMain" -Dexec.args="1"
+     * 
+     * @author Tomas Johansson
+     */
+    [TestFixture]
+    public class RoadRoutingMainTest {
 
-import org.junit.Before;
-import org.junit.Test;
+        //private RoadRoutingMain roadRoutingMain;
+        private bool useDatabase;
 
-/**
- * This is not a real test class which is doing any assertions, but it is a convenient 
- * way of running the code to write "mvn test" instead of writing (finding and pasting) 
- * the following command:
- * mvn exec:java -Dexec.mainClass="roadrouting.RoadRoutingMain" -Dexec.args="1"
- * 
- * @author Tomas Johansson
- */
-public class RoadRoutingMainTest {
+        [SetUp]
+        public void SetUp() {
+            //roadRoutingMain = new RoadRoutingMain();
+        }
 
-	private RoadRoutingMain roadRoutingMain;
-	private boolean useDatabase;
-	
-	@Before
-	public void setUp() throws Exception {
-		roadRoutingMain = new RoadRoutingMain();
-	}
+        [Test]
+        public void TestMainWithDatabase() {
+            useDatabase = true;
+            RoadRoutingMain.MainMethod(useDatabase);
+        }
 
-	@Test
-	public void testMainWithDatabase() {
-		useDatabase = true;
-		roadRoutingMain.main(useDatabase);
-	}
-	
-	@Test
-	public void testMainWithoutDatabase() {
-		useDatabase = false;
-		roadRoutingMain.main(useDatabase);
-	}	
-
+        [Test]
+        public void TestMainWithoutDatabase() {
+            useDatabase = false;
+            RoadRoutingMain.MainMethod(useDatabase);
+        }	
+    }
 }

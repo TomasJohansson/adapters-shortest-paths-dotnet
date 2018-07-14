@@ -1,19 +1,15 @@
-package roadrouting;
+using System.Collections.Generic;
 
-import java.util.List;
-
-public interface CityRoadService {
+namespace roadrouting {
+    public interface CityRoadService {
+	    IList<City> GetAllCities();
+	    IList<Road> GetAllRoads();
+	    City GetStartCity();
+	    City GetEndCity();
 	
-	String  NAME_OF_START_CITY 	= "A";
-	String  NAME_OF_END_CITY 	= "F";
-	
-	List<City> getAllCities();
-	List<Road> getAllRoads();
-	City getStartCity();
-	City getEndCity();
-	
-	/**
-	 * Database implementation should close its resources
-	 */
-	void releaseResourcesIfAny();
+	    /**
+	     * Database implementation should close its resources
+	     */
+	    void ReleaseResourcesIfAny();
+    }
 }

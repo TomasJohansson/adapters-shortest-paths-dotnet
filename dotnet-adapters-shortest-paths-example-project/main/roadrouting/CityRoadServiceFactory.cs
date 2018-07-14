@@ -1,18 +1,18 @@
-package roadrouting;
+using roadrouting.database;
 
-import roadrouting.database.CityRoadServiceDatabase;
+namespace roadrouting {
+    public sealed class CityRoadServiceFactory {
 
-public class CityRoadServiceFactory {
+	    public static CityRoadService CreateCityRoadService(bool useDatabase) {
+		    CityRoadService cityRoadService = new CityRoadServiceHardcoded();
 
-	public static CityRoadService createCityRoadService(final boolean useDatabase) {
-		final CityRoadService cityRoadService = new CityRoadServiceHardcoded();
-
-		if(useDatabase) {
-			// the hardcoded values sent as parameter will be used for initial populatiion of the database
-			return new CityRoadServiceDatabase(cityRoadService);
-		}
-		else {
-			return cityRoadService;	
-		}
-	}
+		    if(useDatabase) {
+			    // the hardcoded values sent as parameter will be used for initial populatiion of the database
+			    return new CityRoadServiceDatabase(cityRoadService);
+		    }
+		    else {
+			    return cityRoadService;	
+		    }
+	    }
+    }
 }

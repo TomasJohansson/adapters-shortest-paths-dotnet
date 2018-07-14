@@ -1,56 +1,51 @@
-package roadrouting.database;
+using System.Linq;
+using NHibernate;
+using System;
+using System.Collections.Generic;
 
-import java.util.List;
+namespace roadrouting.database {
+    /**
+     * @author Tomas Johansson
+     */
+    public abstract class BaseDataMapper<T, U>  {
+        private readonly ISessionFactory sessionFactory;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
+        protected BaseDataMapper(ISessionFactory sessionFactory) {
+		   this.sessionFactory = sessionFactory;
+	    }
 
-/**
- * @author Tomas Johansson
- */
-public abstract class BaseDataMapper<T, U> 
-{
-	private final EntityManager entityManager;
-	private final Class<T> clazz;
-
-	protected BaseDataMapper(final EntityManager em, final Class<T> clazz) {
-		this.entityManager = em;
-		this.clazz = clazz;
-	}
-
-	public void save(final List<T> entities) {
-		final EntityTransaction tx = getEntityManager().getTransaction();
-		tx.begin();
-		for (T entity : entities) {
-			getEntityManager().persist(entity);	
-		}
-		tx.commit();
-	}
+	    public void Save(IList<T> entities) {
+            using (ISession session = GetSessionFactory().OpenSession()) {
+                using(ITransaction trans = session.BeginTransaction()) {
+                    foreach (T entity in entities) {
+                        session.Save(entity);
+                    }
+                }
+            }
+	    }
 	
-	public List<T> getAll() {
-		final EntityManager em = getEntityManager();
-		final CriteriaBuilder cb = em.getCriteriaBuilder();
-		final CriteriaQuery<T> cq = cb.createQuery(clazz);
-		cq.from(clazz);
-		final TypedQuery<T> query = em.createQuery(cq);
-		final List<T> results = query.getResultList();
-		return results;
-	}
+	    public virtual IList<T> GetAll() {
+            using (ISession session = GetSessionFactory().OpenSession()) {
+                var all = from one in session.Query<T>() select one;
+                return all.ToList();
+            }
+	    }
 	
-	public T getByPrimaryKey(U primaryKey) {
-		return getByPrimaryKey(primaryKey, true);
-	}
+	    public virtual T GetByPrimaryKey(U primaryKeyValue) {
+            using (ISession session = GetSessionFactory().OpenSession()) {
+                var persistedInstance = session.Get<T>(primaryKeyValue);
+                return persistedInstance;
+            }
+	    }
 	
-	public T getByPrimaryKey(U primaryKey, boolean throwExceptionIfNotFound) {
-		T entity = getEntityManager().find(clazz, primaryKey);
-		if(entity == null && throwExceptionIfNotFound) throw new RuntimeException("Entity " + clazz + " not found for primary key" + primaryKey);
-		return entity;
-	}
+	    public T GetByPrimaryKey(U primaryKeyValue, bool throwExceptionIfNotFound) {
+		   T entity = GetByPrimaryKey(primaryKeyValue);
+		   if(entity == null && throwExceptionIfNotFound) throw new Exception("Entity " + GetType() + " not found for primary key" + primaryKeyValue);
+		   return entity;
+	    }
 
-	protected EntityManager getEntityManager() {
-		return entityManager;
-	}
+	    protected ISessionFactory GetSessionFactory() {
+            return sessionFactory;
+	    }
+    }
 }
