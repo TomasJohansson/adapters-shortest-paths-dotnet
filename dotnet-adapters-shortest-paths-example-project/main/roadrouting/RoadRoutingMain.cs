@@ -11,23 +11,8 @@ namespace roadrouting {
      * @author Tomas Johansson
      */
     public class RoadRoutingMain {
-
-        // TODO: fix the comments below which were written for the Java version of this project (from which this code was translated)	
-	    /**
-	     * Use the following commands to run the main method with Maven
-	    * 			(but use the last "1" argument only if you want to use SQLite database,
-	    * 		 	 so for example use "0" if you want hardcoded 'entities' instead) :
-	     * 		cd adapters-shortest-paths-example-project-jpa-entities
-	     * 		mvn compile 
-	     * 		mvn exec:java -Dexec.mainClass="roadrouting.RoadRoutingMain" -Dexec.args="1"
-	     * @param args "1" if you want to use the database, otherwise hardcoded 'entities' will be used.
-	     */
-	    public static void MainMethod(string[] args) {
-		    //bool useDatabase = ParseArguments(args);
-            MainMethod(useDatabase: true);
-	    }
-	
 	    public static void MainMethod(bool useDatabase) {
+            Console.WriteLine("useDatabase : " + useDatabase);
 		    CityRoadService cityRoadService = CityRoadServiceFactory.CreateCityRoadService(useDatabase);
 		    try {
 			    IList<Road> roads = cityRoadService.GetAllRoads();
@@ -123,14 +108,5 @@ namespace roadrouting {
 		    return sb.ToString();
 	    }
 
-
-        /**
-         * @param args
-         * @return true if args[0] == "1" otherwise false
-         */
-        private static bool ParseArguments(String[] args) {
-            if (args == null || args.Length < 1) return false;
-            return args[0].Equals("1");
-        }
     }
 }
