@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet-hel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-helpers-test", "K-shortest-paths-DotNet-helpers-test\K-shortest-paths-DotNet-helpers-test.csproj", "{68DE9558-16E2-443C-91BD-DFF912AD5D3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-adapters-shortest-paths-example-project", "dotnet-adapters-shortest-paths-example-project\dotnet-adapters-shortest-paths-example-project.csproj", "{EE0C7039-58E5-4E23-A671-B321CBEE2A19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68DE9558-16E2-443C-91BD-DFF912AD5D3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE0C7039-58E5-4E23-A671-B321CBEE2A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0C7039-58E5-4E23-A671-B321CBEE2A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0C7039-58E5-4E23-A671-B321CBEE2A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0C7039-58E5-4E23-A671-B321CBEE2A19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
