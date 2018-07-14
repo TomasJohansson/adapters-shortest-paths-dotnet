@@ -16,10 +16,8 @@ namespace roadrouting.database {
 
 	    public void Save(IList<T> entities) {
             using (ISession session = GetSessionFactory().OpenSession()) {
-                using(ITransaction trans = session.BeginTransaction()) {
-                    foreach (T entity in entities) {
-                        session.Save(entity);
-                    }
+                foreach (T entity in entities) {
+                    session.Save(entity);
                 }
             }
 	    }
