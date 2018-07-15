@@ -44,8 +44,6 @@
   <ItemGroup>
     <Compile Include="com.programmerare.edu.ufl.cise.bsmock.graph.ksp\FileUtil.cs" />
     <Compile Include="com.programmerare.edu.ufl.cise.bsmock.graph.ksp\YenTest.cs" />
-    <Compile Include="edu.ufl.cise.bsmock.graph.ksp.test\TestEppstein.cs" />
-    <Compile Include="edu.ufl.cise.bsmock.graph.ksp.test\TestLazyEppstein.cs" />
     <Compile Include="edu.ufl.cise.bsmock.graph.ksp.test\TestYen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
