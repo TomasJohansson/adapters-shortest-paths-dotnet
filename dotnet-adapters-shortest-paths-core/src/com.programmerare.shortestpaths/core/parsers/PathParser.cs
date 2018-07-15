@@ -1,8 +1,13 @@
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+* The code in this "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
+
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.api.generics;
 using com.programmerare.shortestpaths.core.impl;
@@ -18,26 +23,21 @@ namespace com.programmerare.shortestpaths.core.parsers
 {
     /**
     *  TODO: write more/better documentation ...
-    * 
-    * {@code 
-    * String representation of the "List<Path<Edge>>" i.e. the same type returned from the following method: 
-    * List<Path<Edge>> shortestPaths = pathFinder.findShortestPaths(startVertex, endVertex, numberOfPathsToFind);
-    * The intended purpose is to define strings within xml files with the expected result
-    * 
-    * Each line ns a string is first the total weight and then the sequence of vertices.
-    * Example:  "13 A B D"
-    * The simple representation (without weight informatin) is the reason why the list of edges is also needed,
-    * i.e. to find the weights.
-    * }
-    * 
-    * @param <P> path
-    * @param <E> edge
-    * @param <V> vertex
-    * @param <W> weight
-
-    * @author Tomas Johansson
-    *
     */
+
+    /// <summary>
+    /// String representation of the "List{Path{Edge}}" i.e. the same type returned from the following method: 
+    /// List{Path{Edge}} shortestPaths = pathFinder.findShortestPaths(startVertex, endVertex, numberOfPathsToFind);
+    /// The intended purpose is to define strings within xml files with the expected result
+    /// Each line in a string is first the total weight and then the sequence of vertices.
+    /// Example:  "13 A B D"
+    /// The simple representation (without weight informatin) is the reason why the list of edges is also needed,
+    /// i.e. to find the weights.
+    /// </summary>
+    /// <typeparam name="P">Path</typeparam>
+    /// <typeparam name="E">Edge</typeparam>
+    /// <typeparam name="V">Vertex</typeparam>
+    /// <typeparam name="W">Weight</typeparam>
     public sealed class PathParser<P, E, V, W>
         where P : PathGenerics<E, V, W>
         where E : EdgeGenerics<V, W>
@@ -45,25 +45,22 @@ namespace com.programmerare.shortestpaths.core.parsers
         where W : Weight
     {
 
-	    //<P extends Path<E,V,W> , E extends Edge<V, W> , V extends Vertex , W extends Weight> implements PathFinder<P, E, V, W>
-	
 	    private readonly IDictionary<string, E> mapWithEdgesAndVertexConcatenationAsKey;
 
-	    private PathFactory<P, E, V, W> pathFactory;// = new PathFactoryGenerics<P, E, V, W>();
+	    private PathFactory<P, E, V, W> pathFactory;
 
-	    /**
-	     * @param pathFactory used for creating an instance of Path<E, V, W> 
-	     * @param edgesUsedForFindingTheWeightsBetweenVerticesInPath
-	     * @see PathFactory
-	     */
+        /// <param name="pathFactory">
+        /// used for creating an instance of Path{E, V, W}.
+        /// See <see cref="PathFactory"/>
+        /// </param>
+        /// <param name="edgesUsedForFindingTheWeightsBetweenVerticesInPath"></param>
 	    private PathParser(
 		    PathFactory<P, E, V, W> pathFactory,
 		    IList<E> edgesUsedForFindingTheWeightsBetweenVerticesInPath
 	    ) {
 		    this.pathFactory = pathFactory;
-		    // TOOD: use input validator here when that branch has been merged into the same code base
-    //		this.edgesUsedForFindingTheWeightsBetweenVerticesInPath = edgesUsedForFindingTheWeightsBetweenVerticesInPath;
-		
+		    // TODO: use input validator here when that branch has been merged into the same code base
+            //this.edgesUsedForFindingTheWeightsBetweenVerticesInPath = edgesUsedForFindingTheWeightsBetweenVerticesInPath;
 		    mapWithEdgesAndVertexConcatenationAsKey = new Dictionary<string, E>();
 		    foreach (E edge in edgesUsedForFindingTheWeightsBetweenVerticesInPath) {
 			    string key = EdgeGenericsImpl<V, W>.CreateEdgeIdValue(edge.StartVertex.VertexId, edge.EndVertex.VertexId);
@@ -115,14 +112,12 @@ namespace com.programmerare.shortestpaths.core.parsers
 		    return listOfPaths;
 	    }
 
-	    /**
-	     * @param pathString first the total weight and then the sequence of vertices.
-	     * 		Example:  "13 A B D"
-	     * @return
-	     */
+        /// <param name="pathString">
+        /// First the total weight and then the sequence of vertices for the path.
+	    /// Example:  "13 A B D"
+        /// </param>
 	    public P FromStringToPath(string pathString) {
 		    string[] array = Regex.Split(pathString, "\\s+");
-
 		    // TODO check "array.length" and throw exception ...
 		    double totalWeight = double.Parse(array[0]);
 		

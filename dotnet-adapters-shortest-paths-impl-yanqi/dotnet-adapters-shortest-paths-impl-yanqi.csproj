@@ -5,6 +5,10 @@
     <RootNamespace>dotnet_adapters_shortest_paths_impl_yanqi</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\dotnet-adapters-shortest-paths-impl-yanqi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\dotnet-adapters-shortest-paths-core\dotnet-adapters-shortest-paths-core.csproj" />
     <ProjectReference Include="..\K-shortest-paths-DotNet-yanqi-translation\K-shortest-paths-DotNet-yanqi-translation.csproj" />

@@ -1,3 +1,11 @@
+/*
+* Regarding the license (Apache), please find more information 
+* in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory (for the tested project) 
+* and also license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
+
 using System;
 using edu.ufl.cise.bsmock.graph;
 using edu.ufl.cise.bsmock.graph.ksp;

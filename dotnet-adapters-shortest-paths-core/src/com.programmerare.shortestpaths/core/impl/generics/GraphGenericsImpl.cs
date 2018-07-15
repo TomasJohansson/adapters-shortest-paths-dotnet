@@ -1,7 +1,11 @@
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+* The code in this "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
 using com.programmerare.shortestpaths.core.api;
@@ -37,15 +41,15 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    }		
 	    }
 	
-	    /**
-	     * Creates a graph instance, but will validate the edges and throw an exception if validation fails.
-	     * If validation is not desired, then use the overloaded method.
-	     * @param <E> edge
-	     * @param <V> vertex
-	     * @param <W> weight
-	     * @param edges list of edges
-	     * @return an instance implementing the interface GraphGenerics
-	     */
+        /// <summary>
+        /// Creates a graph instance, but will validate the edges and throw an exception if validation fails.
+        /// If validation is not desired, then use the overloaded method.
+        /// </summary>
+        /// <typeparam name="E">Edge</typeparam>
+        /// <typeparam name="V">Vertex</typeparam>
+        /// <typeparam name="W">Weight</typeparam>
+        /// <param name="edges">list of edges</param>
+        /// <returns>an instance implementing the interface GraphGenerics</returns>
 	    public static GraphGenerics<E, V, W> CreateGraphGenerics<E, V, W>(
 		    IList<E> edges
 	    )

@@ -1,7 +1,11 @@
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+* The code in this "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
 using System.Collections.Generic;
@@ -36,10 +40,11 @@ namespace com.programmerare.shortestpaths.core.impl.generics
         {
 	    }
 	
-	    /**
-	     * @param graph an implementation of the interface GraphGenerics
-	     * @param pathFactory an implementation of the interface PathFactory, if null then a default instance will be created
-	     */
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="graph">an implementation of the interface GraphGenerics</param>
+        /// <param name="pathFactory">an implementation of the interface PathFactory, if null then a default instance will be created</param>
 	    protected PathFinderBase(
 		    GraphGenerics<E, V, W> graph, 
 		    PathFactory<P, E, V, W> pathFactory
@@ -55,9 +60,14 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    return new PathFactoryGenerics<P, E, V, W>();
 	    }
 	
-	    /**
-	     * final method to enforce the validation, and then forward to the hook method for the implementations
-	     */
+        /// <summary>
+        /// non-virtual method to enforce the validation, 
+        /// and then forward to the hook method for the implementations
+        /// </summary>
+        /// <param name="startVertex"></param>
+        /// <param name="endVertex"></param>
+        /// <param name="maxNumberOfPaths"></param>
+        /// <returns></returns>
 	    public IList<P> FindShortestPaths(
 		    V startVertex, 
 		    V endVertex, 
@@ -99,10 +109,8 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 		    }		
 	    }
 
-	    /**
-	     * @param startOrEndmessagePrefix intended to be one of the strings "start" or "end"
-	     * @param startVertex
-	     */
+        /// <param name="startOrEndmessagePrefix">intended to be one of the strings "start" or "end"</param>
+        /// <param name="vertex">Vertex</param>
 	    private void ThrowExceptionBecauseVertexNotIncludedInGraph(string startOrEndmessagePrefix, V vertex) {
 		    throw new GraphValidationException(startOrEndmessagePrefix + " vertex is not part of the graph: " + vertex);
 	    }

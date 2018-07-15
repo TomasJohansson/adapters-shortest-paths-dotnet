@@ -1,3 +1,12 @@
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* The code in the "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
 using NUnit.Framework;
 using System.Collections.Generic;
 using com.programmerare.shortestpaths.core.api;
@@ -19,7 +28,6 @@ namespace com.programmerare.shortestpaths.graph.tests
      * C --> D (7) 
      * B --> D (13)
      *
-     * @author Tomas Johansson
      */
     [TestFixture]
     public class SmallGraphTest {

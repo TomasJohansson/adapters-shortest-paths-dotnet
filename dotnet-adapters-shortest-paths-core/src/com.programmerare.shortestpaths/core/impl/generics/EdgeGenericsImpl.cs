@@ -1,7 +1,11 @@
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+* The code in this "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
 using com.programmerare.shortestpaths.core.api;
@@ -9,9 +13,6 @@ using com.programmerare.shortestpaths.core.api.generics;
 
 namespace com.programmerare.shortestpaths.core.impl.generics
 {
-    /**
-     * @author Tomas Johansson
-     */
     public class EdgeGenericsImpl<V, W> : EdgeGenerics<V , W> 
         where V : Vertex
         where W : Weight
@@ -77,15 +78,15 @@ namespace com.programmerare.shortestpaths.core.impl.generics
 
         private const string SEPARATOR_BETWEEN_START_AND_END_VERTEX_ID = "_";
 
-
-	    /**
-	     * @param startVertexId the id for the vertex at the start of an edge
-	     * @param endVertexId the id for the vertex at the end of an edge
-	     * @return the id to be used for the edge, as documented by {@link Vertex#getVertexId()}
-	     */
+        /// <summary>
+        /// Creates an edge id by a concatenation of the two vertices and with a separator between those.
+        /// </summary>
+        /// <param name="startVertexId">the id for the vertex at the start of an edge</param>
+        /// <param name="endVertexId">the id for the vertex at the end of an edge</param>
+        /// <returns>the id to be used for the edge</returns>
 	    public static string CreateEdgeIdValue(string startVertexId, string endVertexId) {
 		    // It could be nicer to place this method somewhere else but the important thing is 
-		    // to avoid the duplication, i.e. avoid implementing the concatenation in different places.		
+		    // to avoid the duplication, i.e. avoid implementing the concatenation in different places.
 		    return startVertexId + SEPARATOR_BETWEEN_START_AND_END_VERTEX_ID + endVertexId;
 	    }
 

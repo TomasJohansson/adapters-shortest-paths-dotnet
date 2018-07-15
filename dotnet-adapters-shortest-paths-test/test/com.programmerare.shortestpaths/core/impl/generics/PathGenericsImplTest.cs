@@ -1,8 +1,13 @@
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+* The code in the "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
+
 using com.programmerare.shortestpaths.core.api;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
@@ -11,18 +16,6 @@ using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
 using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
 using System.Collections.Generic;
 using static com.programmerare.shortestpaths.core.impl.PathImpl; // createPath
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-//import static com.programmerare.shortestpaths.core.impl.WeightImpl.SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS;
-//import static com.programmerare.shortestpaths.core.impl.WeightImpl.createWeight;
-//import static com.programmerare.shortestpaths.core.impl.generics.PathGenericsImpl.createPathGenerics;
-//import static org.junit.Assert.assertEquals;
-//import java.util.Arrays;
-//import java.util.List;
-//import org.junit.Before;
-//import org.junit.Test;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
 using System;
 
 namespace com.programmerare.shortestpaths.core.impl.generics

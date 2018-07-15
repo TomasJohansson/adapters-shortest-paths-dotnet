@@ -1,3 +1,10 @@
+/*
+* Regarding the license (Apache), please find more information 
+* in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and also license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
+
 namespace com.programmerare.edu.asu.emit.algorithm.graph {
     /**
      * The purpose of the class suffix "YanQi" is just to very clearly indicate (without having to look at the full name including the package name) 

@@ -1,12 +1,17 @@
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* Regarding the license (Apache), please find more information 
+* in the file "LICENSE_NOTICE.txt" in the project root directory 
+* and also license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
+
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.api.generics;
 using com.programmerare.shortestpaths.core.impl.generics;
 
 namespace com.programmerare.shortestpaths.adapter.bsmock.generics
 {
-    /**
-     * @author Tomas Johansson
-     */
     public class PathFinderFactoryBsmockGenerics<F, P, E, V, W>
         : PathFinderFactoryGenericsBase<F, P, E, V, W>
         , PathFinderFactoryGenerics<F, P, E, V, W>

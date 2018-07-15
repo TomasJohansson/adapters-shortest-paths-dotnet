@@ -1,3 +1,13 @@
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* The code in the "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
+
 using NUnit.Framework;
 using com.programmerare.shortestpaths.core.api;
 using System.Collections.Generic;
@@ -16,9 +26,6 @@ namespace com.programmerare.shortestpaths.graph.utils {
      * and another would compare a different returned "List<Path<Edge>>" with each other.
      * Please also note that one method currently receives a parameter "List<Path<Edge>> expectedListOfPaths"
      * which is created from xml as an expected output path.
-     *     
-     *  
-     * @author Tomas Johansson
      */
     public class GraphShortestPathAssertionHelper {
 	

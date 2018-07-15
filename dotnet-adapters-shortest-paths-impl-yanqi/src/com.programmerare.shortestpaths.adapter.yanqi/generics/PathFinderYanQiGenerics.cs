@@ -1,3 +1,11 @@
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* Regarding the license (Apache), please find more information 
+* in the file "LICENSE_NOTICE.txt" in the project root directory 
+* and also license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
+
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using com.programmerare.edu.asu.emit.algorithm.graph;
@@ -11,11 +19,14 @@ using System.Collections.ObjectModel;
 
 namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 {
-    /**
-     * "Adapter" implementation of the "Target" interface 
-     * @author Tomas Johansson
-     * @see https://en.wikipedia.org/wiki/Adapter_pattern
-     */
+    /// <summary>
+    /// "Adapter" implementation of the "Target" interface 
+    /// https://en.wikipedia.org/wiki/Adapter_pattern
+    /// </summary>
+    /// <typeparam name="P">Path</typeparam>
+    /// <typeparam name="E">Edge</typeparam>
+    /// <typeparam name="V">Vertex</typeparam>
+    /// <typeparam name="W">Weight</typeparam>
     public class PathFinderYanQiGenerics <P, E, V, W>
 	    : PathFinderBase<P, E, V, W>
 	    , PathFinderGenerics<P, E, V, W>
@@ -62,13 +73,17 @@ namespace com.programmerare.shortestpaths.adapter.yanqi.generics
 		    return vertices;
 	    }
 
-	    /**
-	     * Note that currently there seem to be no way for the "yanqi" implementation to actually specify the number 
-	     * of shortest paths to return, but it seems to find all paths.
-	     * However, the implementation of this method instead takes care of reducing the result.
-	     * Otherwise, if the semantic of the method is not respected it can not for example be tested 
-	     * against results from other implementations since then they would return a different number of paths.      
-	     */
+        /// <summary>
+        /// Note that currently there seem to be no way for the "yanqi" implementation to actually specify the number 
+	    /// of shortest paths to return, but it seems to find all paths.
+	    /// However, the implementation of this method instead takes care of reducing the result.
+	    /// Otherwise, if the semantic of the method is not respected it can not for example be tested 
+	    /// against results from other implementations since then they would return a different number of paths.
+        /// </summary>
+        /// <param name="startVertex"></param>
+        /// <param name="endVertex"></param>
+        /// <param name="maxNumberOfPaths"></param>
+        /// <returns></returns>
 	    protected override IList<P> FindShortestPathHook(
 		    V startVertex, 
 		    V endVertex, 

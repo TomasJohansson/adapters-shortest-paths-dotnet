@@ -1,4 +1,11 @@
 /*
+* Regarding the license (Apache), please find more information 
+* in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and also license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
+
+/*
  *
  * Copyright (c) 2004-2008 Arizona State University.  All rights
  * reserved.

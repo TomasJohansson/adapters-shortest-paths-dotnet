@@ -1,42 +1,25 @@
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+* The code in the "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
-//import static com.programmerare.shortestpaths.core.impl.EdgeImpl.createEdge;
-//import static com.programmerare.shortestpaths.core.impl.VertexImpl.createVertex;
-//import static com.programmerare.shortestpaths.core.impl.WeightImpl.SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS;
-//import static com.programmerare.shortestpaths.core.impl.WeightImpl.createWeight;
-//import static com.programmerare.shortestpaths.core.impl.generics.EdgeGenericsImpl.createEdgeGenerics;
-//import static com.programmerare.shortestpaths.core.parsers.EdgeParser.createEdgeParser;
-//import static org.junit.Assert.*;
-//import java.util.List;
-//import org.junit.Before;
-//import org.junit.BeforeClass;
-//import org.junit.Test;
+
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.parsers;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using com.programmerare.shortestpaths.core.api;
-using static com.programmerare.shortestpaths.core.impl.GraphImpl;
 using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-using static com.programmerare.shortestpaths.core.impl.VertexImpl;
 using static com.programmerare.shortestpaths.core.impl.EdgeImpl;
 using static com.programmerare.shortestpaths.core.impl.WeightImpl; // createWeight
-                                                                   // using static com.programmerare.shortestpaths.core.impl.generics.EdgeGenericsImpl<Vertex, Weight>; // createEdgeGenerics
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.validation;
 using System.Collections.Generic;
-using com.programmerare.shortestpaths.core.impl.generics;
 using System;
 
 namespace com.programmerare.shortestpaths.core.parsers
 {
-    /**
-     * @author Tomas Johansson
-     */
     [TestFixture]
     public class EdgeParserTest
     {

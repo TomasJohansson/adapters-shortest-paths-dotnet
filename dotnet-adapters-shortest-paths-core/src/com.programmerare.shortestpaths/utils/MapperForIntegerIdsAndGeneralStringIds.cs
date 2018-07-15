@@ -1,32 +1,31 @@
 /*
 * Copyright (c) Tomas Johansson , http://www.programmerare.com
-* The code is made available under the terms of the MIT License.
-* https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-core/License.txt
+* The code in this "core" project is licensed with MIT.
+* Other projects within this Visual Studio solution may be released with other licenses e.g. Apache.
+* Please find more information in the files "License.txt" and "NOTICE.txt" 
+* in the project root directory and/or in the solution root directory.
+* It should also be possible to find more license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 using System.Collections.Generic;
 
 namespace com.programmerare.shortestpaths.utils
 {
-    /**
-     * The purpose of this class is to provide mapping between strings and integer ids
-     * for those kind of implementations which requires integers as ids.
-     * 
-     * For example if you want to provide data to an implementation you may want to specify the 
-     * two vertices and the weight for the edge between them like below:
-     * A B 12.4
-     * B C 13.7
-     * A C 11.9
-     * 
-     * However, some implementations (e.g. the current implementation of https://github.com/yan-qi/k-shortest-paths-java-version
-     * require that the vertices are specified with integers like this:
-     * 0 1 12.4
-     * 1 2 13.7
-     * 0 2 11.9 
-     * 
-     * To be able to use such an implementation, this mapper class was created.
-     * 
-     * @author Tomas Johansson 
-     */
+    /// <summary>
+    /// The purpose of this class is to provide mapping between strings and integer ids
+    /// for those kind of implementations which requires integers as ids.
+    /// For example if you want to provide data to an implementation you may want to specify the 
+    /// two vertices and the weight for the edge between them like below:
+    ///     A B 12.4
+    ///     B C 13.7
+    ///     A C 11.9
+    /// However, some implementations (e.g. the current implementation of https://github.com/yan-qi/k-shortest-paths-java-version
+    /// require that the vertices are specified with integers like this:
+    ///     0 1 12.4
+    ///     1 2 13.7
+    ///     0 2 11.9 
+    /// To be able to use such an implementation, this mapper class was created.
+    /// </summary>
     public sealed class MapperForIntegerIdsAndGeneralStringIds {
 	
 	    private int integerCounterForVertices;
@@ -34,9 +33,7 @@ namespace com.programmerare.shortestpaths.utils
 	    private readonly IDictionary<string, int> mapFromGeneralStringToIncreasingInteger = new Dictionary<string, int>();
 	    private readonly IDictionary<int, string> mapFromIncreasingIntegerToGeneralString = new Dictionary<int, string>();
 	
-	    /**
-	     * @param integerIdForFirstVertex probably either zero or one
-	     */	
+        /// <param name="integerIdForFirstVertex">probably either zero or one</param>
 	    public static MapperForIntegerIdsAndGeneralStringIds CreateIdMapper(int integerIdForFirstVertex) {
 		    return new MapperForIntegerIdsAndGeneralStringIds(integerIdForFirstVertex);
 	    }

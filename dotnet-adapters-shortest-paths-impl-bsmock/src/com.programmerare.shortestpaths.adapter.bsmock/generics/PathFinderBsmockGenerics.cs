@@ -1,3 +1,11 @@
+/*
+* Copyright (c) Tomas Johansson , http://www.programmerare.com
+* Regarding the license (Apache), please find more information 
+* in the file "LICENSE_NOTICE.txt" in the project root directory 
+* and also license information at this URL:
+* https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+*/
+
 using edu.ufl.cise.bsmock.graph.ksp;
 using com.programmerare.shortestpaths.core.api;
 using com.programmerare.shortestpaths.core.impl.generics;
@@ -8,11 +16,14 @@ using System.Collections.ObjectModel;
 
 namespace com.programmerare.shortestpaths.adapter.bsmock.generics
 {
-    /**
-     * "Adapter" implementation of the "Target" interface 
-     * @author Tomas Johansson
-     * @see https://en.wikipedia.org/wiki/Adapter_pattern
-     */
+    /// <summary>
+    /// "Adapter" implementation of the "Target" interface 
+    /// https://en.wikipedia.org/wiki/Adapter_pattern
+    /// </summary>
+    /// <typeparam name="P">Path</typeparam>
+    /// <typeparam name="E">Edge</typeparam>
+    /// <typeparam name="V">Vertex</typeparam>
+    /// <typeparam name="W">Weight</typeparam>
     public class PathFinderBsmockGenerics <P, E, V, W>
 	    : PathFinderBase<P, E, V, W>
 	    , PathFinderGenerics<P, E, V, W>
