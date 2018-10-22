@@ -71,15 +71,15 @@ namespace java_to_dotnet_translation_helpers.dot_net_types {
             dict.Add(t, u);
         }
 
-        public static void AddOrReplace<T>(
-            this ICollection<T> set, 
-            T t
-        ) {
-            if(set.Contains(t)) {
-                set.Remove(t);
-            }
-            set.Add(t);
-        }
+        //public static void AddOrReplace<T>(
+        //    this ICollection<T> set, 
+        //    T t
+        //) {
+        //    if(set.Contains(t)) {
+        //        set.Remove(t);
+        //    }
+        //    set.Add(t);
+        //}
 
         public static U GetValueIfExists<T,U>(
             this IDictionary<T, U> dict, 
