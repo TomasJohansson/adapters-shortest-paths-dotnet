@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("K-shortest-paths-DotNet-common-test")]
+[assembly: AssemblyTitle("Programmerare.ShortestPaths.Adaptees.Common.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard")]
-[assembly: AssemblyProduct("K-shortest-paths-DotNet-common-test")]
+[assembly: AssemblyProduct("Programmerare.ShortestPaths.Adaptees.Common.Test")]
 [assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -52,9 +52,9 @@
       <Project>{60C54CB0-C8BF-4A39-9F8B-B18D0F76A89D}</Project>
       <Name>Programmerare.ShortestPaths.Adaptee.Bsmock</Name>
     </ProjectReference>
-    <ProjectReference Include="..\K-shortest-paths-DotNet-common\K-shortest-paths-DotNet-common.csproj">
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptees.Common\Programmerare.ShortestPaths.Adaptees.Common.csproj">
       <Project>{e345e0be-3a15-4d06-bcaa-4951ef27de15}</Project>
-      <Name>K-shortest-paths-DotNet-common</Name>
+      <Name>Programmerare.ShortestPaths.Adaptees.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

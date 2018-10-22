@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\K-shortest-paths-DotNet-common\K-shortest-paths-DotNet-common.csproj" />
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptees.Common\Programmerare.ShortestPaths.Adaptees.Common.csproj" />
   </ItemGroup>
 
 </Project>

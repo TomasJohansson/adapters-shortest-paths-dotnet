@@ -22,9 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Programmerare.ShortestPaths
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths.Adaptee.Bsmock.Test", "Programmerare.ShortestPaths.Adaptee.Bsmock.Test\Programmerare.ShortestPaths.Adaptee.Bsmock.Test.csproj", "{BDDF6667-CF76-429E-8B19-5E9FD9BDA947}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-shortest-paths-DotNet-common", "K-shortest-paths-DotNet-common\K-shortest-paths-DotNet-common.csproj", "{E345E0BE-3A15-4D06-BCAA-4951EF27DE15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Programmerare.ShortestPaths.Adaptees.Common", "Programmerare.ShortestPaths.Adaptees.Common\Programmerare.ShortestPaths.Adaptees.Common.csproj", "{E345E0BE-3A15-4D06-BCAA-4951EF27DE15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-shortest-paths-DotNet-common-test", "K-shortest-paths-DotNet-common-test\K-shortest-paths-DotNet-common-test.csproj", "{68DE9558-16E2-443C-91BD-DFF912AD5D3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths.Adaptees.Common.Test", "Programmerare.ShortestPaths.Adaptees.Common.Test\Programmerare.ShortestPaths.Adaptees.Common.Test.csproj", "{68DE9558-16E2-443C-91BD-DFF912AD5D3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths.Example", "Programmerare.ShortestPaths.Example\Programmerare.ShortestPaths.Example.csproj", "{EE0C7039-58E5-4E23-A671-B321CBEE2A19}"
 EndProject

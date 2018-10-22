@@ -7,8 +7,8 @@
     <ProjectGuid>{68DE9558-16E2-443C-91BD-DFF912AD5D3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>K-shortest-paths-DotNet-common-test</RootNamespace>
-    <AssemblyName>K-shortest-paths-DotNet-common-test</AssemblyName>
+    <RootNamespace>Programmerare.ShortestPaths.Adaptees.Common.Test</RootNamespace>
+    <AssemblyName>Programmerare.ShortestPaths.Adaptees.Common.Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,9 +52,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\K-shortest-paths-DotNet-common\K-shortest-paths-DotNet-common.csproj">
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptees.Common\Programmerare.ShortestPaths.Adaptees.Common.csproj">
       <Project>{e345e0be-3a15-4d06-bcaa-4951ef27de15}</Project>
-      <Name>K-shortest-paths-DotNet-common</Name>
+      <Name>Programmerare.ShortestPaths.Adaptees.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
