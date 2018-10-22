@@ -13,7 +13,7 @@ using com.programmerare.shortestpaths.core.api.generics;
 namespace com.programmerare.shortestpaths.core.api
 {
     /// <summary>
-    /// See <see cref="PathFinderGenerics"/>
+    /// See <see cref="PathFinderGenerics{P,E,V,W}"/>
     /// </summary>
     public interface PathFinder 
 	    : PathFinderGenerics<

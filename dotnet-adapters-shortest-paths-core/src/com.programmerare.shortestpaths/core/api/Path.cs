@@ -13,7 +13,7 @@ using com.programmerare.shortestpaths.core.api.generics;
 namespace com.programmerare.shortestpaths.core.api
 {
     /// <summary>
-    /// See <see cref="PathGenerics"/>
+    /// See <see cref="PathGenerics{E,V,W}"/>
     /// </summary>
     public interface Path : PathGenerics< Edge , Vertex , Weight > {}
 }

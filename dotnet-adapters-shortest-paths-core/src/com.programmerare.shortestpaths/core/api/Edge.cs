@@ -13,7 +13,7 @@ using com.programmerare.shortestpaths.core.api.generics;
 namespace com.programmerare.shortestpaths.core.api
 {
     /// <summary>
-    /// See <see cref="EdgeGenerics"/>
+    /// See <see cref="EdgeGenerics{V,W}"/>
     /// </summary>
     public interface Edge : EdgeGenerics<Vertex , Weight> { }
 }

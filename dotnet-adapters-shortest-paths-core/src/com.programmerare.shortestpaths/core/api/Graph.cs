@@ -13,7 +13,7 @@ using com.programmerare.shortestpaths.core.api.generics;
 namespace com.programmerare.shortestpaths.core.api
 {
     /// <summary>
-    /// See <see cref="GraphGenerics"/>
+    /// See <see cref="GraphGenerics{E,V,W}"/>
     /// </summary>
     public interface Graph : GraphGenerics<Edge, Vertex , Weight> { }
 }
