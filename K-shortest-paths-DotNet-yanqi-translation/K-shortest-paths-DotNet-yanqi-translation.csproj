@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\K-shortest-paths-DotNet-helpers\K-shortest-paths-DotNet-helpers.csproj" />
+    <ProjectReference Include="..\K-shortest-paths-DotNet-common\K-shortest-paths-DotNet-common.csproj" />
   </ItemGroup>
 
 </Project>

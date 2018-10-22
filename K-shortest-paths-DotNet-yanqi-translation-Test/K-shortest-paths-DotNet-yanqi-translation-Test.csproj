@@ -88,9 +88,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\K-shortest-paths-DotNet-helpers\K-shortest-paths-DotNet-helpers.csproj">
+    <ProjectReference Include="..\K-shortest-paths-DotNet-common\K-shortest-paths-DotNet-common.csproj">
       <Project>{e345e0be-3a15-4d06-bcaa-4951ef27de15}</Project>
-      <Name>K-shortest-paths-DotNet-helpers</Name>
+      <Name>K-shortest-paths-DotNet-common</Name>
     </ProjectReference>
     <ProjectReference Include="..\K-shortest-paths-DotNet-yanqi-translation\K-shortest-paths-DotNet-yanqi-translation.csproj">
       <Project>{b3a75f90-e892-48af-ad32-563514c9d72a}</Project>

@@ -52,9 +52,9 @@
       <Project>{60C54CB0-C8BF-4A39-9F8B-B18D0F76A89D}</Project>
       <Name>K-shortest-paths-DotNet-bsmock-translation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\K-shortest-paths-DotNet-helpers\K-shortest-paths-DotNet-helpers.csproj">
+    <ProjectReference Include="..\K-shortest-paths-DotNet-common\K-shortest-paths-DotNet-common.csproj">
       <Project>{e345e0be-3a15-4d06-bcaa-4951ef27de15}</Project>
-      <Name>K-shortest-paths-DotNet-helpers</Name>
+      <Name>K-shortest-paths-DotNet-common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
