@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>dotnet_adapters_shortest_paths_impl_bsmock</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Programmerare.ShortestPaths.Adapter.Bsmock.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Core\Programmerare.ShortestPaths.Core.csproj" />
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptee.Bsmock\Programmerare.ShortestPaths.Adaptee.Bsmock.csproj" />
+  </ItemGroup>
+
+</Project>

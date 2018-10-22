@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>dotnet_adapters_shortest_paths_impl_yanqi</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Programmerare.ShortestPaths.Adapter.YanQi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Core\Programmerare.ShortestPaths.Core.csproj" />
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptee.YanQi\Programmerare.ShortestPaths.Adaptee.YanQi.csproj" />
+  </ItemGroup>
+
+</Project>

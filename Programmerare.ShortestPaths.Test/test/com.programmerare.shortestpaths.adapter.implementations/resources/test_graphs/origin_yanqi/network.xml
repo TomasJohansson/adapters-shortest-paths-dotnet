@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphTestData>
+    <graphDefinition>
+		<!-- 
+		    The test data in this file is based at the data from the following "yan-qi" test file: 
+		    	https://github.com/yan-qi/k-shortest-paths-java-version/blob/master/data/network
+		    (i.e. test data from one of the libraries which have an adapter implementation)
+		    However, the weights have been modified, since the original had many weights equal to 1, 
+		    but since that produce too many paths which have equal total weight, they have been modified 
+		    with more unique weights below (1.01 , 1.02 and so on) 
+		 -->        
+	     <!-- For more comments, regarding the xml, look in "small_graph_1.xml" instead  -->
+		0 1	1.01
+		0 2	1.02
+		0 3	1.03
+		1 0	1.04
+		1 2	1.05
+		1 7	1.06
+		2 0	1.07
+		2 1	1.08
+		2 5	1.09
+		3 0	1.10
+		3 4	1.11
+		3 10 1.12
+		4 3	1.13
+		4 6	1.14
+		4 5	1.15
+		5 2	1.16
+		5 4	1.17
+		5 9	1.18
+		5 13 1.19
+		6 4	1.20
+		6 7	1.21
+		7 6	1.22
+		7 8	1.23
+		7 1	1.24
+		8 7	1.25
+		8 11 1.26
+		8 12 1.27
+		9 5	1.28
+		10 3 1.29
+		10 11 1.30
+		10 12 1.31
+		11 8 1.32
+		11 10 1.33
+		11 13 1.34
+		12 10 1.35
+		12 8 1.36
+		12 13 1.37
+		13 12 1.38
+		13 5 1.39
+		13 11 1.40    
+    </graphDefinition>
+	<testCase>
+	    <input>
+		    <startVertex>0</startVertex>
+		    <endVertex>13</endVertex>
+		    <maxNumberOfPaths>50</maxNumberOfPaths>
+	    </input>
+	    <outputExpected>
+			<!--
+			The result below has been produced by three independent implementations (asserted against each other)
+			and therefore is trusted as the correct result. To create strings as below from path objects, 
+			there is a method 'PathParser.fromPathToString' 
+			-->	        
+			3.3 0 2 5 13
+			4.34 0 1 2 5 13
+			4.48 0 3 4 5 13
+			4.79 0 3 10 11 13
+			4.83 0 3 10 12 13
+			5.9 0 1 7 8 11 13
+			5.94 0 1 7 8 12 13
+			6.83 0 1 7 6 4 5 13
+			6.99 0 2 1 7 8 11 13
+			7.03 0 2 1 7 8 12 13
+			7.41 0 3 10 11 8 12 13
+			7.42 0 3 10 12 8 11 13
+			7.92 0 2 1 7 6 4 5 13
+			8.17 0 2 5 4 3 10 11 13
+			8.21 0 2 5 4 3 10 12 13
+			8.32 0 3 4 6 7 8 11 13
+			8.36 0 3 4 6 7 8 12 13
+			8.56 0 1 7 8 12 10 11 13
+			8.57 0 1 7 8 11 10 12 13
+			9.06 0 3 4 6 7 1 2 5 13
+			9.21 0 1 2 5 4 3 10 11 13
+			9.25 0 1 2 5 4 3 10 12 13
+			9.38 0 1 7 6 4 3 10 11 13
+			9.42 0 1 7 6 4 3 10 12 13
+			9.46 0 2 5 4 6 7 8 11 13
+			9.5 0 2 5 4 6 7 8 12 13
+			9.65 0 2 1 7 8 12 10 11 13
+			9.66 0 2 1 7 8 11 10 12 13
+			10.42 0 3 4 5 2 1 7 8 11 13
+			10.46 0 3 4 5 2 1 7 8 12 13
+			10.47 0 2 1 7 6 4 3 10 11 13
+			10.5 0 1 2 5 4 6 7 8 11 13
+			10.51 0 2 1 7 6 4 3 10 12 13
+			10.54 0 1 2 5 4 6 7 8 12 13
+			10.59 0 3 10 11 8 7 1 2 5 13
+			10.63 0 1 7 8 11 10 3 4 5 13
+			10.64 0 3 10 12 8 7 1 2 5 13
+			10.66 0 1 7 8 12 10 3 4 5 13
+			10.78 0 3 10 11 8 7 6 4 5 13
+			10.79 0 2 5 4 3 10 11 8 12 13
+			10.8 0 2 5 4 3 10 12 8 11 13
+			10.83 0 3 10 12 8 7 6 4 5 13
+			10.98 0 3 4 6 7 8 12 10 11 13
+			10.99 0 3 4 6 7 8 11 10 12 13
+			11.72 0 2 1 7 8 11 10 3 4 5 13
+			11.75 0 2 1 7 8 12 10 3 4 5 13
+			11.83 0 1 2 5 4 3 10 11 8 12 13
+			11.84 0 1 2 5 4 3 10 12 8 11 13
+			12 0 1 7 6 4 3 10 11 8 12 13
+			12.01 0 1 7 6 4 3 10 12 8 11 13
+	    </outputExpected>
+	</testCase>
+</graphTestData>

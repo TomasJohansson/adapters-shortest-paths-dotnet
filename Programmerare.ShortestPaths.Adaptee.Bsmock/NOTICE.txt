@@ -1,0 +1,26 @@
+This project is a fork of a Java library which also has been translated to C#.
+The source code is located here:
+TODO URL Programmerare.ShortestPaths.Adaptee.Bsmock
+
+The location of the original project:
+https://github.com/bsmock/k-shortest-paths
+
+The license of the fork is the same as the original project i.e. Apache License 2.0 
+https://github.com/bsmock/k-shortest-paths/blob/master/LICENSE
+
+The forked version has tried to NOT modify the implementation of the algorithm.
+The purpose of the fork was to make it into a C# project and also available with NuGet.
+
+TODO: some comments about the changes ...
+(i.e. replace the below comments from the forked Java project...)
+The location of the existing java packages was moved from the project root to the directory "src/main/java"
+(i.e. as in the Maven standard directory structure).
+Git commit: https://github.com/TomasJohansson/k-shortest-paths/commit/ce0dedf8e2786c3f558946b7218d370d0e75ecfd   
+
+The only existing java file that has changed is the class "SimpleEppstein".
+A reference to the missing interface "KSPAlgorithmCutoff" was removed to be able to compile.
+Git commit:  https://github.com/TomasJohansson/k-shortest-paths/commit/e779835cc70b9d379b20928b3d1f3295aa882d44
+
+The only new java file added to the fork compared with the original project is the class "YenTest"
+It is not doing anything meaningful but was added just as an example and to verify that "mvn test" works. 
+Git commit: https://github.com/TomasJohansson/k-shortest-paths/commit/c8ac52a364da74d3afbefa1b73dfb39a79fb3610

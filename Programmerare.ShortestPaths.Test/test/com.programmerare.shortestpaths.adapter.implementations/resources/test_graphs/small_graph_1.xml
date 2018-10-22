@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphTestData>
+    <graphDefinition>
+     <!-- For example: One edge from A to B with weight 5, and one edge from A to C with weight 6, and do on...  -->
+A B 5
+A C 6
+B C 7
+B D 8
+C D 9    
+    </graphDefinition>
+
+	<testCase> <!-- Find the best paths from vertex A to vertex D -->
+	    <input>
+		    <startVertex>A</startVertex>
+		    <endVertex>D</endVertex>
+		    <maxNumberOfPaths>5</maxNumberOfPaths>
+		    <!--
+		    Note the "maxNumberOfPaths" above is the input paraeter which the method invocation will use.
+		    The actual number of paths expected to find is implicitly defined below, i.e. the number of paths.
+		    Thus, in this example the actual number of paths found is 3 since there are two rows with paths in outputExpected below.    
+		    -->
+	    </input>
+	    <outputExpected>
+	        <!-- 
+	        The rows below are sorted in order with the best total weight first.
+	        The very first item in each row is the total weight for the path.
+	        (the reason is just to make it less tedious with creating the paths instead of nested elements for each path with one subelement for the total weight)
+			The other items in a row are tha list of vertices. 
+			Note that all starts with A and ends with D, as the above tested input specifies.
+	         -->	        
+			13 A B D
+			15 A C D
+			21 A B C D
+	    </outputExpected>
+	</testCase>
+	
+	<testCase> <!-- Find the best paths from vertex A to vertex C -->
+	    <input>
+		    <startVertex>A</startVertex>
+		    <endVertex>C</endVertex>
+		    <maxNumberOfPaths>5</maxNumberOfPaths>
+	    </input>
+	    <outputExpected>
+			6 A C
+			12 A B C
+	    </outputExpected>
+	</testCase>
+	
+</graphTestData>

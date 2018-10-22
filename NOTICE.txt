@@ -1,4 +1,4 @@
-The "core" part (i.e. project "dotnet-adapters-shortest-paths-core") with the API and general code is released with MIT License.
+The "core" part (i.e. project "Programmerare.ShortestPaths.Core") with the API and general code is released with MIT License.
 
 However, the libraries which implement the adapters are licensed in the same way as the adapted libraries.
 There should be more information about current available adapter implementations and their licenses at the project website.

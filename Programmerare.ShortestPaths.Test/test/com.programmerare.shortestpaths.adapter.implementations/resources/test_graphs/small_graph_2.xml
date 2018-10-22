@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphTestData>
+    <graphDefinition>
+     <!-- For more cmoments, look in "small_graph_1.xml" instead  -->
+F G 13
+F H 14
+F I 15
+F J 16
+G H 17
+G I 18
+G J 19
+H I 20
+H J 21
+J K 22    
+    </graphDefinition>
+
+	<testCase>
+	    <input>
+		    <startVertex>F</startVertex>
+		    <endVertex>K</endVertex>
+		    <maxNumberOfPaths>5</maxNumberOfPaths>
+	    </input>
+	    <outputExpected>
+			38 F J K
+			54 F G J K
+			57 F H J K
+			73 F G H J K
+	    </outputExpected>
+	</testCase>
+	
+</graphTestData>

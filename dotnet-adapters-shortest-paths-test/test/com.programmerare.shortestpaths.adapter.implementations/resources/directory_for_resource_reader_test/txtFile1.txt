@@ -1,2 +1,0 @@
-The content here is currently irrelevant.
-The file is only used for testing that a helper method can iterate the file names.
