@@ -42,24 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="main\roadrouting\City.cs" />
-    <Compile Include="main\roadrouting\CityRoadService.cs" />
-    <Compile Include="main\roadrouting\CityRoadServiceFactory.cs" />
-    <Compile Include="main\roadrouting\CityRoadServiceHardcoded.cs" />
-    <Compile Include="main\roadrouting\database\BaseDataMapper.cs" />
-    <Compile Include="main\roadrouting\database\CityDataMapper.cs" />
-    <Compile Include="main\roadrouting\database\CityMap.cs" />
-    <Compile Include="main\roadrouting\database\CityRoadServiceDatabase.cs" />
-    <Compile Include="main\roadrouting\database\RoadDataMapper.cs" />
-    <Compile Include="main\roadrouting\database\RoadMap.cs" />
-    <Compile Include="main\roadrouting\database\PersistenceSessionFactory.cs" />
-    <Compile Include="main\roadrouting\Road.cs" />
-    <Compile Include="main\roadrouting\RoadQuality.cs" />
-    <Compile Include="main\roadrouting\RoadRoutingMain.cs" />
-    <Compile Include="main\roadrouting\WeightDeterminedByRoadLengthAndQuality.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\City.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\CityRoadService.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\CityRoadServiceFactory.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\CityRoadServiceHardcoded.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Database\BaseDataMapper.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Database\CityDataMapper.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Database\CityMap.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Database\CityRoadServiceDatabase.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Database\RoadDataMapper.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Database\RoadMap.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Database\PersistenceSessionFactory.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\Road.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\RoadQuality.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\RoadRoutingMain.cs" />
+    <Compile Include="main\Programmerare.ShortestPaths.Example.Roadrouting\WeightDeterminedByRoadLengthAndQuality.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\roadrouting\RoadRoutingMainTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Example.Roadrouting\RoadRoutingMainTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

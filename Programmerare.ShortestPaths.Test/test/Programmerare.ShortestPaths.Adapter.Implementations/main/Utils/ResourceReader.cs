@@ -55,7 +55,7 @@ namespace Programmerare.ShortestPaths.Utils
 
         private string GetAbsolutePathToResourceFolder() {
             string basePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string relativePathToResourceFolder = @"test\com.programmerare.shortestpaths.adapter.implementations\resources\";
+            string relativePathToResourceFolder = @"test\Programmerare.ShortestPaths.Adapter.Implementations\resources\";
             string absolutePathToResourceFolder = System.IO.Path.Combine(basePath, relativePathToResourceFolder);
             return absolutePathToResourceFolder;
         }

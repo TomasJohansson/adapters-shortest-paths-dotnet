@@ -43,37 +43,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\graph\utils\FileReaderForGraphEdges.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\graph\utils\PathFinderFactories.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\utils\FileReader.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\utils\ResourceReader.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\main\utils\XmlFileReader.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\PathFinderImplementationsTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\BigGraphTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\EdgeIdValuesTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\PathFinderBaseValidationExceptionTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\SmallGraphTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\tests\XmlDefinedTestCasesTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\utils\FileReaderForGraphEdgesTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\graph\utils\GraphShortestPathAssertionHelper.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\utils\FileReaderTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\utils\ResourceReaderTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths.adapter.implementations\test\utils\XmlFileReaderTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeGenericsImplTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\EdgeMapperTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\GraphGenericsImplTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathFinderBaseTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathFinderFactoryGenericsBaseTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\generics\PathGenericsImplTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\GraphImplTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\VertexImplTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\impl\WeightImplTes.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\parsers\EdgeParserTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\parsers\PathParserTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\core\validation\GraphEdgesValidatorTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\utils\EdgeUtilityTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\utils\MapperForIntegerIdsAndGeneralStringIdsTest.cs" />
-    <Compile Include="test\com.programmerare.shortestpaths\utils\StringUtilityTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\main\Graphs\Utils\FileReaderForGraphEdges.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\main\Graphs\Utils\PathFinderFactories.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\main\Utils\FileReader.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\main\Utils\ResourceReader.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\main\Utils\XmlFileReader.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\PathFinderImplementationsTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Tests\BigGraphTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Tests\EdgeIdValuesTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Tests\PathFinderBaseValidationExceptionTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Tests\SmallGraphTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Tests\XmlDefinedTestCasesTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Utils\FileReaderForGraphEdgesTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Utils\GraphShortestPathAssertionHelper.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Utils\FileReaderTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Utils\ResourceReaderTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Utils\XmlFileReaderTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\generics\EdgeGenericsImplTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\generics\EdgeMapperTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\generics\GraphGenericsImplTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\generics\PathFinderBaseTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\generics\PathFinderFactoryGenericsBaseTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\generics\PathGenericsImplTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\GraphImplTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\VertexImplTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Impl\WeightImplTes.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Parsers\EdgeParserTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Parsers\PathParserTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Core\Validation\GraphEdgesValidatorTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Utils\EdgeUtilityTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Utils\MapperForIntegerIdsAndGeneralStringIdsTest.cs" />
+    <Compile Include="test\Programmerare.ShortestPaths\Utils\StringUtilityTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -104,66 +104,66 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_filereader_test\file_for_filereader_test.txt" />
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_filereader_test\two_edges_A_B_7__X_Y_8.txt" />
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\txtFile1.txt">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_filereader_test\file_for_filereader_test.txt" />
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_filereader_test\two_edges_A_B_7__X_Y_8.txt" />
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_resource_reader_test\txtFile1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_resource_reader_test\txtFile2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\txtFile2.txt">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_resource_reader_test\xmlFile1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\xmlFile1.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_resource_reader_test\xmlFile2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_resource_reader_test\xmlFile2.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_xmlfilereader_test\xmlFileReaderTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\directory_for_xmlfilereader_test\xmlFileReaderTest.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_bsmock\small_road_network_01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_bsmock\small_road_network_01.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_bsmock\tiny_graph_01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_bsmock\tiny_graph_01.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_bsmock\tiny_graph_02.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_bsmock\tiny_graph_02.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\network.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\network.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_5.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_5.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_50.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_50.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_50_2.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_50_2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_6.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_6.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_6_1.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_6_1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_6_2.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_6_2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_7.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_7.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\origin_yanqi\test_8.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_yanqi\test_8.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_1.txt" />
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_1.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_1.txt" />
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_2.txt" />
-    <Content Include="test\com.programmerare.shortestpaths.adapter.implementations\resources\test_graphs\small_graph_2.xml">
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_2.txt" />
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
