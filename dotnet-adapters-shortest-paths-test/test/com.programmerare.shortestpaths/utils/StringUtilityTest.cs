@@ -12,7 +12,7 @@ using NUnit.Framework;
 using static NUnit.Framework.Assert;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     [TestFixture]
     public class StringUtilityTest {

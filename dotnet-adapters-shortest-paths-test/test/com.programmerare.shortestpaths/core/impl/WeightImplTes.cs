@@ -10,10 +10,10 @@
 
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using com.programmerare.shortestpaths.core.api;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using Programmerare.ShortestPaths.Core.Api;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 
-namespace com.programmerare.shortestpaths.core.impl
+namespace Programmerare.ShortestPaths.Core.Impl
 {
     /**
      * @author Tomas Johansson

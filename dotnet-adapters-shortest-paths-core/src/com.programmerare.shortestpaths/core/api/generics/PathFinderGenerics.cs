@@ -10,7 +10,7 @@
 
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.api.generics
+namespace Programmerare.ShortestPaths.Core.Api.Generics
 {
     /// <summary>
     /// The PathFinder interface provides a method for finding the shortest path between two Vertex instances in a Graph.

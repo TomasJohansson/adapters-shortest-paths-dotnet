@@ -8,11 +8,11 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using System;
 
-namespace com.programmerare.shortestpaths.graph.utils
+namespace Programmerare.ShortestPaths.Graphs.Utils
 {
     /**
      * The class is used for creating Edge instances from files.

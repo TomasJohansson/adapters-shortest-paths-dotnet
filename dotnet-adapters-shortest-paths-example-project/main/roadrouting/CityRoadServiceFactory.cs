@@ -1,6 +1,6 @@
-using roadrouting.database;
+using Programmerare.ShortestPaths.Example.Roadrouting.Database;
 
-namespace roadrouting {
+namespace Programmerare.ShortestPaths.Example.Roadrouting {
     public sealed class CityRoadServiceFactory {
 
 	    public static CityRoadService CreateCityRoadService(bool useDatabase) {

@@ -10,7 +10,7 @@
 
 using System;
 
-namespace com.programmerare.shortestpaths.graph.utils {
+namespace Programmerare.ShortestPaths.Graphs.Utils {
     //[TestFixture]
     [Obsolete] // use xml instead
     public class FileReaderForGraphEdgesTest {

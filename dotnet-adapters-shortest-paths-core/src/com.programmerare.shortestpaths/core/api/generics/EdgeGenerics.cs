@@ -8,7 +8,7 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-namespace com.programmerare.shortestpaths.core.api.generics
+namespace Programmerare.ShortestPaths.Core.Api.Generics
 {
     /// <summary>
     /// An Edge represents a path between two vertices,  the start Vertex and the end Vertex,  with an associated weight. 

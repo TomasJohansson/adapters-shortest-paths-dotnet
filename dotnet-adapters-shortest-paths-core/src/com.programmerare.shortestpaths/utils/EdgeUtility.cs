@@ -7,11 +7,11 @@
 * It should also be possible to find more license information at this URL:
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     public sealed class EdgeUtility<E, V, W>
         where E : EdgeGenerics<V, W>

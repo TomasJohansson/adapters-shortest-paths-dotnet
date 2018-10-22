@@ -8,13 +8,13 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
+using Programmerare.ShortestPaths.Core.Validation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace com.programmerare.shortestpaths.core.impl.generics
+namespace Programmerare.ShortestPaths.Core.Impl.Generics
 {
     public class GraphGenericsImpl<E, V, W> : GraphGenerics<E, V, W> 
         where E : EdgeGenerics<V, W>

@@ -8,7 +8,7 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-namespace com.programmerare.shortestpaths.core.api
+namespace Programmerare.ShortestPaths.Core.Api
 {
     /// <summary>
     /// A Vertex represents some point in the Graph. 

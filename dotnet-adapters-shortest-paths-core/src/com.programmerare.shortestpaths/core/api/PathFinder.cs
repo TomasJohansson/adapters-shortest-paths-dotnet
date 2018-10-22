@@ -8,9 +8,9 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 
-namespace com.programmerare.shortestpaths.core.api
+namespace Programmerare.ShortestPaths.Core.Api
 {
     /// <summary>
     /// See <see cref="PathFinderGenerics{P,E,V,W}"/>

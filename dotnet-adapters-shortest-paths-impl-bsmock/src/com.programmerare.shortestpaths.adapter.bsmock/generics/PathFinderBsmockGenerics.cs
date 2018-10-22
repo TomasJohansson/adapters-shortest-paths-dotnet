@@ -7,14 +7,14 @@
 */
 
 using edu.ufl.cise.bsmock.graph.ksp;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.impl.generics;
-using com.programmerare.shortestpaths.core.pathfactories;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Impl.Generics;
+using Programmerare.ShortestPaths.Core.PathFactories;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace com.programmerare.shortestpaths.adapter.bsmock.generics
+namespace Programmerare.ShortestPaths.Adapter.Bsmock.Generics
 {
     /// <summary>
     /// "Adapter" implementation of the "Target" interface 

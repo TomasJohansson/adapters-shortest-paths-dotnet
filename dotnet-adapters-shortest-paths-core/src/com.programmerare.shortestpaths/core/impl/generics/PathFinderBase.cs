@@ -9,12 +9,12 @@
 */
 
 using System.Collections.Generic;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.pathfactories;
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
+using Programmerare.ShortestPaths.Core.PathFactories;
+using Programmerare.ShortestPaths.Core.Validation;
 
-namespace com.programmerare.shortestpaths.core.impl.generics
+namespace Programmerare.ShortestPaths.Core.Impl.Generics
 {
     public abstract class PathFinderBase<P, E, V, W> 
 	    : PathFinderGenerics<P, E, V, W> 

@@ -8,15 +8,15 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
+using Programmerare.ShortestPaths.Core.Api;
 using NUnit.Framework;
 using System.Collections.Generic;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-using com.programmerare.shortestpaths.graph.utils;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
+using Programmerare.ShortestPaths.Graphs.Utils;
 
-namespace com.programmerare.shortestpaths.graph.tests
+namespace Programmerare.ShortestPaths.Graphs.Tests
 {
     /**
      * This test class can generate a big graph, for example 1000 nodes (and then some more edges)

@@ -9,12 +9,12 @@
 */
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-using com.programmerare.shortestpaths.core.api;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
+using Programmerare.ShortestPaths.Core.Api;
 
-namespace com.programmerare.shortestpaths.core.impl.generics
+namespace Programmerare.ShortestPaths.Core.Impl.Generics
 {
     /**
      * @author Tomas Johansson

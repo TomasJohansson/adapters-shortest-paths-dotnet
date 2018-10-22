@@ -8,12 +8,12 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.adapter.bsmock;
-using com.programmerare.shortestpaths.adapter.yanqi;
-using com.programmerare.shortestpaths.core.api;
+using Programmerare.ShortestPaths.Adapter.Bsmock;
+using Programmerare.ShortestPaths.Adapter.YanQi;
+using Programmerare.ShortestPaths.Core.Api;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.graph.utils
+namespace Programmerare.ShortestPaths.Graphs.Utils
 {
     public sealed class PathFinderFactories {
 	

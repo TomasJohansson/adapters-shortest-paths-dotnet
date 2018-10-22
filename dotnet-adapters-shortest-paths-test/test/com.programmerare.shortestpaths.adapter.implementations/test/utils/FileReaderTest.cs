@@ -12,7 +12,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
 [Obsolete] // use xml instead
 //[TestFixture]

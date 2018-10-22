@@ -8,10 +8,10 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
+using Programmerare.ShortestPaths.Core.Api;
 using System;
 
-namespace com.programmerare.shortestpaths.core.impl
+namespace Programmerare.ShortestPaths.Core.Impl
 {
     public sealed class WeightImpl : Weight {
 

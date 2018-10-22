@@ -1,7 +1,7 @@
 using System.Linq;
 using NHibernate;
 
-namespace roadrouting.database {
+namespace Programmerare.ShortestPaths.Example.Roadrouting.Database {
     /**
      * @author Tomas Johansson
      */

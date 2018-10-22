@@ -9,15 +9,15 @@
 */
 
 using NUnit.Framework;
-using com.programmerare.shortestpaths.core.api;
+using Programmerare.ShortestPaths.Core.Api;
 using System.Collections.Generic;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using com.programmerare.shortestpaths.core.validation;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using Programmerare.ShortestPaths.Core.Validation;
 using System;
 using System.Text;
-using com.programmerare.shortestpaths.core.parsers;
+using Programmerare.ShortestPaths.Core.Parsers;
 
-namespace com.programmerare.shortestpaths.graph.utils {
+namespace Programmerare.ShortestPaths.Graphs.Utils {
     /**
      * Used for validation of paths against each other.
      * TODO: the class should be restructured probably into to two classes with appropriate names.

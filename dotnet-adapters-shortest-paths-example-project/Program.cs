@@ -1,4 +1,4 @@
-﻿using roadrouting;
+﻿using Programmerare.ShortestPaths.Example.Roadrouting;
 using System;
 
 namespace dotnet_adapters_shortest_paths_example_project {

@@ -10,7 +10,7 @@
 
 using System.Xml;
 
-namespace com.programmerare.shortestpaths.utils {
+namespace Programmerare.ShortestPaths.Utils {
     public sealed class XmlFileReader {
         
         private ResourceReader resourceReader;

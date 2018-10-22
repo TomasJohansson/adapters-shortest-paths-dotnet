@@ -10,7 +10,7 @@
 
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.api.generics
+namespace Programmerare.ShortestPaths.Core.Api.Generics
 {
     /// <summary>
     /// A Graph represents a collection of Edge instances.

@@ -3,7 +3,7 @@ using NHibernate;
 using System;
 using System.Collections.Generic;
 
-namespace roadrouting.database {
+namespace Programmerare.ShortestPaths.Example.Roadrouting.Database {
     /**
      * @author Tomas Johansson
      */

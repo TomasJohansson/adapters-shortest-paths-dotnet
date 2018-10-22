@@ -8,11 +8,11 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.validation
+namespace Programmerare.ShortestPaths.Core.Validation
 {
     public sealed class GraphEdgesValidator<P, E, V, W> 
         where P : PathGenerics<E,V,W>

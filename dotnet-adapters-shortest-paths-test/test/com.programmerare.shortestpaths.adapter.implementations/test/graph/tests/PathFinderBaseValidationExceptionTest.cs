@@ -8,17 +8,17 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
+using Programmerare.ShortestPaths.Core.Api;
 using NUnit.Framework;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 using System.Collections.Generic;
-using com.programmerare.shortestpaths.core.validation;
-using com.programmerare.shortestpaths.adapter.yanqi;
-using com.programmerare.shortestpaths.adapter.bsmock;
+using Programmerare.ShortestPaths.Core.Validation;
+using Programmerare.ShortestPaths.Adapter.YanQi;
+using Programmerare.ShortestPaths.Adapter.Bsmock;
 
-namespace com.programmerare.shortestpaths.graph.tests {
+namespace Programmerare.ShortestPaths.Graphs.Tests {
     /**
      * PathFinderBase is an abstract base class, and this test class verifies that the subclasses throw validation exceptions implemented in the base class. 
      * @author Tomas Johansson

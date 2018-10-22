@@ -10,17 +10,17 @@
 
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using com.programmerare.shortestpaths.core.api;
-using static com.programmerare.shortestpaths.core.impl.GraphImpl;
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // createWeight
-                                                                   // using static com.programmerare.shortestpaths.core.impl.generics.EdgeGenericsImpl<Vertex, Weight>; // createEdgeGenerics
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Core.Api;
+using static Programmerare.ShortestPaths.Core.Impl.GraphImpl;
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // createWeight
+                                                                   // using static Programmerare.ShortestPaths.Core.Impl.Generics.EdgeGenericsImpl<Vertex, Weight>; // createEdgeGenerics
+using Programmerare.ShortestPaths.Core.Api.Generics;
+using Programmerare.ShortestPaths.Core.Validation;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.impl
+namespace Programmerare.ShortestPaths.Core.Impl
 {
     /**
      * @author Tomas Johansson
@@ -47,7 +47,7 @@ namespace com.programmerare.shortestpaths.core.impl
 
         internal static EdgeGenerics<Vertex, Weight> createEdgeGenerics(Vertex vertex1, Vertex vertex2, Weight weight)
         {
-            return com.programmerare.shortestpaths.core.impl.generics.EdgeGenericsImpl<Vertex, Weight>.CreateEdgeGenerics(vertex1, vertex2, weight);
+            return Programmerare.ShortestPaths.Core.Impl.Generics.EdgeGenericsImpl<Vertex, Weight>.CreateEdgeGenerics(vertex1, vertex2, weight);
         }
 
         [Test]

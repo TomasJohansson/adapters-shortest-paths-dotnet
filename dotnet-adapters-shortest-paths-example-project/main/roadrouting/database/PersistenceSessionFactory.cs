@@ -5,7 +5,7 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using System.IO;
 
-namespace roadrouting.database {
+namespace Programmerare.ShortestPaths.Example.Roadrouting.Database {
 
     public class PersistenceSessionFactory {
         public static ISessionFactory CreateSessionFactory() {

@@ -8,9 +8,9 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.validation; // to avoid warning for the XML comment refering to GraphEdgesValidator
+using Programmerare.ShortestPaths.Core.Validation; // to avoid warning for the XML comment refering to GraphEdgesValidator
 
-namespace com.programmerare.shortestpaths.core.api
+namespace Programmerare.ShortestPaths.Core.Api
 {
     /// <summary>
     /// Used for trying to enforce that implementations of core types (Vertex, Edge, Weight)

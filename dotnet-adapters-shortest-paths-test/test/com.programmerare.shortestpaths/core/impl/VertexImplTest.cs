@@ -10,10 +10,10 @@
 
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using com.programmerare.shortestpaths.core.api;
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using Programmerare.ShortestPaths.Core.Api;
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 
-namespace com.programmerare.shortestpaths.core.impl
+namespace Programmerare.ShortestPaths.Core.Impl
 {
     /**
      * @author Tomas Johansson

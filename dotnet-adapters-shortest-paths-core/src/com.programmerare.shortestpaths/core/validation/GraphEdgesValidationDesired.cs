@@ -8,7 +8,7 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-namespace com.programmerare.shortestpaths.core.validation
+namespace Programmerare.ShortestPaths.Core.Validation
 {
     /// <summary>
     /// Currently only two possbile values (but this might of course become extended with mroe fine-grained options about what to validate).

@@ -9,7 +9,7 @@
 */
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     /// <summary>
     /// The purpose of this class is to provide mapping between strings and integer ids

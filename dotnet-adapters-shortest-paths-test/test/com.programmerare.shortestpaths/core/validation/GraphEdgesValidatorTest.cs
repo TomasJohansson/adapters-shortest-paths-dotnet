@@ -8,14 +8,14 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
+using Programmerare.ShortestPaths.Core.Api;
 using System.Collections.Generic;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using static com.programmerare.shortestpaths.core.impl.PathImpl; // createPath
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
+using static Programmerare.ShortestPaths.Core.Impl.PathImpl; // createPath
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
 
-namespace com.programmerare.shortestpaths.core.validation
+namespace Programmerare.ShortestPaths.Core.Validation
 {
     public class GraphEdgesValidatorTest {
 

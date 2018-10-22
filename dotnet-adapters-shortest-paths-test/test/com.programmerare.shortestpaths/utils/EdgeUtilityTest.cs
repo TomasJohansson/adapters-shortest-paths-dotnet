@@ -8,7 +8,7 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     //[TestFixture]
     //public class EdgeUtilityTest {

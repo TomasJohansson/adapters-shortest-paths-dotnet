@@ -8,10 +8,10 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Core.Validation;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.api.generics
+namespace Programmerare.ShortestPaths.Core.Api.Generics
 {
     /**
      * TODO maybe: Implement something like this for instantiating: XPathFactory xPathfactory = XPathFactory.newInstance();

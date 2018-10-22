@@ -8,11 +8,11 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.impl.generics
+namespace Programmerare.ShortestPaths.Core.Impl.Generics
 {
     /// <summary>
     /// Edge is an interface which the implementations will not know of.

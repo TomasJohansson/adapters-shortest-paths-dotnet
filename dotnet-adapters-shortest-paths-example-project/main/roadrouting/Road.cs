@@ -1,6 +1,6 @@
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 
-namespace roadrouting {
+namespace Programmerare.ShortestPaths.Example.Roadrouting {
     /**
      * 
      * @author Tomas Johansson

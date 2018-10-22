@@ -11,7 +11,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     [TestFixture]
     public class ResourceReaderTest {

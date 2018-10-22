@@ -1,5 +1,5 @@
 using NUnit.Framework;
-namespace roadrouting {
+namespace Programmerare.ShortestPaths.Example.Roadrouting {
     // TODO: fix old Java doumentation below ...
     /**
      * This is not a real test class which is doing any assertions, but it is a convenient 

@@ -8,14 +8,14 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace com.programmerare.shortestpaths.core.impl.generics
+namespace Programmerare.ShortestPaths.Core.Impl.Generics
 {
     public class PathGenericsImpl<E, V, W> : PathGenerics<E, V, W> 
         where E : EdgeGenerics<V, W>

@@ -8,18 +8,18 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.impl;
-using com.programmerare.shortestpaths.core.impl.generics;
-using com.programmerare.shortestpaths.core.pathfactories;
-using com.programmerare.shortestpaths.core.validation;
-using com.programmerare.shortestpaths.utils;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
+using Programmerare.ShortestPaths.Core.Impl;
+using Programmerare.ShortestPaths.Core.Impl.Generics;
+using Programmerare.ShortestPaths.Core.PathFactories;
+using Programmerare.ShortestPaths.Core.Validation;
+using Programmerare.ShortestPaths.Utils;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace com.programmerare.shortestpaths.core.parsers
+namespace Programmerare.ShortestPaths.Core.Parsers
 {
     /**
     *  TODO: write more/better documentation ...

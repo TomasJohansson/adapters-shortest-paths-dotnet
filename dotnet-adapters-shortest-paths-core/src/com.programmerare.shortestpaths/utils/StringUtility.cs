@@ -10,7 +10,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     public sealed class StringUtility {
 	    public static IList<string> GetMultilineStringAsListOfTrimmedStringsIgnoringLinesWithOnlyWhiteSpace(string multilinedStringWithLineBreaks) {

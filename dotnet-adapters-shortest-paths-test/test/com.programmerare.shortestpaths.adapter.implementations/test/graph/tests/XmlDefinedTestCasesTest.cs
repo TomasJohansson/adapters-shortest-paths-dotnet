@@ -9,20 +9,20 @@
 */
 
 using System.Xml;
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 using NUnit.Framework;
-using com.programmerare.shortestpaths.adapter.bsmock;
-using com.programmerare.shortestpaths.adapter.yanqi;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.parsers;
-using com.programmerare.shortestpaths.graph.utils;
-using com.programmerare.shortestpaths.utils;
+using Programmerare.ShortestPaths.Adapter.Bsmock;
+using Programmerare.ShortestPaths.Adapter.YanQi;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Parsers;
+using Programmerare.ShortestPaths.Graphs.Utils;
+using Programmerare.ShortestPaths.Utils;
 using System.Collections.Generic;
-using static com.programmerare.shortestpaths.graph.utils.GraphShortestPathAssertionHelper;
+using static Programmerare.ShortestPaths.Graphs.Utils.GraphShortestPathAssertionHelper;
 using System;
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Core.Validation;
 
-namespace com.programmerare.shortestpaths.graph.tests {
+namespace Programmerare.ShortestPaths.Graphs.Tests {
     /**
      * The class can run test cases with both input data and expected output data defined in xml files.
      * See an example in the xml file ".../src/test/resources/test_graphs/small_graph_1.xml"   

@@ -7,11 +7,11 @@
 * It should also be possible to find more license information at this URL:
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.impl.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Impl.Generics;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.impl
+namespace Programmerare.ShortestPaths.Core.Impl
 {
     public sealed class PathImpl : PathGenericsImpl<Edge, Vertex, Weight> , Path 
     {

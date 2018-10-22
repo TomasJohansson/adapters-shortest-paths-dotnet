@@ -9,15 +9,15 @@
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using com.programmerare.edu.asu.emit.algorithm.graph;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.impl.generics;
-using com.programmerare.shortestpaths.core.pathfactories;
-using com.programmerare.shortestpaths.utils;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Impl.Generics;
+using Programmerare.ShortestPaths.Core.PathFactories;
+using Programmerare.ShortestPaths.Utils;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace com.programmerare.shortestpaths.adapter.yanqi.generics
+namespace Programmerare.ShortestPaths.Adapter.YanQi.Generics
 {
     /// <summary>
     /// "Adapter" implementation of the "Target" interface 

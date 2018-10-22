@@ -8,11 +8,11 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.impl;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Impl;
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.pathfactories
+namespace Programmerare.ShortestPaths.Core.PathFactories
 {
     public sealed class PathFactoryDefault
 	    : PathFactory<Path , Edge , Vertex , Weight>

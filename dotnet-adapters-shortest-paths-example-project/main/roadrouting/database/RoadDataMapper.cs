@@ -1,8 +1,8 @@
 using NHibernate;
-using roadrouting;
+using Programmerare.ShortestPaths.Example.Roadrouting;
 using System.Collections.Generic;
 
-namespace roadrouting.database {
+namespace Programmerare.ShortestPaths.Example.Roadrouting.Database {
     /**
      * @author Tomas Johansson
      */

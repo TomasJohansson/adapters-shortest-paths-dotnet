@@ -6,12 +6,12 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.adapter.yanqi.generics;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.pathfactories;
+using Programmerare.ShortestPaths.Adapter.YanQi.Generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
+using Programmerare.ShortestPaths.Core.PathFactories;
 
-namespace com.programmerare.shortestpaths.adapter.yanqi
+namespace Programmerare.ShortestPaths.Adapter.YanQi
 {
     public class PathFinderYanQi 
 	    : PathFinderYanQiGenerics<

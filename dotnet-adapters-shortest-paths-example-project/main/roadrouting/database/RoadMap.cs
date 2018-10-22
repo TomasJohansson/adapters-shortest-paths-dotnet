@@ -1,5 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
-namespace roadrouting.database {
+namespace Programmerare.ShortestPaths.Example.Roadrouting.Database {
     public class RoadMap : ClassMap<Road> {
         public RoadMap() {
             Id(x => x.RoadKey);

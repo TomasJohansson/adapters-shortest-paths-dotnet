@@ -1,5 +1,5 @@
-using com.programmerare.shortestpaths.core.api;
-namespace roadrouting {
+using Programmerare.ShortestPaths.Core.Api;
+namespace Programmerare.ShortestPaths.Example.Roadrouting {
     /**
      * @author Tomas Johansson
      */
@@ -21,7 +21,7 @@ namespace roadrouting {
 
 	    // ------------------------------------------------------------ 
 	    /**
-	     *  The property from the interface com.programmerare.shortestpaths.core.api.Vertex
+	     *  The property from the interface Programmerare.ShortestPaths.Core.Api.Vertex
 	     */
         public virtual string VertexId => CityKey.ToString();
 	    // ------------------------------------------------------------

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace roadrouting {
+namespace Programmerare.ShortestPaths.Example.Roadrouting {
     /**
      * @author Tomas Johansson
      */

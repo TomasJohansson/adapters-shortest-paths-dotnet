@@ -9,22 +9,22 @@
 */
 
 using NUnit.Framework;
-using com.programmerare.shortestpaths.adapter.yanqi;
-using com.programmerare.shortestpaths.adapter.bsmock;
+using Programmerare.ShortestPaths.Adapter.YanQi;
+using Programmerare.ShortestPaths.Adapter.Bsmock;
 using static NUnit.Framework.Assert;
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Core.Validation;
 using System.Collections.Generic;
-using com.programmerare.shortestpaths.core.api;
-using static com.programmerare.shortestpaths.core.impl.GraphImpl;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using Programmerare.ShortestPaths.Core.Api;
+using static Programmerare.ShortestPaths.Core.Impl.GraphImpl;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 
 // Regarding QuickGraph there are two test classes:
 // 	QuickGraph_3_6_6_Test (NOT using the adapters API, i.e. direct usage of QuickGraph)
 // 	PathFinderImplementationsTest (this file, using the adapters API)
 
-namespace dotnet_adapters_shortest_paths_test.test.com.programmerare.shortestpaths.adapter.yanqi
+namespace dotnet_adapters_shortest_paths_test.test.Programmerare.ShortestPaths.Adapter.YanQi
 {
     [TestFixture]
     class PathFinderImplementationsTest

@@ -9,15 +9,15 @@
 */
 using NUnit.Framework;
 using System.Collections.Generic;
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.validation;
-using com.programmerare.shortestpaths.adapter.bsmock;
-using com.programmerare.shortestpaths.adapter.yanqi;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl; // createEdge
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Validation;
+using Programmerare.ShortestPaths.Adapter.Bsmock;
+using Programmerare.ShortestPaths.Adapter.YanQi;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 
-namespace com.programmerare.shortestpaths.graph.tests
+namespace Programmerare.ShortestPaths.Graphs.Tests
 {
     /**
      * Tests for a small graph. It is small for the purpose that it should be easy to understand.

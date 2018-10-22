@@ -8,16 +8,16 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
+using Programmerare.ShortestPaths.Core.Api;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using static com.programmerare.shortestpaths.core.impl.GraphImplTest; // createEdgeGenerics
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
+using static Programmerare.ShortestPaths.Core.Impl.GraphImplTest; // createEdgeGenerics
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 using System.Collections.Generic;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 
-namespace com.programmerare.shortestpaths.core.impl.generics
+namespace Programmerare.ShortestPaths.Core.Impl.Generics
 {
     public class GraphGenericsImplTest {
 

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace roadrouting {
+namespace Programmerare.ShortestPaths.Example.Roadrouting {
     public interface CityRoadService {
 	    IList<City> GetAllCities();
 	    IList<Road> GetAllRoads();

@@ -8,14 +8,14 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Validation;
 using System.Collections.Generic;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 
-namespace com.programmerare.shortestpaths.core.parsers
+namespace Programmerare.ShortestPaths.Core.Parsers
 {
     [TestFixture]
     public class PathParserTest {

@@ -9,7 +9,7 @@
 */
 using System;
 
-namespace com.programmerare.shortestpaths.core.validation
+namespace Programmerare.ShortestPaths.Core.Validation
 {
     /// <summary>
     /// See <see cref="GraphEdgesValidator"/>

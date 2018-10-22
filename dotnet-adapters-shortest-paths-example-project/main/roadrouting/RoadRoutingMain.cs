@@ -1,12 +1,12 @@
-using com.programmerare.shortestpaths.adapter.bsmock.generics;
-using com.programmerare.shortestpaths.adapter.yanqi.generics;
-using com.programmerare.shortestpaths.core.api.generics;
-using com.programmerare.shortestpaths.core.validation;
+using Programmerare.ShortestPaths.Adapter.Bsmock.Generics;
+using Programmerare.ShortestPaths.Adapter.YanQi.Generics;
+using Programmerare.ShortestPaths.Core.Api.Generics;
+using Programmerare.ShortestPaths.Core.Validation;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace roadrouting {
+namespace Programmerare.ShortestPaths.Example.Roadrouting {
     /**
      * @author Tomas Johansson
      */

@@ -10,7 +10,7 @@
 
 using System.Collections.Generic;
 
-namespace com.programmerare.shortestpaths.core.api.generics
+namespace Programmerare.ShortestPaths.Core.Api.Generics
 {
     /// <summary>
     /// A path represents a connection between two Vertices, the start Vertex in the first Edge of the edge List, 

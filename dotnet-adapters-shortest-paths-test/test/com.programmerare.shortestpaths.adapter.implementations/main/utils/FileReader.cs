@@ -10,7 +10,7 @@
 
 using System;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     [Obsolete] // use xml instead
     public sealed class FileReader {

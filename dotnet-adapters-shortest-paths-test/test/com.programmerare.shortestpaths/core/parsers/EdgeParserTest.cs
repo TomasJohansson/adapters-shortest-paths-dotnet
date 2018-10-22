@@ -8,17 +8,17 @@
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
 
-using com.programmerare.shortestpaths.core.api;
-using com.programmerare.shortestpaths.core.api.generics;
+using Programmerare.ShortestPaths.Core.Api;
+using Programmerare.ShortestPaths.Core.Api.Generics;
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
-using static com.programmerare.shortestpaths.core.impl.VertexImpl; // createVertex
-using static com.programmerare.shortestpaths.core.impl.EdgeImpl;
-using static com.programmerare.shortestpaths.core.impl.WeightImpl; // createWeight
+using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
+using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl;
+using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // createWeight
 using System.Collections.Generic;
 using System;
 
-namespace com.programmerare.shortestpaths.core.parsers
+namespace Programmerare.ShortestPaths.Core.Parsers
 {
     [TestFixture]
     public class EdgeParserTest

@@ -11,7 +11,7 @@
 using System.Xml;
 using NUnit.Framework;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     public class XmlFileReaderTest {
 

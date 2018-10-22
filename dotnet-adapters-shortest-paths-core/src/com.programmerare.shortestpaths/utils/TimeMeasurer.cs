@@ -7,7 +7,7 @@
 * It should also be possible to find more license information at this URL:
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
     // TODO this class is not yet translated from the Java code ... 
     public sealed class TimeMeasurer {

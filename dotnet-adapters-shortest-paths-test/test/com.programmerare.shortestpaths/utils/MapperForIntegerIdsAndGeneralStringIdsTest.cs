@@ -11,7 +11,7 @@
 using NUnit.Framework;
 using static NUnit.Framework.Assert;
 
-namespace com.programmerare.shortestpaths.utils
+namespace Programmerare.ShortestPaths.Utils
 {
 [TestFixture]
 public class MapperForIntegerIdsAndGeneralStringIdsTest {

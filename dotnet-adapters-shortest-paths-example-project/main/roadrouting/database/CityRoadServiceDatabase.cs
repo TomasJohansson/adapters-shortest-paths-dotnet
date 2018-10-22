@@ -1,9 +1,9 @@
 using NHibernate;
 using System;
 using System.Collections.Generic;
-using static roadrouting.CityRoadServiceHardcoded; // constants NAME_OF_START_CITY and NAME_OF_END_CITY
+using static Programmerare.ShortestPaths.Example.Roadrouting.CityRoadServiceHardcoded; // constants NAME_OF_START_CITY and NAME_OF_END_CITY
 
-namespace roadrouting.database {
+namespace Programmerare.ShortestPaths.Example.Roadrouting.Database {
     /**
      * @author Tomas Johansson
      */
