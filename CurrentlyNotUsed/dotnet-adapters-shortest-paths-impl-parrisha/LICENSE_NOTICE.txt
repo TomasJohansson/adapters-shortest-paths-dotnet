@@ -1,9 +1,0 @@
-This adapter library is licensed in the same way as the adaptee library itself.
-
-This means that the license is MIT.
-
-The original Python (!) library: (which has been "translated" to C#, see further below)
-https://github.com/parrisha/python-yens-ksp
-
-The resulting C# adaptee being used is the following project/library:
-K-shortest-paths-DotNet-parrisha-translation
