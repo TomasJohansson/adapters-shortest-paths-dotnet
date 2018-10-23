@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Programmerare.ShortestPaths.Adaptee.Bsmock.Test\FileUtil.cs" />
     <Compile Include="Programmerare.ShortestPaths.Adaptee.Bsmock.Test\YenTest.cs" />
     <Compile Include="edu.ufl.cise.bsmock.graph.ksp.test\TestYen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

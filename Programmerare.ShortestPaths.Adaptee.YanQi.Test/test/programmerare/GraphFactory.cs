@@ -1,4 +1,5 @@
 ﻿using edu.asu.emit.algorithm.graph;
+using Programmerare.ShortestPaths.Adaptees.Common;
 
 namespace programmerare
 {
@@ -14,19 +15,9 @@ namespace programmerare
             return new VariableGraph(GetFullPath(fileNamePathRelativeFromProjectDirectory));
         }
 
-        // TODO: move the currently duplicated method "GetFullPath"
-        // to some reusable place...
-        // current two locations:
-        // ...\Programmerare.ShortestPaths.Adaptee.Bsmock.Test\com.programmerare.edu.ufl.cise.bsmock.graph.ksp\FileUtil.cs
-        // ...\Programmerare.ShortestPaths.Adaptee.YanQi.Test\test\programmerare\GraphFactory.cs
-
-        // e.g. fileNamePathRelativeFromProjectDirectory = "data/test_50"
-        // (which is the path used in the Java project this project was ported from)
         internal static string GetFullPath(string fileNamePathRelativeFromProjectDirectory)
         {
-            string basePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string fileNamePathRelativePart = fileNamePathRelativeFromProjectDirectory.Replace('/', '\\');
-            return System.IO.Path.Combine(basePath, fileNamePathRelativePart);
+            return FileUtil.GetFullPath(fileNamePathRelativeFromProjectDirectory);
         }
     }
 }
