@@ -55,8 +55,8 @@ namespace edu.asu.emit.qyan.test
 using NUnit.Framework;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
-using programmerare; // GraphFactory
 using System;
+using Programmerare.ShortestPaths.Adaptee.YanQi.Test; // GraphFactory
 
 /**
 * TODO Need to redo!
@@ -79,6 +79,7 @@ public class ShortestPathAlgTest {
 	public void setUp() {
 		// Import the graph from a file
 		graph = GraphFactory.createGraph("data/test_50");
+        // original java code: graph = new Graph("data/test_50"); // https://github.com/yan-qi/k-shortest-paths-java-version/blob/master/src/test/java/edu/asu/emit/qyan/test/ShortestPathAlgTest.java
 	}
 
 	[Test]

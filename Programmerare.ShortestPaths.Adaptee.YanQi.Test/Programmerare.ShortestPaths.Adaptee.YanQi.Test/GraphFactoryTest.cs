@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using static NUnit.Framework.Assert;
 
-namespace programmerare
+namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
 {
     [TestFixture]
     class GraphFactoryTest

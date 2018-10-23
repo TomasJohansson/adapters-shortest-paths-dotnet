@@ -56,10 +56,11 @@ namespace edu.asu.emit.qyan.test
 using NUnit.Framework;
 using edu.asu.emit.algorithm.graph;
 using edu.asu.emit.algorithm.graph.shortestpaths;
-using programmerare; // GraphFactory
 using System.Collections.Generic;
 using System;
-/**
+using Programmerare.ShortestPaths.Adaptee.YanQi.Test; // GraphFactory
+
+    /**
 * TODO Need to redo!
 * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
 * @version $Revision: 784 $
@@ -69,7 +70,7 @@ using System;
 * https://github.com/yan-qi/k-shortest-paths-java-version
 * Regarding the translation of that Java code to this .NET code, see the top of this source file for more information.
 */
-[TestFixture]
+    [TestFixture]
 public class YenTopKShortestPathsAlgTest {
 	// The graph should be initiated only once to guarantee the correspondence 
 	// between vertex id and node id in input text file. 
