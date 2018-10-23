@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace java_to_dotnet_translation_helpers.dot_net_types {
+namespace JavaToDotNetTranslationHelpers {
 
     // IEnumerable<T> (and also ICollection<T>) are base types for e.g. Dictionary,List,HashSet.
 

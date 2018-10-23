@@ -5,7 +5,7 @@ using edu.asu.emit.algorithm.graph.shortestpaths;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
-namespace com.programmerare.edu.asu.emit.algorithm.graph
+namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
 {
     /**
      * @author Tomas Johansson

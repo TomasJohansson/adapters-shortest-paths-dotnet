@@ -58,7 +58,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.utils;
-using java_to_dotnet_translation_helpers.dot_net_types; 
+using JavaToDotNetTranslationHelpers;
 
 namespace edu.asu.emit.algorithm.graph {
 

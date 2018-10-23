@@ -20,7 +20,7 @@
 using edu.asu.emit.algorithm.graph; // Graph
 using System.Collections.Generic;
 
-namespace com.programmerare.edu.asu.emit.algorithm.graph
+namespace Programmerare.ShortestPaths.Adaptee.YanQi
 {
     /**
      * The purpose of creating this class was to make it possible to create a Graph programmatically 

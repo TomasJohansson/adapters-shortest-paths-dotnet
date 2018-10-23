@@ -17,7 +17,7 @@
 * 
 */
 
-namespace com.programmerare.edu.asu.emit.algorithm.graph {
+namespace Programmerare.ShortestPaths.Adaptee.YanQi {
     /**
      * The purpose of the class suffix "YanQi" is just to very clearly indicate (without having to look at the full name including the package name) 
      * that it originates from the project https://github.com/yan-qi/k-shortest-paths-java-version

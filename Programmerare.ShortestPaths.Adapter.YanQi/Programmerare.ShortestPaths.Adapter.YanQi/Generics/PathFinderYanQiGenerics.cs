@@ -8,7 +8,6 @@
 
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
-using com.programmerare.edu.asu.emit.algorithm.graph;
 using Programmerare.ShortestPaths.Core.Api;
 using Programmerare.ShortestPaths.Core.Impl.Generics;
 using Programmerare.ShortestPaths.Core.PathFactories;
@@ -16,6 +15,7 @@ using Programmerare.ShortestPaths.Utils;
 using Programmerare.ShortestPaths.Core.Api.Generics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Programmerare.ShortestPaths.Adaptee.YanQi;
 
 namespace Programmerare.ShortestPaths.Adapter.YanQi.Generics
 {
