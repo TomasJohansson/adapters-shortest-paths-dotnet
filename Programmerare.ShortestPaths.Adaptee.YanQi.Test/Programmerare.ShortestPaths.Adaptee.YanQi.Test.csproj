@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="com.programmerare.edu.asu.emit.algorithm.graph\GraphPossibleToCreateProgrammaticallyTest.cs" />
+    <Compile Include="Programmerare.ShortestPaths.Adaptee.YanQi.Test\GraphPossibleToCreateProgrammaticallyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test\programmerare\GraphFactory.cs" />
     <Compile Include="test\edu.asu.emit.qyan\ShortestPathAlgTest.cs" />
