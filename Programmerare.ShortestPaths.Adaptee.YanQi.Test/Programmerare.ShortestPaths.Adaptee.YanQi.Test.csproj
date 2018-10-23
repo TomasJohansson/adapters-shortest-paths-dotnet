@@ -86,6 +86,8 @@
     <Content Include="data_programmerare\graph_small.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="NOTICE.txt" />
+    <None Include="License.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptees.Common\Programmerare.ShortestPaths.Adaptees.Common.csproj">

@@ -1,13 +1,27 @@
-/*
-* Regarding the license (Apache), please find more information 
-* in the files "License.txt" and "NOTICE.txt" 
-* in the project root directory (for the tested project) 
-* and also license information at this URL:
+/*	 
+* The code in this project is based on the following Java project created by Yan Qi (https://github.com/yan-qi) :
+* https://github.com/yan-qi/k-shortest-paths-java-version
+* Tomas Johansson later forked the above Java project into this location:
+* https://github.com/TomasJohansson/k-shortest-paths-java-version
+* Tomas Johansson later translated the above Java code to C#.NET
+* That C# code is currently a part of the Visual Studio solution located here:
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+* The current name of the subproject (within the VS solution) with the translated C# code:
+* Programmerare.ShortestPaths.Adaptee.YanQi
+* 
+* Regarding the latest license, Yan Qi has released (19th of Januari 2017) the code with Apache License 2.0
+* https://github.com/yan-qi/k-shortest-paths-java-version/commit/d028fd873ff34efc1e851421be380d2382dcb104
+* https://github.com/yan-qi/k-shortest-paths-java-version/blob/master/License.txt
+* 
+* You can also find license information in the files "License.txt" and "NOTICE.txt" in the project root directory.
 */
 
 /*
- *
+ * The below copyright statements are included from the original Java code found here:
+ * https://github.com/yan-qi/k-shortest-paths-java-version
+ * Regarding the translation of that Java code to this .NET code, see above (the top of this source file) for more information.
+ * 
+ * 
  * Copyright (c) 2004-2008 Arizona State University.  All rights
  * reserved.
  *
@@ -45,13 +59,17 @@ using edu.asu.emit.algorithm.graph.shortestpaths;
 using programmerare; // GraphFactory
 using System.Collections.Generic;
 using System;
-    /**
+/**
 * TODO Need to redo!
 * @author <a href='mailto:Yan.Qi@asu.edu'>Yan Qi</a>
 * @version $Revision: 784 $
 * @latest $Id: YenTopKShortestPathsAlgTest.java 46 2010-06-05 07:54:27Z yan.qi.asu $
+* 
+* Regarding the above javadoc author statement it applies to the original Java code found here:
+* https://github.com/yan-qi/k-shortest-paths-java-version
+* Regarding the translation of that Java code to this .NET code, see the top of this source file for more information.
 */
-    [TestFixture]
+[TestFixture]
 public class YenTopKShortestPathsAlgTest {
 	// The graph should be initiated only once to guarantee the correspondence 
 	// between vertex id and node id in input text file. 

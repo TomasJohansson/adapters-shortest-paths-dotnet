@@ -1,8 +1,8 @@
-This C# project is a fork of a Java library which also has been translated to C#.
+This C# project is part of a fork of a Java library which also has been translated to C#.
 The source code is located here:
 https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 The current name of the subproject (within the current Visual Studio solution) 
-with the translated C# code: "Programmerare.ShortestPaths.Adaptee.YanQi"
+with the translated C# code: "Programmerare.ShortestPaths.Adaptee.YanQi.Test"
 
 The location of the original Java project:
 https://github.com/yan-qi/k-shortest-paths-java-version
