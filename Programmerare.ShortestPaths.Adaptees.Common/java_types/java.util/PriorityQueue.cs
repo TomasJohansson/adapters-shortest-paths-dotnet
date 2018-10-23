@@ -3,7 +3,6 @@ using Priority_Queue;
 // https://github.com/BlueRaja/High-Speed-Priority-Queue-for-C-Sharp
 // NuGet: <PackageReference Include="OptimizedPriorityQueue" Version="4.1.1" />
 // ----------------------
-using System;
 
 namespace java.util
 {

@@ -7,10 +7,9 @@ namespace java.util
     // https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
     public class LinkedList<T> : AbstractList<T> , List<T> , IEnumerator<T> , IEnumerable<T>
     {
-        // IEnumerator/IEnumerable are needed to support "foreach" iteration
-
         private System.Collections.Generic.List<T> _list = new System.Collections.Generic.List<T>();
 
+        //IEnumerator/IEnumerable are needed to support "foreach" iteration
         object IEnumerator.Current
         {
             get
@@ -185,14 +184,5 @@ namespace java.util
         {
             __Reverse();
         }
-        //public IEnumerator<T> GetEnumerator()
-        //{
-        //    return _list.GetEnumerator();
-        //}
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return _list.GetEnumerator();
-        //}
     }
 }
