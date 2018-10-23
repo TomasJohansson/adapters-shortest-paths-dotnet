@@ -7,23 +7,40 @@
 * It should also be possible to find more license information at this URL:
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 */
+using System;
+
 namespace Programmerare.ShortestPaths.Utils
 {
     // TODO this class is not yet translated from the Java code ... 
     public sealed class TimeMeasurer {
 
 	    public static TimeMeasurer Start() {
-		    return new TimeMeasurer();
+		    return new TimeMeasurer(DateTime.Now);
 	    }
+
+	    private readonly DateTime startTime;
 	
-	    private readonly long startTime;
-	
-	    private TimeMeasurer() {
-		    this.startTime = 0;// TODO not yet translated from the Java code ... (new Date()).getTime();
+	    private TimeMeasurer(DateTime startTime) {
+            this.startTime = startTime;
 	    }
 	    
-	    public long GetSeconds() {
-		    return 0;// TODO((new Date()).getTime()-startTime) / 1000;
-	    }
+
+	    public int GetSeconds() {
+            return GetNumberOfSecondsBetweenTwoDates(this.startTime, DateTime.Now);
+        }
+
+        /// <summary>
+        /// The number of seconds between the two DateTime instances.
+        /// The returned value is an integer and is rounded by removing the decimal 
+        /// part as when using casting from double to int.
+        /// https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/explicit-numeric-conversions-table
+        /// </summary>
+        /// <returns></returns>
+        public static int GetNumberOfSecondsBetweenTwoDates(DateTime startTime, DateTime endTime)
+        {
+            long elapsedTicks = endTime.Ticks - startTime.Ticks;
+            TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
+            return (int) elapsedSpan.TotalSeconds;
+        }
     }
 }

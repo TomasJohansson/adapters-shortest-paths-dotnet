@@ -16,6 +16,7 @@ using Programmerare.ShortestPaths.Core.Validation;
 using System;
 using System.Text;
 using Programmerare.ShortestPaths.Core.Parsers;
+using Programmerare.ShortestPaths.Utils;
 
 namespace Programmerare.ShortestPaths.Graphs.Utils {
     /**
@@ -90,7 +91,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 		    for (int i = 0; i < pathFinderFactoriesForImplementationsToTest.Count; i++) {
 			    PathFinderFactory pathFinderFactory = pathFinderFactoriesForImplementationsToTest[i];
                 Console.WriteLine("Will now test file " + optionalPathToResourceXmlFile + " with impl " + pathFinderFactory.GetType().Name);
-			    //TimeMeasurer tm = TimeMeasurer.start(); 			
+			    TimeMeasurer tm = TimeMeasurer.Start(); 			
 			    PathFinder pathFinder = pathFinderFactory.CreatePathFinder(
 				    edgesForBigGraph,
 				    GraphEdgesValidationDesired.NO // do the validation one time instead of doing it for each pathFinderFactory
@@ -100,8 +101,8 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 			    //assertThat("At least some path should be found", shortestPaths.size(), greaterThanOrEqualTo(1));
                 Assert.That(shortestPaths.Count >= 1, "At least some path should be found"); // TODO "hamcrest" syntax as java above
 			    output(
-					    messagePrefixWithInformationAboutXmlSourcefileWithTestData					
-						    //+ "Seconds: " + tm.getSeconds() 
+					    messagePrefixWithInformationAboutXmlSourcefileWithTestData
+						    + "Seconds: " + tm.GetSeconds() 
 						    + ". Implementation: " + pathFinder.GetType().Name, 
 					    ConsoleOutputDesired.TIME_MEASURE
 			    );
