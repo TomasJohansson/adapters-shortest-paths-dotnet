@@ -9,4 +9,4 @@ The current name of the adaptee being used is
 the following library (which is a fork of the above Java library which has been "translated" to C#):
 Programmerare.ShortestPaths.Adaptee.Bsmock
 Location of the Visual Studio solution with the above library/project:
-https://github.com/TomasJohansson/k-shortest-paths/
+https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
