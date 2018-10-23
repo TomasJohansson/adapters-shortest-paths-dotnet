@@ -1,60 +1,58 @@
-//using NUnit.
-//import org.junit.After;
-//import org.junit.AfterClass;
-//import org.junit.Before;
-//import org.junit.BeforeClass;
-//import org.junit.Test;
+using NUnit.Framework;
+using edu.ufl.cise.bsmock.graph;
+using edu.ufl.cise.bsmock.graph.ksp;
+using edu.ufl.cise.bsmock.graph.util;
+using System;
+using System.Collections.Generic;
 
-namespace edu.ufl.cise.bsmock.graph.ksp 
+namespace Programmerare.ShortestPaths.Adaptee.Bsmock.Test
 {
-    // Maybe not an appropriate package name above since it was not created by the original author of the project.
-
-    /**
-     * TODO: add real tests, for example a test can be based on the existing 
-     * code in the class TestYen which is outputting the result with 'System.out.println'
-     * @see edu.ufl.cise.bsmock.graph.ksp.test.TestYen
-     * 
-     * @author Tomas Johansson, added this class in a forked version of the project.  
-     * https://github.com/TomasJohansson/k-shortest-paths/commit/c8ac52a364da74d3afbefa1b73dfb39a79fb3610
-     */
+    /// <summary>
+    /// Tomas Johansson is the author of this test class.
+    /// </summary>
     public class YenTest {
 
-	    //@BeforeClass
-	    public static void setUpBeforeClass() {
-	    }
-
-	    //@AfterClass
-	    public static void tearDownAfterClass() {
-	    }
-
-	    //@Before
-	    public void setUp() {
-	    }
-
-	    //@After
-	    public void tearDown() {
-	    }
-
-        //@Test
-        public void testYen()
+        [Test]
+        public void YenKShortestPathsTest()
         {
-            //assertTrue(true);
-	    }
+            const double deltaValue = 0.0000001;
 
-	    //@Test
-	    public void testIsLoopless() {
-		    // fail("Not yet implemented");
-	    }
+            var graph = new Graph();
+            graph.AddEdge("A", "B", 5);
+            graph.AddEdge("A", "C", 6);
+            graph.AddEdge("B", "C", 7);
+            graph.AddEdge("B", "D", 8);
+            graph.AddEdge("C", "D", 9);
 
-	    //@Test
-	    public void testKsp() {
-		    // fail("Not yet implemented");
-	    }
+            Yen yenAlgorithm = new Yen();
+            IList<Path> paths = yenAlgorithm.Ksp(graph, "A", "D", 5);
+            Assert.AreEqual(3, paths.Count);
 
-	    //@Test
-	    public void testKsp_v2() {
-		    // fail("Not yet implemented");
-	    }
+            Path path1 = paths[0];
+            Path path2 = paths[1];
+            Path path3 = paths[2];
+            Assert.AreEqual(13, path1.GetTotalCost(), deltaValue);
+            Assert.AreEqual(15, path2.GetTotalCost(), deltaValue);
+            Assert.AreEqual(21, path3.GetTotalCost(), deltaValue);
 
+            java.util.LinkedList<String> nodes1 = path1.GetNodes();
+            Assert.AreEqual(3, nodes1.size());
+            Assert.AreEqual("A", nodes1.get(0));
+            Assert.AreEqual("B", nodes1.get(1));
+            Assert.AreEqual("D", nodes1.get(2));
+        
+            java.util.LinkedList<String> nodes2 = path2.GetNodes();
+            Assert.AreEqual(3, nodes2.size());
+            Assert.AreEqual("A", nodes2.get(0));
+            Assert.AreEqual("C", nodes2.get(1));
+            Assert.AreEqual("D", nodes2.get(2));
+
+            java.util.LinkedList<String> nodes3 = path3.GetNodes();
+            Assert.AreEqual(4, nodes3.size());
+            Assert.AreEqual("A", nodes3.get(0));
+            Assert.AreEqual("B", nodes3.get(1));
+            Assert.AreEqual("C", nodes3.get(2));
+            Assert.AreEqual("D", nodes3.get(3));
+        }
     }
 }
