@@ -1,0 +1,5 @@
+There is a NuGet dependency to the library OptimizedPriorityQueue/"Priority_Queue" 
+(from the class java.util.PriorityQueue)
+which is licensed with MIT:
+https://github.com/BlueRaja/High-Speed-Priority-Queue-for-C-Sharp/blob/master/LICENSE.txt
+https://www.nuget.org/packages/OptimizedPriorityQueue/
