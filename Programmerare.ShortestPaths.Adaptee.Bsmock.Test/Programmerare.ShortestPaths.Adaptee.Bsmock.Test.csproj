@@ -58,6 +58,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="License.txt" />
+    <None Include="NOTICE.txt" />
     <Content Include="test_files_edu.ufl.cise.bsmock.graph.ksp.test\small_road_network_01.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,8 +1,20 @@
 /*
-* Regarding the license (Apache), please find more information 
-* in the files "License.txt" and "NOTICE.txt" 
-* in the project root directory and also license information at this URL:
+* The code in this project is based on the following Java project created by Brandon Smock:
+* https://github.com/bsmock/k-shortest-paths/
+* Tomas Johansson later forked the above Java project into this location:
+* https://github.com/TomasJohansson/k-shortest-paths/
+* Tomas Johansson later translated the above Java code to C#.NET .
+* That C# code is currently a part of the Visual Studio solution located here:
 * https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
+* The current name of the subproject (within the VS solution) with the translated C# code:
+* Programmerare.ShortestPaths.Adaptee.Bsmock
+* 
+* Regarding the latest license, Brandon Smock has released (13th of November 2017) the code with Apache License 2.0
+* https://github.com/bsmock/k-shortest-paths/commit/b0af3f4a66ab5e4e741a5c9faffeb88def752882
+* https://github.com/bsmock/k-shortest-paths/pull/4
+* https://github.com/bsmock/k-shortest-paths/blob/master/LICENSE
+* 
+* You can also find license information in the files "License.txt" and "NOTICE.txt" in the project root directory.
 */
 
 using System;
@@ -11,22 +23,25 @@ using System.Collections.Generic;
 namespace edu.ufl.cise.bsmock.graph.util {
     /**
      * Created by brandonsmock on 6/6/15.
+     * The above statement applies to the original Java code found here:
+     * https://github.com/bsmock/k-shortest-paths
+     * Regarding the translation of that Java code to this .NET code, see the top of this source file for more information.
      */
     public class DijkstraNode : Node 
         //, Comparable<DijkstraNode> 
     {
-    // Reason for using Comparable<Vertex> :
-    // Java code: Comparable<Vertex> is used because PriorityQueue is 
-    // used with natural ordering in class class DijkstraShortestPathAlg:
-    // private PriorityQueue<BaseVertex> vertexCandidateQueue = new PriorityQueue<BaseVertex>();
-    // https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue()
-    // It is the method compareTo below which determines 
-    // what should be returned from the priority queue.
-    // HOWEVER, this is currently not needed in the C# translation 
-    // of the project since a PriorityQueue is used which instead 
-    // takes the weight parameter in the add method,
-    // which was how the compareTo method was implemented before in this class 
-    // i.e. before the method Comparable.compareTo was removed
+        // Reason for using Comparable<Vertex> :
+        // Java code: Comparable<Vertex> is used because PriorityQueue is 
+        // used with natural ordering in class class DijkstraShortestPathAlg:
+        // private PriorityQueue<BaseVertex> vertexCandidateQueue = new PriorityQueue<BaseVertex>();
+        // https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue()
+        // It is the method compareTo below which determines 
+        // what should be returned from the priority queue.
+        // HOWEVER, this is currently not needed in the C# translation 
+        // of the project since a PriorityQueue is used which instead 
+        // takes the weight parameter in the add method,
+        // which was how the compareTo method was implemented before in this class 
+        // i.e. before the method Comparable.compareTo was removed
 
         private double dist = double.MaxValue;
         private int depth;

@@ -1,8 +1,8 @@
-This project is a fork of a Java library which also has been translated to C#.
+This project is part of a fork of a Java library which also has been translated to C#.
 The source code is located here:
 https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/
 The current name of the subproject (within the current Visual Studio solution) 
-with the translated C# code: "Programmerare.ShortestPaths.Adaptee.Bsmock"
+with the translated C# code: "Programmerare.ShortestPaths.Adaptee.Bsmock.Test"
 
 The location of the original project:
 https://github.com/bsmock/k-shortest-paths
