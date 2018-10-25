@@ -52,10 +52,13 @@
  *
  */
 using System;
-using System.Collections.Generic;
-#if ( NET20 || NET30 ) // ISet and HashSet:
-using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
-// else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
+//using System.Collections.Generic; // problem with 3.5 if everything is imported since HashSet was introduced with .NET 3.5 and the interface ISet with .NET 4.0 
+using G = System.Collections.Generic;// https://stackoverflow.com/questions/3720222/using-statement-with-generics-using-iset-system-collections-generic-iset
+#if ( NET20 || NET30 || NET35 ) // ISet and HashSet
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20; // ISet and HashSet:
+// else (if > .NET 3.5) then ISet and HashSet exist in System.Collections.Generic
+#else
+using System.Collections.Generic; // ISet and HashSet
 #endif
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
@@ -103,7 +106,7 @@ namespace edu.asu.emit.algorithm.graph {
 	     * 
 	     * @param remVertexList
 	     */
-	    public void SetDelVertexIdList(IList<int> remVertexList) {
+	    public void SetDelVertexIdList(G.IList<int> remVertexList) {
 		    this.remVertexIdSet.AddAll(remVertexList);
 	    }
 
@@ -112,7 +115,7 @@ namespace edu.asu.emit.algorithm.graph {
 	     * 
 	     * @param _rem_edge_hashcode_set
 	     */
-	    public void SetDelEdgeHashcodeSet(IList<Pair<int, int>> remEdgeCollection) {
+	    public void SetDelEdgeHashcodeSet(G.IList<Pair<int, int>> remEdgeCollection) {
 		    remEdgeSet.AddAll(remEdgeCollection);
 	    }
 	
@@ -231,8 +234,8 @@ namespace edu.asu.emit.algorithm.graph {
 	     * Get the list of vertices in the graph, except those removed.
 	     * @return
 	     */
-	    public override IList<BaseVertex> GetVertexList() {
-		    IList<BaseVertex> retList = new List<BaseVertex>();
+	    public override G.IList<BaseVertex> GetVertexList() {
+		    G.IList<BaseVertex> retList = new G.List<BaseVertex>();
 		    foreach (BaseVertex curVertex in base.GetVertexList()) {
 			    if (remVertexIdSet.Contains(curVertex.GetId())) {
 				    continue;

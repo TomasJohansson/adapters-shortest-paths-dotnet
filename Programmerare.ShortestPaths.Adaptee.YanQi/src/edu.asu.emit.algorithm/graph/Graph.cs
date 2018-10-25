@@ -54,10 +54,13 @@
 using System;
 using System.IO;
 using System.Text;
-using System.Collections.Generic;
-#if ( NET20 || NET30 ) // ISet and HashSet:
-using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
-// else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
+//using System.Collections.Generic; // problem with 3.5 if everything is imported since HashSet was introduced with .NET 3.5 and the interface ISet with .NET 4.0 
+using G = System.Collections.Generic;// https://stackoverflow.com/questions/3720222/using-statement-with-generics-using-iset-system-collections-generic-iset
+#if ( NET20 || NET30 || NET35 ) // ISet and HashSet
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20; // ISet and HashSet:
+// else (if > .NET 3.5) then ISet and HashSet exist in System.Collections.Generic
+#else
+using System.Collections.Generic; // ISet and HashSet
 #endif
 using System.Text.RegularExpressions;
 using edu.asu.emit.algorithm.graph.abstraction;
@@ -85,23 +88,23 @@ namespace edu.asu.emit.algorithm.graph {
 	    public static readonly double DISCONNECTED = double.MaxValue;
 	
 	    // index of fan-outs of one vertex
-	    protected IDictionary<int, ISet<BaseVertex>> fanoutVerticesIndex =
-		    new Dictionary<int, ISet<BaseVertex>>();
+	    protected G.IDictionary<int, ISet<BaseVertex>> fanoutVerticesIndex =
+		    new G.Dictionary<int, ISet<BaseVertex>>();
 	
 	    // index for fan-ins of one vertex
-	    protected IDictionary<int, ISet<BaseVertex>> faninVerticesIndex =
-		    new Dictionary<int, ISet<BaseVertex>>();
+	    protected G.IDictionary<int, ISet<BaseVertex>> faninVerticesIndex =
+		    new G.Dictionary<int, ISet<BaseVertex>>();
 	
 	    // index for edge weights in the graph
-	    protected IDictionary<Pair<int, int>, Double> vertexPairWeightIndex = 
-		    new Dictionary<Pair<int, int>, Double>();
+	    protected G.IDictionary<Pair<int, int>, Double> vertexPairWeightIndex = 
+		    new G.Dictionary<Pair<int, int>, Double>();
 	
 	    // index for vertices in the graph
-	    protected IDictionary<int, BaseVertex> idVertexIndex = 
-		    new Dictionary<int, BaseVertex>();
+	    protected G.IDictionary<int, BaseVertex> idVertexIndex = 
+		    new G.Dictionary<int, BaseVertex>();
 	
 	    // list of vertices in the graph 
-	    protected IList<BaseVertex> vertexList = new System.Collections.Generic.List<BaseVertex>();
+	    protected G.IList<BaseVertex> vertexList = new System.Collections.Generic.List<BaseVertex>();
 	
 	    // the number of vertices in the graph
 	    protected int vertexNum = 0;
@@ -320,7 +323,7 @@ namespace edu.asu.emit.algorithm.graph {
 	    /**
 	     * Return the vertex list in the graph.
 	     */
-	    public virtual IList<BaseVertex> GetVertexList() {
+	    public virtual G.IList<BaseVertex> GetVertexList() {
 		    return vertexList;
 	    }
 	

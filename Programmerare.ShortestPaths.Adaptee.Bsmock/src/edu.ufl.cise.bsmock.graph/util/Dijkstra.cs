@@ -24,10 +24,13 @@
  * Regarding the translation of that Java code to this .NET code, see the top of this source file for more information.
  */
 using System;
-using System.Collections.Generic;
-#if ( NET20 || NET30 ) // ISet and HashSet:
-using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
-// else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
+//using System.Collections.Generic; // problem with 3.5 if everything is imported since HashSet was introduced with .NET 3.5 and the interface ISet with .NET 4.0 
+using G = System.Collections.Generic;// https://stackoverflow.com/questions/3720222/using-statement-with-generics-using-iset-system-collections-generic-iset
+#if ( NET20 || NET30 || NET35 ) // ISet and HashSet
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20; // ISet and HashSet:
+// else (if > .NET 3.5) then ISet and HashSet exist in System.Collections.Generic
+#else
+using System.Collections.Generic; // ISet and HashSet
 #endif
 
 namespace edu.ufl.cise.bsmock.graph.util {
@@ -36,7 +39,7 @@ namespace edu.ufl.cise.bsmock.graph.util {
         private Dijkstra() {}
 
         public static ShortestPathTree ShortestPathTree(Graph graph, String sourceLabel) {
-            IDictionary<String,Node> nodes = graph.GetNodes();
+            G.IDictionary<String,Node> nodes = graph.GetNodes();
             if (!nodes.ContainsKey(sourceLabel))
                 throw new Exception("Source node not found in graph.");
             ShortestPathTree predecessorTree = new ShortestPathTree(sourceLabel);
@@ -60,7 +63,7 @@ namespace edu.ufl.cise.bsmock.graph.util {
                 String currLabel = current.GetLabel();
                 visited.Add(current);
                 count++;
-                IDictionary<String, Double> neighbors = nodes[currLabel].GetNeighbors();
+                G.IDictionary<String, Double> neighbors = nodes[currLabel].GetNeighbors();
                 foreach (String currNeighborLabel in neighbors.Keys) {
                     DijkstraNode neighborNode = predecessorTree.GetNodes()[currNeighborLabel];
                     Double currDistance = neighborNode.GetDist();
@@ -83,7 +86,7 @@ namespace edu.ufl.cise.bsmock.graph.util {
         public static Path ShortestPath(Graph graph, String sourceLabel, String targetLabel) {
             //if (!nodes.containsKey(sourceLabel))
             //    throw new Exception("Source node not found in graph.");
-            IDictionary<String,Node> nodes = graph.GetNodes();
+            G.IDictionary<String,Node> nodes = graph.GetNodes();
             ShortestPathTree predecessorTree = new ShortestPathTree(sourceLabel);
             java.util.PriorityQueue<DijkstraNode> pq = new java.util.PriorityQueue<DijkstraNode>();
             foreach (String nodeLabel in nodes.Keys) {
@@ -114,7 +117,7 @@ namespace edu.ufl.cise.bsmock.graph.util {
                     return shortestPath;
                 }
                 count++;
-                IDictionary<String, Double> neighbors = nodes[currLabel].GetNeighbors();
+                G.IDictionary<String, Double> neighbors = nodes[currLabel].GetNeighbors();
                 foreach (String currNeighborLabel in neighbors.Keys) {
                     DijkstraNode neighborNode = predecessorTree.GetNodes()[currNeighborLabel];
                     Double currDistance = neighborNode.GetDist();

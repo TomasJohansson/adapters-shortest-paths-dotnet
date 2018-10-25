@@ -52,10 +52,13 @@
  *
  */
 using System;
-using System.Collections.Generic;
-#if ( NET20 || NET30 ) // ISet and HashSet:
-using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
-// else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
+//using System.Collections.Generic; // problem with 3.5 if everything is imported since HashSet was introduced with .NET 3.5 and the interface ISet with .NET 4.0 
+using G = System.Collections.Generic;// https://stackoverflow.com/questions/3720222/using-statement-with-generics-using-iset-system-collections-generic-iset
+#if ( NET20 || NET30 || NET35 ) // ISet and HashSet
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20; // ISet and HashSet:
+// else (if > .NET 3.5) then ISet and HashSet exist in System.Collections.Generic
+#else
+using System.Collections.Generic; // ISet and HashSet
 #endif
 using edu.asu.emit.algorithm.graph.abstraction;
 using JavaToDotNetTranslationHelpers;
@@ -77,8 +80,8 @@ namespace edu.asu.emit.algorithm.graph.shortestpaths {
 	    // Intermediate variables
 	    private ISet<BaseVertex> determinedVertexSet = new HashSet<BaseVertex>();
         private java.util.PriorityQueue<BaseVertex> vertexCandidateQueue = new java.util.PriorityQueue<BaseVertex>();
-	    private IDictionary<BaseVertex, Double> startVertexDistanceIndex = new Dictionary<BaseVertex, Double>();
-	    private IDictionary<BaseVertex, BaseVertex> predecessorIndex = new Dictionary<BaseVertex, BaseVertex>();
+	    private G.IDictionary<BaseVertex, Double> startVertexDistanceIndex = new G.Dictionary<BaseVertex, Double>();
+	    private G.IDictionary<BaseVertex, BaseVertex> predecessorIndex = new G.Dictionary<BaseVertex, BaseVertex>();
 
 	    /**
 	     * Default constructor.
@@ -103,7 +106,7 @@ namespace edu.asu.emit.algorithm.graph.shortestpaths {
 	     * 
 	     * @return
 	     */
-	    public IDictionary<BaseVertex, Double> GetStartVertexDistanceIndex() {
+	    public G.IDictionary<BaseVertex, Double> GetStartVertexDistanceIndex() {
             return startVertexDistanceIndex;
 	    }
 
@@ -111,7 +114,7 @@ namespace edu.asu.emit.algorithm.graph.shortestpaths {
 	     * Getter for the index of the predecessors of vertices
 	     * @return
 	     */
-	    public IDictionary<BaseVertex, BaseVertex> GetPredecessorIndex() {
+	    public G.IDictionary<BaseVertex, BaseVertex> GetPredecessorIndex() {
             return predecessorIndex;
 	    }
 
