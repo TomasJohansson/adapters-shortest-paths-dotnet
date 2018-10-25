@@ -26,7 +26,15 @@ namespace Programmerare.ShortestPaths.Test.Utils {
 
         internal static TargetFramework GetTargetFrameworkForAssembly(Type typeInTheAssembly) {
             var assembly = typeInTheAssembly.Assembly;
-            //Console.WriteLine("typeof(Graph).Assembly.ImageRuntimeVersion " + assembly.ImageRuntimeVersion);
+            //Console.WriteLine("assembly.FullName: " + assembly.FullName);
+            //var manifestModule = assembly.ManifestModule;
+            //Console.WriteLine("manifestModule.FullyQualifiedName: " + manifestModule.FullyQualifiedName);
+            //Console.WriteLine("manifestModule.ScopeName: " + manifestModule.ScopeName);
+            //// When TargetFramework is .NET Framework 2.0 : "v2.0.50727" for below ImageRuntimeVersion
+            //Console.WriteLine("typeof(Graph).Assembly.ImageRuntimeVersion " + assembly.ImageRuntimeVersion); // typeof(Graph).Assembly.ImageRuntimeVersion v2.0.50727
+            // but the same string below was printed when using .NET 3.0 
+            // typeof(Graph).Assembly.ImageRuntimeVersion v2.0.50727
+
             object[] customAttributes = assembly.GetCustomAttributes(typeof(TargetFrameworkAttribute), true);
             foreach(TargetFrameworkAttribute targetFramework in customAttributes) {
                 //Console.WriteLine("targetFramework.TypeId : " + targetFramework.TypeId);

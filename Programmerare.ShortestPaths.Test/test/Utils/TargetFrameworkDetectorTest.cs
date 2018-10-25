@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Programmerare.ShortestPaths.Core.Api;
 using System.Collections.Generic;
 
 namespace Programmerare.ShortestPaths.Test.Utils {
@@ -42,7 +43,12 @@ namespace Programmerare.ShortestPaths.Test.Utils {
                     TargetFrameworkDetector.GetTargetFrameworkEnumFromStringWithName(keyValuePair.Key)
                 );
             }
-
         }
+
+        //[Test]
+        public void GetTargetFrameworkForAssemblyTest() {
+            TargetFrameworkDetector.GetTargetFrameworkForAssembly(typeof(PathFinder));
+        }
+
     }
 }
