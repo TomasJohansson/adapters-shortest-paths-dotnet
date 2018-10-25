@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Programmerare.ShortestPaths.Adaptee.Bsmock.Test\Programmerare.ShortestPaths.Adaptee.Bsmock.Test\YenTest.cs" Link="Adaptee.Bsmock\YenTest.cs" />
+    <Compile Include="..\Programmerare.ShortestPaths.Adaptee.YanQi.Test\Programmerare.ShortestPaths.Adaptee.YanQi.Test\GraphPossibleToCreateProgrammaticallyTest.cs" Link="Adaptee.YanQi\GraphPossibleToCreateProgrammaticallyTest.cs" />
+    <Compile Include="..\Programmerare.ShortestPaths.Test\test\Programmerare.ShortestPaths.Adapter.Implementations\test\Programmerare.ShortestPaths.Graphs.Tests\SmallGraphTest.cs" Link="Programmerare.ShortestPaths\SmallGraphTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="NUnit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptee.Bsmock\Programmerare.ShortestPaths.Adaptee.Bsmock.csproj" />
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptee.YanQi\Programmerare.ShortestPaths.Adaptee.YanQi.csproj" />
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adapter.Bsmock\Programmerare.ShortestPaths.Adapter.Bsmock.csproj" />
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adapter.YanQi\Programmerare.ShortestPaths.Adapter.YanQi.csproj" />
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Core\Programmerare.ShortestPaths.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Adaptee.YanQi\" />
+    <Folder Include="Adaptee.Bsmock\" />
+    <Folder Include="Programmerare.ShortestPaths\" />
+  </ItemGroup>
+
+</Project>
