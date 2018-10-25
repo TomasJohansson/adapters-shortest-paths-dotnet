@@ -13,18 +13,10 @@ namespace Programmerare.ShortestPaths.Test.Utils
 {
     internal class TargetFramework
     {
-        private readonly TargetFrameworkEnum _targetFramework;
+        private static ISet<TargetFrameworkEnum> targetFrameworksNotSupportingFileStreamReader;
 
-        internal TargetFramework(TargetFrameworkEnum targetFramework)
-        {
-            Console.WriteLine("Detected targetFramework for the assembly: " + targetFramework); 
-            this._targetFramework = targetFramework;
-        }
-
-        internal bool IsSupportingFileStreamReader()
-        {
-            // TODO refactor this HashSet into a static variable instead of creating local variable as below ...
-            var targetFrameworksNotSupportingFileStreamReader = new HashSet<TargetFrameworkEnum>
+        static TargetFramework() {
+            targetFrameworksNotSupportingFileStreamReader = new HashSet<TargetFrameworkEnum>
             {
                 TargetFrameworkEnum.NETSTANDARD1_0,
                 TargetFrameworkEnum.NETSTANDARD1_1,
@@ -36,6 +28,16 @@ namespace Programmerare.ShortestPaths.Test.Utils
             };
             // assume the others are supporting StreamReader
             // (at least all others being used/targeted within this Visual Studio solution)
+        }
+
+        private readonly TargetFrameworkEnum _targetFramework;
+
+        internal TargetFramework(TargetFrameworkEnum targetFramework) {
+            Console.WriteLine("Detected targetFramework for the assembly: " + targetFramework); 
+            this._targetFramework = targetFramework;
+        }
+
+        internal bool IsSupportingFileStreamReader() {
             return !targetFrameworksNotSupportingFileStreamReader.Contains(_targetFramework);
         }
     }
