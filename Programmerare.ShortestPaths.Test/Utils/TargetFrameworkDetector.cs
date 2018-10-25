@@ -15,6 +15,7 @@ namespace Programmerare.ShortestPaths.Test.Utils {
                 //Console.WriteLine("targetFramework.TypeId : " + targetFramework.TypeId);
                 //Console.WriteLine("targetFramework.FrameworkDisplayName : " + targetFramework.FrameworkDisplayName);
                 Console.WriteLine("targetFramework.FrameworkName : " + targetFramework.FrameworkName);
+                // The below strings have been tested when having used .NET Standard 1.0 - 1.6 as the targets
                 // Tested strings so far (by changing the target framework and watching the output):
                 //".NETStandard,Version=v1.0"
                 //".NETStandard,Version=v1.1"
@@ -22,6 +23,7 @@ namespace Programmerare.ShortestPaths.Test.Utils {
                 //".NETStandard,Version=v1.3"
                 //".NETStandard,Version=v1.4"
                 //".NETStandard,Version=v1.5"
+                //".NETStandard,Version=v1.6"
                 const string NetStandardPrefix = ".NETStandard,Version=v"; // e.g. "...Version=v1.0"
                 const string v10 = NetStandardPrefix + "1.0";
                 const string v11 = NetStandardPrefix + "1.1";
@@ -29,6 +31,7 @@ namespace Programmerare.ShortestPaths.Test.Utils {
                 const string v13 = NetStandardPrefix + "1.3";
                 const string v14 = NetStandardPrefix + "1.4";
                 const string v15 = NetStandardPrefix + "1.5";
+                const string v16 = NetStandardPrefix + "1.6";
                 string s = targetFramework.FrameworkName;
                 if(s == v10) return new TargetFramework(TargetFrameworkEnum.NETSTANDARD1_0);
                 if(s == v11) return new TargetFramework(TargetFrameworkEnum.NETSTANDARD1_1);
@@ -36,10 +39,6 @@ namespace Programmerare.ShortestPaths.Test.Utils {
                 if(s == v13) return new TargetFramework(TargetFrameworkEnum.NETSTANDARD1_3);
                 if(s == v14) return new TargetFramework(TargetFrameworkEnum.NETSTANDARD1_4);
                 if(s == v15) return new TargetFramework(TargetFrameworkEnum.NETSTANDARD1_5);
-                // The above strings are tested when having used .NET Standard 1.0 - 1.5 as the targets.
-                // But the below code are currently only assumptions ...
-                // TODO: verify the code below by testing the different .NET Standard versions !
-                const string v16 = NetStandardPrefix + "1.6";
                 if(s == v16) return new TargetFramework(TargetFrameworkEnum.NETSTANDARD1_6);
             }
             return new TargetFramework(TargetFrameworkEnum.UNKNOWN);

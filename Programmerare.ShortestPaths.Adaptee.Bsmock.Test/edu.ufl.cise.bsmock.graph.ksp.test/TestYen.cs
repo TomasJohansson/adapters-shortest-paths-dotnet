@@ -144,7 +144,7 @@ public class TestYen {
     [Test]
     public void YenMain()
     {
-        TargetFramework targetFramework = TargetFrameworkDetector.GetTargetFrameworkForAssembly(typeof(Graph)); 
+        TargetFramework targetFramework = TargetFrameworkDetector.GetTargetFrameworkForAssembly(typeof(Graph));
         if(!targetFramework.IsSupportingFileStreamReader()) {
             Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
         }
