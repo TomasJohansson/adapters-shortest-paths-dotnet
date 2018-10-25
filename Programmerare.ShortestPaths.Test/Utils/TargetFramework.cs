@@ -17,7 +17,7 @@ namespace Programmerare.ShortestPaths.Test.Utils
 
         internal TargetFramework(TargetFrameworkEnum targetFramework)
         {
-            Console.WriteLine("Detected targetFramework for the assembly: " + targetFramework); 
+            Console.WriteLine("Detected targetFramework for the assembly: " + targetFramework);
             this._targetFramework = targetFramework;
         }
 
