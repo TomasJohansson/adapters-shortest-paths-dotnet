@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test\Utils\TargetFrameworkDetectorTest.cs" />
+    <Compile Include="test\Utils\TargetFrameworkTest.cs" />
     <Compile Include="Utils\TargetFramework.cs" />
     <Compile Include="Utils\TargetFrameworkEnum.cs" />
     <Compile Include="Utils\TargetFrameworkDetector.cs" />
