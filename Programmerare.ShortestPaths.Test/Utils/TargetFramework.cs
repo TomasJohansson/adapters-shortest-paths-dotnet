@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 // Note: Currently the three files beginning 
 // with the name "TargetFramework" 
@@ -14,9 +15,9 @@ namespace Programmerare.ShortestPaths.Test.Utils
     {
         private readonly TargetFrameworkEnum _targetFramework;
 
-
         internal TargetFramework(TargetFrameworkEnum targetFramework)
         {
+            Console.WriteLine("Detected targetFramework for the assembly: " + targetFramework);
             this._targetFramework = targetFramework;
         }
 
