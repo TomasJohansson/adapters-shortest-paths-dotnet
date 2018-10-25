@@ -18,6 +18,7 @@
 */
 
 using edu.ufl.cise.bsmock.graph.util;
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes;
 using System;
 using System.Collections.Generic;
 
@@ -290,7 +291,7 @@ namespace edu.ufl.cise.bsmock.graph.ksp {
                     ksp.Add(kthPath);
                 }
             } catch (Exception e) {
-                Console.WriteLine(e);
+                ConsoleUtility.WriteLine(e);
                 //e.printStackTrace();
             }
 

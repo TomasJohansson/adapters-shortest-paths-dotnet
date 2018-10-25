@@ -63,6 +63,7 @@ using System.Text.RegularExpressions;
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.utils;
 using JavaToDotNetTranslationHelpers;
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes;
 
 namespace edu.asu.emit.algorithm.graph {
 
@@ -149,7 +150,19 @@ namespace edu.asu.emit.algorithm.graph {
 		    fanoutVerticesIndex.Clear();
 		    vertexPairWeightIndex.Clear();
 	    }
-	
+
+#if (NETSTANDARD1_0 || NETSTANDARD1_1 || NETSTANDARD1_2 || NETSTANDARD1_3 || NETSTANDARD1_4 || NETSTANDARD1_5 || NETSTANDARD1_6)
+    // StreamReader constructor with file path is missing for the above targets
+    // but please also note that this method is not actually used within this project
+    // which is a port of a Java project that provided this method ...
+
+    /// <summary>
+    /// The method is not supported for .NET Standard 1.0 - 1.6
+    /// </summary>
+    public void ImportFromFile(String dataFileName) {
+        throw new NotImplementedException(TargetFrameworkNotSupportedMessage.NET_STANDARD_1_0_to_1_6_NOT_SUPPORTED);
+    }
+#else
 	    /**
 	     * There is a requirement for the input graph. 
 	     * The ids of vertices must be consecutive. 
@@ -163,7 +176,7 @@ namespace edu.asu.emit.algorithm.graph {
 		    try	{
 			    // 1. read the file and put the content in the buffer
                 var bufRead = new StreamReader(dataFileName);
-
+                
 
 			    bool isFirstLine = true;
 			    String line; 	// String that holds current file line
@@ -193,10 +206,10 @@ namespace edu.asu.emit.algorithm.graph {
 
 		    } catch (IOException e) {
 			    // If another exception is generated, print a stack trace
-                Console.WriteLine(e.StackTrace);
+                ConsoleUtility.WriteLine(e.StackTrace);
 		    }
 	    }
-
+#endif
 	    /**
 	     * Note that this may not be used externally, because some other members in the class
 	     * should be updated at the same time. 

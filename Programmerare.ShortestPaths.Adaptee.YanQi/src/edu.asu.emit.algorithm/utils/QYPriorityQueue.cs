@@ -55,6 +55,7 @@ namespace edu.asu.emit.algorithm.utils
 {
 using System;
 using edu.asu.emit.algorithm.graph.abstraction;
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes;
 /**
  * The class defines a priority queue. 
  * @author yqi
@@ -151,7 +152,7 @@ public class QYPriorityQueue<E> where E : BaseElementWithWeight {
 	 */
 	public E Get(int i) {
 		if (i >= elementWeightPairList.size()) {
-			Console.WriteLine("The result :" + i + " doesn't exist!!!");
+			ConsoleUtility.WriteLine("The result :" + i + " doesn't exist!!!");
 		}
 		return elementWeightPairList.get(i);
 	}

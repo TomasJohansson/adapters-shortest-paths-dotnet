@@ -22,6 +22,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.IO;
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes;
 
 namespace edu.ufl.cise.bsmock.graph {
     /**
@@ -185,6 +186,21 @@ namespace edu.ufl.cise.bsmock.graph {
             nodes = new Dictionary<String,Node>();
         }
 
+#if (NETSTANDARD1_0 || NETSTANDARD1_1 || NETSTANDARD1_2 || NETSTANDARD1_3 || NETSTANDARD1_4 || NETSTANDARD1_5 || NETSTANDARD1_6)
+    // StreamReader constructor with file path is missing for the above targets
+    // but please also note that this method 
+    // (and constructor "Graph(String filename)" using it, is not used
+    //   except from test code which is not using .NET Standard 1.0-1.6 )
+    // is not actually used within this project
+    // which is a port of a Java project that provided this file reading method.
+
+    /// <summary>
+    /// The method is not supported for .NET Standard 1.0 - 1.6
+    /// </summary>
+    public void ReadFromFile(String fileName) {
+        throw new NotImplementedException(TargetFrameworkNotSupportedMessage.NET_STANDARD_1_0_to_1_6_NOT_SUPPORTED);
+    }
+#else
         public void ReadFromFile(String fileName) {
             //try {
                 StreamReader br = new StreamReader(fileName);
@@ -203,7 +219,7 @@ namespace edu.ufl.cise.bsmock.graph {
             //    e.printStackTrace();
             //}
         }
-
+#endif
         public override String ToString() {
             StringBuilder graphStringB = new StringBuilder();
             var it = nodes.Keys.GetEnumerator();

@@ -61,6 +61,7 @@ using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using edu.asu.emit.algorithm.utils;
 using JavaToDotNetTranslationHelpers;
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes;
 
 namespace edu.asu.emit.algorithm.graph {
     /**
@@ -259,7 +260,7 @@ namespace edu.asu.emit.algorithm.graph {
 	     * @param args
 	     */
 	    public static void main(String[] args) {
-		    Console.WriteLine("Welcome to the class VariableGraph!");
+		    ConsoleUtility.WriteLine("Welcome to the class VariableGraph!");
 		
 		    VariableGraph graph = new VariableGraph("data/test_50");
 		    graph.DeleteVertex(13);
@@ -271,7 +272,7 @@ namespace edu.asu.emit.algorithm.graph {
 		    graph.DeleteVertex(3);
 		    graph.DeleteEdge(new Pair<int, int>(26, 41));
 		    DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
-		    Console.WriteLine(alg.GetShortestPath(graph.GetVertex(0), graph.GetVertex(20)));
+		    ConsoleUtility.WriteLine(alg.GetShortestPath(graph.GetVertex(0), graph.GetVertex(20)));
 	    }
     }
 }

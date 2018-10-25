@@ -25,6 +25,8 @@ using edu.ufl.cise.bsmock.graph.util;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Programmerare.ShortestPaths.Adaptees.Common;
+using Programmerare.ShortestPaths.Test.Utils;
+
 /**
 * Test of Yen's algorithm for computing the K shortest loopless paths between two nodes in a graph.
 *
@@ -80,7 +82,6 @@ public class TestYen {
         /* Read graph from file */
         Console.WriteLine("Reading data from file... ");
         Graph graph = new Graph(graphFilename);
-
         Console.WriteLine("complete.");
         printGraph(graph);
         /* Compute the K shortest paths and record the completion time */
@@ -143,6 +144,11 @@ public class TestYen {
     [Test]
     public void YenMain()
     {
+        TargetFramework targetFramework = TargetFrameworkDetector.GetTargetFrameworkForAssembly(typeof(Graph));
+        if(!targetFramework.IsSupportingFileStreamReader()) {
+            Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
+        }
+
         TestYen.main(null);
     }
 

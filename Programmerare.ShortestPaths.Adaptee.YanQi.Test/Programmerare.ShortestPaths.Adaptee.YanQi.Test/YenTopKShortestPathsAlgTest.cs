@@ -5,16 +5,20 @@ using edu.asu.emit.algorithm.graph.shortestpaths;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Programmerare.ShortestPaths.Test.Utils;
 
 namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
 {
+    [TestFixture]
     class YenTopKShortestPathsAlgTest
     {
         private const double SMALL_DELTA_VALUE_FOR_ASSERTIONS = 0.00000001;
         
         [Test]
-		public void TestVerySmallGraph()
-        {
+        public void TestVerySmallGraph() {
+            if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
+                Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
+            }
             Graph graph = CreateGraph("graph_very_small.txt");
             // Small Graph with three possible paths from vertex 0 to vertex 3. https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-test/src/test/resources/test_graphs/small_graph_1.xml
             var yenAlg = new YenTopKShortestPathsAlg(
@@ -40,8 +44,10 @@ namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
         }
 
         [Test]
-		public void TestSmallGraph()
-        {
+        public void TestSmallGraph() {
+            if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
+                Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
+            }
             Graph graph = CreateGraph("graph_small.txt");
             // https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-test/src/test/resources/test_graphs/origin_bsmock/tiny_graph_01.xml
             string expectedResult = @"
@@ -129,6 +135,13 @@ namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
             return GraphFactory.createVariableGraph("data_programmerare/" + fileName);
         }
 
+        public static bool IsAssemblyForAdapteeYanQiSupportingStreamReader() {
+            // file based test can currently not be executed when the target assembly is 
+            // .NET Standard 1.0 - 1.6 because of missing constructor 
+            // for StreamReader taking a filename parameter which is currently required 
+            var targetFramework = TargetFrameworkDetector.GetTargetFrameworkForAssembly(typeof(Graph));
+            return targetFramework.IsSupportingFileStreamReader();
+        }
     }
     class WeightAndNodes
     {
@@ -149,5 +162,6 @@ namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
         {
             return "Weight " + Weight + " nodes: " + Nodes;
         }
+
     }
 }

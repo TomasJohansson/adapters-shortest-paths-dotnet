@@ -77,6 +77,9 @@ public class ShortestPathAlgTest {
 	 */
 	[SetUp]
 	public void setUp() {
+        if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
+            return;
+        }
 		// Import the graph from a file
 		graph = GraphFactory.createGraph("data/test_50");
         // original java code: graph = new Graph("data/test_50"); // https://github.com/yan-qi/k-shortest-paths-java-version/blob/master/src/test/java/edu/asu/emit/qyan/test/ShortestPathAlgTest.java
@@ -84,9 +87,17 @@ public class ShortestPathAlgTest {
 
 	[Test]
 	public void testShorstPathAlg()	{
+        if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
+            Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
+        }
 		Console.WriteLine("Testing Dijkstra Algorithm.");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
 		Console.WriteLine(alg.GetShortestPath(graph.GetVertex(0), graph.GetVertex(38)));
 	}
+
+	private bool IsAssemblyForAdapteeYanQiSupportingStreamReader() {
+		return Programmerare.ShortestPaths.Adaptee.YanQi.Test.YenTopKShortestPathsAlgTest.IsAssemblyForAdapteeYanQiSupportingStreamReader();
+	}
+
 }
 }
