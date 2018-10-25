@@ -89,9 +89,7 @@ public class YenTopKShortestPathsAlgTest {
     [Test]
 	public void testDijkstraShortestPathAlg()
 	{
-        if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
-            Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
-        }
+		IgnoreIfTrue(!IsAssemblyForAdapteeYanQiSupportingStreamReader());
 		Console.WriteLine("Testing Dijkstra Shortest Path Algorithm!");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
 		Console.WriteLine(alg.GetShortestPath(graph.GetVertex(4), graph.GetVertex(5)));
@@ -100,9 +98,7 @@ public class YenTopKShortestPathsAlgTest {
     [Test]
 	public void testYenShortestPathsAlg()
 	{		
-		if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
-			Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
-		}
+		IgnoreIfTrue(!IsAssemblyForAdapteeYanQiSupportingStreamReader());
 		Console.WriteLine("Testing batch processing of top-k shortest paths!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph);
 		IList<Path> shortest_paths_list = yenAlg.GetShortestPaths(
@@ -114,9 +110,7 @@ public class YenTopKShortestPathsAlgTest {
     [Test]
 	public void testYenShortestPathsAlg2()
 	{
-		if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
-			Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
-		}
+		IgnoreIfTrue(!IsAssemblyForAdapteeYanQiSupportingStreamReader());
 		Console.WriteLine("Obtain all paths in increasing order! - updated!");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
 				graph, graph.GetVertex(4), graph.GetVertex(5));
@@ -134,9 +128,7 @@ public class YenTopKShortestPathsAlgTest {
 	[Test]
 	public void testYenShortestPathsAlg4MultipleGraphs()
 	{
-		if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
-			Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
-		}
+		IgnoreIfTrue(!IsAssemblyForAdapteeYanQiSupportingStreamReader());
 		Console.WriteLine("Graph 1 - ");
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(
 				graph, graph.GetVertex(4), graph.GetVertex(5));
@@ -162,6 +154,12 @@ public class YenTopKShortestPathsAlgTest {
 
 	private bool IsAssemblyForAdapteeYanQiSupportingStreamReader() {
 		return Programmerare.ShortestPaths.Adaptee.YanQi.Test.YenTopKShortestPathsAlgTest.IsAssemblyForAdapteeYanQiSupportingStreamReader();
+	}
+
+	private void IgnoreIfTrue(bool condition) {
+		if(condition) {
+			Assert.Ignore();
+		}
 	}
 }
 }

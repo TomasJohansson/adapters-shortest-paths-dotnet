@@ -16,9 +16,7 @@ namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
         
         [Test]
         public void TestVerySmallGraph() {
-            if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
-                Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
-            }
+            IgnoreIfTrue(!IsAssemblyForAdapteeYanQiSupportingStreamReader());
             Graph graph = CreateGraph("graph_very_small.txt");
             // Small Graph with three possible paths from vertex 0 to vertex 3. https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-test/src/test/resources/test_graphs/small_graph_1.xml
             var yenAlg = new YenTopKShortestPathsAlg(
@@ -45,9 +43,7 @@ namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
 
         [Test]
         public void TestSmallGraph() {
-            if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
-                Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
-            }
+            IgnoreIfTrue(!IsAssemblyForAdapteeYanQiSupportingStreamReader());
             Graph graph = CreateGraph("graph_small.txt");
             // https://github.com/TomasJohansson/adapters-shortest-paths/blob/master/adapters-shortest-paths-test/src/test/resources/test_graphs/origin_bsmock/tiny_graph_01.xml
             string expectedResult = @"
@@ -141,6 +137,12 @@ namespace Programmerare.ShortestPaths.Adaptee.YanQi.Test
             // for StreamReader taking a filename parameter which is currently required 
             var targetFramework = TargetFrameworkDetector.GetTargetFrameworkForAssembly(typeof(Graph));
             return targetFramework.IsSupportingFileStreamReader();
+        }
+
+        private void IgnoreIfTrue(bool condition) {
+            if(condition) {
+                Assert.Ignore();
+            }
         }
     }
     class WeightAndNodes

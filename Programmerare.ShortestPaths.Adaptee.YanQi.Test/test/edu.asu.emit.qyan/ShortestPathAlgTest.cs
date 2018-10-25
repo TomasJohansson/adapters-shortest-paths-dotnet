@@ -87,15 +87,19 @@ public class ShortestPathAlgTest {
 
 	[Test]
 	public void testShorstPathAlg()	{
-        if(!IsAssemblyForAdapteeYanQiSupportingStreamReader()) {
-            Assert.Ignore(); // TODO: refactor this to a helper method "IgnoreIfTrue"
-        }
+        IgnoreIfTrue(!IsAssemblyForAdapteeYanQiSupportingStreamReader());
 		Console.WriteLine("Testing Dijkstra Algorithm.");
 		DijkstraShortestPathAlg alg = new DijkstraShortestPathAlg(graph);
 		Console.WriteLine(alg.GetShortestPath(graph.GetVertex(0), graph.GetVertex(38)));
 	}
 
-	private bool IsAssemblyForAdapteeYanQiSupportingStreamReader() {
+	private void IgnoreIfTrue(bool condition) {
+		if(condition) {
+			Assert.Ignore();
+		}
+	}
+
+        private bool IsAssemblyForAdapteeYanQiSupportingStreamReader() {
 		return Programmerare.ShortestPaths.Adaptee.YanQi.Test.YenTopKShortestPathsAlgTest.IsAssemblyForAdapteeYanQiSupportingStreamReader();
 	}
 
