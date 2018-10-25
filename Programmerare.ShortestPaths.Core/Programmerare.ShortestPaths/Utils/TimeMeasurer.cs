@@ -11,7 +11,6 @@ using System;
 
 namespace Programmerare.ShortestPaths.Utils
 {
-    // TODO this class is not yet translated from the Java code ... 
     public sealed class TimeMeasurer {
 
 	    public static TimeMeasurer Start() {
