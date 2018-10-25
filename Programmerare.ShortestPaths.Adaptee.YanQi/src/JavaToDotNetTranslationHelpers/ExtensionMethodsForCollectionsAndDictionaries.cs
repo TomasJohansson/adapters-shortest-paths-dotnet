@@ -22,6 +22,8 @@ namespace JavaToDotNetTranslationHelpers {
     // public interface IReadOnlyCollection<out T> : IEnumerable<T>
     // https://msdn.microsoft.com/en-us/library/hh881542(v=vs.110).aspx
 
+    // Note that extension methods also works for .NET 2
+    // thanks to the code in the file ...\Programmerare.ShortestPaths.Adaptees.Common\DotNetTypes\DotNet20\SupportForExtensionMethods.cs
     public static class ExtensionMethodsForCollectionsAndDictionaries {
         public static void AddAll<T>(
             this ICollection<T> list, 
