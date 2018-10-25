@@ -1,4 +1,4 @@
-﻿#if NET20
+﻿#if ( NET20 || NET30 )
 // The purpose of this file is to support .NET 2.0 
 // which did not include the two used types ISet and HashSet
 // and this file include a minimal implementation of the 

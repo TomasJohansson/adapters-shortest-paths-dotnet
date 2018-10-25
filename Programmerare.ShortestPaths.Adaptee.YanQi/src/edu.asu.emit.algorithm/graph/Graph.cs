@@ -55,7 +55,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
-#if NET20 // ISet and HashSet:
+#if ( NET20 || NET30 ) // ISet and HashSet:
 using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
 // else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
 #endif

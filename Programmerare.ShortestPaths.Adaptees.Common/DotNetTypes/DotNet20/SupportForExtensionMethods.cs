@@ -8,7 +8,7 @@ namespace Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20
     {
     }
 }
-#if NET20
+#if ( NET20 || NET30 )
 // To support extension methods with when targeting .NET 2.0
 // https://stackoverflow.com/questions/2280716/is-it-possible-to-create-extension-methods-with-2-0-framework
 // https://stackoverflow.com/questions/707145/extension-method-in-c-sharp-2-0
