@@ -1,4 +1,7 @@
-﻿namespace Programmerare.ShortestPaths.Adaptees.Common
+﻿// This class is located in project "Programmerare.ShortestPaths.Adaptee.YanQi.Test"
+// but also added as link from project "Programmerare.ShortestPaths.Adaptee.Bsmock.Test"
+// Reason: Reusing it while overkill to create a separate project only because of this one file.
+namespace Programmerare.ShortestPaths.Adaptees.Common
 {
     // TODO: Move this class to a test library 
     // since it is currently only used from test libraries

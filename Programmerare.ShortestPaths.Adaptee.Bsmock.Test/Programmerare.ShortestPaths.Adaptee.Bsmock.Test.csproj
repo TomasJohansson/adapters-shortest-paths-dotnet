@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Programmerare.ShortestPaths.Adaptee.YanQi.Test\FileUtil.cs">
+      <Link>FileUtil.cs</Link>
+    </Compile>
     <Compile Include="Programmerare.ShortestPaths.Adaptee.Bsmock.Test\YenTest.cs" />
     <Compile Include="edu.ufl.cise.bsmock.graph.ksp.test\TestYen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
