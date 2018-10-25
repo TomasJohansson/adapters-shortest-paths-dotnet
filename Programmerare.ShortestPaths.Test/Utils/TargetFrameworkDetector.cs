@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Versioning;
 
 // see comment at the top of the file "TargetFramework.cs"
@@ -7,6 +8,22 @@ namespace Programmerare.ShortestPaths.Test.Utils {
 
     internal class TargetFrameworkDetector {
         
+        private static IDictionary<String, TargetFrameworkEnum> dictionaryWithFrameworkNameAsKey;
+        
+        static TargetFrameworkDetector() {
+            const string NetStandardPrefix = ".NETStandard,Version=v"; // e.g. "...Version=v1.0"
+            dictionaryWithFrameworkNameAsKey = new Dictionary<String, TargetFrameworkEnum>
+            {
+                {NetStandardPrefix + "1.0",  TargetFrameworkEnum.NETSTANDARD1_0 },
+                {NetStandardPrefix + "1.1",  TargetFrameworkEnum.NETSTANDARD1_1 },
+                {NetStandardPrefix + "1.2",  TargetFrameworkEnum.NETSTANDARD1_2 },
+                {NetStandardPrefix + "1.3",  TargetFrameworkEnum.NETSTANDARD1_3 },
+                {NetStandardPrefix + "1.4",  TargetFrameworkEnum.NETSTANDARD1_4 },
+                {NetStandardPrefix + "1.5",  TargetFrameworkEnum.NETSTANDARD1_5 },
+                {NetStandardPrefix + "1.6",  TargetFrameworkEnum.NETSTANDARD1_6 },
+            };
+        }
+
         internal static TargetFramework GetTargetFrameworkForAssembly(Type typeInTheAssembly) {
             var assembly = typeInTheAssembly.Assembly;
             //Console.WriteLine("typeof(Graph).Assembly.ImageRuntimeVersion " + assembly.ImageRuntimeVersion);
@@ -32,23 +49,18 @@ namespace Programmerare.ShortestPaths.Test.Utils {
             return new TargetFramework(TargetFrameworkEnum.UNKNOWN);
         }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="frameworkName">
+        /// The name of a framework, originating from the property
+        /// TargetFrameworkAttribute.FrameworkName
+        /// </param>
+        /// <returns></returns>
         internal static TargetFrameworkEnum GetTargetFrameworkEnumFromStringWithName(string frameworkName) {
-            string s = frameworkName;
-            const string NetStandardPrefix = ".NETStandard,Version=v"; // e.g. "...Version=v1.0"
-            const string v10 = NetStandardPrefix + "1.0";
-            const string v11 = NetStandardPrefix + "1.1";
-            const string v12 = NetStandardPrefix + "1.2";
-            const string v13 = NetStandardPrefix + "1.3";
-            const string v14 = NetStandardPrefix + "1.4";
-            const string v15 = NetStandardPrefix + "1.5";
-            const string v16 = NetStandardPrefix + "1.6";
-            if(s == v10) return TargetFrameworkEnum.NETSTANDARD1_0;
-            if(s == v11) return TargetFrameworkEnum.NETSTANDARD1_1;
-            if(s == v12) return TargetFrameworkEnum.NETSTANDARD1_2;
-            if(s == v13) return TargetFrameworkEnum.NETSTANDARD1_3;
-            if(s == v14) return TargetFrameworkEnum.NETSTANDARD1_4;
-            if(s == v15) return TargetFrameworkEnum.NETSTANDARD1_5;
-            if(s == v16) return TargetFrameworkEnum.NETSTANDARD1_6;
+            if(dictionaryWithFrameworkNameAsKey.ContainsKey(frameworkName))
+            {
+                return dictionaryWithFrameworkNameAsKey[frameworkName];
+            }
             return TargetFrameworkEnum.UNKNOWN;
         }
     }
