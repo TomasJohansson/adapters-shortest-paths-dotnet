@@ -53,6 +53,10 @@
  */
 using System;
 using System.Collections.Generic;
+#if NET20 // ISet and HashSet:
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
+// else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
+#endif
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.graph.shortestpaths;
 using edu.asu.emit.algorithm.utils;

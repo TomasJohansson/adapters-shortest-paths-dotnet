@@ -55,6 +55,10 @@ using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
+#if NET20 // ISet and HashSet:
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
+// else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
+#endif
 using System.Text.RegularExpressions;
 using edu.asu.emit.algorithm.graph.abstraction;
 using edu.asu.emit.algorithm.utils;
@@ -211,14 +215,14 @@ namespace edu.asu.emit.algorithm.graph {
 		    }
 		
 		    // update the adjacent-list of the graph
-		    ISet<BaseVertex> fanoutVertexSet = new System.Collections.Generic.HashSet<BaseVertex>();
+		    ISet<BaseVertex> fanoutVertexSet = new HashSet<BaseVertex>();
 		    if (fanoutVerticesIndex.ContainsKey(startVertexId)) {
 			    fanoutVertexSet = fanoutVerticesIndex[startVertexId];
 		    }
 		    fanoutVertexSet.Add(idVertexIndex[endVertexId]);
 		    fanoutVerticesIndex.AddOrReplace(startVertexId, fanoutVertexSet);
 		    //
-		    ISet<BaseVertex> faninVertexSet = new System.Collections.Generic.HashSet<BaseVertex>();
+		    ISet<BaseVertex> faninVertexSet = new HashSet<BaseVertex>();
 		    if (faninVerticesIndex.ContainsKey(endVertexId)) {
 			    faninVertexSet = faninVerticesIndex[endVertexId];
 		    }
@@ -275,13 +279,13 @@ namespace edu.asu.emit.algorithm.graph {
 	    public virtual ISet<BaseVertex> GetAdjacentVertices(BaseVertex vertex) {
 		    return fanoutVerticesIndex.ContainsKey(vertex.GetId()) 
 				    ? fanoutVerticesIndex[vertex.GetId()] 
-				    : new System.Collections.Generic.HashSet<BaseVertex>();
+				    : new HashSet<BaseVertex>();
 	    }
 
 	    public virtual ISet<BaseVertex> GetPrecedentVertices(BaseVertex vertex) {
 		    return faninVerticesIndex.ContainsKey(vertex.GetId()) 
 				    ? faninVerticesIndex[vertex.GetId()] 
-				    : new System.Collections.Generic.HashSet<BaseVertex>();
+				    : new HashSet<BaseVertex>();
 	    }
 	
 	    public virtual double GetEdgeWeight(BaseVertex source, BaseVertex sink)	{

@@ -25,6 +25,10 @@
  */
 using System;
 using System.Collections.Generic;
+#if NET20 // ISet and HashSet:
+using Programmerare.ShortestPaths.Adaptees.Common.DotNetTypes.DotNet20;
+// else (if > .NET 2) then ISet and HashSet exist in above System.Collections.Generic
+#endif
 
 namespace edu.ufl.cise.bsmock.graph.util {
     public sealed class Dijkstra {
@@ -36,6 +40,7 @@ namespace edu.ufl.cise.bsmock.graph.util {
             if (!nodes.ContainsKey(sourceLabel))
                 throw new Exception("Source node not found in graph.");
             ShortestPathTree predecessorTree = new ShortestPathTree(sourceLabel);
+
             ISet<DijkstraNode> visited = new HashSet<DijkstraNode>();
             java.util.PriorityQueue<DijkstraNode> pq = new java.util.PriorityQueue<DijkstraNode>();
             foreach (String nodeLabel in nodes.Keys) {
