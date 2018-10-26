@@ -12,6 +12,10 @@
     <DocumentationFile>bin\Debug\netstandard2.0\Programmerare.ShortestPaths.Adapter.Bsmock.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net20|AnyCPU'">
+    <DocumentationFile>.\bin\Programmerare.ShortestPaths.Adapter.Bsmock.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Programmerare.ShortestPaths.Core\Programmerare.ShortestPaths.Core.csproj" />
     <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptee.Bsmock\Programmerare.ShortestPaths.Adaptee.Bsmock.csproj" />

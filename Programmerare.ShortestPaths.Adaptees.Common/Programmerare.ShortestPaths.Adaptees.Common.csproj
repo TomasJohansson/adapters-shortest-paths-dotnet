@@ -7,6 +7,10 @@
     <Description>Helper library with some code to be reused from the adaptee libraries</Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net20|AnyCPU'">
+    <DocumentationFile>.\bin\Programmerare.ShortestPaths.Adaptees.Common.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="CurrentlyNotUsed\**" />
     <EmbeddedResource Remove="CurrentlyNotUsed\**" />

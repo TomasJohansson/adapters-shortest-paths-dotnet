@@ -14,6 +14,10 @@ The adapter implementations with dependencies to adaptees are located in other l
     <DocumentationFile>bin\Debug\netstandard2.0\Programmerare.ShortestPaths.Core.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net20|AnyCPU'">
+    <DocumentationFile>.\bin\Programmerare.ShortestPaths.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="test\**" />
     <EmbeddedResource Remove="test\**" />

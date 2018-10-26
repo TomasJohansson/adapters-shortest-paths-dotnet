@@ -13,6 +13,10 @@ https://github.com/TomasJohansson/k-shortest-paths</Description>
     <AssemblyName>Programmerare.ShortestPaths.Adaptee.Bsmock</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net20|AnyCPU'">
+    <DocumentationFile>.\bin\Programmerare.ShortestPaths.Adaptee.Bsmock.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptees.Common\Programmerare.ShortestPaths.Adaptees.Common.csproj" />
   </ItemGroup>

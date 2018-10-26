@@ -12,6 +12,10 @@
     <DocumentationFile>bin\Debug\netstandard2.0\Programmerare.ShortestPaths.Adapter.YanQi.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net20|AnyCPU'">
+    <DocumentationFile>.\bin\Programmerare.ShortestPaths.Adapter.YanQi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Programmerare.ShortestPaths.Core\Programmerare.ShortestPaths.Core.csproj" />
     <ProjectReference Include="..\Programmerare.ShortestPaths.Adaptee.YanQi\Programmerare.ShortestPaths.Adaptee.YanQi.csproj" />
