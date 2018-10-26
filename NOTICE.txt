@@ -1,4 +1,13 @@
 The "core" part (i.e. project "Programmerare.ShortestPaths.Core") with the API and general code is released with MIT License.
 
 However, the libraries which implement the adapters are licensed in the same way as the adapted libraries.
-There should be more information about current available adapter implementations and their licenses at the project website.
+Currently there are two adaptee libraries ("BSmock" and "YanQi").
+Both of them are licensed with Apache 2.0
+
+"BSmock":
+https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adaptee.Bsmock/NOTICE.txt
+https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adapter.Bsmock/LICENSE_NOTICE.txt
+
+"YanQi":
+https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adaptee.YanQi/NOTICE.txt
+https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adapter.YanQi/LICENSE_NOTICE.txt

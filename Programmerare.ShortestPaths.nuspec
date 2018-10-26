@@ -7,7 +7,9 @@
     <authors>TomasJohansson</authors>
     <owners>TomasJohansson</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/NOTICE.txt</licenseUrl>
     <projectUrl>https://www.programmerare.com/adapters-shortest-paths-dotnet/</projectUrl>
+	
     <description>
       Adapter library and implementations for finding the shortest paths between two locations.
       This is useful for travel routing when you want to minimize the total time or total distance.
