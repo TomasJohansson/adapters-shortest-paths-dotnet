@@ -2,8 +2,8 @@
 <graphTestData>
     <graphDefinition>
     <!--
-    The test data in this file is fetched from the following file in "bscmock" implementation: 
-    	/tomas-fork_bsmock_k-shortest-paths/edu/ufl/cise/bsmock/graph/ksp/test/small_road_network_01.txt
+    The original test data in this file was fetched from the following file in "bsmock" implementation: 
+    	https://github.com/bsmock/k-shortest-paths/blob/master/edu/ufl/cise/bsmock/graph/ksp/test/small_road_network_01.txt
     But note that there are many (approximately 200) edges which are duplicated (i.e. the same vertices). 
     However, that problem is handled in the test code by programmatically removing all duplicates.
     Please also note that this big file are slow to handle for the implementations, and thus 
@@ -28545,12 +28545,12 @@
 		    <maxNumberOfPaths>10</maxNumberOfPaths>
 	    </input>
 	    <!--
-			The result below has been produced by two independent implementations (asserted against each other)
+			The results below have been produced by two independent Java implementations (asserted against each other)
 			and therefore is trusted as the correct result. To create strings as below from path objects, 
 			there is a method 'PathParser.fromPathToString'.
-			Those two implementations are YanQi and Bsmock.
-			The time it took for them was 16 seconds for YanQi and 298 seconds for Bsmock.
-			The Jgrapht implementation did not finish even after 30+ minutes and then I gave up waiting.    
+			Those two implementations are YanQi and Bsmock (the Java implementations).
+			The time it took for them (Java) was 16 seconds for YanQi and 298 seconds for Bsmock.
+			The time it took with the versions translated to .NET the result was 27 (YanQi) and 475 (BSmock).
 				    
 	    	The only difference between YanQi and Bsmock results was in the following total weight for the very first path:
 	    	868.4107589271839 (GraphFactoryYanQi)

@@ -156,11 +156,15 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
 	     * and instead use this method for only testing reasonable fast implementation.
 	     * @throws IOException
 	     */
-	    //[Test]
+	    //[Test] 
 	    public void TestXmlFile_smallRoadNetwork01() {
-		    //graphShortestPathAssertionHelper.setConsoleOutputDesired(ConsoleOutputDesired.TIME_MEASURE);
+		    //graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.TIME_MEASURE);
 		    pathFinderFactories.Add(new PathFinderFactoryYanQi());
+		    pathFinderFactories.Add(new PathFinderFactoryBsmock());
 		    runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_BSMOCK, XML_FILE_BIG_TEST__SMALL_ROAD_NETWORK_01, pathFinderFactories);
+		    // 27 seconds was the fastest. Results 2018-10-26 below
+		    //Xml file with test data: test_graphs/origin_bsmock/small_road_network_01.xml . Seconds: 27. Implementation: PathFinderYanQi
+		    //Xml file with test data: test_graphs/origin_bsmock/small_road_network_01.xml . Seconds: 475. Implementation: PathFinderBsmock
 	    }
 	
 
@@ -194,8 +198,6 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
             //pathFinderFactories.Add(new PathFinderFactoryParrisha()); // fails
             runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, XML_FILE_TEST__7, pathFinderFactories);
 	    }
-
-
 
 	    [Test]
 	    public void Test_all_xml_files_in_test_graphs_directory() {
@@ -238,7 +240,7 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
 	    private void runTestCaseDefinedInXmlFileWithPathIncludingDirectory(
 		    string pathToResourceXmlFile, 
 		    IList<PathFinderFactory> pathFinderFactories,
-            bool shouldAlsoTestResultsWithImplementationsAgainstEachOther = false
+		    bool shouldAlsoTestResultsWithImplementationsAgainstEachOther = true
 	    ) {
 		    XmlDocument document = xmlFileReader.GetResourceFileAsXmlDocument(pathToResourceXmlFile);
 		    XmlNodeList nodeList = xmlFileReader.GetNodeListMatchingXPathExpression(document, "graphTestData/graphDefinition");

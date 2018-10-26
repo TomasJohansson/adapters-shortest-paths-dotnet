@@ -75,7 +75,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
             bool shouldAlsoTestResultsWithImplementationsAgainstEachOther = false
 	    ) {
             // TODO: clean up this method e.g. regarding "shouldAlsoTestResultsWithImplementationsAgainstEachOther"
-
+		    //this.SetConsoleOutputDesired(ConsoleOutputDesired.TIME_MEASURE);
 		    string messagePrefixWithInformationAboutXmlSourcefileWithTestData = optionalPathToResourceXmlFile == null ? "" : "Xml file with test data: " + optionalPathToResourceXmlFile + " . ";
 		    output("Number of edges in the graph to be tested : " + edgesForBigGraph.Count);
 		    IDictionary<string, IList<Path>> shortestPathsPerImplementation = new Dictionary<string, IList<Path>>();
@@ -90,7 +90,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
             Assert.That(pathFinderFactoriesForImplementationsToTest.Count >= 1, "At least some implementation should be used");
 		    for (int i = 0; i < pathFinderFactoriesForImplementationsToTest.Count; i++) {
 			    PathFinderFactory pathFinderFactory = pathFinderFactoriesForImplementationsToTest[i];
-                Console.WriteLine("Will now test file " + optionalPathToResourceXmlFile + " with impl " + pathFinderFactory.GetType().Name);
+			    output("Will now test file " + optionalPathToResourceXmlFile + " with impl " + pathFinderFactory.GetType().Name);
 			    TimeMeasurer tm = TimeMeasurer.Start(); 			
 			    PathFinder pathFinder = pathFinderFactory.CreatePathFinder(
 				    edgesForBigGraph,
