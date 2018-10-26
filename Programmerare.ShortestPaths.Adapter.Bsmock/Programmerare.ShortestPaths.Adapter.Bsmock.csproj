@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net20;net40</TargetFrameworks>
-    <RootNamespace>dotnet_adapters_shortest_paths_impl_bsmock</RootNamespace>
+    <RootNamespace>Programmerare.ShortestPaths.Adapter.Bsmock</RootNamespace>
     <Version>0.9.0</Version>
+    <Description>Adapter implementation (for the Target Adapter interfaces defined in 'Programmerare.ShortestPaths.Core') which uses 'Programmerare.ShortestPaths.Adaptee.Bsmock' as the adaptee.</Description>
+    <AssemblyName>Programmerare.ShortestPaths.Adapter.Bsmock</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -4,6 +4,7 @@
     <TargetFrameworks>net20;net40</TargetFrameworks>
     <RootNamespace>Programmerare.ShortestPaths.Adaptees.Common</RootNamespace>
     <Version>0.9.0</Version>
+    <Description>Helper library with some code to be reused from the adaptee libraries</Description>
   </PropertyGroup>
 
   <ItemGroup>

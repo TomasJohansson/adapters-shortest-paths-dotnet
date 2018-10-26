@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFrameworks>net20;net40</TargetFrameworks>
     <Version>0.9.0</Version>
+    <Description>Library used for finding the shortest paths between two nodes in a graph.
+The project was created from a fork of a Java library which has been translated to C#.
+The original Java library:
+https://github.com/yan-qi/k-shortest-paths-java-version
+The Java fork of the above Java library:
+https://github.com/TomasJohansson/k-shortest-paths-java-version</Description>
+    <AssemblyName>Programmerare.ShortestPaths.Adaptee.YanQi</AssemblyName>
+    <RootNamespace>Programmerare.ShortestPaths.Adaptee.YanQi</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

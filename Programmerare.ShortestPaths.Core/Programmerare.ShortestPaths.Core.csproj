@@ -2,8 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>net20;net40</TargetFrameworks>
-    <RootNamespace>dotnet_adapters_shortest_paths_core</RootNamespace>
+    <RootNamespace>Programmerare.ShortestPaths.Core</RootNamespace>
 	<Version>0.9.0</Version>
+	<Description>Core adapter library with general classes and interfaces.
+For example it contains the Target (see the Adapter design pattern) interfaces.
+The adapter implementations with dependencies to adaptees are located in other libraries.
+</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
