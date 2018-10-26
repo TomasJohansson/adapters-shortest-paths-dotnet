@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Programmerare.ShortestPaths</id>
+    <version>1.0.0</version>
+    <title>Shortest paths adapter/adaptee library</title>
+    <authors>TomasJohansson</authors>
+    <owners>TomasJohansson</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://www.programmerare.com/adapters-shortest-paths-dotnet/</projectUrl>
+    <description>
+      Adapter library and implementations for finding the shortest paths between two locations.
+      This is useful for travel routing when you want to minimize the total time or total distance.
+    </description>
+    <tags>k-shortest-paths kShortestPaths shortestpaths shortest-path-algorithm shortest-paths-algorithm yenalgorithm yen-algorithm Yen algorithm routing</tags>
+    <dependencies>
+      
+      <group targetFramework="net20">
+        <dependency id="OptimizedPriorityQueue" version="4.1.1" exclude="Build,Analyzers" />
+      </group>
+      
+      <group targetFramework="net40">
+        <dependency id="OptimizedPriorityQueue" version="4.1.1" exclude="Build,Analyzers" />
+      </group>			
+      
+    </dependencies>
+    
+  </metadata>
+  
+  <files>
+    
+    <!-- net20 -->
+      <file src="Programmerare.ShortestPaths.Core\bin\Release\net20\Programmerare.ShortestPaths.Core.dll" target="lib\net20" />
+      <file src="Programmerare.ShortestPaths.Adaptees.Common\bin\Release\net20\Programmerare.ShortestPaths.Adaptees.Common.dll" target="lib\net20" />
+      <file src="Programmerare.ShortestPaths.Adaptee.Bsmock\bin\Release\net20\Programmerare.ShortestPaths.Adaptee.Bsmock.dll" target="lib\net20" />
+      <file src="Programmerare.ShortestPaths.Adaptee.YanQi\bin\Release\net20\Programmerare.ShortestPaths.Adaptee.YanQi.dll" target="lib\net20" />
+      <file src="Programmerare.ShortestPaths.Adapter.Bsmock\bin\Release\net20\Programmerare.ShortestPaths.Adapter.Bsmock.dll" target="lib\net20" />
+      <file src="Programmerare.ShortestPaths.Adapter.YanQi\bin\Release\net20\Programmerare.ShortestPaths.Adapter.YanQi.dll" target="lib\net20" />
+    <!-- net20 -->
+
+    <!-- net40 -->
+      <file src="Programmerare.ShortestPaths.Core\bin\Release\net40\Programmerare.ShortestPaths.Core.dll" target="lib\net40" />
+      <file src="Programmerare.ShortestPaths.Adaptees.Common\bin\Release\net40\Programmerare.ShortestPaths.Adaptees.Common.dll" target="lib\net40" />
+      <file src="Programmerare.ShortestPaths.Adaptee.Bsmock\bin\Release\net40\Programmerare.ShortestPaths.Adaptee.Bsmock.dll" target="lib\net40" />
+      <file src="Programmerare.ShortestPaths.Adaptee.YanQi\bin\Release\net40\Programmerare.ShortestPaths.Adaptee.YanQi.dll" target="lib\net40" />
+      <file src="Programmerare.ShortestPaths.Adapter.Bsmock\bin\Release\net40\Programmerare.ShortestPaths.Adapter.Bsmock.dll" target="lib\net40" />
+      <file src="Programmerare.ShortestPaths.Adapter.YanQi\bin\Release\net40\Programmerare.ShortestPaths.Adapter.YanQi.dll" target="lib\net40" />
+    <!-- net40 -->
+	
+  </files>
+<!--
+https://docs.microsoft.com/en-us/nuget/reference/nuspec
+nuget pack Programmerare.ShortestPaths.nuspec
+-->
+</package>
