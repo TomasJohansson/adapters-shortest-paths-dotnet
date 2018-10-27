@@ -1,10 +1,10 @@
 # License Notice
 Notice that the "core" library with the API and general code is released with MIT License.
 However, the libraries which are implementing adapters are licensed in the same way as the adapted libraries.
-Currently there are **two** such adapter libraries, and **if you intend to use one or more of them you must check their licenses**:
+Currently there are **two** such adapter libraries, and **both of them are released with license Apache 2.0 **
 * [YanQi](https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/tree/master/Programmerare.ShortestPaths.Adapter.YanQi)
 * [Bsmock](https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/tree/master/Programmerare.ShortestPaths.Adapter.Bsmock)
-
+Both of the above libraries are bundled in [NuGet package Programmerare.ShortestPaths 1.0.0](https://www.nuget.org/packages/Programmerare.ShortestPaths/1.0.0) and thus the license should be considered as Apache 2.0 for that binary distribution.
 
 ## Adapters for C#.NET implementations of Graph algorithms useful for finding the shortest paths in travel routing.
 
@@ -19,9 +19,10 @@ Therefore you can assert their results against each other, which could help find
 
 When you run such tests with the same test data for different implementations then you can also easily **compare the performance for the different implementations**.
 
-The test files being used in these C#.NET projecs have also been tested with five different implementations in the Java project [adapters-shortest-paths](https://github.com/TomasJohansson/adapters-shortest-paths) with the same results, so therefore it is very likely that the implementations are correct.
+Currently there are only two implementations in this C# version of the [Java project adapters-shortest-paths](https://github.com/TomasJohansson/adapters-shortest-paths) 
+but the test files being used in the C# version have also been tested with the five different implementations in the Java project with the same results, so therefore it is very likely that the implementations are correct.
 
-### Example of how to use this shortest paths adapter library:
+### Example of how to use this C# shortest paths adapter library:
 
 The C# code example below uses the following graph with four vertices (A,B,C,D) and five edges with weights.<br>(A to B (5) , A to C (6) , B to C (7)  , B to D (8) , C to D (9) ).<br>![alt text](images/shortest_paths_getting_started_example.gif "Logo Title Text 1")<br>
 There are three possible paths from A to D , with the total weight within parenthesis : 
@@ -71,14 +72,12 @@ using System.Collections.Generic;
 
 	Graph graph = CreateGraph(edges);
 
-	PathFinder pathFinder = pathFinderFactory.CreatePathFinder(
-		graph
-	);
+	PathFinder pathFinder = pathFinderFactory.CreatePathFinder(graph);
 
-	IList<Path> shortestPaths = pathFinder.FindShortestPaths(a, d, 5);
+	IList<Path> shortestPathsFromAtoD = pathFinder.FindShortestPaths(a, d, 5);
 
-	foreach(Path path in shortestPaths) {
-		Console.WriteLine(path.GetPathAsPrettyPrintedStringForConsoleOutput());
+	foreach(Path pathFromAtoD in shortestPathsFromAtoD) {
+		Console.WriteLine(pathFromAtoD.GetPathAsPrettyPrintedStringForConsoleOutput());
 	}
 	/*
 	 Resulting output from the above loop:
@@ -90,7 +89,7 @@ using System.Collections.Generic;
 	 ...
 	 
 	 
-	public static class MyExtensions {
+	public static class MyExtensionMethods {
 		public static string GetPathAsPrettyPrintedStringForConsoleOutput(this Path path) {
 			var sb = new StringBuilder();
 			IList<Edge> edges = path.EdgesForPath;
@@ -107,7 +106,9 @@ using System.Collections.Generic;
 		}
 	}  
 ```
-Assuming you are using [NuGet](https://www.nuget.org/), to be able to use the above code, you will be able to (when the library have been deployed to NuGet) use the following configuration in your project file :
+Assuming you are using [NuGet](https://www.nuget.org/), 
+If you are using [NuGet](https://www.nuget.org/) and want to try the above code, you can use the NuGet package [Programmerare.ShortestPaths 1.0.0](https://www.nuget.org/packages/Programmerare.ShortestPaths/1.0.0).
+After the installation, your project file (.csproj) should have become updated with the following content:
 ```xml
     <PackageReference Include="Programmerare.ShortestPaths">
       <Version>1.0.0</Version>
