@@ -115,6 +115,17 @@ After the installation, your project file (.csproj) should have become updated w
 ```
 An alternative to use NuGet as above is to download [released binaries](https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/releases)
 
+There are six binaries. You need to use at least four of them.
+If you only want to use the "YanQi" implementation, then you can skip the two binaries (adapter and adaptee) with "Bsmock" in the file name.
+If you only want to use the "Bsmock" implementation, then you can skip the two binaries (adapter and adaptee) with "YanQi" in the file name.
+
+Regarding why the six binaries have not been individually released to NuGet:
+To make it easier to reuse.
+If someone would find the NuGet package page and then see six binaries to choose from, then it would probably be tempting to just skip using it all rather than spending time trying to figure out which ones to use.
+By only releasing one package to NuGet, the decision will be much easier.
+The file size is not a problem. The zip/package file with all six binaries is only about 150 kb.
+(and that zip/package file also contains pdb files and xml files, and the number of files also multiplied with two, i.e. currently one version for .NET 2.0 and one for .NET 4.0, i.e. altogether 36 files in the zip file with size 146 kb)
+
 ### .NET versions
 
 Currently the code is compiled for two target frameworks:
