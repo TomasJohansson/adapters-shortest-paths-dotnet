@@ -106,7 +106,6 @@ using System.Collections.Generic;
 		}
 	}  
 ```
-Assuming you are using [NuGet](https://www.nuget.org/), 
 If you are using [NuGet](https://www.nuget.org/) and want to try the above code, you can use the NuGet package [Programmerare.ShortestPaths 1.0.0](https://www.nuget.org/packages/Programmerare.ShortestPaths/1.0.0).
 After the installation, your project file (.csproj) should have become updated with the following content:
 ```xml
@@ -114,6 +113,7 @@ After the installation, your project file (.csproj) should have become updated w
       <Version>1.0.0</Version>
     </PackageReference>
 ```
+An alternative to use NuGet as above is to download [released binaries](https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/releases)
 
 ### .NET versions
 
