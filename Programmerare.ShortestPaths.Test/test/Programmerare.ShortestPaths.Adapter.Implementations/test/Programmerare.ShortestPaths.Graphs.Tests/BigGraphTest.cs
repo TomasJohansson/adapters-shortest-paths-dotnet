@@ -15,6 +15,7 @@ using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VA
 using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
 using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 using Programmerare.ShortestPaths.Graphs.Utils;
+using System;
 
 namespace Programmerare.ShortestPaths.Graphs.Tests
 {
@@ -30,7 +31,9 @@ namespace Programmerare.ShortestPaths.Graphs.Tests
      * will be output printed to the console window to display the time it takes for the different implementations.
      * 
      */
-    [TestFixture]
+    //[TestFixture]
+    [Obsolete] // the test data constructed by this class is now instead in the file "adapters-shortest-paths-dotnet\Programmerare.ShortestPaths.Test\test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\generated_graph.xml"
+    // please also see the comments within that xml file
     public class BigGraphTest {
 
 	    private bool isExecutingThroughTheMainMethod = false;
@@ -53,7 +56,7 @@ namespace Programmerare.ShortestPaths.Graphs.Tests
 	    }
 
 
-	    [Test]
+	    //[Test] // see comment above at the class level where the class is labeled Obsolete
 	    public void TestProgrammaticallyGeneratedGraph() {	
 		    const int numberOfVertices = 200;
 		    const int numberOfPathsToFind = 20;

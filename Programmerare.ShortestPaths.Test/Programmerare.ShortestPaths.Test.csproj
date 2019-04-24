@@ -127,6 +127,10 @@
     <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\directory_for_xmlfilereader_test\xmlFileReaderTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\generated_graph.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\origin_bsmock\small_road_network_01.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -167,6 +171,7 @@
     <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_1.txt" />
     <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_2.txt" />
     <Content Include="test\Programmerare.ShortestPaths.Adapter.Implementations\resources\test_graphs\small_graph_2.xml">
