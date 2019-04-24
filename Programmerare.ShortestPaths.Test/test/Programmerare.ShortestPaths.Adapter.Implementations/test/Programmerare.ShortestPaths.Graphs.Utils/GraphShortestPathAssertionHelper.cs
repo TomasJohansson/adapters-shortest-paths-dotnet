@@ -29,9 +29,13 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
      * which is created from xml as an expected output path.
      */
     public class GraphShortestPathAssertionHelper {
-	
+
+	    private static string NEW_LINE = System.Environment.NewLine;
+	    PathParser<Path , Edge , Vertex , Weight> pathParserUsedForPrintingToXmlFormatInAssertionMessage;
+        
 	    public GraphShortestPathAssertionHelper(bool isExecutingThroughTheMainMethod) {
 		    this.SetConsoleOutputDesired(isExecutingThroughTheMainMethod ? ConsoleOutputDesired.ALL : ConsoleOutputDesired.NONE);
+		    pathParserUsedForPrintingToXmlFormatInAssertionMessage = PathParser<Path , Edge , Vertex , Weight>.CreatePathParserDefault(new List<Edge>());
 	    }
 
 	    /**
@@ -84,7 +88,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 		    GraphEdgesValidator<Path, Edge, Vertex, Weight>.ValidateEdgesForGraphCreation<Path, Edge, Vertex, Weight>(edgesForBigGraph);
 		
 		    PathParser<Path, Edge, Vertex, Weight> pathParser = PathParser<Path, Edge, Vertex, Weight>.CreatePathParserDefault(edgesForBigGraph);
-		
+
 		    //assertThat("At least some implementation should be used", pathFinderFactoriesForImplementationsToTest.size(), greaterThanOrEqualTo(1));
             // TODO: "hamcrest" syntax similar to above java code
             Assert.That(pathFinderFactoriesForImplementationsToTest.Count >= 1, "At least some implementation should be used");
@@ -96,7 +100,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 				    edgesForBigGraph,
 				    GraphEdgesValidationDesired.NO // do the validation one time instead of doing it for each pathFinderFactory
 			    );
-			    IList<Path> shortestPaths = pathFinder.FindShortestPaths(startVertex, endVertex, numberOfPathsToFind);
+ 			    IList<Path> shortestPaths = pathFinder.FindShortestPaths(startVertex, endVertex, numberOfPathsToFind);
  			    Assert.IsNotNull(shortestPaths);
 			    //assertThat("At least some path should be found", shortestPaths.size(), greaterThanOrEqualTo(1));
                 Assert.That(shortestPaths.Count >= 1, "At least some path should be found"); // TODO "hamcrest" syntax as java above
@@ -132,7 +136,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 
 	    private void AssertResultsWithExpectedPaths(
 		    IList<Path> expectedListOfPaths,
-		    string optionalPathToResourceXmlFile, // TODO use in assertion messag
+		    string optionalPathToResourceXmlFile,
             IDictionary<string, IList<Path>> shortestPathsPerImplementation
 	    ) {
             IList<string> nameOfImplementations = new List<string>(shortestPathsPerImplementation.Keys);
@@ -160,8 +164,9 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 				    string comparedImplementations = nameOfImplementation_1 + " vs " + nameOfImplementation_2 + " , "; 
 				    IList<Path> pathsFoundByImplementation_2 = shortestPathsPerImplementation[nameOfImplementation_2];
 				    Assert.AreEqual(pathsFoundByImplementation_1.Count, pathsFoundByImplementation_2.Count, nameOfImplementation_2 + " vs " + comparedImplementations);
+				    string fileNamePrefix = optionalPathToResourceXmlFile == null ? "" : "Xml file which defined the data: " + optionalPathToResourceXmlFile + " , ";
 				    for (int k = 0; k < pathsFoundByImplementation_2.Count; k++) {
-					    AssertEqualPaths(comparedImplementations + "fail for i,j,k " + i + " , " + j + " , " + k , pathsFoundByImplementation_1[k], pathsFoundByImplementation_2[k]);
+					    AssertEqualPaths(fileNamePrefix + comparedImplementations + "fail for i,j,k " + i + " , " + j + " , " + k , pathsFoundByImplementation_1[k], pathsFoundByImplementation_2[k]);
 				    }
 				    output("-----------------");
 				    output("Now the results from these two implementations have been compaerd with each other: ");
@@ -259,8 +264,10 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
         {
 		    string actualPathAsString = getPathAsPrettyPrintedStringForConsoleOutput(actualPath);
 		    string expectedPathAsString = getPathAsPrettyPrintedStringForConsoleOutput(expectedPath);
-            string messageIncludingActualAndExpectedPath = " , actualPath : " + actualPathAsString +  " expectedPath :  " + expectedPathAsString;	
-            return messageIncludingActualAndExpectedPath;
+		    string messageIncludingActualAndExpectedPath = " , actualPath : " + actualPathAsString +  " expectedPath :  " + expectedPathAsString;	
+		    messageIncludingActualAndExpectedPath += NEW_LINE + "actual path in xml format:" + NEW_LINE + pathParserUsedForPrintingToXmlFormatInAssertionMessage.FromPathToString(actualPath);
+		    messageIncludingActualAndExpectedPath += NEW_LINE + "expected path in xml format:" + NEW_LINE + pathParserUsedForPrintingToXmlFormatInAssertionMessage.FromPathToString(expectedPath);
+		    return messageIncludingActualAndExpectedPath;
         }
 	
 	    // ---------------------------------------------------------------------------------------
