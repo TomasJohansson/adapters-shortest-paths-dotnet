@@ -46,7 +46,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 			    int numberOfPathsToFind, 
 			    IList<PathFinderFactory> pathFinderFactoriesForImplementationsToTest
 		    ) {
-		    TestResultsWithImplementationsAgainstEachOther(
+		    AssertExpectedResultsOrAssertImplementationsWithEachOther(
 			    edgesForBigGraph, 
 			    startVertex,
 			    endVertex, 
@@ -64,7 +64,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 	     * The last parameter can be used temporarirly for "debugging" purposes when we want to display the results to the console
 	     * See comment at class level.
 	     */	
-	    public void TestResultsWithImplementationsAgainstEachOther(
+	    public void AssertExpectedResultsOrAssertImplementationsWithEachOther(
 		    IList<Edge> edgesForBigGraph, 
 		    Vertex startVertex,
 		    Vertex endVertex, 
@@ -72,7 +72,7 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 		    IList<PathFinderFactory> pathFinderFactoriesForImplementationsToTest,
 		    IList<Path> expectedListOfPaths,
 		    string optionalPathToResourceXmlFile,
-            bool shouldAlsoTestResultsWithImplementationsAgainstEachOther = false
+            bool shouldTestResultsWithImplementationsAgainstEachOther = false
 	    ) {
             // TODO: clean up this method e.g. regarding "shouldAlsoTestResultsWithImplementationsAgainstEachOther"
 		    //this.SetConsoleOutputDesired(ConsoleOutputDesired.TIME_MEASURE);
@@ -113,43 +113,62 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 			    }
 			    shortestPathsPerImplementation.Add(pathFinder.GetType().Name, shortestPaths);
 		    }
-		
 		    IList<string> nameOfImplementations = new List<string>(shortestPathsPerImplementation.Keys);
 			if(expectedListOfPaths != null) {
-                for (int i = 0; i < nameOfImplementations.Count; i++) {
-			    string nameOfImplementation_1 = nameOfImplementations[i];
-			    IList<Path> pathsFoundByImplementation_1 = shortestPathsPerImplementation[nameOfImplementation_1];
-				    string failureMessage = nameOfImplementation_1 + " failed when comparing with expected result according to xml file " + optionalPathToResourceXmlFile; 
-				    Assert.AreEqual(expectedListOfPaths.Count, pathsFoundByImplementation_1.Count, "Mismatching number of paths, " + failureMessage);
-				    for (int m = 0; m < pathsFoundByImplementation_1.Count; m++) {
-					    AssertEqualPaths(failureMessage + " , path with index " + m , expectedListOfPaths[m], pathsFoundByImplementation_1[m]);
-				    }					
-                }
+	            AssertResultsWithExpectedPaths(
+		            expectedListOfPaths,
+		            optionalPathToResourceXmlFile,
+                    shortestPathsPerImplementation
+	            );
 			}
-            // This method is currently named "TestResultsWithImplementationsAgainstEachOther"
-            // Therefore: TODO:
-            //  Move the above loop within "if(expectedListOfPaths != null) {" into some other method
-            //  while the loop below within the if statement below is indeeded testing as the method name indicates.
-            //  (and also the loop below should only be needed if there are not defined expected results above)
-            if(shouldAlsoTestResultsWithImplementationsAgainstEachOther) {
-		        for (int i = 0; i < nameOfImplementations.Count; i++) {
-			        string nameOfImplementation_1 = nameOfImplementations[i];
-			        IList<Path> pathsFoundByImplementation_1 = shortestPathsPerImplementation[nameOfImplementation_1];
-			        for (int j = i+1; j < nameOfImplementations.Count; j++) {
-				        string nameOfImplementation_2 = nameOfImplementations[j];
-				        string comparedImplementations = nameOfImplementation_1 + " vs " + nameOfImplementation_2 + " , "; 
-				        IList<Path> pathsFoundByImplementation_2 = shortestPathsPerImplementation[nameOfImplementation_2];
-				        Assert.AreEqual(pathsFoundByImplementation_1.Count, pathsFoundByImplementation_2.Count, nameOfImplementation_2 + " vs " + comparedImplementations);
-				        for (int k = 0; k < pathsFoundByImplementation_2.Count; k++) {
-					        AssertEqualPaths(comparedImplementations + "fail for i,j,k " + i + " , " + j + " , " + k , pathsFoundByImplementation_1[k], pathsFoundByImplementation_2[k]);
-				        }
-				        output("-----------------");
-				        output("Now the results from these two implementations have been compaerd with each other: ");
-				        output(nameOfImplementation_1 + " vs " + nameOfImplementation_2);
-			        }
-		        }
+            else // if(expectedListOfPaths != null) {
+            if(shouldTestResultsWithImplementationsAgainstEachOther) {
+	            AssertResultsWithImplementationsAgainstEachOther(
+		            optionalPathToResourceXmlFile,
+                    shortestPathsPerImplementation
+	            );
             }
 	    }
+
+	    private void AssertResultsWithExpectedPaths(
+		    IList<Path> expectedListOfPaths,
+		    string optionalPathToResourceXmlFile, // TODO use in assertion messag
+            IDictionary<string, IList<Path>> shortestPathsPerImplementation
+	    ) {
+            IList<string> nameOfImplementations = new List<string>(shortestPathsPerImplementation.Keys);
+            for (int i = 0; i < nameOfImplementations.Count; i++) {
+			string nameOfImplementation_1 = nameOfImplementations[i];
+			IList<Path> pathsFoundByImplementation_1 = shortestPathsPerImplementation[nameOfImplementation_1];
+				string failureMessage = nameOfImplementation_1 + " failed when comparing with expected result according to xml file " + optionalPathToResourceXmlFile; 
+				Assert.AreEqual(expectedListOfPaths.Count, pathsFoundByImplementation_1.Count, "Mismatching number of paths, " + failureMessage);
+				for (int m = 0; m < pathsFoundByImplementation_1.Count; m++) {
+					AssertEqualPaths(failureMessage + " , path with index " + m , expectedListOfPaths[m], pathsFoundByImplementation_1[m]);
+				}					
+            }
+        }
+
+	    private void AssertResultsWithImplementationsAgainstEachOther(
+		    string optionalPathToResourceXmlFile,// TODO use in assertion messag
+            IDictionary<string, IList<Path>> shortestPathsPerImplementation
+        ) {
+            IList<string> nameOfImplementations = new List<string>(shortestPathsPerImplementation.Keys);
+		    for (int i = 0; i < nameOfImplementations.Count; i++) {
+			    string nameOfImplementation_1 = nameOfImplementations[i];
+			    IList<Path> pathsFoundByImplementation_1 = shortestPathsPerImplementation[nameOfImplementation_1];
+			    for (int j = i+1; j < nameOfImplementations.Count; j++) {
+				    string nameOfImplementation_2 = nameOfImplementations[j];
+				    string comparedImplementations = nameOfImplementation_1 + " vs " + nameOfImplementation_2 + " , "; 
+				    IList<Path> pathsFoundByImplementation_2 = shortestPathsPerImplementation[nameOfImplementation_2];
+				    Assert.AreEqual(pathsFoundByImplementation_1.Count, pathsFoundByImplementation_2.Count, nameOfImplementation_2 + " vs " + comparedImplementations);
+				    for (int k = 0; k < pathsFoundByImplementation_2.Count; k++) {
+					    AssertEqualPaths(comparedImplementations + "fail for i,j,k " + i + " , " + j + " , " + k , pathsFoundByImplementation_1[k], pathsFoundByImplementation_2[k]);
+				    }
+				    output("-----------------");
+				    output("Now the results from these two implementations have been compaerd with each other: ");
+				    output(nameOfImplementation_1 + " vs " + nameOfImplementation_2);
+			    }
+		    }
+        }
 
  	    private void DisplayAsPathStringsWhichCanBeUsedInXml(IList<Path> shortestPaths, PathParser<Path, Edge, Vertex, Weight> pathParser) {
 		    output("-----");

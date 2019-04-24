@@ -297,7 +297,7 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
     //			System.out.println("innan graphShortestPathAssertionHelper.testResultsWithImplementationsAgainstEachOther " + edgesForGraph.get(0).getClass());
 		
 			    // pathToResourceXmlFile
-		        graphShortestPathAssertionHelper.TestResultsWithImplementationsAgainstEachOther(
+		        graphShortestPathAssertionHelper.AssertExpectedResultsOrAssertImplementationsWithEachOther(
 				    edgesForGraph, 
 				    CreateVertex(startVertexId), 
 				    CreateVertex(endVertexId), 
