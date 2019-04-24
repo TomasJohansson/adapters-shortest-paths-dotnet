@@ -115,18 +115,26 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 		    }
 		
 		    IList<string> nameOfImplementations = new List<string>(shortestPathsPerImplementation.Keys);
-		    for (int i = 0; i < nameOfImplementations.Count; i++) {
+			if(expectedListOfPaths != null) {
+                for (int i = 0; i < nameOfImplementations.Count; i++) {
 			    string nameOfImplementation_1 = nameOfImplementations[i];
 			    IList<Path> pathsFoundByImplementation_1 = shortestPathsPerImplementation[nameOfImplementation_1];
-			    if(expectedListOfPaths != null) {
 				    string failureMessage = nameOfImplementation_1 + " failed when comparing with expected result according to xml file " + optionalPathToResourceXmlFile; 
 				    Assert.AreEqual(expectedListOfPaths.Count, pathsFoundByImplementation_1.Count, "Mismatching number of paths, " + failureMessage);
 				    for (int m = 0; m < pathsFoundByImplementation_1.Count; m++) {
 					    AssertEqualPaths(failureMessage + " , path with index " + m , expectedListOfPaths[m], pathsFoundByImplementation_1[m]);
 				    }					
-			    }
-
-                if(shouldAlsoTestResultsWithImplementationsAgainstEachOther) {
+                }
+			}
+            // This method is currently named "TestResultsWithImplementationsAgainstEachOther"
+            // Therefore: TODO:
+            //  Move the above loop within "if(expectedListOfPaths != null) {" into some other method
+            //  while the loop below within the if statement below is indeeded testing as the method name indicates.
+            //  (and also the loop below should only be needed if there are not defined expected results above)
+            if(shouldAlsoTestResultsWithImplementationsAgainstEachOther) {
+		        for (int i = 0; i < nameOfImplementations.Count; i++) {
+			        string nameOfImplementation_1 = nameOfImplementations[i];
+			        IList<Path> pathsFoundByImplementation_1 = shortestPathsPerImplementation[nameOfImplementation_1];
 			        for (int j = i+1; j < nameOfImplementations.Count; j++) {
 				        string nameOfImplementation_2 = nameOfImplementations[j];
 				        string comparedImplementations = nameOfImplementation_1 + " vs " + nameOfImplementation_2 + " , "; 
@@ -139,8 +147,8 @@ namespace Programmerare.ShortestPaths.Graphs.Utils {
 				        output("Now the results from these two implementations have been compaerd with each other: ");
 				        output(nameOfImplementation_1 + " vs " + nameOfImplementation_2);
 			        }
-                }
-		    }
+		        }
+            }
 	    }
 
  	    private void DisplayAsPathStringsWhichCanBeUsedInXml(IList<Path> shortestPaths, PathParser<Path, Edge, Vertex, Weight> pathParser) {
