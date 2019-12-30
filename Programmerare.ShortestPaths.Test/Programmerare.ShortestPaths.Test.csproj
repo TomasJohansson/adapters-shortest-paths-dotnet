@@ -87,6 +87,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Adapter.QuikGraph\Programmerare.ShortestPaths.Adapter.QuikGraph.csproj">
+      <Project>{2709f76e-78cb-4b17-a9df-6a303a7d8d53}</Project>
+      <Name>Programmerare.ShortestPaths.Adapter.QuikGraph</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Programmerare.ShortestPaths.Core\Programmerare.ShortestPaths.Core.csproj">
       <Project>{45de26bc-016f-445c-b625-9d7f04ea3353}</Project>
       <Name>Programmerare.ShortestPaths.Core</Name>

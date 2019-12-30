@@ -13,6 +13,7 @@ using Programmerare.ShortestPaths.Core.Api;
 using Programmerare.ShortestPaths.Core.Validation;
 using Programmerare.ShortestPaths.Adapter.Bsmock;
 using Programmerare.ShortestPaths.Adapter.YanQi;
+using Programmerare.ShortestPaths.Adapter.QuikGraph;
 using static Programmerare.ShortestPaths.Core.Impl.WeightImpl; // SMALL_DELTA_VALUE_FOR_WEIGHT_COMPARISONS
 using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
 using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
@@ -37,16 +38,23 @@ namespace Programmerare.ShortestPaths.Graphs.Tests
 		    TestFindShortestPaths(
 			    new PathFinderFactoryBsmock()
 		    );		
-	    }	
-	
+	    }
+
 	    //[Test]
 	    //public void TestFindShortestPaths_QuickGraph() {
 		   // TestFindShortestPaths(
 			  //  new PathFinderFactoryQuickGraph()
 		   // );		
 	    //}
-	
-	    [Test]
+
+		[Test]
+	    public void TestFindShortestPaths_QuikGraph() {
+		    TestFindShortestPaths(
+			    new PathFinderFactoryQuikGraph()
+		    );
+	    }
+
+		[Test]
 	    public void testFindShortestPaths_YanQi() {
 		    TestFindShortestPaths(
 			    new PathFinderFactoryYanQi()

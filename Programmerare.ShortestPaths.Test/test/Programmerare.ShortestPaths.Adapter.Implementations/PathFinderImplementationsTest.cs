@@ -11,6 +11,7 @@
 using NUnit.Framework;
 using Programmerare.ShortestPaths.Adapter.YanQi;
 using Programmerare.ShortestPaths.Adapter.Bsmock;
+using Programmerare.ShortestPaths.Adapter.QuikGraph;
 using static NUnit.Framework.Assert;
 using Programmerare.ShortestPaths.Core.Validation;
 using System.Collections.Generic;
@@ -72,7 +73,13 @@ namespace dotnet_adapters_shortest_paths_test.test.Programmerare.ShortestPaths.A
         //public void PathFinderTestQuickGraph() {
         //    PathFinderTest(new PathFinderFactoryQuickGraph());
         //}
-		
+
+        [Test]
+        public void PathFinderTestQuikGraph()
+        {
+            PathFinderTest(new PathFinderFactoryQuikGraph());
+        }
+
         private void PathFinderTest(PathFinderFactory pathFinderFactory)
         {
             pathFinder = pathFinderFactory.CreatePathFinder(graph);

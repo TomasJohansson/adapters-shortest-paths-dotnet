@@ -13,6 +13,7 @@ using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 using NUnit.Framework;
 using Programmerare.ShortestPaths.Adapter.Bsmock;
 using Programmerare.ShortestPaths.Adapter.YanQi;
+using Programmerare.ShortestPaths.Adapter.QuikGraph;
 using Programmerare.ShortestPaths.Core.Api;
 using Programmerare.ShortestPaths.Core.Parsers;
 using Programmerare.ShortestPaths.Graphs.Utils;
@@ -148,31 +149,38 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
 		    //runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, "test_6.xml", pathFinderFactories);
 		    //runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, "test_7.xml", pathFinderFactories);
 		    //runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, "test_8.xml", pathFinderFactories);
-	    }		
-	
-	    /**
+	    }
+
+        /**
 	     * Testing xml file with a big graph which takes too long time for some implementations 
 	     * and therefore that file is excluded from the normal testing where all implementations are used,
 	     * and instead use this method for only testing reasonable fast implementation.
 	     * @throws IOException
 	     */
+
 	    //[Test] 
 	    public void TestXmlFile_smallRoadNetwork01() {
 		    //graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.TIME_MEASURE);
-		    pathFinderFactories.Add(new PathFinderFactoryYanQi());
-		    pathFinderFactories.Add(new PathFinderFactoryBsmock());
+		    pathFinderFactories.Add(new PathFinderFactoryYanQi()); // 20 seconds
+		    pathFinderFactories.Add(new PathFinderFactoryBsmock()); // 475 seconds
+			pathFinderFactories.Add(new PathFinderFactoryQuikGraph()); // 1032 seconds
 		    runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_BSMOCK, XML_FILE_BIG_TEST__SMALL_ROAD_NETWORK_01, pathFinderFactories);
-		    // 27 seconds was the fastest. Results 2018-10-26 below
+		    // 27 seconds was the fastest with results at 2018-10-26 below (when running YanQi and Bsmock implementation i.e. the only two at that date)
 		    //Xml file with test data: test_graphs/origin_bsmock/small_road_network_01.xml . Seconds: 27. Implementation: PathFinderYanQi
 		    //Xml file with test data: test_graphs/origin_bsmock/small_road_network_01.xml . Seconds: 475. Implementation: PathFinderBsmock
-	    }
-	
 
-	    [Test]
+		    // 13 seconds was the fastest with results at 2019-12-30 below (when running YanQi and QuikGraph implementation)
+		    // Xml file with test data: test_graphs/origin_bsmock/small_road_network_01.xml . Seconds: 13. Implementation: PathFinderYanQi
+		    // Xml file with test data: test_graphs/origin_bsmock/small_road_network_01.xml . Seconds: 1032. Implementation: PathFinderQuikGraph
+	    }
+
+
+        [Test]
 	    public void TestXmlFile_test_50_2() {
 		    graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.ALL);
 		    pathFinderFactories.Add(new PathFinderFactoryYanQi());
             pathFinderFactories.Add(new PathFinderFactoryBsmock());
+            pathFinderFactories.Add(new PathFinderFactoryQuikGraph());
             //pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
             //pathFinderFactories.Add(new PathFinderFactoryParrisha()); // fails
 		    runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, XML_FILE_BIG_TEST__50_2, pathFinderFactories);
@@ -185,6 +193,7 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
 		    graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.ALL);
             pathFinderFactories.Add(new PathFinderFactoryYanQi());
             pathFinderFactories.Add(new PathFinderFactoryBsmock());
+            pathFinderFactories.Add(new PathFinderFactoryQuikGraph());
             //pathFinderFactories.Add(new PathFinderFactoryQuickGraph());
             //pathFinderFactories.Add(new PathFinderFactoryParrisha());  // fails
             runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, XML_FILE_BIG_TEST__50, pathFinderFactories);
@@ -194,6 +203,7 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
 		    graphShortestPathAssertionHelper.SetConsoleOutputDesired(ConsoleOutputDesired.ALL);
             pathFinderFactories.Add(new PathFinderFactoryYanQi());
             pathFinderFactories.Add(new PathFinderFactoryBsmock());
+            pathFinderFactories.Add(new PathFinderFactoryQuikGraph());
             //pathFinderFactories.Add(new PathFinderFactoryQuickGraph()); // fails
             //pathFinderFactories.Add(new PathFinderFactoryParrisha()); // fails
             runTestCaseDefinedInXmlFile(DIRECTORY_FOR_XML_TEST_FILES_FROM_YANQI, XML_FILE_TEST__7, pathFinderFactories);

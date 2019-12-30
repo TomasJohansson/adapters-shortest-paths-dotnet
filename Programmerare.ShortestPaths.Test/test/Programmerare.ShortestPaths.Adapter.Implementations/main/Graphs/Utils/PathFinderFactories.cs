@@ -9,6 +9,7 @@
 */
 
 using Programmerare.ShortestPaths.Adapter.Bsmock;
+using Programmerare.ShortestPaths.Adapter.QuikGraph;
 using Programmerare.ShortestPaths.Adapter.YanQi;
 using Programmerare.ShortestPaths.Core.Api;
 using System.Collections.Generic;
@@ -26,10 +27,11 @@ namespace Programmerare.ShortestPaths.Graphs.Utils
 		    IList<PathFinderFactory> list = new List<PathFinderFactory>();
 		    list.Add(new PathFinderFactoryYanQi());
 		    list.Add(new PathFinderFactoryBsmock());
+		    list.Add(new PathFinderFactoryQuikGraph());
 		    // The other implementations below do not currently seem to work for all tests and therefore disabled
 		    //list.Add(new PathFinderFactoryQuickGraph());
 		    //list.Add(new PathFinderFactoryParrisha());
-		    return list;		
+		    return list;
 	    }
     }
 }

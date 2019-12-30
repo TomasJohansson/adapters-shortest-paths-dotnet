@@ -17,6 +17,9 @@ using System.Collections.Generic;
 using Programmerare.ShortestPaths.Core.Validation;
 using Programmerare.ShortestPaths.Adapter.YanQi;
 using Programmerare.ShortestPaths.Adapter.Bsmock;
+using Programmerare.ShortestPaths.Adapter.QuikGraph;
+
+// TODO refactor this test class with currently too much duplication
 
 namespace Programmerare.ShortestPaths.Graphs.Tests {
     /**
@@ -69,6 +72,16 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
             );
 	    }	
 
+        [Test]
+        public void incorrect_startVertex_shouldThrowException_QuikGraph() {
+            shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+                new PathFinderFactoryQuikGraph(), 
+                vertexX_notPartOfGraph, 
+                vertexC, 
+                isExceptionExpected : true
+            );
+        }	
+
      //   [Test]
 	    //public void incorrect_startVertex_shouldThrowException_QuickGraph() {
 		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
@@ -101,6 +114,16 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
             );
 	    }	
 
+        [Test]
+        public void incorrect_endVertex_shouldThrowException_QuikGraph() {
+            shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+                new PathFinderFactoryQuikGraph(), 
+                vertexA, 
+                vertexX_notPartOfGraph, 
+                isExceptionExpected : true
+            );
+        }	
+
      //   [Test]
 	    //public void incorrect_endVertex_shouldThrowException_QuickGraph() {
 		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
@@ -115,7 +138,7 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
 	    // Three tests (for three implementations) with start and vertex both part of the graph
 	    // The purpose of the test is simply to show that these do not throw an exception (as the other tests do) and thus no assertions are done about the found paths
 	    [Test]
-	    public void correct_startAndEndVertex_should_NOT_ThrowException__YanQi() {
+	    public void correct_startAndEndVertex_should_NOT_ThrowException_YanQi() {
 		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
                 new PathFinderFactoryYanQi(), 
                 vertexA, 
@@ -133,6 +156,16 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
                 isExceptionExpected : false
             );
 	    }	
+
+        [Test]
+        public void correct_startAndEndVertex_should_NOT_ThrowException_QuikGraph() {
+            shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+                new PathFinderFactoryQuikGraph(), 
+                vertexA, 
+                vertexC,
+                isExceptionExpected : false
+            );
+        }	
 	    //[Test]
 	    //public void correct_startAndEndVertex_should_NOT_ThrowException_QuickGraph() {
 		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(

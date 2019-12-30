@@ -10,4 +10,8 @@
     <PackageReference Include="QuikGraph" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Programmerare.ShortestPaths.Core\Programmerare.ShortestPaths.Core.csproj" />
+  </ItemGroup>
+
 </Project>
