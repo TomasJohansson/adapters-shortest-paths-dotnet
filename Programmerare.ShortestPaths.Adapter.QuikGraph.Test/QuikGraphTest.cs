@@ -4,7 +4,7 @@ using NUnit.Framework;
 using QuikGraph;
 using QuikGraph.Algorithms.ShortestPath;
 
-namespace Programmerare.ShortestPaths.Adaptee.QuikGraph.Test
+namespace Programmerare.ShortestPaths.Adapter.QuikGraph.Test
 {
     [TestFixture]
     public class QuikGraphTest

@@ -28,9 +28,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths.Example", "Programmerare.ShortestPaths.Example\Programmerare.ShortestPaths.Example.csproj", "{EE0C7039-58E5-4E23-A671-B321CBEE2A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths.Adaptee.QuikGraph", "Programmerare.ShortestPaths.Adaptee.QuikGraph\Programmerare.ShortestPaths.Adaptee.QuikGraph.csproj", "{2709F76E-78CB-4B17-A9DF-6A303A7D8D53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Programmerare.ShortestPaths.Adapter.QuikGraph", "Programmerare.ShortestPaths.Adapter.QuikGraph\Programmerare.ShortestPaths.Adapter.QuikGraph.csproj", "{2709F76E-78CB-4B17-A9DF-6A303A7D8D53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths.Adaptee.QuikGraph.Test", "Programmerare.ShortestPaths.Adaptee.QuikGraph.Test\Programmerare.ShortestPaths.Adaptee.QuikGraph.Test.csproj", "{FA1F20C3-A355-4795-877D-DF15900818B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmerare.ShortestPaths.Adapter.QuikGraph.Test", "Programmerare.ShortestPaths.Adapter.QuikGraph.Test\Programmerare.ShortestPaths.Adapter.QuikGraph.Test.csproj", "{FA1F20C3-A355-4795-877D-DF15900818B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

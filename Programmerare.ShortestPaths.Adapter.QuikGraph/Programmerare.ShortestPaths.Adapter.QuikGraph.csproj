@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Programmerare.ShortestPaths.Adapter.QuikGraph</AssemblyName>
+    <RootNamespace>Programmerare.ShortestPaths.Adapter.QuikGraph</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

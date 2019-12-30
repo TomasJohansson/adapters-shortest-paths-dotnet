@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Programmerare.ShortestPaths.Adaptee.QuikGraph.Test")]
+[assembly: AssemblyTitle("Programmerare.ShortestPaths.Adapter.QuikGraph.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard")]
-[assembly: AssemblyProduct("Programmerare.ShortestPaths.Adaptee.QuikGraph.Test")]
+[assembly: AssemblyProduct("Programmerare.ShortestPaths.Adapter.QuikGraph.Test")]
 [assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -7,8 +7,8 @@
     <ProjectGuid>{FA1F20C3-A355-4795-877D-DF15900818B6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Programmerare.ShortestPaths.Adaptee.QuikGraph.Test</RootNamespace>
-    <AssemblyName>Programmerare.ShortestPaths.Adaptee.QuikGraph.Test</AssemblyName>
+    <RootNamespace>Programmerare.ShortestPaths.Adapter.QuikGraph.Test</RootNamespace>
+    <AssemblyName>Programmerare.ShortestPaths.Adapter.QuikGraph.Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
