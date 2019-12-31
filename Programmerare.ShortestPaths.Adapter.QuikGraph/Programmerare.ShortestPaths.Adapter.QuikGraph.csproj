@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net35;net40</TargetFrameworks>
     <AssemblyName>Programmerare.ShortestPaths.Adapter.QuikGraph</AssemblyName>
     <RootNamespace>Programmerare.ShortestPaths.Adapter.QuikGraph</RootNamespace>
   </PropertyGroup>
