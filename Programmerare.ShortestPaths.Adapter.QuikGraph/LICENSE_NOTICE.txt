@@ -1,0 +1,9 @@
+This adapter library QuikGraph is licensed in the same way as the adaptee library itself.
+
+This means that the license is MS-PL (Microsoft Public License).
+
+The github homepage for the QuikGraph adaptee library:
+https://github.com/KeRNeLith/QuikGraph
+
+The MS-PL license file for the adaptee library:
+https://github.com/KeRNeLith/QuikGraph/blob/master/LICENSE

@@ -1,8 +1,8 @@
 The "core" part (i.e. project "Programmerare.ShortestPaths.Core") with the API and general code is released with MIT License.
 
 However, the libraries which implement the adapters are licensed in the same way as the adapted libraries.
-Currently there are two adaptee libraries ("BSmock" and "YanQi").
-Both of them are licensed with Apache 2.0
+Currently there are three adaptee libraries ("BSmock" and "YanQi" and "QuikGraph").
+"BSmock" and "YanQi" are licensed with Apache 2.0 while "QuikGraph" is licensed with MS-PL
 
 "BSmock":
 https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adaptee.Bsmock/NOTICE.txt
@@ -11,3 +11,6 @@ https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Pro
 "YanQi":
 https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adaptee.YanQi/NOTICE.txt
 https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adapter.YanQi/LICENSE_NOTICE.txt
+
+"QuikGraph":
+https://github.com/TomasJohansson/adapters-shortest-paths-dotnet/blob/master/Programmerare.ShortestPaths.Adapter.QuikGraph/LICENSE_NOTICE.txt
