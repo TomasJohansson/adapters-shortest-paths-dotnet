@@ -15,11 +15,7 @@ using static Programmerare.ShortestPaths.Core.Impl.EdgeImpl; // createEdge
 using static Programmerare.ShortestPaths.Core.Impl.VertexImpl; // createVertex
 using System.Collections.Generic;
 using Programmerare.ShortestPaths.Core.Validation;
-using Programmerare.ShortestPaths.Adapter.YanQi;
-using Programmerare.ShortestPaths.Adapter.Bsmock;
-using Programmerare.ShortestPaths.Adapter.QuikGraph;
-
-// TODO refactor this test class with currently too much duplication
+using Programmerare.ShortestPaths.Graphs.Utils;
 
 namespace Programmerare.ShortestPaths.Graphs.Tests {
     /**
@@ -28,13 +24,15 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
      */
     [TestFixture]
     public class PathFinderBaseValidationExceptionTest {
-
+	    private IList<PathFinderFactory> pathFinderFactories;
 	    private Edge edgeAB, edgeBC;
 	    private IList<Edge> edges_A_B_and_B_C;
 	    private Vertex vertexA, vertexB, vertexC, vertexX_notPartOfGraph;
-	
+
 	    [SetUp]
 	    public void SetUp() {
+		    pathFinderFactories = PathFinderFactories.CreatePathFinderFactories();
+
 		    vertexA = CreateVertex("A");
 		    vertexB = CreateVertex("B");
 		    vertexC = CreateVertex("C");
@@ -49,135 +47,53 @@ namespace Programmerare.ShortestPaths.Graphs.Tests {
 		    edges_A_B_and_B_C.Add(edgeBC);
 	    }
 
-	
-	    // -------------------------------------------------------------
-	    // Three tests (for three implementations) with start vertex not part of the graph
+
+        // -------------------------------------------------------------
+        // Test with start vertex not part of the graph
         [Test]
-	    public void incorrect_startVertex_shouldThrowException_YanQi() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryYanQi(), 
-                vertexX_notPartOfGraph, 
-                vertexC, 
-                isExceptionExpected : true
-            );
-	    }
+        public void incorrect_startVertex_shouldThrowException() {
+            foreach (PathFinderFactory pathFinderFactory in pathFinderFactories) {
+                shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+                    pathFinderFactory,
+                    vertexX_notPartOfGraph,
+                    vertexC,
+                    isExceptionExpected: true
+                );
+            }
+        }
 
+        // -------------------------------------------------------------
+        // Test with end vertex not part of the graph 
         [Test]
-	    public void incorrect_startVertex_shouldThrowException_Bsmock() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryBsmock(), 
-                vertexX_notPartOfGraph, 
-                vertexC, 
-                isExceptionExpected : true
-            );
-	    }	
+        public void incorrect_endVertex_shouldThrowException() {
+            foreach (PathFinderFactory pathFinderFactory in pathFinderFactories) {
+                shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+                    pathFinderFactory,
+                    vertexA,
+                    vertexX_notPartOfGraph,
+                    isExceptionExpected: true
+                );
+            }
+        }
 
+
+        // -------------------------------------------------------------
+        // Test with start and vertex both part of the graph
+        // The purpose of the test is simply to show that these do not throw an exception (as the other tests do) and thus no assertions are done about the found paths
         [Test]
-        public void incorrect_startVertex_shouldThrowException_QuikGraph() {
-            shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryQuikGraph(), 
-                vertexX_notPartOfGraph, 
-                vertexC, 
-                isExceptionExpected : true
-            );
-        }	
+        public void correct_startAndEndVertex_should_NOT_ThrowException() {
+            foreach (PathFinderFactory pathFinderFactory in pathFinderFactories) {
+                shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
+                    pathFinderFactory,
+                    vertexA,
+                    vertexC,
+                    isExceptionExpected: false
+                );
+            }
+        }
 
-     //   [Test]
-	    //public void incorrect_startVertex_shouldThrowException_QuickGraph() {
-		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-     //           new PathFinderFactoryQuickGraph(), 
-     //           vertexX_notPartOfGraph, 
-     //           vertexC, 
-     //           isExceptionExpected : true
-     //       );
-	    //}
-	
-	    // -------------------------------------------------------------
-	    // Three tests (for three implementations) with end vertex not part of the graph 
-        [Test]
-	    public void incorrect_endVertex_shouldThrowException_YanQi() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryYanQi(), 
-                vertexA, 
-                vertexX_notPartOfGraph,
-                isExceptionExpected : true
-            );
-	    }
-
-        [Test]
-	    public void incorrect_endVertex_shouldThrowException_Bsmock() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryBsmock(), 
-                vertexA, 
-                vertexX_notPartOfGraph, 
-                isExceptionExpected : true
-            );
-	    }	
-
-        [Test]
-        public void incorrect_endVertex_shouldThrowException_QuikGraph() {
-            shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryQuikGraph(), 
-                vertexA, 
-                vertexX_notPartOfGraph, 
-                isExceptionExpected : true
-            );
-        }	
-
-     //   [Test]
-	    //public void incorrect_endVertex_shouldThrowException_QuickGraph() {
-		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-     //           new PathFinderFactoryQuickGraph(), 
-     //           vertexA, 
-     //           vertexX_notPartOfGraph, 
-     //           isExceptionExpected : true
-     //       );
-	    //}
-	
-	    // -------------------------------------------------------------
-	    // Three tests (for three implementations) with start and vertex both part of the graph
-	    // The purpose of the test is simply to show that these do not throw an exception (as the other tests do) and thus no assertions are done about the found paths
-	    [Test]
-	    public void correct_startAndEndVertex_should_NOT_ThrowException_YanQi() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryYanQi(), 
-                vertexA, 
-                vertexC,
-                isExceptionExpected : false
-            );
-	    }	
-
-	    [Test]
-	    public void correct_startAndEndVertex_should_NOT_ThrowException_Bsmock() {
-		    shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryBsmock(), 
-                vertexA, 
-                vertexC,
-                isExceptionExpected : false
-            );
-	    }	
-
-        [Test]
-        public void correct_startAndEndVertex_should_NOT_ThrowException_QuikGraph() {
-            shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-                new PathFinderFactoryQuikGraph(), 
-                vertexA, 
-                vertexC,
-                isExceptionExpected : false
-            );
-        }	
-	    //[Test]
-	    //public void correct_startAndEndVertex_should_NOT_ThrowException_QuickGraph() {
-		   // shouldThrowExceptionIfAnyOfTheVerticesIsNotPartOfTheGraph(
-     //           new PathFinderFactoryQuickGraph(), 
-     //           vertexA, 
-     //           vertexC, 
-     //           isExceptionExpected : false
-     //       );
-	    //}
-
-	    // -------------------------------------------------------------
-	    private void FindShortestPaths(
+        // -------------------------------------------------------------
+        private void FindShortestPaths(
 		    PathFinderFactory pathFinderFactory, 
 		    Vertex startVertex, 
 		    Vertex endVertex
